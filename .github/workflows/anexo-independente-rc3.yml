@@ -1,0 +1,37 @@
+name: Corrigir seletor independente RC3
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tornar seletor sempre disponível
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('public/features.js')
+          s=p.read_text()
+          anchor='<div id="chatAttachments"></div>'
+          assert s.count(anchor)==1,'Ponto de anexo mudou; abortado'
+          s=s.replace(anchor,'''<label class="field-label">Selecionar foto ou PDF do iPhone<input type="file" id="chatUpload" class="forminput" accept="image/jpeg,image/png,application/pdf,.pdf"></label><p class="small muted">Ao enviar sua mensagem, o anexo será salvo na sua conta privada.</p><div id="chatAttachments"></div>''')
+          # Remove file chooser placed by previous patch in async block, preserving already uploaded media selector.
+          old='<label class="field-label">Escolher foto ou exame do iPhone<input type="file" id="chatUpload" class="forminput" accept="image/jpeg,image/png,application/pdf,.pdf"></label>'
+          assert s.count(old)==1,'Upload anterior ausente; abortado'
+          s=s.replace(old,'')
+          assert "const incoming=$('chatUpload')?.files?.[0]" in s,'Upload handler missing'
+          assert "if(!cloud.user" in Path('public/index.html').read_text()
+          p.write_text(s)
+          print('File input independente das consultas do chat')
+          PY
+          node --check public/features.js
+      - name: Commit
+        run: |
+          git config user.name "FORJA RC3"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/features.js
+          git commit -m "fix: exibir seletor de anexos antes do carregamento do chat"
+          git push
