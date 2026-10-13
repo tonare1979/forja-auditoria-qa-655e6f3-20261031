@@ -9,34 +9,37 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: Ocultar treinos sem sessão e validar JavaScript
+      - name: Trancar módulos antes do login
         run: |
           python3 - <<'PY'
           from pathlib import Path
           import re
           p=Path('public/index.html')
           s=p.read_text()
-          changes=[
-           ("function render(){if(tab==='painel')","function render(){if(!cloud.user && tab!=='nuvem')tab='nuvem';if(tab==='painel')"),
-           ("function nav(){const items=","function nav(){if(!cloud.user){$('nav').innerHTML='';$('nav').hidden=true;return}$('nav').hidden=false;const items="),
-           ("if(t.dataset.tab){tab=t.dataset.tab;render();scrollTo(0,0);return}","if(t.dataset.tab){tab=(!cloud.user&&t.dataset.tab!=='nuvem')?'nuvem':t.dataset.tab;render();scrollTo(0,0);return}"),
-           ("if(tab==='nuvem'||tab==='painel')render()}\nfunction cloud", "tab='nuvem';render()}\nfunction cloud"),
+          fixes=[
+            ("function render(){if(tab==='painel')","function render(){if(!cloud.user&&tab!=='nuvem')tab='nuvem';if(tab==='painel')"),
+            ("function nav(){const items=","function nav(){if(!cloud.user){$('nav').innerHTML='';$('nav').hidden=true;return}$('nav').hidden=false;const items="),
+            ("if(t.dataset.tab){tab=t.dataset.tab;render();scrollTo(0,0);return}","if(t.dataset.tab){tab=(!cloud.user&&t.dataset.tab!=='nuvem')?'nuvem':t.dataset.tab;render();scrollTo(0,0);return}"),
           ]
-          for a,b in changes:
-           if s.count(a)!=1: raise SystemExit('Aborting: expected exact marker '+a)
-           s=s.replace(a,b)
+          for a,b in fixes:
+            if s.count(a)!=1: raise SystemExit('Expected exactly once: '+a)
+            s=s.replace(a,b)
+          # Logout must always send the user back to login.
+          a="cloud.user=null;cloud.linked=false;cloud.dirty=false;cloud.conflict=false;"
+          b="cloud.user=null;tab='nuvem';cloud.linked=false;cloud.dirty=false;cloud.conflict=false;"
+          if s.count(a)!=1: raise SystemExit('Logout structure changed')
+          s=s.replace(a,b)
           assert '<img class="welcome-brand"' not in s
-          assert "function cloudLogin()" in s
           p.write_text(s)
-          scripts=re.findall(r'<script(?: [^>]*)?>(.*?)</script>',s,re.S)
-          Path('/tmp/forja-inline.js').write_text('\n'.join(scripts))
-          print('Guarda de tela/navegação sem sessão aplicada.')
+          m=re.findall(r'<script(?: [^>]*)?>(.*?)</script>',s,re.S)
+          Path('/tmp/forja.js').write_text('\n'.join(m))
+          print('Guarda aplicada a render, navegação e logout')
           PY
-          node --check /tmp/forja-inline.js
-      - name: Commit
+          node --check /tmp/forja.js
+      - name: Salvar
         run: |
           git config user.name "FORJA RC3"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/index.html
-          git commit -m "fix: bloquear visualização pré-login de treinos"
+          git commit -m "fix: impedir acesso a séries antes do login"
           git push
