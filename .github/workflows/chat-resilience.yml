@@ -1,0 +1,36 @@
+name: FORJA RC3 corrigir chat funcional
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reparar upload e recuperação do chat
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('public/features.js');s=p.read_text()
+          assert "id=\"chatUpload\"" in s
+          assert "const incoming=$('chatUpload')?.files?.[0]" in s
+          assert "async function fxLoadChat()" in s
+          # Prevent async chat fetch failure from concealing attachment option.
+          s=s.replace("const [f,c,m]=await Promise.all([api('/api/feedback'),api('/api/chat'),api('/api/media')]);","const [fr,cr,mr]=await Promise.allSettled([api('/api/feedback'),api('/api/chat'),api('/api/media')]);const f=fr.status==='fulfilled'?fr.value:{due:false,lines:['Acompanhamento temporariamente indisponível. Tente novamente com internet.']},c=cr.status==='fulfilled'?cr.value:{messages:[]},m=mr.status==='fulfilled'?mr.value:{media:[],storage:'Arquivos temporariamente indisponíveis'};")
+          old="const id=added.id||added.media?.id;if(!id)throw Error('Arquivo enviado, mas sem confirmação do identificador. Confira a galeria antes de repetir.');attachments.push(id)"
+          new="const id=added.id||added.media?.id;if(!id)throw Error('Arquivo recebido sem identificador. Confira a galeria antes de repetir.');attachments.push(id)"
+          if old in s:s=s.replace(old,new)
+          assert "Promise.allSettled" in s
+          p.write_text(s)
+          PY
+          node --check public/features.js
+      - name: Commit
+        run: |
+          git config user.name "FORJA RC3"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/features.js
+          git diff --cached --quiet && exit 0
+          git commit -m "fix: desacoplar chat e upload de falhas parciais da nuvem"
+          git push
