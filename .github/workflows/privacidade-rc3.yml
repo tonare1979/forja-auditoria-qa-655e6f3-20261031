@@ -9,53 +9,34 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: Bloquear treinos sem autenticação
+      - name: Ocultar treinos sem sessão e validar JavaScript
         run: |
           python3 - <<'PY'
           from pathlib import Path
+          import re
           p=Path('public/index.html')
           s=p.read_text()
-          a="function render(){if(tab==='painel')"
-          b="function render(){if(!cloud.user && tab!=='nuvem')tab='nuvem';if(tab==='painel')"
-          assert s.count(a)==1,'Render inesperado'
-          s=s.replace(a,b)
-          a="function nav(){const items="
-          b="function nav(){if(!cloud.user){$('nav').innerHTML='';$('nav').hidden=true;return}$('nav').hidden=false;const items="
-          assert s.count(a)==1,'Navegação inesperada'
-          s=s.replace(a,b)
-          a="if(t.dataset.tab){tab=t.dataset.tab;render();scrollTo(0,0);return}"
-          b="if(t.dataset.tab){tab=(!cloud.user&&t.dataset.tab!=='nuvem')?'nuvem':t.dataset.tab;render();scrollTo(0,0);return}"
-          assert s.count(a)==1,'Clique inesperado'
-          s=s.replace(a,b)
-          a="let a=t.dataset.action;if(a==='welcomeStart'"
-          b="let a=t.dataset.action;if(!cloud.user && a!=='welcomeStart' && a!=='welcomeLogin'){tab='nuvem';render();return}if(a==='welcomeStart'"
-          assert s.count(a)==1,'Ações inesperadas'
-          s=s.replace(a,b)
-          a="if(tab==='nuvem'||tab==='painel')render()}\nfunction"
-          b="tab='nuvem';render()}\nfunction"
-          assert s.count(a)==1,'Logout inesperado'
-          s=s.replace(a,b)
-          # Após sessão autenticada, desbloquear navegação apenas com verificação de login.
-          assert "if(!cloud.user && tab!=='nuvem')" in s
-          assert "$('nav').hidden=true" in s
-          assert s.count("src=\"./forja-brand-original.png\"")==0,'Sobreposição de capa não deve voltar'
+          changes=[
+           ("function render(){if(tab==='painel')","function render(){if(!cloud.user && tab!=='nuvem')tab='nuvem';if(tab==='painel')"),
+           ("function nav(){const items=","function nav(){if(!cloud.user){$('nav').innerHTML='';$('nav').hidden=true;return}$('nav').hidden=false;const items="),
+           ("if(t.dataset.tab){tab=t.dataset.tab;render();scrollTo(0,0);return}","if(t.dataset.tab){tab=(!cloud.user&&t.dataset.tab!=='nuvem')?'nuvem':t.dataset.tab;render();scrollTo(0,0);return}"),
+           ("if(tab==='nuvem'||tab==='painel')render()}\nfunction cloud", "tab='nuvem';render()}\nfunction cloud"),
+          ]
+          for a,b in changes:
+           if s.count(a)!=1: raise SystemExit('Aborting: expected exact marker '+a)
+           s=s.replace(a,b)
+          assert '<img class="welcome-brand"' not in s
+          assert "function cloudLogin()" in s
           p.write_text(s)
-          print('Controle de acesso visual e ações atualizado.')
-          PY
-      - name: Checagem sintática JavaScript
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          s=Path('public/index.html').read_text()
-          import re
-          js=re.findall(r'<script(?: [^>]*)?>(.*?)</script>',s,re.S)
-          Path('/tmp/forja-inline.js').write_text('\n'.join(js))
+          scripts=re.findall(r'<script(?: [^>]*)?>(.*?)</script>',s,re.S)
+          Path('/tmp/forja-inline.js').write_text('\n'.join(scripts))
+          print('Guarda de tela/navegação sem sessão aplicada.')
           PY
           node --check /tmp/forja-inline.js
-      - name: Registrar correção
+      - name: Commit
         run: |
           git config user.name "FORJA RC3"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/index.html
-          git commit -m "fix: impedir visualização de treinos antes do login"
+          git commit -m "fix: bloquear visualização pré-login de treinos"
           git push
