@@ -1,0 +1,110 @@
+{
+  "public/icon-512.png": {
+    "bytes": 172925,
+    "sha256": "ad77a9c72120b3d5a18dcaacaef856f8272b11a261ffbc711c727563dcb0e31c"
+  },
+  "public/forja-cover-rio-v10.webp": {
+    "bytes": 158126,
+    "sha256": "c9ae3749c5cb70022ef573af687a14a8635a617fca6516282f1d35ef5c887f11"
+  },
+  "public/features.js": {
+    "bytes": 25222,
+    "sha256": "98809e05ab030ac8810bc311dcefac20c393878ef0ea1925e6b39801f54d4d6c"
+  },
+  "public/icon-192.png": {
+    "bytes": 22615,
+    "sha256": "a099ebf3855e19f9018a8cc6f34e8538a1a204c1cc1db5a869f0bbd195e92b84"
+  },
+  "public/sw.js": {
+    "bytes": 1179,
+    "sha256": "4b7df244df184d61bd1810b04298c63ce5f6b878bdf7162c8b4bff210ce239de"
+  },
+  "public/manifest.webmanifest": {
+    "bytes": 487,
+    "sha256": "8273228fdd0f0a0d08a9219ff5b4a70a98fd7df7c06ff52d2c9776b7a7ffe05b"
+  },
+  "public/_headers": {
+    "bytes": 228,
+    "sha256": "3f3b2ed2a1dfbbd1cb11e71c2b602213f0321759ee89a47f5780106093832ec8"
+  },
+  "public/forja-icon-512-v942.png": {
+    "bytes": 172925,
+    "sha256": "ad77a9c72120b3d5a18dcaacaef856f8272b11a261ffbc711c727563dcb0e31c"
+  },
+  "public/forja-icon-180-v942.png": {
+    "bytes": 19638,
+    "sha256": "22a4e142569e712b7c71793e8b4d646877725a6b5aeca444267171fe67c6b198"
+  },
+  "public/forja-icon-192-v942.png": {
+    "bytes": 22615,
+    "sha256": "a099ebf3855e19f9018a8cc6f34e8538a1a204c1cc1db5a869f0bbd195e92b84"
+  },
+  "public/forja-brand-original.png": {
+    "bytes": 1136492,
+    "sha256": "130da00d80a2f44ac9dd45802560dea504d6c6fac91ca96ea959a5a63fbc71a2"
+  },
+  "public/index.html": {
+    "bytes": 88249,
+    "sha256": "14f5889a13d437f02d1fe32a8a1f5f23fbf973d8e6931471caa671745c465202"
+  },
+  "public/forja-cover-rio-casal-v2.png": {
+    "bytes": 1976656,
+    "sha256": "dab24e40f6d71bea2bb8a2865d61aa97d49dc18667c801c3d28eac6b94c30ff0"
+  },
+  "public/forja-post.js": {
+    "bytes": 2756,
+    "sha256": "8773ffdc182f61dd630334354b3796ee33808177fc6c3c3ca5d746af2ff928c1"
+  },
+  "src/features.js": {
+    "bytes": 16569,
+    "sha256": "1cf001439d85f789185c2a3470030e5a4336995905d5d6dd937b2066759ea7e4"
+  },
+  "src/bootstrap.js": {
+    "bytes": 3673,
+    "sha256": "4ce8f5e9a9a60a5fa843b0f011f8b056d69bd9d2b681d9e589d8e6ceed5c197e"
+  },
+  "src/index.js": {
+    "bytes": 13832,
+    "sha256": "6e46cbe466082efe458ba591bc196c9f2d493fe2d7c3823d6a10c549f724becf"
+  },
+  "src/password-reset.js": {
+    "bytes": 4485,
+    "sha256": "2896545ea6daebe3fc537acf602bf5fcac8040d2fb397e204f912d08a81d2de0"
+  },
+  "src/admin-recovery.js": {
+    "bytes": 3556,
+    "sha256": "3f40a7c961c3006d244f6c12db2db9da9a642c7ef8e05efe8d0886aae20894b5"
+  },
+  "migrations/0005_admin_recovery.sql": {
+    "bytes": 636,
+    "sha256": "3a575bbce3c4fe8e8932ad7f936afd0c47f9a7d3df14efe3ee8e5f54e8fd0e83"
+  },
+  "migrations/0003_bootstrap_approval.sql": {
+    "bytes": 570,
+    "sha256": "245e1f247af383babc30c6fc4820a45ba89f51f874ca33eb003b6a5b5c53138a"
+  },
+  "migrations/0002_single_admin.sql": {
+    "bytes": 168,
+    "sha256": "f37a895aadf69b69b13519b2f77e563eb447996456e16bcf4ab9a0cc775314d0"
+  },
+  "migrations/0007_login_ip_throttle.sql": {
+    "bytes": 187,
+    "sha256": "b6c06a2f38eb70b7c3f34709cc84a690c37e2036906573b861962221bab79e74"
+  },
+  "migrations/0004_complete.sql": {
+    "bytes": 1315,
+    "sha256": "b81fb9a01aaa11b339480f7dfce6765f9ae8c1a00cac175d71a71250d35c6ae6"
+  },
+  "migrations/0001_init.sql": {
+    "bytes": 1371,
+    "sha256": "6b4011b2eacad2015f0f18070b3010827daf9bda08d094af3dfba744b34aa466"
+  },
+  "migrations/0006_password_reset.sql": {
+    "bytes": 556,
+    "sha256": "706c3d531d8d376ef415dd678b58dc6bce2ed0038b104201fa1014981efd6a03"
+  },
+  "wrangler.jsonc": {
+    "bytes": 542,
+    "sha256": "82b18d425427777ce94c44d598ea66f535f990ad2667f3f22208ff646b092407"
+  }
+}

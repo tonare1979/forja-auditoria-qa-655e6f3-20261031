@@ -1,0 +1,11 @@
+ALTER TABLE users ADD COLUMN status TEXT NOT NULL DEFAULT 'active';
+ALTER TABLE users ADD COLUMN email TEXT;
+ALTER TABLE users ADD COLUMN recovery_hash TEXT;
+CREATE UNIQUE INDEX IF NOT EXISTS idx_user_email ON users(email) WHERE email IS NOT NULL;
+CREATE TABLE media (id TEXT PRIMARY KEY,user_id TEXT NOT NULL REFERENCES users(id),kind TEXT NOT NULL,view TEXT,date TEXT NOT NULL,note TEXT NOT NULL DEFAULT '',mime TEXT NOT NULL,name TEXT NOT NULL,bytes INTEGER NOT NULL,object_key TEXT,inline_data TEXT,created_at INTEGER NOT NULL,deleted_at INTEGER);
+CREATE INDEX idx_media_owner ON media(user_id,created_at);
+CREATE TABLE body_records (id TEXT PRIMARY KEY,user_id TEXT NOT NULL REFERENCES users(id),date TEXT NOT NULL,payload TEXT NOT NULL,created_at INTEGER NOT NULL,deleted_at INTEGER);
+CREATE TABLE messages (id TEXT PRIMARY KEY,user_id TEXT NOT NULL REFERENCES users(id),role TEXT NOT NULL,content TEXT NOT NULL,attachments TEXT NOT NULL DEFAULT '[]',created_at INTEGER NOT NULL);
+CREATE INDEX idx_messages_owner ON messages(user_id,created_at);
+CREATE TABLE reviews (id TEXT PRIMARY KEY,user_id TEXT NOT NULL REFERENCES users(id),date TEXT NOT NULL,status TEXT NOT NULL,payload TEXT NOT NULL,created_at INTEGER NOT NULL);
+CREATE TABLE registration_limits (ip_hash TEXT NOT NULL,created_at INTEGER NOT NULL);
