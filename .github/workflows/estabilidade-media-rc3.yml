@@ -1,0 +1,47 @@
+name: FORJA RC3 estabilidade e mídia
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validar e melhorar anexos offline
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          a=Path('public/features.js'); s=a.read_text()
+          assert "id=\"chatUpload\"" in s, "O seletor de arquivos precisa existir"
+          assert "const incoming=$('chatUpload')?.files?.[0]" in s, "Fluxo de upload ausente"
+          # Diferenciar indisponibilidade temporária da perda de registros.
+          old="}catch(e){fxMessage(e.message)}}\nfunction sharePanel()"
+          new="}catch(e){fxMessage(!navigator.onLine?'Sem internet: registros da nuvem indisponíveis. Seus registros locais não foram apagados. Reconecte para consultar fotos e chat.':e.message)}}\nfunction sharePanel()"
+          assert s.count(old)==1,"Tratamento de falha de rede mudou"
+          s=s.replace(old,new)
+          a.write_text(s)
+          # Não fazer buscas genéricas de vídeo como se fossem tutoriais curados.
+          p=Path('public/index.html');h=p.read_text()
+          q="▶ VER VÍDEO"
+          assert h.count(q)>=1
+          h=h.replace(q,"▶ BUSCAR DEMONSTRAÇÃO (YOUTUBE)")
+          p.write_text(h)
+          print('Seletor e fluxo confirmados; erro de rede explicado e vídeos rotulados sem falsa promessa.')
+          PY
+          node --check public/features.js
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('public/index.html').read_text()
+          Path('/tmp/app.js').write_text('\n'.join(re.findall(r'<script(?: [^>]*)?>(.*?)</script>',s,re.S)))
+          PY
+          node --check /tmp/app.js
+      - name: Commit
+        run: |
+          git config user.name "FORJA RC3"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/features.js public/index.html
+          git commit -m "fix: feedback offline claro e transparência sobre links de vídeo"
+          git push
