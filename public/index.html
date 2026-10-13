@@ -149,7 +149,7 @@ render();
 function welcomeCover(){
   document.body.classList.add('cover-open');
   const cover=document.createElement('section');cover.id='welcomeCover';cover.className='welcome-cover';cover.setAttribute('aria-label','Abertura FORJA');
-  cover.innerHTML=`<img class="welcome-art" src="./forja-cover-rio-casal-v2.png" alt="Casal diante do Rio de Janeiro"><img class="welcome-brand" src="./forja-brand-original.png" alt="FORJA"><div class="welcome-actions"><p class="welcome-label">SUA EVOLUÇÃO COMEÇA AQUI</p><button class="btn" data-action="welcomeLogin">ENTRAR</button></div>`;
+  cover.innerHTML=`<img class="welcome-art" src="./forja-cover-rio-casal-v2.png" alt="Casal diante do Rio de Janeiro"><div class="welcome-actions"><p class="welcome-label">SUA EVOLUÇÃO COMEÇA AQUI</p><button class="btn" data-action="welcomeLogin">ENTRAR</button></div>`;
   document.body.append(cover);$('root').inert=true;$('nav').inert=true;
   let done=false;function finishSplash(){if(done)return;done=true;cover.classList.add('is-exiting');setTimeout(()=>{cover.remove();document.body.classList.remove('cover-open');$('root').inert=false;$('nav').inert=false;tab=cloud.user?'painel':'nuvem';render()},450)}
   cover.querySelector('button')?.addEventListener('click',e=>{e.stopPropagation();finishSplash()});
