@@ -78,7 +78,7 @@ export default {async fetch(req,env){const url=new URL(req.url),path=url.pathnam
  if(path==='/api/auth/salt'&&req.method==='GET'){const name=String(url.searchParams.get('username')||'').toLowerCase();if(!okName(name))return err(400,'DADOS_INVALIDOS','Usuário inválido.');const row=await env.DB.prepare('SELECT password_salt FROM users WHERE username=?').bind(name).first();const dummy=(await verifier(env,'fake-salt:'+name)).slice(0,32);return reply({salt:row?.password_salt||dummy});}
  if(path==='/api/auth/setup'&&req.method==='POST')return await setup(req,env);
  if(path==='/api/auth/login'&&req.method==='POST')return await login(req,env.DB,env);
- const helpers={body,reply,err,sha256,verifier,isHex,okName,now,randomHex,addSession,cookie};if(path.startsWith('/api/accounts/register')||path.startsWith('/api/accounts/recover')){const publicResult=await features(req,env,null,helpers);if(publicResult)return publicResult;}const u=await who(req,env.DB);
+ const helpers={body,reply,err,sha256,verifier,isHex,okName,now,randomHex,addSession,cookie};if(path.startsWith('/api/accounts/recover')){const publicResult=await features(req,env,null,helpers);if(publicResult)return publicResult;}const u=await who(req,env.DB);
  if(!u)return err(401,'NAO_AUTENTICADO','Entre na sua conta para usar a nuvem.');
  const featureResult=await features(req,env,u,helpers);if(featureResult)return featureResult;
  if(path==='/api/auth/me'&&req.method==='GET')return reply({user:cleanUser(u)});
