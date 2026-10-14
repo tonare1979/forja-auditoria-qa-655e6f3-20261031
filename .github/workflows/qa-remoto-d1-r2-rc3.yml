@@ -27,7 +27,7 @@ jobs:
           cat >/tmp/remote-qa.mjs <<'JS'
           const base=process.env.BASE_URL;
           const cookies=[process.env.QA_A,process.env.QA_B].map(x=>'__Host-forja_session='+x);
-          if(cookies.some(x=>x.length!==87))throw Error('TOKEN_INVALIDO');
+          if(cookies.some(x=>x.length!==85))throw Error('TOKEN_INVALIDO');
           const call=async(path,idx,method='GET',payload)=>{
             const headers={cookie:cookies[idx],accept:'application/json'};
             let body;
