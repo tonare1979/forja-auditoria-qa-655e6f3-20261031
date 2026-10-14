@@ -44,6 +44,15 @@ jobs:
           if(download.status!==200||!String(download.headers.get('content-type')).includes('pdf'))throw Error('MEDIA_DOWNLOAD '+download.status);
           const state=await call('/api/state',{headers:{cookie}});
           if(state.status!==200)throw Error('STATE '+JSON.stringify(state));
+          const payload={sessions:[],weights:[{date:'2026-10-14',weight:65}]};
+          const opts={method:'PUT',headers:{origin:base,cookie,'content-type':'application/json'},body:JSON.stringify({baseRevision:0,data:payload})};
+          const first=await call('/api/state',opts);
+          if(first.status!==200||first.data.revision!==1)throw Error('INITIAL_PUT '+JSON.stringify(first));
+          const replay=await call('/api/state',opts);
+          if(replay.status!==200||replay.data.revision!==1||!replay.data.replayed)throw Error('IDEMPOTENT_REPLAY '+JSON.stringify(replay));
+          const changed=await call('/api/state',{...opts,body:JSON.stringify({baseRevision:0,data:{sessions:[],weights:[{date:'2026-10-14',weight:70}]}})});
+          if(changed.status!==409)throw Error('CONFLICT_MUST_STAY_409 '+JSON.stringify(changed));
+          console.log('IDEMPOTENCY_A3_PASS');
           console.log('E2E_LOCAL_D1_R2_PDF_AUTH_OK',JSON.stringify({upload:sent.status,list:list.status,download:download.status,state:state.status}));
           JS
           node /tmp/e2e.mjs
