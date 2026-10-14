@@ -1,0 +1,43 @@
+name: FORJA RC3 teste navegador móvel
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ios-sim:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preparar navegador WebKit
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps webkit
+      - name: Testar abertura e privacidade
+        run: |
+          cat > /tmp/mobile-check.cjs <<'JS'
+          const {webkit,devices}=require(process.cwd()+'/node_modules/playwright');
+          (async()=>{
+            const browser=await webkit.launch({headless:true});
+            const context=await browser.newContext({...devices['iPhone 13'],ignoreHTTPSErrors:false});
+            const page=await context.newPage();
+            const errors=[];
+            page.on('pageerror',e=>errors.push(e.message));
+            const res=await page.goto('https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev/',{waitUntil:'domcontentloaded',timeout:30000});
+            if(!res.ok())throw Error('HTTP '+res.status());
+            await page.waitForTimeout(1500);
+            const title=await page.title(),body=await page.locator('body').innerText();
+            if(!body.includes('FORJA'))throw Error('Interface sem FORJA');
+            await page.screenshot({path:'mobile-splash.png',fullPage:true});
+            console.log('MOBILE_HTTP',res.status(),'TITLE',title,'PAGE_ERRORS',JSON.stringify(errors));
+            if(errors.length)throw Error('Erro JavaScript '+errors.join(';'));
+            await browser.close();
+          })().catch(e=>{console.error(e);process.exit(1)});
+          JS
+          node /tmp/mobile-check.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forja-rc3-mobile-webkit
+          path: mobile-splash.png
+          retention-days: 7
