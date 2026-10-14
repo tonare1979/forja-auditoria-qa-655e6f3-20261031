@@ -33,6 +33,16 @@ jobs:
           const cookie=a.headers.get('set-cookie').split(';')[0];
           const adminRecoveryRoute=await call('/api/admin-recovery/request',{method:'POST',headers:{origin:base,'content-type':'application/json'},body:JSON.stringify({})});
           if(adminRecoveryRoute.status!==400)throw Error('ADMIN_RECOVERY_ROUTE '+JSON.stringify(adminRecoveryRoute));
+          const member=await call('/api/accounts/register',{method:'POST',headers:{origin:base,'content-type':'application/json','cf-connecting-ip':'198.51.100.10'},body:JSON.stringify({username:'pendingqa',displayName:'QA pendente',email:'qa-pending@example.invalid',proof,salt})});
+          if(member.status!==201)throw Error('PENDING_REGISTRATION '+JSON.stringify(member));
+          const listUsers=await call('/api/admin/users',{headers:{cookie}});
+          const pending=listUsers.data.users.find(x=>x.username==='pendingqa'&&x.status==='pending');
+          if(!pending)throw Error('PENDING_NOT_LISTED '+JSON.stringify(listUsers));
+          const rejected=await call('/api/admin/users',{method:'DELETE',headers:{cookie,origin:base,'content-type':'application/json'},body:JSON.stringify({id:pending.id})});
+          if(rejected.status!==200||!rejected.data.rejected)throw Error('REJECT_PENDING '+JSON.stringify(rejected));
+          const deny=await call('/api/admin/users',{method:'DELETE',headers:{cookie,origin:base,'content-type':'application/json'},body:JSON.stringify({id:pending.id})});
+          if(deny.status!==409)throw Error('REJECT_IDEMPOTENCY_GUARD '+JSON.stringify(deny));
+          console.log('A1_REJECT_PENDING_OK');
           const anon=await call('/api/media');
           if(anon.status!==401)throw Error('MEDIA_UNPROTECTED '+anon.status);
           const pdf=new File([new TextEncoder().encode('%PDF-1.4\n%FORJA-LOCAL-QA\n')],'qa.pdf',{type:'application/pdf'});
