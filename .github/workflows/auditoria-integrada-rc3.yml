@@ -1,0 +1,43 @@
+name: FORJA RC3 auditoria integrada
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verificar código e contratos
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          f=Path('public/features.js').read_text()
+          i=Path('public/index.html').read_text()
+          checks={
+            'seletor de arquivos': 'id="chatUpload"' in f,
+            'upload conectado ao chat': "const incoming=$('chatUpload')?.files?.[0]" in f,
+            'upload por endpoint autenticado': 'uploadMedia(incoming' in f,
+            'consultas resilientes': 'Promise.allSettled' in f,
+            'navegacao exige login': "if(!cloud.user&&tab!=='nuvem')" in i,
+            'PWA manifesto': Path('public/manifest.webmanifest').exists(),
+            'service worker': Path('public/sw.js').exists(),
+          }
+          for k,v in checks.items():print(('OK' if v else 'FALHA')+' '+k)
+          print('VIDEOS_YOUTUBE_SEARCH',len(re.findall('youtube.com/results',i+f)))
+          print('VIDEO_EMBEDS',len(re.findall('youtube-nocookie.com/embed|<video',i+f)))
+          if not all(checks.values()):raise SystemExit('Contratos ausentes')
+          PY
+          node --check public/features.js
+      - name: Testar preview publicada
+        run: |
+          curl --fail --location --silent --show-error --retry 3 --retry-delay 2 'https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev/' -o /tmp/forja.html
+          python3 - <<'PY'
+          from pathlib import Path
+          h=Path('/tmp/forja.html').read_text()
+          print('HTML_BYTES',len(h))
+          assert 'FORJA' in h.upper(),'Preview nao exibe FORJA'
+          print('PREVIEW_HTML_OK')
+          PY
