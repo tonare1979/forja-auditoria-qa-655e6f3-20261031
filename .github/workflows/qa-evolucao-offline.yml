@@ -21,8 +21,8 @@ jobs:
             const page=await ctx.newPage();
             await page.goto('https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev/',{waitUntil:'domcontentloaded'});
             await page.evaluate(()=>{
-              window.cloud.user={username:'qa-local',role:'athlete'};
-              window.tab='progresso';
+              cloud.user={username:'qa-local',role:'athlete'};
+              tab='progresso';
               const root=document.createElement('div');root.innerHTML='<div id="photoGallery"></div><div id="bioHistory"></div><p id="fxMessage"></p>';document.body.append(root);
             });
             await ctx.setOffline(true);
