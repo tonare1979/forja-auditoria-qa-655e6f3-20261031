@@ -43,6 +43,7 @@ function load(){try{let raw=localStorage.getItem(KEY);if(raw===null)return empty
 
 let forjaDemoCatalog;
 function forjaNorm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim()}
+const forjaExactDemos={"supino maquina":"Lever Lying Chest Press","puxada frontal":"Wide Grip Cable Lat Pulldown","remada baixa":"Seated Cable Row (V-Grip)","elevacao lateral maquina":"Lever Lateral Raise","triceps corda":"Cable Rope Triceps Pushdown","cadeira extensora":"Lever Leg Extension","cadeira flexora":"Lever Seated Leg Curl","cadeira abdutora":"Lever Seated Hip Abduction","panturrilha sentada":"Lever Seated Calf Raise","supino inclinado maquina":"Lever Incline Hammer Chest Press","puxada pegada neutra":"Cable Close Grip Lat Pulldown","crucifixo inverso maquina":"Lever Seated Reverse Fly","rosca martelo":"Dumbbell Cross Body Hammer Curl","agachamento hack":"Sled Hack Squat","mesa flexora":"Lever Lying Leg Curl","panturrilha em pe":"Lever Standing Calf Raise","prancha":"Front Plank"};
 const forjaWords={'supino':'bench press','agachamento':'squat','remada':'row','puxada':'pulldown','rosca':'curl','triceps':'triceps','elevacao lateral':'lateral raise','desenvolvimento':'shoulder press','leg press':'leg press','cadeira extensora':'leg extension','mesa flexora':'leg curl','panturrilha':'calf raise','crucifixo':'fly','abdominal':'crunch','flexao':'push up','levantamento terra':'deadlift','pullover':'pullover'};
 async function forjaOpenDemo(name){
   let old=document.getElementById('forja-demo-box');if(old)old.remove();
@@ -57,7 +58,7 @@ async function forjaOpenDemo(name){
   try{
     if(!forjaDemoCatalog){const r=await fetch('/videos/catalog.json');if(!r.ok)throw Error('catálogo indisponível');forjaDemoCatalog=await r.json()}
     const q=forjaNorm(name);const en=Object.keys(forjaWords).find(k=>q.includes(forjaNorm(k)));const term=en?forjaWords[en]:q;
-    const matched=forjaDemoCatalog.filter(x=>forjaNorm(x.name).includes(term)||forjaNorm((x.aliases||[]).join(' ')).includes(term));
+    const exactTitle=forjaExactDemos[q];const precise=exactTitle?forjaDemoCatalog.find(x=>x.name===exactTitle):null;const matched=precise?[precise]:forjaDemoCatalog.filter(x=>forjaNorm(x.name).includes(term)||forjaNorm((x.aliases||[]).join(' ')).includes(term));
     const opts=matched.length?matched:forjaDemoCatalog;
     chooser.replaceChildren();
     const prompt=document.createElement('option');prompt.textContent='Escolha uma demonstração';prompt.value='';chooser.append(prompt);
