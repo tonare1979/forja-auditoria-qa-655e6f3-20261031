@@ -1,0 +1,53 @@
+name: FORJA resiliencia offline RC3
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tratar reconexao e gravações online
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('public/features.js');s=p.read_text()
+          a="async function fxLoadEvolution(){try{const [m,b]=await Promise.all([api('/api/media'),api('/api/body')]);"
+          b="async function fxLoadEvolution(){try{if(!navigator.onLine){fxMessage('Sem internet: fotos e avaliações da nuvem indisponíveis. Seus registros não foram apagados. Reconecte para consultar.');return}const [m,b]=await Promise.all([api('/api/media'),api('/api/body')]);"
+          assert s.count(a)==1,'Evolução mudou'
+          s=s.replace(a,b)
+          a='async function uploadMedia(file,kind,view,date,note){const compact='
+          b="async function uploadMedia(file,kind,view,date,note){if(!navigator.onLine)throw Error('Sem internet: foto ou exame não enviado. Reconecte antes de salvar.');const compact="
+          assert s.count(a)==1,'Upload mudou'
+          s=s.replace(a,b)
+          a="else if(action==='saveBody'){const p="
+          b="else if(action==='saveBody'){if(!navigator.onLine)throw Error('Sem internet: avaliação não enviada. Reconecte antes de salvar.');const p="
+          assert s.count(a)==1,'Gravação mudou'
+          s=s.replace(a,b)
+          s+="\nwindow.addEventListener('online',()=>{if(!cloud.user)return;if(tab==='progresso')fxLoadEvolution();if(tab==='acompanhamento')fxLoadChat()});\n"
+          p.write_text(s)
+          q=Path('public/index.html');h=q.read_text()
+          start=h.index('function forjaNorm(s)')
+          end=h.index('\n',start)
+          h=h[:start]+r"function forjaNorm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim()}"+h[end:]
+          q.write_text(h)
+          print('TRATAMENTO_OFFLINE_OK', 'RECONEXAO_OK', 'NORMALIZADOR_VIDEOS_OK')
+          PY
+          node --check public/features.js
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          h=Path('public/index.html').read_text()
+          Path('/tmp/forja.js').write_text('\n'.join(re.findall(r'<script(?: [^>]*)?>(.*?)</script>',h,re.S)))
+          PY
+          node --check /tmp/forja.js
+      - name: Commit
+        run: |
+          git config user.name "FORJA RC3"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/features.js public/index.html
+          git commit -m "fix: feedback offline e recuperação de conexão"
+          git pull --rebase origin main
+          git push
