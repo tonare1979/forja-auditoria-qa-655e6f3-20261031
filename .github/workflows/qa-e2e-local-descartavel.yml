@@ -31,6 +31,8 @@ jobs:
           const a=await call('/api/auth/setup',{method:'POST',headers:{'content-type':'application/json','origin':base},body:JSON.stringify({username:'qaonly',displayName:'QA isolado',proof,salt,setupKey:'local-test-only-setup-1234567890'})});
           if(a.status!==201)throw Error('BOOTSTRAP '+JSON.stringify(a));
           const cookie=a.headers.get('set-cookie').split(';')[0];
+          const adminRecoveryRoute=await call('/api/admin-recovery/request',{method:'POST',headers:{origin:base,'content-type':'application/json'},body:JSON.stringify({})});
+          if(adminRecoveryRoute.status!==400)throw Error('ADMIN_RECOVERY_ROUTE '+JSON.stringify(adminRecoveryRoute));
           const anon=await call('/api/media');
           if(anon.status!==401)throw Error('MEDIA_UNPROTECTED '+anon.status);
           const pdf=new File([new TextEncoder().encode('%PDF-1.4\n%FORJA-LOCAL-QA\n')],'qa.pdf',{type:'application/pdf'});
