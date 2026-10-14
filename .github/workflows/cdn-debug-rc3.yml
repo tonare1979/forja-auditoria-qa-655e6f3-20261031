@@ -1,0 +1,20 @@
+name: FORJA verificar bloqueio CDN
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 - <<'PY'
+          import urllib.request,urllib.error
+          root='https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev'
+          for path in ['/','/videos/catalog.json','/public/videos/catalog.json','/manifest.webmanifest']:
+            try:
+              req=urllib.request.Request(root+path,headers={'User-Agent':'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 Safari/604.1','Accept':'*/*'})
+              with urllib.request.urlopen(req,timeout=15) as r:print('URL',path,'STATUS',r.status,'TYPE',r.headers.get('Content-Type'),'BODY',r.read(140).decode(errors='replace'))
+            except urllib.error.HTTPError as e:print('URL',path,'STATUS',e.code,'TYPE',e.headers.get('Content-Type'),'BODY',e.read(350).decode(errors='replace'))
+          PY
