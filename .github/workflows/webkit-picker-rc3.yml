@@ -32,6 +32,15 @@ jobs:
             const json=await p.evaluate(async()=>{const r=await fetch('/videos/catalog.json');return {ok:r.ok,length:r.ok?(await r.json()).length:0}});
             if(!json.ok||json.length<300)throw Error('Catalogo indisponivel '+JSON.stringify(json));
             console.log('WEBKIT_CATALOG_OK',json.length);
+            const mappings=await p.evaluate(()=>Object.entries(forjaExactDemos));
+            if(mappings.length!==17)throw Error('Mapeamento inesperado '+mappings.length);
+            await p.route('**/*.mp4',route=>route.abort());
+            for(const [exercise,title] of mappings){
+              await p.evaluate(x=>forjaOpenDemo(x),exercise);
+              const result=await p.evaluate(()=>({url:document.querySelector('#forja-demo-box video')?.getAttribute('src'),count:document.querySelector('#forja-demo-box select')?.options.length}));
+              if(!result.url||result.count!==2)throw Error('Sem video direto '+exercise+' / '+JSON.stringify(result));
+            }
+            console.log('WEBKIT_DIRECT_VIDEO_MATCHES_OK',mappings.length);
             await b.close();
           })().catch(e=>{console.error(e);process.exit(1)})
           JS
