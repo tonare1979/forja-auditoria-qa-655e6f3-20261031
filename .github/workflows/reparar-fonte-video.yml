@@ -24,4 +24,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .github/workflows/biblioteca-feminina-rc3.yml
           git commit -m "fix: obter catálogo de dados direto do repositório"
+          git pull --rebase origin main
           git push
