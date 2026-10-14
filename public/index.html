@@ -59,12 +59,12 @@ async function forjaOpenDemo(name){
     if(!forjaDemoCatalog){const r=await fetch('/videos/catalog.json');if(!r.ok)throw Error('catálogo indisponível');forjaDemoCatalog=await r.json()}
     const q=forjaNorm(name);const en=Object.keys(forjaWords).find(k=>q.includes(forjaNorm(k)));const term=en?forjaWords[en]:q;
     const exactTitle=forjaExactDemos[q];const precise=exactTitle?forjaDemoCatalog.find(x=>x.name===exactTitle):null;const matched=precise?[precise]:forjaDemoCatalog.filter(x=>forjaNorm(x.name).includes(term)||forjaNorm((x.aliases||[]).join(' ')).includes(term));
-    const opts=matched.length?matched:forjaDemoCatalog;
+    const opts=matched;
     chooser.replaceChildren();
     const prompt=document.createElement('option');prompt.textContent='Escolha uma demonstração';prompt.value='';chooser.append(prompt);
     for(const item of opts){const o=document.createElement('option');o.textContent=item.name;o.value=item.female;chooser.append(o)}
     chooser.onchange=()=>{if(chooser.value){video.src=chooser.value;video.play().catch(()=>{});status.textContent='Confira se o movimento corresponde ao seu exercício.'}};
-    status.textContent=matched.length?'Escolha o exercício correspondente:':'Sem correspondência automática. Escolha uma demonstração na lista, sem vídeos aleatórios.';
+    status.textContent=matched.length?'Escolha uma demonstração para confirmar a execução.':'Ainda não há demonstração correspondente e verificada. Não exibiremos vídeos de exercícios diferentes.';
     if(matched.length===1){chooser.selectedIndex=1;chooser.onchange()}
   }catch(e){status.textContent='Biblioteca indisponível. Nenhum vídeo aleatório foi aberto.'}
 }
