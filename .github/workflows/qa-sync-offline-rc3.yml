@@ -1,0 +1,57 @@
+name: FORJA sync offline WebKit
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps webkit
+      - name: Testar fila local e envio na reconexão com API simulada
+        run: |
+          cat > /tmp/sync.cjs <<'JS'
+          const {webkit,devices}=require(process.cwd()+'/node_modules/playwright');
+          (async()=>{
+            const b=await webkit.launch(),ctx=await b.newContext({...devices['iPhone 13']});
+            const p=await ctx.newPage();
+            await p.goto('https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev/',{waitUntil:'domcontentloaded'});
+            await p.evaluate(()=>{
+              cloud.user={username:'qa-simulado',role:'athlete'};
+              cloud.linked=true;cloud.revision=0;cloud.dirty=false;cloud.conflict=false;
+              cmSave();
+            });
+            await ctx.setOffline(true);
+            const offline=await p.evaluate(()=>{
+              state.weights.push({date:'2026-10-13',weight:66.4});
+              if(!save())throw Error('Falha ao gravar offline');
+              return {dirty:cloud.dirty,weight:state.weights.at(-1).weight};
+            });
+            if(!offline.dirty||offline.weight!==66.4)throw Error('Sujeira não marcada '+JSON.stringify(offline));
+            await ctx.setOffline(false);
+            const result=await p.evaluate(async()=>{
+              const original=window.fetch;
+              let put=null;
+              window.fetch=async(req,options)=>{
+                const path=String(req);
+                if(path==='/api/state'&&options?.method==='PUT'){
+                  put=JSON.parse(options.body);
+                  return new Response(JSON.stringify({revision:1}),{status:200,headers:{'content-type':'application/json'}});
+                }
+                return original(req,options);
+              };
+              await cloudSync();
+              window.fetch=original;
+              return {put,dirty:cloud.dirty,revision:cloud.revision,weight:state.weights.at(-1).weight};
+            });
+            if(!result.put?.data?.weights?.some(x=>x.weight===66.4)||result.dirty||result.revision!==1)
+              throw Error('Falha no envio simulado '+JSON.stringify(result));
+            console.log('OFFLINE_SYNC_MOCKED_API_OK',JSON.stringify({revision:result.revision,dirty:result.dirty}));
+            await b.close();
+          })().catch(e=>{console.error(e);process.exit(1)});
+          JS
+          node /tmp/sync.cjs
