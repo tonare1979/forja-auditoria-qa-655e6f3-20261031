@@ -1,0 +1,63 @@
+name: FORJA E2E D1 R2 remoto isolado
+on:
+  workflow_dispatch:
+    inputs:
+      qa_a:
+        description: Token sintético temporário para atleta A
+        required: true
+        type: string
+      qa_b:
+        description: Token sintético temporário para atleta B
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  remote-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      QA_A: ${{ inputs.qa_a }}
+      QA_B: ${{ inputs.qa_b }}
+      BASE_URL: https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validar D1 R2 com identidades sintéticas preautorizadas
+        run: |
+          cat >/tmp/remote-qa.mjs <<'JS'
+          const base=process.env.BASE_URL;
+          const cookies=[process.env.QA_A,process.env.QA_B].map(x=>'__Host-forja_session='+x);
+          if(cookies.some(x=>x.length!==87))throw Error('TOKEN_INVALIDO');
+          const call=async(path,idx,method='GET',payload)=>{
+            const headers={cookie:cookies[idx],accept:'application/json'};
+            let body;
+            if(payload!==undefined){headers['content-type']='application/json';body=JSON.stringify(payload)}
+            const r=await fetch(base+path,{method,headers,body});
+            const d=await r.json().catch(()=>null);
+            return {status:r.status,data:d};
+          };
+          const [a,b]=await Promise.all([call('/api/auth/me',0),call('/api/auth/me',1)]);
+          if(a.status!==200||b.status!==200||a.data?.user?.username===b.data?.user?.username)throw Error('REMOTE_AUTH_FAILED '+a.status+'/'+b.status);
+          const [aa,bb]=await Promise.all([call('/api/state',0),call('/api/state',1)]);
+          if(aa.status!==200||bb.status!==200||aa.data.revision!==0||bb.data.revision!==0)throw Error('NOT_PRISTINE_LAB');
+          const dataset={sessions:[],weights:[{date:'2026-10-14',weight:66}]};
+          const first=await call('/api/state',0,'PUT',{baseRevision:0,data:dataset});
+          const replay=await call('/api/state',0,'PUT',{baseRevision:0,data:dataset});
+          const divergent=await call('/api/state',0,'PUT',{baseRevision:0,data:{sessions:[],weights:[{date:'2026-10-14',weight:72}]}});
+          const read=await call('/api/state',0);
+          const isol=await call('/api/state',1);
+          if(first.status!==200||replay.status!==200||!replay.data?.replayed||divergent.status!==409||read.data?.data?.weights?.[0]?.weight!==66||isol.data?.data!==null)throw Error('D1_REVISION_ISOLATION_FAILED '+JSON.stringify({first:first.status,replay:replay.status,divergent:divergent.status,read:read.status,isol:isol.status}));
+          const pdfBytes=new TextEncoder().encode('%PDF-1.4\n%FORJA-REMOTE-QA\n');
+          const form=new FormData();form.set('file',new File([pdfBytes],'remote-test.pdf',{type:'application/pdf'}));form.set('kind','exam');form.set('view','exam');form.set('date','2026-10-14');form.set('note','Teste sintético isolado');
+          const up=await fetch(base+'/api/media',{method:'POST',headers:{cookie:cookies[0]},body:form});
+          const meta=await up.json().catch(()=>null);if(up.status!==201||!meta?.id)throw Error('R2_UPLOAD_FAILED '+up.status);
+          const id=encodeURIComponent(meta.id);
+          const own=await fetch(base+'/api/media/'+id,{headers:{cookie:cookies[0]}});
+          const blocked=await fetch(base+'/api/media/'+id,{headers:{cookie:cookies[1]}});
+          if(own.status!==200||blocked.status!==404||(await own.arrayBuffer()).byteLength!==pdfBytes.length)throw Error('R2_IDOR_OR_BYTES_FAILED '+own.status+'/'+blocked.status);
+          const del=await call('/api/media/'+id,0,'DELETE');
+          const gone=await call('/api/media/'+id,0);
+          if(del.status!==200||gone.status!==404)throw Error('R2_DELETE_FAILED '+del.status+'/'+gone.status);
+          console.log('REMOTE_E2E_D1_R2_AUTH_OWNER_REVISION_DELETE_OK',{first:first.status,replay:replay.status,conflict:divergent.status,owner:own.status,other:blocked.status,delete:del.status});
+          JS
+          node /tmp/remote-qa.mjs
