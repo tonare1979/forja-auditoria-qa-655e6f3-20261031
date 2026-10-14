@@ -14,10 +14,10 @@ jobs:
           python3 - <<'PY'
           import urllib.request,json
           from pathlib import Path
-          url='https://exercise-database.zenithfits.com/api/v1/exercises?limit=400'
+          url='https://raw.githubusercontent.com/amiinwani/free-exercise-db-with-videos/main/data/exercises.json'
           req=urllib.request.Request(url,headers={'User-Agent':'FORJA-Family-App/1.0'})
           raw=json.load(urllib.request.urlopen(req,timeout=25))
-          rows=raw.get('data',[])
+          rows=raw if isinstance(raw,list) else raw.get('data',[])
           if not isinstance(rows,list) or len(rows)<150:raise SystemExit('Catálogo insuficiente: não alterar aplicativo')
           clean=[{'name':r.get('name',''),'aliases':r.get('aliases',[]),'female':r.get('videos',{}).get('female',''),'steps':r.get('steps',[]),'cues':r.get('formCues',[])} for r in rows if r.get('videos',{}).get('female')]
           if len(clean)<140:raise SystemExit('Vídeos femininos insuficientes')
