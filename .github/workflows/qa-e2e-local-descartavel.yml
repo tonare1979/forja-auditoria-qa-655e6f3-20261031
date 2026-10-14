@@ -33,8 +33,10 @@ jobs:
           const cookie=a.headers.get('set-cookie').split(';')[0];
           const adminRecoveryRoute=await call('/api/admin-recovery/request',{method:'POST',headers:{origin:base,'content-type':'application/json'},body:JSON.stringify({})});
           if(adminRecoveryRoute.status!==400)throw Error('ADMIN_RECOVERY_ROUTE '+JSON.stringify(adminRecoveryRoute));
-          const member=await call('/api/accounts/register',{method:'POST',headers:{origin:base,'content-type':'application/json','cf-connecting-ip':'198.51.100.10'},body:JSON.stringify({username:'pendingqa',displayName:'QA pendente',email:'qa-pending@example.invalid',proof,salt})});
-          if(member.status!==201)throw Error('PENDING_REGISTRATION '+JSON.stringify(member));
+          const denied=await call('/api/accounts/register',{method:'POST',headers:{origin:base,'content-type':'application/json'},body:JSON.stringify({username:'stranger',displayName:'Não autorizado',email:'stranger@example.invalid',proof,salt})});
+          if(denied.status!==401)throw Error('PUBLIC_SIGNUP_NOT_BLOCKED '+JSON.stringify(denied));
+          const member=await call('/api/accounts/register',{method:'POST',headers:{origin:base,cookie,'content-type':'application/json'},body:JSON.stringify({username:'pendingqa',displayName:'QA pendente',email:'qa-pending@example.invalid',proof,salt})});
+          if(member.status!==201)throw Error('ADMIN_PENDING_REGISTRATION '+JSON.stringify(member));
           const listUsers=await call('/api/admin/users',{headers:{cookie}});
           const pending=listUsers.data.users.find(x=>x.username==='pendingqa'&&x.status==='pending');
           if(!pending)throw Error('PENDING_NOT_LISTED '+JSON.stringify(listUsers));
@@ -43,6 +45,14 @@ jobs:
           const deny=await call('/api/admin/users',{method:'DELETE',headers:{cookie,origin:base,'content-type':'application/json'},body:JSON.stringify({id:pending.id})});
           if(deny.status!==409)throw Error('REJECT_IDEMPOTENCY_GUARD '+JSON.stringify(deny));
           console.log('A1_REJECT_PENDING_OK');
+          for(let i=0;i<11;i++){
+            const created=await call('/api/users',{method:'POST',headers:{origin:base,cookie,'content-type':'application/json'},body:JSON.stringify({username:'athlete'+i,displayName:'Atleta QA '+i,email:'athlete'+i+'@example.invalid',proof,salt})});
+            if(created.status!==201)throw Error('UNDER_11_REJECTED '+i+' '+JSON.stringify(created));
+          }
+          const thirteenth=await call('/api/users',{method:'POST',headers:{origin:base,cookie,'content-type':'application/json'},body:JSON.stringify({username:'athlete12',displayName:'Atleta QA extra',email:'athlete12@example.invalid',proof,salt})});
+          if(thirteenth.status!==409)throw Error('13TH_USER_ALLOWED '+JSON.stringify(thirteenth));
+          console.log('A1_PRIVATE_SIGNUP_11_LIMIT_OK');
+
           const anon=await call('/api/media');
           if(anon.status!==401)throw Error('MEDIA_UNPROTECTED '+anon.status);
           const pdf=new File([new TextEncoder().encode('%PDF-1.4\n%FORJA-LOCAL-QA\n')],'qa.pdf',{type:'application/pdf'});
