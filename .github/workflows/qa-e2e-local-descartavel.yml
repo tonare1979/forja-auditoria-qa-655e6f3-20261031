@@ -1,0 +1,53 @@
+name: FORJA E2E real local descartavel
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Criar D1 local e rodar Worker sem produção
+        run: |
+          npm install --no-save wrangler@4
+          npx wrangler d1 migrations apply forja-v11-rc3-labc --local
+          npx wrangler dev --local --port 8799 --ip 127.0.0.1 --var FORJA_AUTH_PEPPER:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa --var FORJA_SETUP_KEY:local-test-only-setup-1234567890 >/tmp/forja-worker.log 2>&1 &
+          echo $! >/tmp/forja.pid
+          for i in $(seq 1 45); do if curl -fsS http://127.0.0.1:8799/api/health >/dev/null; then break; fi; sleep 2; done
+          curl -fsS http://127.0.0.1:8799/api/health
+      - name: Testar conta isolada upload de PDF e estado D1
+        run: |
+          cat >/tmp/e2e.mjs <<'JS'
+          import {randomBytes} from 'node:crypto';
+          const base='http://127.0.0.1:8799';
+          const proof=randomBytes(32).toString('hex'),salt=randomBytes(16).toString('hex');
+          async function call(path,opts={}){
+            const r=await fetch(base+path,opts);
+            let data;try{data=await r.json()}catch{data=null}
+            return {status:r.status,headers:r.headers,data};
+          }
+          const a=await call('/api/auth/setup',{method:'POST',headers:{'content-type':'application/json','origin':base},body:JSON.stringify({username:'qaonly',displayName:'QA isolado',proof,salt,setupKey:'local-test-only-setup-1234567890'})});
+          if(a.status!==201)throw Error('BOOTSTRAP '+JSON.stringify(a));
+          const cookie=a.headers.get('set-cookie').split(';')[0];
+          const anon=await call('/api/media');
+          if(anon.status!==401)throw Error('MEDIA_UNPROTECTED '+anon.status);
+          const pdf=new File([new TextEncoder().encode('%PDF-1.4\n%FORJA-LOCAL-QA\n')],'qa.pdf',{type:'application/pdf'});
+          const form=new FormData();form.set('file',pdf);form.set('kind','exam');form.set('view','exam');form.set('date','2026-10-13');form.set('note','E2E sintético');
+          const sent=await call('/api/media',{method:'POST',headers:{origin:base,cookie},body:form});
+          if(sent.status!==201||!sent.data.id)throw Error('UPLOAD '+JSON.stringify(sent));
+          const id=sent.data.id;
+          const list=await call('/api/media',{headers:{cookie}});
+          if(list.status!==200||!list.data.media.some(x=>x.id===id))throw Error('MEDIA_LIST '+JSON.stringify(list));
+          const download=await fetch(base+'/api/media/'+id,{headers:{cookie}});
+          if(download.status!==200||!String(download.headers.get('content-type')).includes('pdf'))throw Error('MEDIA_DOWNLOAD '+download.status);
+          const state=await call('/api/state',{headers:{cookie}});
+          if(state.status!==200)throw Error('STATE '+JSON.stringify(state));
+          console.log('E2E_LOCAL_D1_R2_PDF_AUTH_OK',JSON.stringify({upload:sent.status,list:list.status,download:download.status,state:state.status}));
+          JS
+          node /tmp/e2e.mjs
+      - name: Relatar falha sem dados pessoais
+        if: failure()
+        run: |
+          tail -70 /tmp/forja-worker.log || true
