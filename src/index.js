@@ -1,4 +1,5 @@
 import {passwordReset} from './password-reset.js';
+import {adminRecovery} from './admin-recovery.js';
 import {features} from './features.js';
 import {bootstrap} from './bootstrap.js';
 // FORJA 73 V9 — Workers + D1; sem dependências externas.
@@ -73,7 +74,7 @@ export default {async fetch(req,env){const url=new URL(req.url),path=url.pathnam
  if(path==='/api/bootstrap/status'&&req.method==='GET'){const one=await env.DB.prepare('SELECT id FROM users LIMIT 1').first();return reply({needsSetup:!one,approvalSupported:true});}
  if(path.startsWith('/api/bootstrap/'))return await bootstrap(req,env,{body,verifier,reply,err,okName,isHex,randomHex,now,sha256,addSession,cookie});
  if(path.startsWith('/api/auth/reset/'))return await passwordReset(req,env,{body,reply,err,sha256,verifier,isHex,randomHex,now});
- if(path.startsWith('/api/admin-recovery/'))return err(404,'NAO_ENCONTRADO','Rota não disponível.');
+ if(path.startsWith('/api/admin-recovery/'))return await adminRecovery(req,env,{body,verifier,reply,err,isHex,randomHex,now,sha256});
  if(path==='/api/auth/salt'&&req.method==='GET'){const name=String(url.searchParams.get('username')||'').toLowerCase();if(!okName(name))return err(400,'DADOS_INVALIDOS','Usuário inválido.');const row=await env.DB.prepare('SELECT password_salt FROM users WHERE username=?').bind(name).first();const dummy=(await verifier(env,'fake-salt:'+name)).slice(0,32);return reply({salt:row?.password_salt||dummy});}
  if(path==='/api/auth/setup'&&req.method==='POST')return await setup(req,env);
  if(path==='/api/auth/login'&&req.method==='POST')return await login(req,env.DB,env);
