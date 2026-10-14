@@ -38,7 +38,7 @@ jobs:
             });
             if(result.id!=='qa-mocked-media'||result.calls[0]?.type!=='application/pdf')throw Error('PDF flow failed '+JSON.stringify(result));
             console.log('PDF_UPLOAD_BROWSER_MOCK_OK',JSON.stringify(result.calls[0]));
-            const api=await p.request.get('/api/media');
+            const api=await p.request.get('https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev/api/media');
             if(api.status()!==401)throw Error('Private media endpoint returned '+api.status());
             console.log('PRIVATE_MEDIA_REQUIRES_LOGIN_OK');
             await browser.close();
