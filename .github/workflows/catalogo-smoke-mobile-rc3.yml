@@ -1,0 +1,30 @@
+name: FORJA catalogo video smoke UA
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 - <<'PY'
+          import urllib.request,json
+          base='https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev'
+          headers={'User-Agent':'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 Safari/604.1','Accept':'*/*'}
+          def load(path):
+            req=urllib.request.Request(base+path,headers=headers)
+            with urllib.request.urlopen(req,timeout=18) as r:return r.read()
+          data=json.loads(load('/videos/catalog.json'))
+          assert len(data)==303,len(data)
+          print('CATALOG_OK',len(data))
+          html=load('/').decode('utf-8')
+          assert 'data-forja-demo' in html and 'forjaOpenDemo' in html
+          print('PLAYER_OK')
+          for item in data[:2]:
+            req=urllib.request.Request(item['female'],headers=headers,method='HEAD')
+            try:
+              with urllib.request.urlopen(req,timeout=12) as r:print('VIDEO_OK',r.status,item['name'],r.headers.get('content-type'))
+            except Exception as e:print('VIDEO_UNVERIFIED',item['name'],str(e))
+          PY
