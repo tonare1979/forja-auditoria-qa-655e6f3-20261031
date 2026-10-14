@@ -44,6 +44,11 @@ jobs:
           if(list.status!==200||!list.data.media.some(x=>x.id===id))throw Error('MEDIA_LIST '+JSON.stringify(list));
           const download=await fetch(base+'/api/media/'+id,{headers:{cookie}});
           if(download.status!==200||!String(download.headers.get('content-type')).includes('pdf'))throw Error('MEDIA_DOWNLOAD '+download.status);
+          const removed=await call('/api/media/'+id,{method:'DELETE',headers:{cookie,origin:base}});
+          if(removed.status!==200)throw Error('MEDIA_DELETE '+JSON.stringify(removed));
+          const absent=await call('/api/media/'+id,{headers:{cookie}});
+          if(absent.status!==404)throw Error('DELETED_STILL_READABLE '+JSON.stringify(absent));
+          console.log('MEDIA_DELETE_M1_PASS');
           const state=await call('/api/state',{headers:{cookie}});
           if(state.status!==200)throw Error('STATE '+JSON.stringify(state));
           const payload={sessions:[],weights:[{date:'2026-10-14',weight:65}]};
