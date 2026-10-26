@@ -1,7 +1,7 @@
 # FORJA RC3 — QA local automatico, gratuito e nao destrutivo.
 param([switch]$Force)
 $ErrorActionPreference='Stop'
-$repo='C:\Users\renat\FORJA_QA_LOTE_20261026'
+$repo='C:\Users\renat\FORJA_RC3_FIX_CADASTRO_20261026'
 $node='C:\Program Files\nodejs\node.exe'
 $reports='C:\Users\renat\FORJA_PLAYWRIGHT_QA\reports'
 $lock=Join-Path $reports 'forja-qa-daily.lock'
@@ -13,8 +13,10 @@ if(Test-Path $lock){
 }
 if(!$Force){
   # Agendamento a cada 2 horas: evita apenas repeticoes acidentais dentro de 110 minutos.
-  $recent=Get-ChildItem $reports -Filter 'forja-qa-batch-*.json' -File | Sort-Object LastWriteTime -Descending | Select-Object -First 1
-  if($recent -and ((Get-Date)-$recent.LastWriteTime).TotalMinutes -lt 110){Write-Output ('FORJA_QA_RECENT_RUN_SKIP '+$recent.Name);exit 0}
+  $recent=Get-ChildItem $reports -Filter 'forja-qa-batch-*.json' -File | Sort-Object LastWriteTime -Descending | Where-Object {
+    try{$result=Get-Content -LiteralPath $_.FullName -Raw -Encoding utf8 | ConvertFrom-Json; $result.branch -eq 'fix/rc3-self-signup-cpf-20261026' -and $result.mode -eq 'candidate'}catch{$false}
+  } | Select-Object -First 1
+  if($recent -and ((Get-Date)-$recent.LastWriteTime).TotalMinutes -lt 110){Write-Output ('FORJA_QA_RECENT_CANDIDATE_RUN_SKIP '+$recent.Name);exit 0}
 }
 try{$fh=[System.IO.File]::Open($lock,[System.IO.FileMode]::CreateNew);$fh.Close()}catch{Write-Output 'FORJA_QA_LOCK_SKIP';exit 0}
 $log=Join-Path $reports ('forja-qa-daily-'+(Get-Date -Format 'yyyyMMdd_HHmmss')+'.log')
@@ -23,6 +25,7 @@ try{
   Push-Location $repo
   try{
     $env:NODE_PATH='C:\Users\renat\FORJA_PLAYWRIGHT_QA\node_modules'
+    $env:FORJA_QA_MODE='candidate'
     & $node 'tests\run-qa-batch.mjs' *>&1 | Out-File -LiteralPath $log -Encoding utf8
     $exit=$LASTEXITCODE
     if($null -eq $exit){$exit=1}

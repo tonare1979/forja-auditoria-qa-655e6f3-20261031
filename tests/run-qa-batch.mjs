@@ -13,6 +13,7 @@ if(origin&&origin.replace(/\/$/,'')!==allowedOrigin){
   console.error('BLOQUEADO: FORJA_QA_ORIGIN não corresponde à RC3 isolada.');
   process.exit(2);
 }
+const mode=process.env.FORJA_QA_MODE==='candidate'?'candidate':'full';
 const tests=[
   'auth-login-safari-regression.mjs',
   'auth-real-handler-synthetic.mjs',
@@ -34,12 +35,15 @@ const tests=[
   'qa-status-readonly.mjs',
 ];
 const sha=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8',timeout:15000}).trim();
+const branch=execFileSync('git',['branch','--show-current'],{cwd:root,encoding:'utf8',timeout:15000}).trim();
+const skipped=mode==='candidate'?['remote-base-parity.mjs']:[];
+const selected=tests.filter(name=>!skipped.includes(name));
 const start=new Date();
 const results=[];
 const fallbackNodeModules=join(homedir(),'FORJA_PLAYWRIGHT_QA','node_modules');
 const env={...process.env,NODE_PATH:process.env.NODE_PATH||fallbackNodeModules,FORJA_QA_ORIGIN:allowedOrigin};
-console.log('FORJA QA LOTE | commit '+sha.slice(0,12)+' | testes: '+tests.length);
-for(const name of tests){
+console.log('FORJA QA LOTE | branch '+branch+' | commit '+sha.slice(0,12)+' | mode '+mode+' | testes: '+selected.length+' | ignorados declarados: '+skipped.join(','));
+for(const name of selected){
   const started=Date.now();
   const child=spawnSync(process.execPath,[join(root,'tests',name)],{
     cwd:root,env,encoding:'utf8',maxBuffer:5_000_000,timeout:90_000,
@@ -54,7 +58,7 @@ for(const name of tests){
   }
 }
 const ok=results.filter(x=>x.pass).length;
-const report={app:'FORJA RC3',kind:'local-nondestructive-qa',startedAt:start.toISOString(),finishedAt:new Date().toISOString(),commit:sha,liveOrigin:allowedOrigin,total:results.length,passed:ok,failed:results.length-ok,results,limitations:['Não comprova conflito autenticado no D1 remoto','Não substitui teste físico iPhone','Nenhum deploy ou escrita remota realizada']};
+const report={app:'FORJA RC3',kind:'local-nondestructive-qa',startedAt:start.toISOString(),finishedAt:new Date().toISOString(),commit:sha,branch,mode,skipped,liveOrigin:allowedOrigin,total:results.length,passed:ok,failed:results.length-ok,results,limitations:['Não comprova conflito autenticado no D1 remoto','Não substitui teste físico iPhone','Nenhum deploy ou escrita remota realizada',...(mode==='candidate'?['Paridade de assets remotos não executada: versão candidata ainda não publicada']:[])]};
 const reportDir=join(homedir(),'FORJA_PLAYWRIGHT_QA','reports');
 mkdirSync(reportDir,{recursive:true});
 const file=join(reportDir,'forja-qa-batch-'+start.toISOString().replace(/[:.]/g,'-')+'.json');

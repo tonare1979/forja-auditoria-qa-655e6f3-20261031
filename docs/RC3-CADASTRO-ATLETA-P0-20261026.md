@@ -52,3 +52,11 @@ Não implantar sem esses gates; zero despesas adicionais e nenhuma escrita diret
 - Consulta Cloudflare de somente leitura: `c2b0f3b5-0c0d-47a4-80e4-fb1f643400fa` segue publicada em 100% na RC3. **Cadastro corrigido NÃO está no ar.**
 - Tentativas anteriores de publicação e verificação POST na RC3 foram bloqueadas pela segurança da ferramenta: **não contornar**; não chamar isso de deploy executado.
 - Próximo ato externo necessário: publicação em homologação por fluxo autorizado, seguida de E2E autenticado com conta sintética e confirmação da versão publicada. **Não publicar produção**.
+
+## 26/10/2026 — QA automático alinhado à branch de cadastro
+
+Auditoria do Agendador do notebook constatou que `FORJA_RC3_QA_Gratuito` ainda apontava para `C:\Users\renat\FORJA_QA_LOTE_20261026` (branch `test/rc3-parity-auth-occ-20261026`, commit `149e873`), que continha a **migração divergente `0008_member_cpf.sql`**. A candidata real é `fix/rc3-self-signup-cpf-20261026` neste worktree, já contendo `0013_member_cpf.sql` correspondente ao D1 remoto.
+
+Correção: launcher local `ops/forja-qa-daily.ps1` aponta exclusivamente para este worktree; variável `FORJA_QA_MODE=candidate` desliga **apenas** a verificação de paridade de assets remotos que naturalmente divergem antes do deploy, deixando a exclusão expressa no JSON. Os outros testes continuam. Arquivos e resultados históricos de outras branches ficam intocados; `ops/forja-status.mjs` filtra relatórios pelo campo `branch`, detecta mudanças em migrações e informa `APROVADO_LOCAL` — jamais `APROVADO` como sinônimo de publicação. O relatório também marca a publicação da RC3 como pendência.
+
+Depois do deploy **autorizado**, executar a bateria completa com `FORJA_QA_MODE=full` incluindo `remote-base-parity.mjs`; homologar cadastro no D1 real e Safari físico antes de considerar entrega. Esta alteração não faz deploy, não escreve no D1, não modifica produção e não automatiza ações remotas.
