@@ -42,3 +42,13 @@ Não implantar sem esses gates; zero despesas adicionais e nenhuma escrita diret
 **Evidencias locais:** teste vermelho de cadastro reproduziu 401; apos correcao, teste verde para visitante/cpf/pendente/duplicidade; prova da migration SQLite em memoria; 15 suites locais selecionadas passaram, excluindo expressamente a paridade remota com os assets antigos; WebKit offline e cache versionado testados; dry-run OK. Homologacao fisica e E2E remoto cadastro→aprovacao→login permanecem pendentes.
 
 **Proximo gate:** resolver o bloqueio de publicacao pelo fluxo autorizado, validar a versao implantada, e so entao executar testes ponta a ponta com conta sintetica, preservando os perfis e treinos existentes. Producao V9.4.2 nao alterada e nenhum servico pago contratado.
+
+## Gate de liberação atualizado — 26/10/2026 (rodada complementar)
+
+- Branch candidata: `fix/rc3-self-signup-cpf-20261026`, base ancestral do deploy real `4a3b1fb`.
+- Suíte seletiva da candidata: **16/16 PASS**, excluindo deliberadamente paridade com arquivos remotos ainda antigos; o Playwright usou `NODE_PATH` do notebook pessoal.
+- Teste adicional de interface WebKit/iPhone em servidor local: `RC3_GUEST_SIGNUP_WEBKIT_PENDING_CPF_PASS`. A tela solicita CPF, encaminha a inscrição sem senha em texto aberto, mantém visitante não autenticado e exibe mensagem de aprovação pendente; a API desse teste é simulada, não D1 remoto.
+- O backup D1 anterior à migração foi conferido no notebook: 63.862 bytes, hash `B1E3D960D802A2C22DFB99D4B605E5C292A7814A97266A0A94525590577B3C77`.
+- Consulta Cloudflare de somente leitura: `c2b0f3b5-0c0d-47a4-80e4-fb1f643400fa` segue publicada em 100% na RC3. **Cadastro corrigido NÃO está no ar.**
+- Tentativas anteriores de publicação e verificação POST na RC3 foram bloqueadas pela segurança da ferramenta: **não contornar**; não chamar isso de deploy executado.
+- Próximo ato externo necessário: publicação em homologação por fluxo autorizado, seguida de E2E autenticado com conta sintética e confirmação da versão publicada. **Não publicar produção**.

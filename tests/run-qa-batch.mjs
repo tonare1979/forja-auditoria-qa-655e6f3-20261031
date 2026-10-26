@@ -30,6 +30,7 @@ const tests=[
   'qa-authenticated-occ-handler.mjs',
   'qa-member-public-signup-cpf.mjs',
   'qa-cpf-migration.mjs',
+  'qa-guest-signup-webkit.cjs',
   'qa-status-readonly.mjs',
 ];
 const sha=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8',timeout:15000}).trim();
