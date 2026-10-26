@@ -26,7 +26,13 @@ try{
     & $node 'tests\run-qa-batch.mjs' *>&1 | Out-File -LiteralPath $log -Encoding utf8
     $exit=$LASTEXITCODE
     if($null -eq $exit){$exit=1}
+    # Atualiza o resumo sem rodar a bateria outra vez, mesmo se houve falhas no QA.
+    & $node 'ops\forja-status.mjs' --write *>&1 | Out-File -LiteralPath $log -Append -Encoding utf8
+    $statusExit=$LASTEXITCODE
+    if($null -eq $statusExit){$statusExit=1}
+    if($statusExit -ne 0){Write-Output ('FORJA_STATUS_GENERATION_FAILED '+$statusExit);if($exit -eq 0){$exit=$statusExit}}
     Select-String -LiteralPath $log -Pattern 'BATCH_RESULT|EVIDENCIA_LOCAL' | ForEach-Object{Write-Output $_.Line}
+    Write-Output ('FORJA_STATUS_SNAPSHOT '+(Join-Path $reports 'forja-status-latest.json'))
     Write-Output ('FORJA_QA_LOG '+$log)
   }finally{Pop-Location}
 }finally{Remove-Item -LiteralPath $lock -ErrorAction SilentlyContinue}

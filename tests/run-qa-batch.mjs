@@ -28,6 +28,7 @@ const tests=[
   'sync-status-proof.mjs',
   'sync-status-webkit-local.cjs',
   'qa-authenticated-occ-handler.mjs',
+  'qa-status-readonly.mjs',
 ];
 const sha=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8',timeout:15000}).trim();
 const start=new Date();
