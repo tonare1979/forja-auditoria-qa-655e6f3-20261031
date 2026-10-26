@@ -17,6 +17,8 @@ const sha256 = async value => hex(await crypto.subtle.digest('SHA-256', enc.enco
 const isHex = (s,n) => typeof s==='string' && new RegExp(`^[a-f0-9]{${n}}$`).test(s);
 async function verifier(env,proof){if(!env.FORJA_AUTH_PEPPER||env.FORJA_AUTH_PEPPER.length<32)throw Error('Segredo de autenticação não configurado');const key=await crypto.subtle.importKey('raw',enc.encode(env.FORJA_AUTH_PEPPER),{name:'HMAC',hash:'SHA-256'},false,['sign']);return hex(await crypto.subtle.sign('HMAC',key,enc.encode(proof)))}
 const okName = s=>typeof s==='string'&&/^[a-z0-9_.-]{3,32}$/.test(s);
+// O acesso aceita o identificador pessoal ou o e-mail cadastrado; cadastro continua exigindo username.
+const okLoginIdentity = s=>okName(s)||(typeof s==='string'&&s.length<=200&&/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s));
 const noop = () => undefined;
 function err(status,code,message){return reply({error:code,message},status)}
 async function body(req){if(!req.headers.get('content-type')?.toLowerCase().startsWith('application/json'))throw new Error('JSON obrigatório');const cl=Number(req.headers.get('content-length')||0);if(cl>MAX_BODY)throw new Error('Corpo muito grande');const text=await req.text();if(text.length>MAX_BODY)throw new Error('Corpo muito grande');return JSON.parse(text)}
@@ -46,11 +48,11 @@ async function fail(db,key){
  WHEN failed_count+1>=12 THEN ?+MIN(900,15*(1 << MIN(6,failed_count-11))) ELSE blocked_until END`).bind(key,t,t,t,t,t,t).run();
 }
 async function login(req,db,env){
- const {username,proof}=await body(req),name=String(username||'').toLowerCase();
- if(!okName(name)||!isHex(proof,64))return err(401,'LOGIN_INVALIDO','Credenciais inválidas.');
+ const {username,proof}=await body(req),name=String(username||'').trim().toLowerCase();
+ if(!okLoginIdentity(name)||!isHex(proof,64))return err(401,'LOGIN_INVALIDO','Credenciais inválidas.');
  const key=await ipKey(req);
  if(await rate(db,key))return err(429,'TEMPORARIAMENTE_BLOQUEADO','Muitas tentativas desta conexão. Tente mais tarde.');
- const u=await db.prepare('SELECT * FROM users WHERE username=?').bind(name).first();
+ const u=await db.prepare('SELECT * FROM users WHERE username=? OR email=?').bind(name,name).first();
  // Uniform response avoids revealing pending or blocked usernames via login.
  const h=await verifier(env,proof);
  const matched=!!(u&&u.status==='active'&&h===u.password_hash);
@@ -75,7 +77,7 @@ export default {async fetch(req,env){const url=new URL(req.url),path=url.pathnam
  if(path.startsWith('/api/bootstrap/'))return await bootstrap(req,env,{body,verifier,reply,err,okName,isHex,randomHex,now,sha256,addSession,cookie});
  if(path.startsWith('/api/auth/reset/'))return await passwordReset(req,env,{body,reply,err,sha256,verifier,isHex,randomHex,now});
  if(path.startsWith('/api/admin-recovery/'))return await adminRecovery(req,env,{body,verifier,reply,err,isHex,randomHex,now,sha256});
- if(path==='/api/auth/salt'&&req.method==='GET'){const name=String(url.searchParams.get('username')||'').toLowerCase();if(!okName(name))return err(400,'DADOS_INVALIDOS','Usuário inválido.');const row=await env.DB.prepare('SELECT password_salt FROM users WHERE username=?').bind(name).first();const dummy=(await verifier(env,'fake-salt:'+name)).slice(0,32);return reply({salt:row?.password_salt||dummy});}
+ if(path==='/api/auth/salt'&&req.method==='GET'){const name=String(url.searchParams.get('username')||'').toLowerCase();if(!okLoginIdentity(name))return err(400,'DADOS_INVALIDOS','Usuário ou e-mail inválido.');const row=await env.DB.prepare('SELECT password_salt FROM users WHERE username=? OR email=?').bind(name,name).first();const dummy=(await verifier(env,'fake-salt:'+name)).slice(0,32);return reply({salt:row?.password_salt||dummy});}
  if(path==='/api/auth/setup'&&req.method==='POST')return await setup(req,env);
  if(path==='/api/auth/login'&&req.method==='POST')return await login(req,env.DB,env);
  const helpers={body,reply,err,sha256,verifier,isHex,okName,now,randomHex,addSession,cookie};if(path.startsWith('/api/accounts/recover')){const publicResult=await features(req,env,null,helpers);if(publicResult)return publicResult;}const u=await who(req,env.DB);
