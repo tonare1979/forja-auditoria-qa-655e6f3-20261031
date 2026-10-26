@@ -30,3 +30,15 @@ A tela do visitante `SOLICITAR UMA CONTA` acionava `POST /api/accounts/register`
 5. Regressão completa, revisão de paridade e documentação das evidências; não sinalizar homologação antes de concluir tudo isso.
 
 Não implantar sem esses gates; zero despesas adicionais e nenhuma escrita direta nas contas reais.
+
+## Fechamento operacional do lote — 26/10/2026
+
+**Dados e rollback:** export SQL completo do D1 isolado salvo exclusivamente no notebook pessoal em `C:\Users\renat\FORJA_RECUPERACAO_PESSOAL\forja-rc3-d1-pre-cpf-20261026.sql`. Tamanho 63.862 bytes, SHA-256 `B1E3D960D802A2C22DFB99D4B605E5C292A7814A97266A0A94525590577B3C77`. Prova: importacao em SQLite em memoria com `integrity_check=ok` e 4 usuarios, 2 snapshots, 15 entradas em snapshot_history. Nao enviar esse arquivo sensivel ao GitHub.
+
+**D1 homologacao:** `0013_member_cpf.sql` foi aplicada via Wrangler no D1 id `402315ff-3833-4060-91b6-8c6bd3884642`; consultas posteriores confirmaram coluna `users.cpf`, `d1_migrations` contendo 0013, integridade `ok` e contagens de registros anteriores preservadas. A migration e aditiva; usuarios antigos nao foram alterados.
+
+**Publicacao:** `wrangler deploy --dry-run` aprovou o bundle do commit `48825b9` e identificou corretamente DB, PHOTOS e ASSETS. A tentativa de **deploy efetivo** foi **bloqueada pelas configuracoes de seguranca da ferramenta**. Nenhuma tentativa de contornar o bloqueio. Cloudflare continuou mostrando a versao anterior em 100%: `c2b0f3b5-0c0d-47a4-80e4-fb1f643400fa` (commit anterior `4a3b1fb`). Portanto, **o novo cadastro NAO esta disponivel na RC3 publicada**.
+
+**Evidencias locais:** teste vermelho de cadastro reproduziu 401; apos correcao, teste verde para visitante/cpf/pendente/duplicidade; prova da migration SQLite em memoria; 15 suites locais selecionadas passaram, excluindo expressamente a paridade remota com os assets antigos; WebKit offline e cache versionado testados; dry-run OK. Homologacao fisica e E2E remoto cadastro→aprovacao→login permanecem pendentes.
+
+**Proximo gate:** resolver o bloqueio de publicacao pelo fluxo autorizado, validar a versao implantada, e so entao executar testes ponta a ponta com conta sintetica, preservando os perfis e treinos existentes. Producao V9.4.2 nao alterada e nenhum servico pago contratado.
