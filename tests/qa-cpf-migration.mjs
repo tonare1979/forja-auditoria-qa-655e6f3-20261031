@@ -3,7 +3,7 @@ import {DatabaseSync} from 'node:sqlite';
 import {readFileSync} from 'node:fs';
 const db=new DatabaseSync(':memory:');
 db.exec("CREATE TABLE users(id TEXT PRIMARY KEY, username TEXT NOT NULL); INSERT INTO users(id,username) VALUES('legacy','old');");
-db.exec(readFileSync('migrations/0008_member_cpf.sql','utf8'));
+db.exec(readFileSync('migrations/0013_member_cpf.sql','utf8'));
 assert.equal(db.prepare("SELECT cpf FROM users WHERE id='legacy'").get().cpf,null,'legacy records preserved');
 db.prepare('INSERT INTO users(id,username,cpf) VALUES(?,?,?)').run('qa1','athlete','52998224725');
 db.prepare('INSERT INTO users(id,username) VALUES(?,?)').run('legacy2','athlete2');

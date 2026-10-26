@@ -11,7 +11,7 @@ A tela do visitante `SOLICITAR UMA CONTA` acionava `POST /api/accounts/register`
 - Exige CPF válido para inscrições públicas e criação de perfil pelo administrador, sem alterar retroativamente contas existentes; guarda CPF na coluna `users.cpf`.
 - Verifica duplicidade de usuário/e-mail/CPF e impõe unicidade de CPF no D1.
 - Corrige formulário do visitante e formulário de criação pelo administrador para exibir CPF obrigatório.
-- A migração `migrations/0008_member_cpf.sql` é **aditiva** e deve ser aplicada no banco exclusivo da RC3 **antes de ativar este código no Worker**. Não executar sobre produção.
+- A migração `migrations/0013_member_cpf.sql` é **aditiva** e deve ser aplicada no banco exclusivo da RC3 **antes de ativar este código no Worker**. Não executar sobre produção.
 - Não remove treinos, snapshots, fotos, backups, usuários, chaves ou sessões existentes.
 
 ## Testes com evidência
