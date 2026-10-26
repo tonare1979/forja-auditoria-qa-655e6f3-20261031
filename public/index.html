@@ -224,7 +224,6 @@ function restReset(){rest={phase:'idle',endAt:0,remaining:REST_DURATION};restPer
 function restInstall(){if(restInterval===null)restInterval=setInterval(restRefresh,1000);document.addEventListener('visibilitychange',restRefresh);window.addEventListener('pageshow',restRefresh);document.addEventListener('click',e=>{const action=e.target.closest('[data-action]')?.dataset.action;if(action==='restStart')restStart();else if(action==='restToggle')restToggle();else if(action==='restReset')restReset()});restRefresh()}
 // END_REST_TIMER
 
-cloudAutoBoot();
 restInstall();
 
 render();
@@ -238,5 +237,6 @@ function welcomeCover(){
   cover.querySelector('button')?.addEventListener('click',e=>{e.stopPropagation();finishSplash()});
   // CONTINUAR abre a navegação. Apenas ENTRAR NA NUVEM solicita nova autenticação.
 }
-welcomeCover();
+// A capa só aparece quando a restauração da sessão não encontrou conta autenticada.
+cloudAutoBoot().then(()=>{if(!cloud.user)welcomeCover()},()=>welcomeCover());
 </script><section id="postComposer" class="post-composer" role="dialog" aria-modal="true" aria-label="Criar postagem" hidden><div class="panel post-card"><div class="row"><h2>POST FORJA</h2><button id="postClose" type="button" class="btn ghost">FECHAR</button></div><p class="small muted">Monte a arte, escolha a foto e compartilhe pelo menu do iPhone. O Instagram não é publicado automaticamente.</p><label>Foto (opcional)<input type="file" id="postPhoto" accept="image/*"></label><img id="postPreview" class="post-preview" src="./forja-cover-rio-casal-v2.png" alt="Prévia de foto"><label>Legenda<textarea id="postCaption" maxlength="1800">Cada treino é um passo. Minha evolução é construída a cada dia.</textarea></label><label>Hashtags<input type="text" id="postTags" value="#FORJA #Evolução #Treino"></label><div class="post-actions"><button class="btn alt" id="postShare">COMPARTILHAR</button><button class="btn ghost" id="postDownload">SALVAR IMAGEM</button><button class="btn ghost" id="postCopy">COPIAR LEGENDA</button></div><p class="small muted" id="postFeedback" role="status"></p></div></section><script src="./forja-post.js"></script><script src="./features.js"></script></body></html>
