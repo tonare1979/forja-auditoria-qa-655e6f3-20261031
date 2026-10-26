@@ -12,8 +12,9 @@ if(Test-Path $lock){
   Remove-Item $lock -Force
 }
 if(!$Force){
+  # Agendamento a cada 2 horas: evita apenas repeticoes acidentais dentro de 110 minutos.
   $recent=Get-ChildItem $reports -Filter 'forja-qa-batch-*.json' -File | Sort-Object LastWriteTime -Descending | Select-Object -First 1
-  if($recent -and ((Get-Date)-$recent.LastWriteTime).TotalHours -lt 20){Write-Output ('FORJA_QA_RECENT_RUN_SKIP '+$recent.Name);exit 0}
+  if($recent -and ((Get-Date)-$recent.LastWriteTime).TotalMinutes -lt 110){Write-Output ('FORJA_QA_RECENT_RUN_SKIP '+$recent.Name);exit 0}
 }
 try{$fh=[System.IO.File]::Open($lock,[System.IO.FileMode]::CreateNew);$fh.Close()}catch{Write-Output 'FORJA_QA_LOCK_SKIP';exit 0}
 $log=Join-Path $reports ('forja-qa-daily-'+(Get-Date -Format 'yyyyMMdd_HHmmss')+'.log')
