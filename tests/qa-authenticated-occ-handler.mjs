@@ -8,7 +8,13 @@ const password='disposable-qa-password', salt=randomBytes(16).toString('hex'),pe
 const proof=pbkdf2Sync(password,Buffer.from(salt,'hex'),210000,32,'sha256').toString('hex');
 const user={id:'synthetic-u1',username:'qa_two_session',email:'qa_two_session@example.invalid',password_salt:salt,password_hash:createHmac('sha256',pepper).update(proof).digest('hex'),display_name:'QA Two Session',role:'member',status:'active'};
 const sessions=new Map(),snapshots=new Map(),history=[];
-const db={prepare(sql){let a=[];const q={
+const db={
+ async batch(items){
+  const prior=new Map(snapshots),priorHistory=history.map(x=>({...x}));
+  try{const out=[];for(const x of items)out.push(await x.run());return out}
+  catch(e){snapshots.clear();for(const [k,v] of prior)snapshots.set(k,v);history.splice(0,history.length,...priorHistory);throw e}
+ },
+ prepare(sql){let a=[];const q={
  bind(...v){a=v;return q},
  async first(){
   if(sql.includes('FROM login_ip_throttle'))return null;
@@ -22,7 +28,13 @@ const db={prepare(sql){let a=[];const q={
   if(sql.startsWith('DELETE FROM login_ip_throttle'))return {meta:{changes:1}};
   if(sql.startsWith('INSERT OR IGNORE INTO snapshots')){if(snapshots.has(a[0]))return {meta:{changes:0}};snapshots.set(a[0],{revision:1,payload:a[1],updated_at:a[2]});return {meta:{changes:1}};}
   if(sql.startsWith('UPDATE snapshots SET revision=')){const x=snapshots.get(a[2]);if(!x||x.revision!==a[3])return {meta:{changes:0}};snapshots.set(a[2],{revision:x.revision+1,payload:a[0],updated_at:a[1]});return {meta:{changes:1}};}
-  if(sql.startsWith('INSERT OR IGNORE INTO snapshot_history')){history.push({user_id:a[0],revision:a[1],payload:a[2],created_at:a[3]});return {meta:{changes:1}};}
+  if(sql.startsWith('INSERT INTO snapshot_history')){
+   const snap=snapshots.get(a[1]);
+   if(!snap||snap.revision!==a[2])return {meta:{changes:0}};
+   if(history.some(h=>h.user_id===a[1]&&h.revision===a[2]))throw Error('UNIQUE constraint failed');
+   history.push({user_id:a[1],revision:snap.revision,payload:snap.payload,created_at:a[0]});
+   return {meta:{changes:1}};
+  }
   if(sql.startsWith('DELETE FROM snapshot_history'))return {meta:{changes:0}};
   throw Error('UNEXPECTED_RUN '+sql);
  }

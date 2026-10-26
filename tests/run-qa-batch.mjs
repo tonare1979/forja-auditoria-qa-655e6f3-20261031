@@ -29,6 +29,7 @@ const tests=[
   'sync-status-proof.mjs',
   'sync-status-webkit-local.cjs',
   'qa-authenticated-occ-handler.mjs',
+  'qa-atomic-snapshot-history.mjs',
   'qa-member-public-signup-cpf.mjs',
   'qa-cpf-migration.mjs',
   'qa-guest-signup-webkit.cjs',
