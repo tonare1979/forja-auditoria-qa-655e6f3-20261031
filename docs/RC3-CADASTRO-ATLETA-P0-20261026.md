@@ -60,3 +60,13 @@ Auditoria do Agendador do notebook constatou que `FORJA_RC3_QA_Gratuito` ainda a
 Correção: launcher local `ops/forja-qa-daily.ps1` aponta exclusivamente para este worktree; variável `FORJA_QA_MODE=candidate` desliga **apenas** a verificação de paridade de assets remotos que naturalmente divergem antes do deploy, deixando a exclusão expressa no JSON. Os outros testes continuam. Arquivos e resultados históricos de outras branches ficam intocados; `ops/forja-status.mjs` filtra relatórios pelo campo `branch`, detecta mudanças em migrações e informa `APROVADO_LOCAL` — jamais `APROVADO` como sinônimo de publicação. O relatório também marca a publicação da RC3 como pendência.
 
 Depois do deploy **autorizado**, executar a bateria completa com `FORJA_QA_MODE=full` incluindo `remote-base-parity.mjs`; homologar cadastro no D1 real e Safari físico antes de considerar entrega. Esta alteração não faz deploy, não escreve no D1, não modifica produção e não automatiza ações remotas.
+
+## Correção de interface do painel Administração · Pessoas — 26/10/2026
+
+Evidência do proprietário: depois da aprovação real da conta `qa_cpf_mvpohkb4`, a UI ainda exibia `APROVAR / ATIVAR` mesmo com texto `Ativa`. A API e o D1 confirmaram que a conta estava ativa e que login pós-aprovação passou; portanto a falha era de exibição, não do estado da conta.
+
+Correção isolada no `public/features.js`: estado pendente mostra APROVAR/BLOQUEAR, estado ativo somente BLOQUEAR, estado bloqueado somente REATIVAR e conta administradora sem ações. Ao clicar, a interface consulta novamente a lista do servidor e **não envia alteração** se o estado for diferente do estado visto pelo administrador, avisando sobre atualização. A confirmação do bloqueio e a preservação dos registros foram mantidas. Nenhuma alteração na regra de negócio do Worker ou D1.
+
+Provas adicionadas: `tests/qa-admin-people-status.mjs` (status, fluxo de aprovação, bloqueio, reativação, proteção do administrador, clique desatualizado sem POST) e `tests/qa-admin-people-webkit.cjs` (painel no WebKit/iPhone simulado; estado ativo sem APROVAR, bloqueado só REATIVAR, clique desatualizado 0 POST e bloqueio 1 POST contra servidor HTTP local simulado). O PWA mudou o identificador de cache para atualizar as interfaces instaladas quando autorizado um novo deploy.
+
+**Gates preservados**: nenhum usuário real alterado, D1 sem escrita, produção V9.4.2 intocada. O commit `d22a032` permanece a versão **publicada** da RC3 até autorização específica de publicação da nova correção. Os testes WebKit e locais não constituem validação física no iPhone e não comprovam nova publicação.
