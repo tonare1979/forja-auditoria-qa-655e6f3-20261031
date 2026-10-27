@@ -1,6 +1,33 @@
 # FORJA V11 | REGISTRO MESTRE DE ORGANIZAÇÃO
 Data-base: 27/10/2026. Status: inventário preliminar verificado; não confundir plano com execução.
 
+## ESTADO VIGENTE | FORJA V11 | 27/10/2026 (após arrumação)
+**Fonte oficial:** este registro e o [README do repositório](../README.md). **App V11 RC3 em uso para homologação:** código `93faf8d`, Worker `b181c14c`, endereço `https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev/`. **Evolução:** branch `fix/rc3-equipment-thumb-contain-20261027`, HEAD documental/operacional posterior, sem deploy do app. **V9:** somente contingência histórica.
+
+### Execução comprovada da arrumação
+- [x] Prompt mestre original de 35 critérios transferido da Biblioteca para `docs/auditoria/PROMPT_MESTRE_GENERALISTA_QUALIDADE_IA.md`, sem substituir por rubrica reconstruída.
+- [x] Notion reorientado para índice com links canônicos; histórico antigo mantido e explicitamente identificado como histórico.
+- [x] README de entrada antiga corrigido, inclusive nome errado `forja-v11-rc3-labc`, agora D1 oficial `forja-v11-rc3-laboratorio`.
+- [x] **29 worktrees Git verificadas: 27 antigas arquivadas em `FORJA_BACKUPS/OUTRAS_VERSOES/WORKTREES`, 1 ativa e 1 repositório-âncora Git. Nenhuma worktree histórica solta.** Manifesto `docs/FORJA-WORKTREES-SITUACAO-FINAL-20261027.csv`; todas as worktrees movidas tiveram SHA, status e, quando modificadas, hashes de arquivos conferidos no destino.
+- [x] **Três diretórios legados não Git** arquivados e verificados: duas provas E2E (24 + 21 arquivos) e pasta de transferência do Desktop (330 arquivos), **375 arquivos**. Manifesto `docs/FORJA-ARQUIVAMENTO-LEGADO-20261027.csv`; hashes SHA-256 completos mantidos no backup.
+- [x] **Duas pastas de prova de build** (6 arquivos) arquivadas, hash SHA-256 confirmado, manifesto `docs/FORJA-ARQUIVAMENTO-PROVAS-20261027.csv`.
+- [x] Dois antigos servidores de laboratório `wrangler dev --local`, portas 8799 e 8800, encerrados após confirmar ausência de referência no código ativo; produção/cloud não afetados.
+- [x] Tarefa `FORJA_RC3_QA_Gratuito` do Agendador Windows corrigida, apontando para `ops/forja-qa-daily.ps1` na fonte ativa. Última verificação da tarefa PASS.
+- [x] QA manual após limpeza, na versão ativa: **20/20 PASS, FAILED=0, exit 0**, registro `FORJA_PLAYWRIGHT_QA/reports/forja-qa-batch-2026-10-27T22-41-22-896Z.json`; não é Safari físico ou E2E autenticado integral.
+- [x] Cinco diretórios com nome FORJA restam sob `C:\Users\renat`: `FORJA_RC3_E2E_WORKFLOW_20261027` (fonte), `forja-v11-homologaca` (âncora Git), `FORJA_PLAYWRIGHT_QA` (ferramentas), `FORJA_BACKUPS` (backup), `FORJA_RECUPERACAO_PESSOAL` (recuperação sensível protegida). Zero pasta FORJA remanescente no Desktop.
+- [x] Backup Git `FORJA_V11_RC3_GIT_20261027.bundle` criado e `git bundle verify` aprovado, contendo refs e histórico até o momento da geração. **Não substitui backups D1/R2/segredos nem inclui dados não rastreados.** Verificar atualização final após commits documentais.
+
+### Delimitação para não declarar conclusão indevida
+- [ ] Binários das duas referências originais Work ainda estão na Biblioteca (IDs e tamanhos documentados abaixo), não copiados ao GitHub. Originais não foram descartados; consulta direta pela referência, sem repetir buscas genéricas.
+- [ ] Não houve restauração integrada Worker + D1 + R2 + chaves no ambiente-alvo. Backup existente de D1 SQL e cópia de objeto R2 não bastam para essa alegação.
+- [ ] Ainda precisamos de duas instâncias V11 distintas e aprovadas para teste em uso/evolução; a separação de Git/estado é lógica, não dois Workers publicados.
+- [ ] `FORJA_RECUPERACAO_PESSOAL` e a âncora Git devem permanecer onde estão até plano de migração com verificação de dependências; não renomear nem mover cegamente.
+- [ ] Referências visuais e testes Safari/Edge continuam sujeitos a aprovação do proprietário. **Auditorias externas permanecem suspensas**, conforme decisão.
+- [ ] Cronograma de parceiros deve reportar entrega efetivamente iniciada/concluída, não presumir execução autônoma de issues ou plugins.
+
+---
+### Histórico de decisões e execuções anteriores (alguns campos descrevem estados já superados)
+
 ## Política de endereço único (decisão de organização, 27/10/2026)
 **Fonte operacional única:** repositório GitHub `tonare1979/forja-v11-homologaca`, contendo código, documentação vigente, decisões, auditorias e manifestos de referências. O documento mestre é o índice inicial; documentação anterior permanece histórica até reconciliação. Branch em uso e branch em evolução partilham a mesma linha V11.
 **Backup separado:** `C:\Users\renat\FORJA_BACKUPS` no notebook pessoal, com manifestos e recuperação testada; backup não é local de desenvolvimento nem fonte para editar. O backup local não substitui a necessidade de verificar segurança e recuperabilidade de dados D1/R2.
