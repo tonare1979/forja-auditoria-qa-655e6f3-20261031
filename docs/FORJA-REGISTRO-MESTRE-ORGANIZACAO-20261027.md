@@ -50,6 +50,16 @@ Data-base: 27/10/2026. Status: inventário preliminar verificado; não confundir
 - Foram identificados com IDs estáveis, mas **não importados como binários ao repositório**; não marcar a migração como concluída. Não utilizar arte substituta nem apagar origem.
 - O prompt original textual de 35 critérios JÁ FOI importado, em `docs/auditoria/PROMPT_MESTRE_GENERALISTA_QUALIDADE_IA.md`.
 
+## Arquivamento seguro executado e bloqueios restantes
+- [x] Arquivadas com `Move-Item` as pastas de prova `FORJA_RC3_BUILD_PROOF_20261027` e `FORJA_RC3_BUILD_PROOF_NAME_20261027` para `C:\Users\renat\FORJA_BACKUPS\OUTRAS_VERSOES`, sem exclusão de arquivos, apenas após busca por dependência no checkout ativo; **6 arquivos**, SHA-256 conferido no destino.
+- [x] Manifesto hash por arquivo em `docs/FORJA-ARQUIVAMENTO-PROVAS-20261027.csv` e script reexecutável `ops/archive-build-proof-20261027.ps1`, commit `02af24693964e3f272e38850087065d8aa31a68b`.
+- [x] `ops/forja-status.mjs` corrigido para NÃO confundir teste de paridade omitido com candidata não publicada; sintaxe Node validada, execução local concluída. Ele continua indicando corretamente alterações em código/testes posteriores à última bateria.
+- [!] **13+ worktrees legadas ainda não arquivadas:** vínculos Git internos e algumas alterações não enviadas. Usar `git worktree move` ou procedimento equivalente com prova de caminhos e reversão, nunca `Move-Item` direto sem reparar metadados.
+- [!] Materiais aprovados Work ainda residem na Biblioteca; IDs e tamanhos vinculados no registro, mas os binários ainda não estão no GitHub. Impossível classificar como centralização integral.
+- [!] Restauração remota conjunta D1/R2/segredos ainda não comprovada; não afirmar backup integral do FORJA.
+- [!] Dois ambientes V11 separados (em uso/evolução) ainda não estão implantados e aceitos. A RC3 publicada continua no Worker já existente; não criamos Worker extra nem gastamos recursos.
+- [!] Auditoria suspensa até que essas diferenças sejam tratadas e decisão de liberação seja registrada.
+
 ## Regra aprovada pelo proprietário
 Uma única linha FORJA V11, em duas condições: EM USO (versão que o proprietário pode abrir/testar) e EM EVOLUÇÃO (cópia da base validada; só substitui em uso após testes e aprovação). V9.4.2 não é linha de desenvolvimento; manter backup de contingência até recuperação comprovada. Sem exclusões destrutivas, sem contratação e sem deploy em produção sem autorização.
 
