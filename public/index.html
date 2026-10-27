@@ -83,7 +83,7 @@ async function forjaOpenDemo(name){
   const close=document.createElement('button');close.textContent='✕ FECHAR';close.onclick=()=>cover.remove();panel.append(close);
   const title=document.createElement('h3');title.textContent='Demonstração: '+name;panel.append(title);
   const status=document.createElement('p');status.textContent='Procurando demonstração feminina…';panel.append(status);
-  const video=document.createElement('video');video.controls=true;video.playsInline=true;video.preload='metadata';video.style='width:100%;max-height:60vh';panel.append(video);
+  const video=document.createElement('video');video.controls=true;video.playsInline=true;video.autoplay=true;video.muted=true;video.loop=true;video.preload='auto';video.style='width:100%;max-height:60vh';panel.append(video);
   const chooser=document.createElement('select');chooser.setAttribute('aria-label','Escolher demonstração');chooser.style='width:100%;padding:12px;margin-top:12px';panel.append(chooser);
   cover.append(panel);document.body.append(cover);
   try{
@@ -94,7 +94,7 @@ async function forjaOpenDemo(name){
     chooser.replaceChildren();
     const prompt=document.createElement('option');prompt.textContent='Escolha uma demonstração';prompt.value='';chooser.append(prompt);
     for(const item of opts){const o=document.createElement('option');o.textContent=matched.length===1?name:'Demonstração '+(opts.indexOf(item)+1)+' para '+name;o.value=item.female;chooser.append(o)}
-    chooser.onchange=()=>{if(chooser.value){video.src=chooser.value;video.play().catch(()=>{});status.textContent='Confira se o movimento corresponde ao seu exercício.'}};
+    chooser.onchange=()=>{if(chooser.value){video.src=chooser.value;video.load();video.play().catch(()=>{status.textContent='Toque em reproduzir para iniciar a demonstração.'});status.textContent='Demonstração do exercício: '+name+'.'}};video.onerror=()=>{status.textContent='Não foi possível carregar este vídeo. Tente novamente mais tarde.'};
     status.textContent=matched.length?'Demonstração vinculada ao exercício: '+name+'.':'Ainda não há demonstração correspondente e verificada. Não exibiremos vídeos de exercícios diferentes.';
     if(matched.length===1){chooser.selectedIndex=1;chooser.onchange();chooser.hidden=true}
   }catch(e){status.textContent='Biblioteca indisponível. Nenhum vídeo aleatório foi aberto.'}
