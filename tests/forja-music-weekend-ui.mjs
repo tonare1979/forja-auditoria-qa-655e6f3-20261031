@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+const root=new URL('../public/',import.meta.url);
+const context={window:{}};
+vm.runInNewContext(fs.readFileSync(new URL('forja-music-v1.js',root),'utf8'),context);
+const html=context.window.forjaMusicPanel('https://www.deezer.com/playlist/123');
+for(const name of ['IGNITION','ENDURANCE','UNBREAKABLE','Deezer','Spotify','Apple Music','YouTube Music','SALVAR PLAYLIST'])assert.ok(html.includes(name),name);
+assert.ok(html.includes('https://www.deezer.com/playlist/123'));
+assert.ok(!html.includes('href="undefined"'));
+const escaped=context.window.forjaMusicPanel('" onerror="alert(1)');
+assert.ok(!escaped.includes('value="" onerror='));
+const index=fs.readFileSync(new URL('index.html',root),'utf8');
+assert.ok(index.includes('window.forjaMusicPanel(state.deezerPlaylist'));
+assert.ok(index.includes('let history=[...state.sessions].sort('));
+const sw=fs.readFileSync(new URL('sw.js',root),'utf8');
+assert.ok(sw.includes("'./forja-music-v1.js'"));
+console.log('FORJA_MUSIC_WEEKEND_UI_PASS');
