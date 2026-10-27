@@ -34,3 +34,12 @@ Próxima prioridade: validar QA remoto não destrutivo na versão `b181c14c`, de
 - **Smoke de autenticação remoto:** consulta de sal por e-mail e por nome de usuário retornou HTTP 200 e `saltFormat=true`; `REMOTE_ANONYMOUS_ACCESS_REJECTED_PASS`.
 - **Limites:** endpoints de leitura não testaram criação/aprovação de cadastro, login autenticado real, D1 remoto completo, autorização multiusuário, Safari físico, sincronização real, mídia reproduzível ou UX. Não equivalem a homologação.
 - **Veredito mantido:** auditoria PARCIAL, RC3 ainda **NÃO HOMOLOGADA**. Sem deploy, sem migração, sem alteração de banco ou produção.
+
+## Rodada funcional sintética, leitura/execução de testes existentes (27/10/2026)
+**Ambiente:** notebook pessoal, checkout `815324c`; execução local com dados sintéticos/descaráveis, sem D1 remoto ou credencial de atleta.
+- `node tests/auth-real-handler-synthetic.mjs`: **PASS**. Senha errada rejeitada, sal, login e cookie por username/email.
+- `node tests/qa-authenticated-occ-handler.mjs`: **PASS**. Duas sessões autenticadas, não autenticado rejeitado, conflitos revisionais 409, preservação de estado, retry idempotente, merge seguro e histórico de snapshots com D1 em memória.
+- `node tests/qa-member-public-signup-cpf.mjs`: **RC3_GUEST_REGISTRATION_PENDING_CPF_SECURITY_PASS**.
+- `node tests/qa-cross-device-sync-webkit.cjs`: **TWO_DEVICE_WEBKIT_SYNTHETIC_E2E_PASS**; `finalRevision=5`, `reads=6`, `writes=6`, `conflicts=2`, `jsErrors=0`.
+- Processo combinado exit **0**.
+**Limite:** nenhuma operação autenticada real no D1 remoto; nenhuma aprovação de atleta real; nada comprovado no iPhone físico. Não alterar o status NÃO HOMOLOGADO com base nestes testes isolados.
