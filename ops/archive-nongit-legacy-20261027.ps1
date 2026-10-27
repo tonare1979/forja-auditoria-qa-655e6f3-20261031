@@ -9,7 +9,7 @@ $candidates=@(
  (Join-Path $home 'Desktop\FORJA_RC3_TRANSFERENCIA')
 )
 $taskText=@(Get-ScheduledTask -ErrorAction SilentlyContinue|Where-Object TaskName -Like '*FORJA*'|ForEach-Object {$_.Actions|ForEach-Object {$_.Arguments+' '+$_.Execute}}) -join ' '
-$scripts=@(Get-ChildItem $active -Recurse -File -Include *.ps1,*.mjs,*.cjs,*.cmd,*.bat -ErrorAction SilentlyContinue|Where-Object {$_.FullName -notmatch '\\.git\\|node_modules|archive-|inventory-|worktree-|fix-scheduled-qa'})
+$scripts=@(Get-ChildItem $active -Recurse -File -Include *.ps1,*.mjs,*.cjs,*.cmd,*.bat -ErrorAction SilentlyContinue|Where-Object {$_.FullName -notmatch '\\.git\\|node_modules|archive-|inventory-|worktree-|fix-scheduled-qa|close-orphan-qa-workers'})
 New-Item $archive -ItemType Directory -Force|Out-Null
 New-Item $manifestDir -ItemType Directory -Force|Out-Null
 $rows=@()
@@ -32,5 +32,5 @@ foreach($source in $candidates){
  $rows+=[pscustomobject]@{Source=$source;Destination=$dest;Files=$fileRows.Count;Status='ARCHIVED-VERIFIED'}
  Write-Output ('LEGACY_ARCHIVED '+$name+' '+$fileRows.Count)
 }
-$rows|Export-Csv (Join-Path $active 'docs\FORJA-ARQUIVAMENTO-LEGADO-20261027.csv') -NoTypeInformation -Encoding UTF8
+$rows|Export-Csv (Join-Path $manifestDir 'LEGACY_ARCHIVE_LAST_RUN.csv') -NoTypeInformation -Encoding UTF8
 Write-Output ('LEGACY_ARCHIVE_SUMMARY '+$rows.Count)

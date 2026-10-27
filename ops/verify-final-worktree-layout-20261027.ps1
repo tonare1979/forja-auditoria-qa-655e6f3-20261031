@@ -17,8 +17,8 @@ $hist=@($rows|Where-Object Status -eq 'HISTORICO-ARQUIVADO')
 $blocked=@($rows|Where-Object Status -eq 'HISTORICO-BLOQUEADO')
 Write-Output ('GIT_WORKTREES_TOTAL '+$rows.Count+' ARCHIVED='+$hist.Count+' BLOCKED='+$blocked.Count)
 $blocked|Format-Table|Out-String -Width 240|Write-Output
-if($hist.Count -ne 26){throw ('ARCHIVE_TOTAL_MISMATCH '+$hist.Count)}
-if($blocked.Count -ne 1){throw ('BLOCKED_COUNT_MISMATCH '+$blocked.Count)}
+if($hist.Count -ne 27){throw ('ARCHIVE_TOTAL_MISMATCH '+$hist.Count)}
+if($blocked.Count -ne 0){throw ('BLOCKED_COUNT_MISMATCH '+$blocked.Count)}
 $task=(Get-ScheduledTask -TaskName 'FORJA_RC3_QA_Gratuito').Actions.Arguments
 if($task -notmatch 'FORJA_RC3_E2E_WORKFLOW_20261027'){throw 'TASK_OLD_PATH'}
 Write-Output 'FINAL_LAYOUT_AND_QA_TASK_PASS'
