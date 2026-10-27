@@ -12,8 +12,8 @@ jobs:
       - name: Criar D1 local e rodar Worker sem produção
         run: |
           npm install --no-save wrangler@4
-          npx wrangler d1 migrations apply forja-v11-rc3-labc --local
-          npx wrangler dev --local --port 8799 --ip 127.0.0.1 --var FORJA_AUTH_PEPPER:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa --var FORJA_SETUP_KEY:local-test-only-setup-1234567890 >/tmp/forja-worker.log 2>&1 &
+          npx wrangler d1 migrations apply forja-v11-rc3-laboratorio --local --persist-to /tmp/forja-rc3-e2e-only
+          npx wrangler dev --local --persist-to /tmp/forja-rc3-e2e-only --port 8799 --ip 127.0.0.1 --var FORJA_AUTH_PEPPER:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa --var FORJA_SETUP_KEY:local-test-only-setup-1234567890 >/tmp/forja-worker.log 2>&1 &
           echo $! >/tmp/forja.pid
           for i in $(seq 1 45); do if curl -fsS http://127.0.0.1:8799/api/health >/dev/null; then break; fi; sleep 2; done
           curl -fsS http://127.0.0.1:8799/api/health
