@@ -9,6 +9,13 @@ Data-base: 27/10/2026. Status: inventário preliminar verificado; não confundir
 **Pastas legadas:** inventariar conteúdo exclusivo, dependências e hash, arquivar em OUTRAS_VERSOES somente depois da verificação, e não excluir sem recuperação validada. Não guardar arquivos essenciais no computador corporativo.
 **Regra contra dispersão:** antes de criar qualquer pasta, documento, quadro, prompt ou cópia, verificar o registro mestre e atualizar o existente; não criar um segundo hub.
 
+## Gate anterior a qualquer auditoria (decisão de 27/10/2026)
+- **AUDITORIAS SUSPENSAS** até o encerramento comprovado da organização. Não solicitar auditoria externa, não pontuar novo parecer e não confundir inventário com auditoria.
+- CHECKLIST DE ARRUMAÇÃO, ordem obrigatória: [ ] registrar inventário por pasta com tamanho, hashes e arquivos exclusivos; [ ] localizar/importar materiais aprovados da Biblioteca e Work para a central canônica; [ ] atualizar endereços e referências no Notion usando links, sem replicar conteúdo; [ ] fixar V11 em uso e V11 em evolução com SHA e destinos de teste claros; [ ] verificar backup separado e teste de restauração; [ ] verificar dependências e arquivar versões antigas em OUTRAS_VERSOES sem perda de evidência; [ ] confirmar rotina QA apontando para SHA corrente sem gerar avisos falsos; [ ] revisar links e assinaturas de parceiros e registrar suas datas reais de início/conclusão; [ ] proprietário libera retomada da auditoria após conferir organização.
+- Estado 27/10: inventário apenas de NOMES de 23 diretórios no perfil pessoal mais 1 transferência no Desktop; não há hashes/diffs suficientes para arquivar. Último código publicado no Worker segue 93faf8d; commits documentais posteriores NÃO alteraram app.
+- O PROMPT_MESTRE_GENERALISTA_QUALIDADE_IA.md original foi localizado na Biblioteca ChatGPT em duas cópias. Não mais procurar no notebook como pré-requisito; próxima ação é importar cópia verificada para uma localização oficial. A rubrica original mede QUALIDADE DE PROMPT, enquanto o checklist técnico derivado mede FUNCIONAMENTO DO FORJA: ambos devem permanecer distintos.
+- O banco D1/R2 exige exportação/restauração e controles próprios; um backup só no notebook é um ponto único de falha. Não copiar dados reais/segredos para GitHub, Notion ou Biblioteca.
+
 ## Regra aprovada pelo proprietário
 Uma única linha FORJA V11, em duas condições: EM USO (versão que o proprietário pode abrir/testar) e EM EVOLUÇÃO (cópia da base validada; só substitui em uso após testes e aprovação). V9.4.2 não é linha de desenvolvimento; manter backup de contingência até recuperação comprovada. Sem exclusões destrutivas, sem contratação e sem deploy em produção sem autorização.
 
