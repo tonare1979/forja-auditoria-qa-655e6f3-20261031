@@ -1,7 +1,7 @@
 # FORJA RC3 — QA local automatico, gratuito e nao destrutivo.
 param([switch]$Force)
 $ErrorActionPreference='Stop'
-$repo='C:\Users\renat\FORJA_RC3_FIX_CADASTRO_20261026'
+$repo='C:\Users\renat\FORJA_RC3_E2E_WORKFLOW_20261027'
 $node='C:\Program Files\nodejs\node.exe'
 $reports='C:\Users\renat\FORJA_PLAYWRIGHT_QA\reports'
 $lock=Join-Path $reports 'forja-qa-daily.lock'
@@ -14,7 +14,7 @@ if(Test-Path $lock){
 if(!$Force){
   # Agendamento a cada 2 horas: evita apenas repeticoes acidentais dentro de 110 minutos.
   $recent=Get-ChildItem $reports -Filter 'forja-qa-batch-*.json' -File | Sort-Object LastWriteTime -Descending | Where-Object {
-    try{$result=Get-Content -LiteralPath $_.FullName -Raw -Encoding utf8 | ConvertFrom-Json; $result.branch -eq 'fix/rc3-self-signup-cpf-20261026' -and $result.mode -eq 'candidate'}catch{$false}
+    try{$result=Get-Content -LiteralPath $_.FullName -Raw -Encoding utf8 | ConvertFrom-Json; $result.branch -eq 'fix/rc3-equipment-thumb-contain-20261027' -and $result.mode -eq 'candidate'}catch{$false}
   } | Select-Object -First 1
   if($recent -and ((Get-Date)-$recent.LastWriteTime).TotalMinutes -lt 110){Write-Output ('FORJA_QA_RECENT_CANDIDATE_RUN_SKIP '+$recent.Name);exit 0}
 }
@@ -26,7 +26,12 @@ try{
   try{
     $env:NODE_PATH='C:\Users\renat\FORJA_PLAYWRIGHT_QA\node_modules'
     $env:FORJA_QA_MODE='candidate'
-    & $node 'tests\run-qa-batch.mjs' *>&1 | Out-File -LiteralPath $log -Encoding utf8
+    $currentBranch=(& git branch --show-current).Trim()
+    $currentSha=(& git rev-parse HEAD).Trim()
+    if($LASTEXITCODE -ne 0 -or $currentBranch -ne 'fix/rc3-equipment-thumb-contain-20261027'){throw 'FORJA_QA_WRONG_BRANCH'}
+    Write-Output ('FORJA_QA_SOURCE '+$currentBranch+' '+$currentSha) | Out-File -LiteralPath $log -Encoding utf8
+    Write-Output 'FORJA_QA_BROWSER_SCOPE code-only; Safari=iPhone pending; Edge=Windows pending' | Out-File -LiteralPath $log -Append -Encoding utf8
+    & $node 'tests\run-qa-batch.mjs' *>&1 | Out-File -LiteralPath $log -Append -Encoding utf8
     $exit=$LASTEXITCODE
     if($null -eq $exit){$exit=1}
     # Atualiza o resumo sem rodar a bateria outra vez, mesmo se houve falhas no QA.
