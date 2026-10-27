@@ -23,7 +23,7 @@ try{
  writeFileSync(probe,'qa-status-probe\n',{flag:'wx'});
  s=status();
  if(s.qa.report){
-  assert.equal(s.qa.status,'CODIGO_ALTERADO','mudanca de arquivo de teste deve invalidar selo de bateria');
+  assert.equal(s.qa.status,s.qa.failures.length?'FALHA':'CODIGO_ALTERADO','falha anterior nao pode ser mascarada por arquivo alterado');
   assert(s.qa.changedTestedCode.some(p=>p.includes('__forja_status_transient_probe__')));
  }else assert.equal(s.qa.status,'SEM_RELATORIO','uma instalacao nova nao tem selo de QA');
  console.log('STATUS_DIRTY_TEST_CODE_DETECTED_PASS');
