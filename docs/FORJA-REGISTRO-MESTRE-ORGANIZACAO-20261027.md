@@ -18,6 +18,18 @@ Data-base: 27/10/2026. Status: inventário preliminar verificado; não confundir
 - O PROMPT_MESTRE_GENERALISTA_QUALIDADE_IA.md original foi localizado na Biblioteca ChatGPT em duas cópias. Não mais procurar no notebook como pré-requisito; próxima ação é importar cópia verificada para uma localização oficial. A rubrica original mede QUALIDADE DE PROMPT, enquanto o checklist técnico derivado mede FUNCIONAMENTO DO FORJA: ambos devem permanecer distintos.
 - O banco D1/R2 exige exportação/restauração e controles próprios; um backup só no notebook é um ponto único de falha. Não copiar dados reais/segredos para GitHub, Notion ou Biblioteca.
 
+## Execução da arrumação, rodada de 27/10/2026 (verificada)
+- [x] Fonte original da rubrica de qualidade importada no caminho `docs/auditoria/PROMPT_MESTRE_GENERALISTA_QUALIDADE_IA.md` a partir da Library; commit `ef4c4ec`.
+- [x] Índice vigente inserido no INÍCIO da página Notion da central RC3, apontando para este arquivo, Worker em uso e prompt canônico; leitura posterior da página confirmou publicação. O conteúdo histórico antigo foi preservado e rotulado como histórico, não apagado.
+- [x] Reconferidos diretórios existentes no notebook: 23 diretórios FORJA no perfil pessoal e 1 `FORJA_RC3_TRANSFERENCIA` no Desktop. Nenhum diretório foi movido ou apagado.
+- [ ] Comparar arquivos exclusivos, SHA-256, git remotes, ocupação e dependências para classificação definitiva: ARQUIVO ATIVO / BACKUP / EVIDÊNCIA / OUTRAS_VERSOES / NÃO DESCARTAR. Contagem de nomes não equivale a inventário concluído.
+- [ ] Consolidar imagens originais aprovadas Work com checksums e licenças na central; não importar outra imagem similar como substituta.
+- [ ] Verificar backup e RESTAURAÇÃO separadamente para Git, Worker, D1, R2, segredos sem revelar segredos.
+- [ ] Limpar links históricos em Notion por revisão seletiva apenas depois de conferir retenção de decisões; não apagar provas.
+- [ ] Confirmar duas instâncias/endereços distintos da V11 em uso/evolução antes de dizer que o modelo está implantado. Hoje há apenas o endereço de homologação publicado confirmado.
+- [ ] Concluir arrumação e obter liberação explícita antes de qualquer nova auditoria.
+- IMPORTANTE: o checkout local do notebook ainda apontava para `ecba7ad` ao ser consultado, porque documentos mais novos foram commitados diretamente via GitHub. Sincronizar com cuidado antes de executar script local ou criar commits, preservando `.wrangler/`, thumbnails QA e `tests/e2e-local-http-isolated.mjs`.
+
 ## Regra aprovada pelo proprietário
 Uma única linha FORJA V11, em duas condições: EM USO (versão que o proprietário pode abrir/testar) e EM EVOLUÇÃO (cópia da base validada; só substitui em uso após testes e aprovação). V9.4.2 não é linha de desenvolvimento; manter backup de contingência até recuperação comprovada. Sem exclusões destrutivas, sem contratação e sem deploy em produção sem autorização.
 
