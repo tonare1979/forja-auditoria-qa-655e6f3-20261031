@@ -28,8 +28,8 @@ const qaStatus=!latest?'SEM_RELATORIO':latest.data.failed?'FALHA':delta===null?'
 const failures=latest?.data.results.filter(x=>!x.pass).map(x=>x.name)||[];
 const prevFailed=previous?.data.failed??null,currFailed=latest?.data.failed??null;
 const pending=[
- {id:'RC3_PUBLICACAO',status:'PENDENTE',description:'Codigo candidato ainda nao comprovado como publicado na RC3; publicacao exige autorizacao externa.'},
- {id:'D1_REMOTE_AUTH_CONFLICT',status:'PENDENTE',description:'Conflito entre sessoes autenticadas no D1 remoto ainda sem prova.'},
+ {id:'RC3_PUBLICACAO',status:'PENDENTE',description:'Paridade entre commit de codigo publicado e Worker deve ser verificada separadamente; commits apenas documentais ou de QA nao exigem novo deploy.'},
+ {id:'D1_REMOTE_AUTH_CONFLICT',status:'PENDENTE',description:'Revalidar fluxo autenticado completo no D1 da versao publicada; testes historicos de OCC existem, mas nao comprovam a versao atual.'},
  {id:'PRODUCTION_RELEASE',status:'NAO_AUTORIZADA',description:'Nao publicar V9.4.2 sem aprovacao do proprietario.'}
 ];
 const payload={product:'FORJA',environment:'RC3 isolada',generatedAt:now.toISOString(),branch,head:sha,source:'relatorios locais QA sem executar a bateria',
@@ -42,9 +42,9 @@ const summary=[
  'FORJA RC3 | STATUS DE EVIDENCIAS | '+pt(payload.generatedAt),
  'QA '+qaStatus+' | '+(payload.qa.passed??'?')+'/'+(payload.qa.total??'?')+' | ultima bateria: '+pt(payload.qa.finishedAt),
  'Branch '+branch+' @ '+sha.slice(0,8)+' | modalidade '+(payload.qa.mode||'indisponivel'),
- 'Paridade remota: '+(payload.qa.skipped.includes('remote-base-parity.mjs')?'nao executada (candidata nao publicada)':'verificar evidencias'),
+ 'Paridade remota: '+(payload.qa.skipped.includes('remote-base-parity.mjs')?'NAO VERIFICADA nesta bateria (nao implica app nao publicado)':'consultar prova de paridade do teste'),
  'Falhas: '+(failures.length?failures.join(', '):'nenhuma na ultima bateria'),
- 'Pendencias: publicacao RC3 autorizada, E2E remoto autenticado D1 e iPhone fisico.'
+ 'Pendencias: paridade do Worker atual, E2E autenticado atual e Safari fisico (separar status de QA de status de deploy).'
 ].join('\n');
 if(write){
  mkdirSync(reports,{recursive:true});
