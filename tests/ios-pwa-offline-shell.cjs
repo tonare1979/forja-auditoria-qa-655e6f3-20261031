@@ -15,7 +15,7 @@ const server=http.createServer((req,res)=>{
  await page.goto(origin,{waitUntil:'load'});
  const reg=await page.evaluate(async()=>{const reg=await navigator.serviceWorker.ready;for(let i=0;i<100&&reg.active?.state!=='activated';i++)await new Promise(r=>setTimeout(r,50));return {scope:reg.scope,state:reg.active?.state}});
  console.log('PWA_SERVICE_WORKER_STATE',JSON.stringify({scope:reg.scope,state:reg.state,origin}));assert(reg.scope===origin+'/'&&reg.state==='activated');console.log('PWA_SERVICE_WORKER_ACTIVE_PASS');
- const names=await page.evaluate(async()=>await caches.keys());assert(names.some(n=>n.includes('rc3-pwa-20261026-admin-actions')));console.log('PWA_SW_VERSIONED_CACHE_PASS');
+ const names=await page.evaluate(async()=>await caches.keys());const version=fs.readFileSync(path.join(root,'sw.js'),'utf8').match(/const CACHE='([^']+)'/)[1];assert(names.includes(version));console.log('PWA_SW_VERSIONED_CACHE_PASS');
  for(const icon of ['forja-icon-rc3-180.png','forja-icon-rc3-192.png','forja-icon-rc3-512.png']){
   const ok=await page.evaluate(async icon=>!!(await caches.match('./'+icon)),icon);
   assert(ok,'cache icon '+icon);
