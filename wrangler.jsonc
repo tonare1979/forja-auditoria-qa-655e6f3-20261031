@@ -5,7 +5,7 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "forja-v11-rc3-labc",
+      "database_name": "forja-v11-rc3-laboratorio",
       "database_id": "402315ff-3833-4060-91b6-8c6bd3884642",
       "migrations_dir": "migrations"
     }
