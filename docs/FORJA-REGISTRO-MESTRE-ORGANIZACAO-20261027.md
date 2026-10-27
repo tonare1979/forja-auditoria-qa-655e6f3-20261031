@@ -44,6 +44,12 @@ Data-base: 27/10/2026. Status: inventário preliminar verificado; não confundir
 - [ ] Somente então migrar arquivos históricos a `OUTRAS_VERSOES` com manifesto e revisão de apontamentos externos.
 **ALERTA:** PASTAS NÃO ARQUIVADAS nem removidas. QA físico Safari/Edge, autenticação real e auditorias continuam fora deste escopo de arrumação.
 
+## Referências visuais originais recuperadas (proveniência)
+- **Tela de Treinos FORJA com Playlists.png**: arquivo original no projeto/Library, file_id `file_00000000f3e8820e833c233c5656f1ed`, libfile `libfile_05ac22f5f3088191a6c7574aa6e6d08c`, 1.530.206 bytes. Referência aprovada, NÃO prova da implementação.
+- **Trilha de Evolução FORJA.png**: arquivo original na Library, file_id `file_000000000d14820ea336a790892e7ec9`, libfile `libfile_dc5685fc39588191847980b550fe9d07`, 1.433.786 bytes. Três momentos de Music e quatro serviços.
+- Foram identificados com IDs estáveis, mas **não importados como binários ao repositório**; não marcar a migração como concluída. Não utilizar arte substituta nem apagar origem.
+- O prompt original textual de 35 critérios JÁ FOI importado, em `docs/auditoria/PROMPT_MESTRE_GENERALISTA_QUALIDADE_IA.md`.
+
 ## Regra aprovada pelo proprietário
 Uma única linha FORJA V11, em duas condições: EM USO (versão que o proprietário pode abrir/testar) e EM EVOLUÇÃO (cópia da base validada; só substitui em uso após testes e aprovação). V9.4.2 não é linha de desenvolvimento; manter backup de contingência até recuperação comprovada. Sem exclusões destrutivas, sem contratação e sem deploy em produção sem autorização.
 
