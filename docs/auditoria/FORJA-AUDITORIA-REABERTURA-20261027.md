@@ -26,3 +26,11 @@ Data: 27/10/2026. Autorização: proprietário solicitou expressamente iniciar a
 **NÃO HOMOLOGADO. Auditoria técnica inicial reaberta por autorização expressa.** Auditar os próximos gates por evidência e versão, não reabrir investigação das 27 worktrees históricas sem fato novo.
 
 Próxima prioridade: validar QA remoto não destrutivo na versão `b181c14c`, depois Safari físico autenticado, identidade de mídias e integração Music. Nenhum deploy, migração ou contratação foi realizado nesta rodada.
+
+## Rodada remota não destrutiva | 27/10/2026
+- **Cloudflare:** GET deployments confirmou Worker `forja-v11-rc3-preview-isolada` versão `b181c14c-8c8a-43a5-88e0-6395722b1f74`, **100%**.
+- **Notebook pessoal:** checkout `815324c363b0ac754b38d21b8782fbce276c7a15`. Executados `node tests/remote-base-parity.mjs` e `node tests/remote-email-salt-smoke.mjs`, processo exit **0**.
+- **Paridade de conteúdo remoto:** `RC3_DEPLOYED_COMMIT_CONTENT_PARITY_PASS`, 4 recursos. `/`, `/features.js` e `/sw.js`: `contentMatch=true`, diferença apenas CRLF/LF, não byte a byte. `/videos/catalog.json`: `byteExact=true`; SHA-256 `d9ee01506753cdb7322ebd63dd5572902ec1678571710b8dc9610fd10e2c7046`. Quatro HTTP 200.
+- **Smoke de autenticação remoto:** consulta de sal por e-mail e por nome de usuário retornou HTTP 200 e `saltFormat=true`; `REMOTE_ANONYMOUS_ACCESS_REJECTED_PASS`.
+- **Limites:** endpoints de leitura não testaram criação/aprovação de cadastro, login autenticado real, D1 remoto completo, autorização multiusuário, Safari físico, sincronização real, mídia reproduzível ou UX. Não equivalem a homologação.
+- **Veredito mantido:** auditoria PARCIAL, RC3 ainda **NÃO HOMOLOGADA**. Sem deploy, sem migração, sem alteração de banco ou produção.
