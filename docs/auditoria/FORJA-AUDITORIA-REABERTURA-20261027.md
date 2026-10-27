@@ -43,3 +43,10 @@ Próxima prioridade: validar QA remoto não destrutivo na versão `b181c14c`, de
 - `node tests/qa-cross-device-sync-webkit.cjs`: **TWO_DEVICE_WEBKIT_SYNTHETIC_E2E_PASS**; `finalRevision=5`, `reads=6`, `writes=6`, `conflicts=2`, `jsErrors=0`.
 - Processo combinado exit **0**.
 **Limite:** nenhuma operação autenticada real no D1 remoto; nenhuma aprovação de atleta real; nada comprovado no iPhone físico. Não alterar o status NÃO HOMOLOGADO com base nestes testes isolados.
+
+## Rodada Music e imagem, 27/10/2026
+- Checkout local `815324c`, execução de testes existentes apenas leitura: `node tests/forja-music-weekend-ui.mjs` → `FORJA_MUSIC_WEEKEND_UI_PASS` e `node tests/equipment-thumb-no-crop.mjs` → `FORJA_EQUIPMENT_THUMB_NO_CROP_PASS`; processo exit 0.
+- `public/exercise-thumbs/manifest.json` existe e contém 20 chaves no manifesto local.
+- `GET https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev/forja-music-v1.js` → HTTP **200**, 4807 bytes nesta consulta.
+- Estes testes verificam rótulos, referências no HTML, recursos carregáveis, CSS `object-fit:contain` e montagem de cartões. **Não comprovam licenças/identidade das 20 fotografias, reprodução de vídeos, ligação correta entre exercício e equipamento ou aceite Safari físico.** Tampouco verificam o conteúdo real das playlists em cada serviço.
+- Parecer geral permanece NÃO HOMOLOGADO até testes autenticados remotos, UX iPhone e recuperação integrada.
