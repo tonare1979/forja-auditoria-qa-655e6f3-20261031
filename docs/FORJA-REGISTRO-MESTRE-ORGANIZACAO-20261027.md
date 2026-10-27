@@ -11,6 +11,13 @@ Data-base: 27/10/2026. Status: inventário preliminar verificado; não confundir
 - **Sem afirmar “tudo concluído”:** imagens originais Work ainda não importadas como binários canônicos; backup/restauração remota conjunta Worker, D1, R2, chaves não validado; segunda instância V11 evolução ainda não criada, aprovação do Safari/Edge ausente. Estas pendências impedem declarar a ORGANIZAÇÃO INTEGRAL encerrada e liberar auditoria.
 - **Exceção de segurança:** pasta âncora `forja-v11-homologaca` e pasta `FORJA_RECUPERACAO_PESSOAL` mantidas separadas por necessidade técnica/confidencial. O modelo de apenas dois destinos lógicos permanece, com essas dependências físicas documentadas.
 
+## ATUALIZAÇÃO DE CONSOLIDAÇÃO | 27/10/2026 20h (horário de Brasília)
+- [x] **Pasta operacional agora com Git independente.** Checkout `C:\Users\renat\FORJA_RC3_E2E_WORKFLOW_20261027`, HEAD `815324c363b0ac754b38d21b8782fbce276c7a15`, `git rev-parse --git-common-dir` => `.git`. Não depende mais de `C:\Users\renat\forja-v11-homologaca\.git`.
+- [x] Clone origin verificou SHA idêntico, arquivo modificado transferido por patch, thumbs e teste E2E locais copiados com SHA-256. Pasta anterior movida por `git worktree move` ao backup histórico `FORJA_BACKUPS\OUTRAS_VERSOES\WORKTREES\FORJA_RC3_E2E_WORKFLOW_PRE_INDEPENDENT_20261027` para reversão, sem apagar dados.
+- [x] Agendador `FORJA_RC3_QA_Gratuito` ainda aponta para caminho operacional correto. QA posterior à mudança: `BATCH_RESULT 20/20 FAILED=0`, exit 0, relatório `FORJA_PLAYWRIGHT_QA/reports/forja-qa-batch-2026-10-27T23-09-37-114Z.json`.
+- [ ] A antiga âncora Git `C:\Users\renat\forja-v11-homologaca` ainda existe porque sustenta as 28 worktrees históricas agora arquivadas. Não tratá-la como projeto operacional, nem excluí-la antes de plano de restauração das worktrees históricas.
+- [ ] Pendências canônicas: GitHub [Issue #20](https://github.com/tonare1979/forja-v11-homologaca/issues/20). Auditorias continuam suspensas até fechar as dependências remanescentes.
+
 ## ESTADO VIGENTE | FORJA V11 | 27/10/2026 (após arrumação)
 **Fonte oficial:** este registro e o [README do repositório](../README.md). **App V11 RC3 em uso para homologação:** código `93faf8d`, Worker `b181c14c`, endereço `https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev/`. **Evolução:** branch `fix/rc3-equipment-thumb-contain-20261027`, HEAD documental/operacional posterior, sem deploy do app. **V9:** somente contingência histórica.
 
