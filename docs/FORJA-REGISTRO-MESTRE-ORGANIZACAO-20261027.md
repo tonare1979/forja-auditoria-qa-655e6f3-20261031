@@ -1,6 +1,14 @@
 # FORJA V11 | REGISTRO MESTRE DE ORGANIZAÇÃO
 Data-base: 27/10/2026. Status: inventário preliminar verificado; não confundir plano com execução.
 
+## Política de endereço único (decisão de organização, 27/10/2026)
+**Fonte operacional única:** repositório GitHub `tonare1979/forja-v11-homologaca`, contendo código, documentação vigente, decisões, auditorias e manifestos de referências. O documento mestre é o índice inicial; documentação anterior permanece histórica até reconciliação. Branch em uso e branch em evolução partilham a mesma linha V11.
+**Backup separado:** `C:\Users\renat\FORJA_BACKUPS` no notebook pessoal, com manifestos e recuperação testada; backup não é local de desenvolvimento nem fonte para editar. O backup local não substitui a necessidade de verificar segurança e recuperabilidade de dados D1/R2.
+**Notion:** uma página de navegação e acompanhamento com links para os itens canônicos no GitHub, nunca cópia concorrente de especificações, decisões ou versões. Mudanças substantivas só têm validade no registro canônico com data, SHA e autoria.
+**Biblioteca e Work:** fontes de materiais originais, não destinos de novas cópias operacionais. Importar a auditoria original de 35 critérios e artes aprovadas para o repositório apenas com origem, integridade e nomenclatura conferidas; depois substituir atalhos por links para a cópia canônica, preservando originais até conferência.
+**Pastas legadas:** inventariar conteúdo exclusivo, dependências e hash, arquivar em OUTRAS_VERSOES somente depois da verificação, e não excluir sem recuperação validada. Não guardar arquivos essenciais no computador corporativo.
+**Regra contra dispersão:** antes de criar qualquer pasta, documento, quadro, prompt ou cópia, verificar o registro mestre e atualizar o existente; não criar um segundo hub.
+
 ## Regra aprovada pelo proprietário
 Uma única linha FORJA V11, em duas condições: EM USO (versão que o proprietário pode abrir/testar) e EM EVOLUÇÃO (cópia da base validada; só substitui em uso após testes e aprovação). V9.4.2 não é linha de desenvolvimento; manter backup de contingência até recuperação comprovada. Sem exclusões destrutivas, sem contratação e sem deploy em produção sem autorização.
 
