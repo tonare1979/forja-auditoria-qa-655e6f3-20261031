@@ -8,14 +8,14 @@ Set-Location $repo
 if(Test-Path $temp){throw 'TEMP_BUNDLE_EXISTS'}
 & git bundle create $temp --all | Out-Null
 if($LASTEXITCODE -ne 0){throw 'CREATE_BUNDLE_FAIL'}
-& git bundle verify $temp *> $null
+& cmd.exe /c ('git bundle verify '+$temp+' 1>NUL 2>NUL')
 if($LASTEXITCODE -ne 0){throw 'VERIFY_CANDIDATE_FAIL'}
 if(Test-Path $old){throw 'OLD_BACKUP_PATH_CONFLICT'}
 New-Item (Split-Path $old -Parent) -ItemType Directory -Force|Out-Null
 Move-Item -LiteralPath $current -Destination $old -ErrorAction Stop
 try{
  Move-Item -LiteralPath $temp -Destination $current -ErrorAction Stop
- & git bundle verify $current *> $null
+ & cmd.exe /c ('git bundle verify '+$current+' 1>NUL 2>NUL')
  if($LASTEXITCODE -ne 0){throw 'FINAL_BUNDLE_VERIFY_FAILED'}
 } catch{
  if(!(Test-Path $current) -and (Test-Path $old)){Move-Item -LiteralPath $old -Destination $current -ErrorAction SilentlyContinue}
