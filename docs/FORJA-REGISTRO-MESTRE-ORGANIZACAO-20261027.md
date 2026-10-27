@@ -1,6 +1,16 @@
 # FORJA V11 | REGISTRO MESTRE DE ORGANIZAÇÃO
 Data-base: 27/10/2026. Status: inventário preliminar verificado; não confundir plano com execução.
 
+## Encerramento técnico da rodada de arrumação, 27/10/2026
+- **QA pós-organização:** 20/20 PASS, exit 0 em `FORJA_PLAYWRIGHT_QA/reports/forja-qa-batch-2026-10-27T22-41-22-896Z.json`. Teste automático, não aceite Safari físico.
+- **Worker em uso confirmado por leitura Cloudflare API:** versão `b181c14c-8c8a-43a5-88e0-6395722b1f74` servindo **100%**, sem deploy de código durante a organização.
+- **Backup Git atualizado e verificado:** `C:\Users\renat\FORJA_BACKUPS\FORJA_V11_RC3_GIT_20261027.bundle`, SHA-256 `D41A76587C01970D3E6AB71961564A42702394F8A1AEC2EBA7EB41B03419D03B`, contendo HEAD `2e1afdc7eb867a3f35f07036d3c8ef1f66da2e47`; bundle anterior preservado em `OUTRAS_VERSOES\GIT_BUNDLES`; outra candidata histórica preservada. Commits posteriores ao HEAD deste bundle exigem novo snapshot, sem alterar a validade do histórico até aquele commit.
+- **Git:** 29 worktrees totais: 27 históricas arquivadas, 1 ativa, 1 repositório-âncora; `FINAL_LAYOUT_AND_QA_TASK_PASS`. Não houve exclusão de worktree. Situação em `docs/FORJA-WORKTREES-SITUACAO-FINAL-20261027.csv`.
+- **Evidências legadas:** 3 pastas não Git arquivadas, 375 arquivos verificados por SHA-256, inclusive transferência do Desktop. Duas provas de build arquivadas separadamente, 6 arquivos verificados.
+- **Local ativo:** `C:\Users\renat\FORJA_RC3_E2E_WORKFLOW_20261027`. Agendamento `FORJA_RC3_QA_Gratuito` conferido e atualizado. O console local de Wrangler de testes em 8799/8800 foi encerrado sem afetar o Worker remoto.
+- **Sem afirmar “tudo concluído”:** imagens originais Work ainda não importadas como binários canônicos; backup/restauração remota conjunta Worker, D1, R2, chaves não validado; segunda instância V11 evolução ainda não criada, aprovação do Safari/Edge ausente. Estas pendências impedem declarar a ORGANIZAÇÃO INTEGRAL encerrada e liberar auditoria.
+- **Exceção de segurança:** pasta âncora `forja-v11-homologaca` e pasta `FORJA_RECUPERACAO_PESSOAL` mantidas separadas por necessidade técnica/confidencial. O modelo de apenas dois destinos lógicos permanece, com essas dependências físicas documentadas.
+
 ## ESTADO VIGENTE | FORJA V11 | 27/10/2026 (após arrumação)
 **Fonte oficial:** este registro e o [README do repositório](../README.md). **App V11 RC3 em uso para homologação:** código `93faf8d`, Worker `b181c14c`, endereço `https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev/`. **Evolução:** branch `fix/rc3-equipment-thumb-contain-20261027`, HEAD documental/operacional posterior, sem deploy do app. **V9:** somente contingência histórica.
 
