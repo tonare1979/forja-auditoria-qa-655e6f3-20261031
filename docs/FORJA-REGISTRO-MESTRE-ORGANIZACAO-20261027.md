@@ -30,6 +30,20 @@ Data-base: 27/10/2026. Status: inventário preliminar verificado; não confundir
 - [ ] Concluir arrumação e obter liberação explícita antes de qualquer nova auditoria.
 - IMPORTANTE: o checkout local do notebook ainda apontava para `ecba7ad` ao ser consultado, porque documentos mais novos foram commitados diretamente via GitHub. Sincronizar com cuidado antes de executar script local ou criar commits, preservando `.wrangler/`, thumbnails QA e `tests/e2e-local-http-isolated.mjs`.
 
+## Arrumação executada, inventário aprofundado 27/10/2026
+- [x] Sincronização fast-forward GitHub -> notebook pessoal, commit `09f85f1` confirmado, sem apagar os itens locais não rastreados.
+- [x] Inventário quantitativo de 24 diretórios em `docs/FORJA-INVENTARIO-PASTAS-20261027.csv`, com número de arquivos, bytes, data de alteração e classificação conservadora.
+- [x] Inventário de vínculos Git, commits/branches/remotes em `docs/FORJA-INVENTARIO-GIT-20261027.csv`.
+- [x] Alterações não consolidadas em diretórios antigos listadas em `docs/FORJA-INVENTARIO-ALTERACOES-20261027.csv`. O inventário revela cópias de trabalho com alterações não publicadas e arquivos exclusivos. **Não descartar!**
+- [x] Scripts reaplicáveis de inventário salvos em `ops/inventory-*-20261027.ps1`, sem edição de código de produção.
+- [x] Bundle de backup Git com todos os refs: `C:\Users\renat\FORJA_BACKUPS\FORJA_V11_RC3_GIT_20261027.bundle`. `git bundle verify` OK; SHA-256 `6fbcf4697124602e47e8c4192dfb296d5df5b1d73f535a87db3f8e4439e72beb`. Isto é somente backup de Git, NÃO inclui alterações não rastreadas, banco D1/R2 nem segredos.
+- [!] Encontrados vários diretórios como **Git worktrees do repositório principal** (bundle listou `worktrees/FORJA_...`). Movê-los em massa quebra os registros .git e caminhos de automação; exige remoção/realocação via `git worktree` após preservar modificações. Não mover `forja-v11-homologaca` (497+MB) antes de analisar se é repositório compartilhado e depositário das worktrees.
+- [ ] Verificar hashes e destino das alterações locais preservadas; classificar conteúdo não versionado e dependências, incluindo `FORJA_RC3_UX_DEPLOY_SAFE` (29 alterações) e `FORJA_RC3_P0_IMPL` (11), antes de arquivar.
+- [ ] Validar restauração integrada Worker+D1+R2+chaves; não presumir que o bundle basta.
+- [ ] Importar arte Work aprovada com origem/hashes e direitos de uso para central Git, mantendo cópia bruta separada até prova.
+- [ ] Somente então migrar arquivos históricos a `OUTRAS_VERSOES` com manifesto e revisão de apontamentos externos.
+**ALERTA:** PASTAS NÃO ARQUIVADAS nem removidas. QA físico Safari/Edge, autenticação real e auditorias continuam fora deste escopo de arrumação.
+
 ## Regra aprovada pelo proprietário
 Uma única linha FORJA V11, em duas condições: EM USO (versão que o proprietário pode abrir/testar) e EM EVOLUÇÃO (cópia da base validada; só substitui em uso após testes e aprovação). V9.4.2 não é linha de desenvolvimento; manter backup de contingência até recuperação comprovada. Sem exclusões destrutivas, sem contratação e sem deploy em produção sem autorização.
 
