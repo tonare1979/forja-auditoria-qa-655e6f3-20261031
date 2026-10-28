@@ -1,0 +1,34 @@
+FORJA QA LOTE | branch fix/rc3-scout-daily-evidence-20261027 | commit c513ac76c23c | mode candidate | testes: 23 | ignorados declarados: remote-base-parity.mjs
+PASS scout-progress-daily.mjs (0s)
+PASS scout-progress-edge-cases.mjs (0s)
+PASS scout-progress-ui.mjs (0s)
+PASS auth-login-safari-regression.mjs (0s)
+PASS auth-real-handler-synthetic.mjs (0s)
+PASS ios-pwa-assets-contract.mjs (0s)
+FAIL ios-pwa-offline-shell.cjs (0s)
+MOTIVO:   code: 'MODULE_NOT_FOUND', |   requireStack: [ |     '/workspace/scratch/6d12d3cc29ee/forja/tests/ios-pwa-offline-shell.cjs' |   ] | } | Node.js v24.22.1
+FAIL ios-standalone-homologation.cjs (0s)
+MOTIVO:   code: 'MODULE_NOT_FOUND', |   requireStack: [ |     '/workspace/scratch/6d12d3cc29ee/forja/tests/ios-standalone-homologation.cjs' |   ] | } | Node.js v24.22.1
+FAIL qa-cross-device-sync-webkit.cjs (0s)
+MOTIVO:   code: 'MODULE_NOT_FOUND', |   requireStack: [ |     '/workspace/scratch/6d12d3cc29ee/forja/tests/qa-cross-device-sync-webkit.cjs' |   ] | } | Node.js v24.22.1
+PASS qa-profile-only-sync-guard.mjs (0s)
+FAIL qa-webkit-login-local.cjs (0s)
+MOTIVO: ║ <3 Playwright Team                                         ║ | ╚════════════════════════════════════════════════════════════╝ |     at /workspace/scratch/6d12d3cc29ee/forja/tests/qa-webkit-login-local.cjs:40:24 { |   log: [], |   name: 'Error' | }
+FAIL rc3-profile-reload-webkit.cjs (0s)
+MOTIVO:   code: 'MODULE_NOT_FOUND', |   requireStack: [ |     '/workspace/scratch/6d12d3cc29ee/forja/tests/rc3-profile-reload-webkit.cjs' |   ] | } | Node.js v24.22.1
+PASS remote-email-salt-smoke.mjs (15s)
+PASS sync-status-proof.mjs (0s)
+FAIL sync-status-webkit-local.cjs (0s)
+MOTIVO:   code: 'MODULE_NOT_FOUND', |   requireStack: [ |     '/workspace/scratch/6d12d3cc29ee/forja/tests/sync-status-webkit-local.cjs' |   ] | } | Node.js v24.22.1
+PASS qa-authenticated-occ-handler.mjs (0s)
+PASS qa-atomic-snapshot-history.mjs (0s)
+PASS qa-member-public-signup-cpf.mjs (0s)
+PASS qa-cpf-migration.mjs (0s)
+FAIL qa-guest-signup-webkit.cjs (0s)
+MOTIVO: ║ <3 Playwright Team                                         ║ | ╚════════════════════════════════════════════════════════════╝ |     at /workspace/scratch/6d12d3cc29ee/forja/tests/qa-guest-signup-webkit.cjs:31:24 { |   log: [], |   name: 'Error' | }
+PASS qa-admin-people-status.mjs (0s)
+FAIL qa-admin-people-webkit.cjs (0s)
+MOTIVO: ║ <3 Playwright Team                                         ║ | ╚════════════════════════════════════════════════════════════╝ |     at /workspace/scratch/6d12d3cc29ee/forja/tests/qa-admin-people-webkit.cjs:31:24 { |   log: [], |   name: 'Error' | }
+PASS qa-status-readonly.mjs (0s)
+BATCH_RESULT 15/23 FAILED=8
+EVIDENCIA_LOCAL /root/FORJA_PLAYWRIGHT_QA/reports/forja-qa-batch-2026-10-28T02-27-45-874Z.json

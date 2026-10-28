@@ -1,4 +1,6 @@
 # FORJA | RETOMADA OPERACIONAL ENTRE CHATS
+
+> Atualização operacional: este handoff é histórico quanto à branch/Worker. Leia primeiro [registro mestre](FORJA-REGISTRO-MESTRE-ORGANIZACAO-20261027.md), seção “Continuidade operacional executada no Work”. Correção isolada Scout `fdab18f1bfa27e9b0f7b57bb0ab6f954b642cbcf`; não houve deploy, merge ou aceite visual. Conteúdo original abaixo preservado.
 Data: 27/10/2026. Este é o documento de entrada para qualquer novo chat, Work, plugin ou outra IA. **Não confundir planejamento com execução.**
 
 ## 1. Objetivo do proprietário

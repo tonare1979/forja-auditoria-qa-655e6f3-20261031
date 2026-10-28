@@ -1,4 +1,62 @@
 # FORJA V11 | REGISTRO MESTRE DE ORGANIZAÇÃO
+
+## Continuidade operacional executada no Work — 27/10/2026, horário de Brasília
+
+**Correção isolada:** `fdab18f1bfa27e9b0f7b57bb0ab6f954b642cbcf`, branch `fix/rc3-scout-daily-evidence-20261027`. Base preservada: `dad628c57fbde798921174ea8491bd7f46d3050e` da branch de evolução vigente. Nenhum merge, deploy, migração, escrita D1/R2 ou criação de serviço.
+
+### Reconciliação das fontes
+- Handoff solicitado lido integralmente, além da central Notion e issues #17/#18/#19/#20.
+- Referência solicitada confirmada no GitHub: `feat/scout-analytics-local-20261027` HEAD `c9cd1a2976db0d87c88469f970a0f1d468b412f9`, pai de código `da87f0f935bbd891f910ae53d721d0f70f5ace74`.
+- Registro mestre/README/Notion apontam evolução posterior: `fix/rc3-equipment-thumb-contain-20261027` HEAD `dad628c57fbde798921174ea8491bd7f46d3050e`. Compare GitHub: 40 commits adiante, zero atrás. A correção parte desse descendente para preservar alternativas/restauração de séries, tradução, estado sem demonstração, autoplay e miniatura sem recorte. A branch solicitada não foi movida.
+- `main`: `b18319c1e1a6cdb77f9822a6efb8029f5683e0b7`. Consulta inicial: 28 branches; PRs #1/#2/#4/#5/#6/#13/#14/#15/#16 abertos em draft; #12 fechado e mesclado. Não mesclar a pilha histórica por suposição; os destinos variam e não são a integração vigente.
+- Cloudflare consultada nesta sessão, somente GET: deployment `c40f73f7-0d4f-458f-971b-b8eda6f574cb`, criado `2026-10-27T20:59:54.395459Z`, versão `b181c14c-8c8a-43a5-88e0-6395722b1f74` em 100%. DB `402315ff-3833-4060-91b6-8c6bd3884642`; PHOTOS `forja-v11-rc3-fotos-lab`; ASSETS presente. Código publicado `93faf8d715dfdc473005f422225d86805ba53228` é **informação do registro anterior**, não paridade integral reconfirmada nesta sessão. Version ID não é Git SHA.
+- Referências Work localizadas por IDs na Biblioteca. Nenhum design foi alterado; Figma reprovado continua reprovado. Não houve inspeção visual nova nem importação dos PNGs nesta correção funcional.
+
+### Plano executado e resultado
+- [x] Reconciliar HEADs antes de editar, isolar a branch e preservar o trabalho posterior ao handoff.
+- [x] Reproduzir erro do Scout antes da correção: em 10/10, 20 kg; em 20/10, 25 kg e depois 10 kg. O algoritmo anterior classificava redução conforme a ordem das sessões.
+- [x] Corrigir comparação pela maior carga válida por exercício/dia, mantendo volume, séries, sessões parciais e estado original. Não prescreve carga nem penaliza treino parcial.
+- [x] Adicionar regressão ao lote e renovar versão do cache estático, pois scout-progress.js é pré-cacheado. API e dados locais não são alterados.
+
+Arquivos de código/teste: `public/scout-progress.js`, `public/sw.js`, `tests/run-qa-batch.mjs`, `tests/scout-progress-daily.mjs`.
+
+### Comandos, saídas e escopo comprovado
+| Comando | Resultado executado |
+| --- | --- |
+| `node tests/scout-progress-daily.mjs` antes | exit 1; AssertionError: melhor carga diária aumentou de 20 para 25 kg; actual 0, expected 1 |
+| Mesmo comando após | exit 0; SCOUT_DAILY_ORDER_INDEPENDENCE_READONLY_PASS |
+| `node tests/scout-progress-edge-cases.mjs` | exit 0; SCOUT_PROGRESS_EDGE_CASES_PASS |
+| `node tests/scout-progress-ui.mjs` | exit 0; SCOUT_PROGRESS_UI_PASS |
+| `NODE_PATH="$CODEX_PRIMARY_RUNTIME_NODE_MODULES" FORJA_QA_MODE=candidate node tests/run-qa-batch.mjs` — base | exit 1; BATCH_RESULT 12/20 FAILED=8 |
+| Mesmo comando — candidata | exit 1; BATCH_RESULT 15/23 FAILED=8 |
+| `node tests/ios-pwa-assets-contract.mjs` | exit 0; PWA_ASSETS_CONTRACT_PASS |
+| `node tests/demo-autoplay-exact.mjs` | exit 0; FORJA_DEMO_AUTOPLAY_AND_EXACT_MAPPING_PASS 19; apenas contrato de catálogo, não reprodução/curadoria física |
+| `node --check` para Scout, SW e runner; `git diff --check` | exit 0 |
+| Verificação independente com 24 permutações de quatro sessões | exit 0; INDEPENDENT_24_PERMUTATIONS_PASS 24; volume 700, quatro parciais, aumento 40→50 kg |
+
+Também executados com exit 0: scout-analytics-v1, scout-forja-adapter, alternative-switch-restore, alternatives-ptbr, demo-availability-card, equipment-thumb-no-crop, qa-cpf-schema-parity, qa-cpf-recovery-drill e forja-music-weekend-ui. Esses testes não substituem aceite visual.
+
+**O lote não está verde.** Mesmas oito falhas na base e na candidata:
+- Caminho absoluto Windows inexistente (MODULE_NOT_FOUND): ios-pwa-offline-shell, ios-standalone-homologation, qa-cross-device-sync-webkit, rc3-profile-reload-webkit, sync-status-webkit-local.
+- Executável WebKit ausente (`/root/.cache/ms-playwright/webkit-2336/pw_run.sh`): qa-webkit-login-local, qa-guest-signup-webkit, qa-admin-people-webkit.
+Nenhuma instalação ou execução paga foi iniciada. Corrigir portabilidade e executar com WebKit disponível é continuidade necessária, não teste aprovado.
+
+### Proveniência da execução
+O clone HTTPS privado não teve credenciais Git disponíveis; leitura/escrita autenticadas ocorreram pelo GitHub conectado. Testes rodaram em **snapshot de arquivos importados**, não clone integral do histórico. O HEAD local `c513ac76c23c` NÃO é SHA GitHub: abreviado nos logs; ele identifica o snapshot local anterior às modificações. O log do runner registra esse HEAD, com árvore modificada, não o commit final remoto. Arquivos texto importados podem conter newline final adicional; não alegar equivalência binária da árvore completa.
+Os quatro arquivos finais foram relidos do GitHub pelo SHA da correção e comparados integralmente com os bytes testados: 4/4 iguais. Isso vincula esta correção ao código testado; não atesta todos os assets da aplicação. Logs integrais: [base](evidencias/continuidade-20261027/baseline.log) e [candidata](evidencias/continuidade-20261027/candidate.log).
+
+Primeiras tentativas do lote tiveram 14/23 por ausência dos ícones no snapshot. Recuperação posterior dos três ícones do Worker confirmou SHA Git blob idêntico à referência; contrato PWA passou. Esses binários já existentes não entram no patch. O acesso por Python retornou HTTP 403; leitura Node posterior funcionou. O catálogo foi importado do GitHub; teste de mapeamento passou. Nada disso comprova associação anatômica ou visual de mídia.
+
+### Bloqueios e próximo trabalho concreto
+1. WebKit executável e portabilidade dos cinco caminhos: oito testes sem execução funcional neste ambiente.
+2. Gate visual #17/#18: comparativo original 390/430px e Safari físico continuam sem aceite. Nenhum redesenho autorizado por esta correção.
+3. Vídeos e fotos por exercício: contrato estático não resolve curadoria, correspondência e reprodução física.
+4. E2E remoto autenticado, recuperação integrada Worker+D1+R2+chaves e paridade integral dos assets continuam sem prova nova.
+5. Organização #20: binários originais ainda não centralizados; não criar Worker adicional sob a restrição atual.
+
+34 workflows foram lidos: todos têm disparo manual workflow_dispatch; nenhuma execução Actions disparada. Nenhum serviço contratado. V9.4.2 intocada. **NO-GO para promoção/merge automático; correção revisável em branch isolada.**
+
+---
 Data-base: 27/10/2026. Status: inventário preliminar verificado; não confundir plano com execução.
 
 ## Encerramento técnico da rodada de arrumação, 27/10/2026
