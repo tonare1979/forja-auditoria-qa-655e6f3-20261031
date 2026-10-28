@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
-const {webkit,devices}=require('C:/Users/renat/FORJA_PLAYWRIGHT_QA/node_modules/playwright');
+const {webkit,devices}=require(process.env.FORJA_PLAYWRIGHT_MODULE||'playwright');
 const root=path.resolve('public'),copy=x=>JSON.parse(JSON.stringify(x));
 const initial={sessions:[{id:'qa-base-s1',date:'2026-10-15',code:'A',name:'Treino QA base',exercises:[{name:'Supino QA',sets:[{kg:20,reps:10}]}],minutes:40}],weights:[],checks:{},drafts:{},journal:[],skipRunAfterB:false,extraExercises:{},exerciseChoices:{},deezerPlaylist:'',profile:{},planOverrides:{}};
 let revision=1,remote=copy(initial);let gets=0,puts=0,conflicts=0;
@@ -87,3 +87,4 @@ async function snapshot(page){return page.evaluate(()=>({revision:cloud.revision
   await phone.ctx.close();await pc.ctx.close();
  }finally{if(browser)await browser.close();await new Promise(ok=>server.close(ok))}
 })().catch(e=>{console.error(e);process.exitCode=1});
+

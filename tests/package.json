@@ -1,0 +1,11 @@
+{
+  "name": "forja-rc3-qa",
+  "private": true,
+  "description": "Ferramentas locais de QA; sem deploy ou serviços remotos",
+  "devDependencies": {
+    "playwright": "1.64.0"
+  },
+  "scripts": {
+    "install:webkit": "playwright install webkit"
+  }
+}

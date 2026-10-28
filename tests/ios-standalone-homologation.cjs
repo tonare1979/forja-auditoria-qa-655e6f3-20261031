@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),http=require('node:http'),path=require('node:path');
-const {webkit,devices}=require('C:/Users/renat/FORJA_PLAYWRIGHT_QA/node_modules/playwright');
+const {webkit,devices}=require(process.env.FORJA_PLAYWRIGHT_MODULE||'playwright');
 const root=path.resolve('public');
 const state={sessions:[{id:'qa-synthetic-session',code:'A',date:'2026-10-15',name:'Superior QA',exercises:[{name:'Supino',sets:[{kg:40,reps:10}]}]}],weights:[{date:'2026-10-15',weight:63}],checks:{},drafts:{},journal:[],skipRunAfterB:false,extraExercises:{},exerciseChoices:{},deezerPlaylist:'',profile:{},planOverrides:{}};
 let writes=0,reads=0;
@@ -78,3 +78,4 @@ async function open(ctx,origin){const page=await ctx.newPage(),errors=[];page.on
   await expired.close();await safari.close();
  }finally{if(b)await b.close();await new Promise(ok=>server.close(ok));}
 })().catch(e=>{console.error(e);process.exitCode=1});
+

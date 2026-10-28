@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),http=require('node:http'),path=require('node:path');
-const {webkit,devices}=require('C:/Users/renat/FORJA_PLAYWRIGHT_QA/node_modules/playwright');
+const {webkit,devices}=require(process.env.FORJA_PLAYWRIGHT_MODULE||'playwright');
 const root=path.resolve('public'),user='qa_sync',lastSync='2026-10-25T10:00:24.000Z';
 const state={sessions:[],weights:[],checks:{},drafts:{},journal:[],skipRunAfterB:false,extraExercises:{},exerciseChoices:{},deezerPlaylist:'',profile:{},planOverrides:{}};
 function serverFor(kind){
@@ -40,3 +40,4 @@ function serverFor(kind){
   }finally{await context.close();await new Promise(resolve=>srv.close(resolve));}
  }
 }finally{await b.close();}})().catch(e=>{console.error(e);process.exitCode=1});
+

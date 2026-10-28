@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
-const {webkit,devices}=require('C:/Users/renat/FORJA_PLAYWRIGHT_QA/node_modules/playwright');
+const {webkit,devices}=require(process.env.FORJA_PLAYWRIGHT_MODULE||'playwright');
 const root=path.resolve('public');
 const localData={sessions:[],weights:[],checks:{},drafts:{},journal:[],skipRunAfterB:false,extraExercises:{},exerciseChoices:{},deezerPlaylist:'',profile:{},planOverrides:{}};
 const server=http.createServer(async(req,res)=>{
@@ -49,3 +49,4 @@ const server=http.createServer(async(req,res)=>{
   await guest.close();
  }finally{if(browser)await browser.close();await new Promise(resolve=>server.close(resolve));}
 })().catch(e=>{console.error(e);process.exitCode=1});
+

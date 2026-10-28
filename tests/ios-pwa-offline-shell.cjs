@@ -1,5 +1,5 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
-const {webkit,devices}=require('C:/Users/renat/FORJA_PLAYWRIGHT_QA/node_modules/playwright');
+const {webkit,devices}=require(process.env.FORJA_PLAYWRIGHT_MODULE||'playwright');
 const root=path.resolve('public');
 const server=http.createServer((req,res)=>{
  const u=new URL(req.url,'http://127.0.0.1');if(u.pathname.startsWith('/api/')){let status=u.pathname==='/api/health'?200:401;res.writeHead(status,{'content-type':'application/json'});return res.end(JSON.stringify(status===200?{ok:true}:{error:'NAO_AUTENTICADO'}))}
@@ -27,3 +27,4 @@ const server=http.createServer((req,res)=>{
  await ctx.close();
  }finally{if(b)await b.close();await new Promise(r=>server.close(r))}
 })().catch(e=>{console.error(e);process.exitCode=1});
+
