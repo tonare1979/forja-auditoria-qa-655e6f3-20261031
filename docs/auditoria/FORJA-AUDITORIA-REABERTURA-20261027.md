@@ -56,3 +56,13 @@ Próxima prioridade: validar QA remoto não destrutivo na versão `b181c14c`, de
 - `node tests/qa-guest-signup-webkit.cjs` inicialmente falhou na resolução de `playwright`, pois dependência não fica no checkout ativo. Confirmado `playwright` já existente em `C:\Users\renat\FORJA_PLAYWRIGHT_QA\node_modules`. Nova execução usando `NODE_PATH` existente: `RC3_GUEST_SIGNUP_WEBKIT_PENDING_CPF_PASS`, **exit 0**, sem instalar pacotes.
 - Resultado prova o fluxo sintético de cadastro pendente com CPF em WebKit de teste, **não aprovação administrativa real nem iPhone físico**.
 - Nenhuma operação de escrita remota, deploy, migração ou criação de contas reais.
+
+## Evidência comunicada pelo Codex local: lote isolado de 21 testes
+**Origem:** resultado apresentado pelo operador a partir da sessão Codex local; não obtivemos logs diretamente por integração entre sessões. **Estado: evidência relatada, não reproduzida nesta sessão.**
+- Ambiente declarado: `C:\Users\renat\FORJA_RC3_E2E_WORKFLOW_20261027`, Node v24.20.0, 21 testes PASS, zero FAIL, todos exit 0, agregador exit 0.
+- Comando declarado por teste: `node --permission --allow-fs-read=. --input-type=module -e "globalThis.fetch=()=>{throw new Error('QA_NETWORK_FORBIDDEN')}; await import(process.argv[1]);" ./tests/<arquivo>`.
+- Testes: alternative-switch-restore, alternatives-ptbr, auth-login-safari-regression, auth-real-handler-synthetic, demo-autoplay-exact, demo-availability-card, equipment-thumb-no-crop, forja-music-weekend-ui, ios-pwa-assets-contract, qa-admin-people-status, qa-atomic-snapshot-history, qa-authenticated-occ-handler, qa-cpf-migration, qa-cpf-schema-parity, qa-member-public-signup-cpf, qa-profile-only-sync-guard, scout-analytics-v1, scout-forja-adapter, scout-progress-edge-cases, scout-progress-ui e sync-status-proof (todos .mjs).
+- `UNIQUE constraint failed` no teste de histórico atômico foi exceção proposital para validar rollback, segundo a execução relatada.
+- Comparação SHA-256 antes/depois nas pastas `src`, `public`, `tests`, `ops`, `migrations`: zero alterações declaradas; estado Git inalterado; sem acesso remoto, deploy ou custo.
+- **Não realizados:** remoto autenticado, navegador físico iPhone, navegador que cria perfil temporário, E2E HTTP com servidor e D1 preparados, recuperação integrada Worker+D1+R2+chaves.
+- **Veredito:** validação local favorável e relatório externo recebido, **RC3 ainda NÃO HOMOLOGADA**.
