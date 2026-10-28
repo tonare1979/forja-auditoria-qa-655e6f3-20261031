@@ -1,5 +1,5 @@
 // HOMOLOGAÇÃO — V11 CANDIDATA, cache exclusivo
-const CACHE='forja73-static-v11-rc3-workcard-image-20261027';
+const CACHE='forja73-static-v11-rc3-scout-daily-20261027';
 const FILES=['./','./features.js','./forja-post.js','./scout-progress.js','./forja-music-v1.js','./forja-cover-rio-casal-v2.png','./forja-brand-original.png','./forja-cover-rio-v10.webp','./index.html','./manifest.webmanifest','./forja-icon-rc3-180.png','./forja-icon-rc3-192.png','./forja-icon-rc3-512.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('forja73-static-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
@@ -9,3 +9,4 @@ if(/\/(?:features|forja-post)\.js$/.test(u.pathname)||/\/(?:catalog\.json|manife
  e.respondWith(fetch(req,{cache:'no-store'}).then(res=>{if(res.ok){const clone=res.clone();e.waitUntil(caches.open(CACHE).then(c=>c.put(req,clone)))}return res}).catch(()=>caches.match(req)));return;
 }
 e.respondWith(caches.match(req).then(c=>c||fetch(req)))});
+

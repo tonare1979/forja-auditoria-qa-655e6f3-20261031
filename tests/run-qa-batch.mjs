@@ -15,6 +15,9 @@ if(origin&&origin.replace(/\/$/,'')!==allowedOrigin){
 }
 const mode=process.env.FORJA_QA_MODE==='candidate'?'candidate':'full';
 const tests=[
+  'scout-progress-daily.mjs',
+  'scout-progress-edge-cases.mjs',
+  'scout-progress-ui.mjs',
   'auth-login-safari-regression.mjs',
   'auth-real-handler-synthetic.mjs',
   'ios-pwa-assets-contract.mjs',
@@ -69,3 +72,4 @@ writeFileSync(file,JSON.stringify(report,null,2)+'\n',{flag:'wx',encoding:'utf8'
 console.log('BATCH_RESULT '+ok+'/'+results.length+' FAILED='+(results.length-ok));
 console.log('EVIDENCIA_LOCAL '+file);
 if(ok!==results.length)process.exitCode=1;
+
