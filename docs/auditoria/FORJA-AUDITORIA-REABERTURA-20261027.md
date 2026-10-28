@@ -50,3 +50,9 @@ Próxima prioridade: validar QA remoto não destrutivo na versão `b181c14c`, de
 - `GET https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev/forja-music-v1.js` → HTTP **200**, 4807 bytes nesta consulta.
 - Estes testes verificam rótulos, referências no HTML, recursos carregáveis, CSS `object-fit:contain` e montagem de cartões. **Não comprovam licenças/identidade das 20 fotografias, reprodução de vídeos, ligação correta entre exercício e equipamento ou aceite Safari físico.** Tampouco verificam o conteúdo real das playlists em cada serviço.
 - Parecer geral permanece NÃO HOMOLOGADO até testes autenticados remotos, UX iPhone e recuperação integrada.
+
+## Rodada seguinte: cadastro WebKit local, 27/10/2026
+- `tests/e2e-local-http-isolated.mjs` inspecionado: aponta **somente** para `http://127.0.0.1:8799`, cria administrador sintético local; não executar contra Worker remoto. Porta local indisponível (`curl STATUS:000`), portanto **HTTP E2E não executado**, sem alegação de êxito.
+- `node tests/qa-guest-signup-webkit.cjs` inicialmente falhou na resolução de `playwright`, pois dependência não fica no checkout ativo. Confirmado `playwright` já existente em `C:\Users\renat\FORJA_PLAYWRIGHT_QA\node_modules`. Nova execução usando `NODE_PATH` existente: `RC3_GUEST_SIGNUP_WEBKIT_PENDING_CPF_PASS`, **exit 0**, sem instalar pacotes.
+- Resultado prova o fluxo sintético de cadastro pendente com CPF em WebKit de teste, **não aprovação administrativa real nem iPhone físico**.
+- Nenhuma operação de escrita remota, deploy, migração ou criação de contas reais.
