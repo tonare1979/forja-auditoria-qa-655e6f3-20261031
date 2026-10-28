@@ -1,5 +1,39 @@
 # FORJA V11 | REGISTRO MESTRE DE ORGANIZAÇÃO
 
+## QA concluído no Work: 20/20 e 23/23 — 27/10/2026, Brasília
+
+**Resultado executado:** bateria histórica de 20 testes: **20/20, FAILED=0, exit 0**; candidata com três regressões Scout: **23/23, FAILED=0, exit 0**. Esta rodada supera os bloqueios ambientais registrados abaixo; seus logs anteriores permanecem preservados.
+
+**SHA de código/ferramentas:** `5bb182b6db8c71529906971347f15a46f6d3af9b`. Branch isolada `fix/rc3-scout-daily-evidence-20261027`, PR #21. Nenhum deploy, merge, Actions, escrita D1/R2 ou alteração V9.4.2.
+
+### Causa e correção verificadas
+1. Cinco testes exigiam caminho absoluto do notebook: ios-pwa-offline-shell, ios-standalone-homologation, qa-cross-device-sync-webkit, rc3-profile-reload-webkit e sync-status-webkit-local. Troca exclusiva da importação por `require(process.env.FORJA_PLAYWRIGHT_MODULE||'playwright')`, padrão já usado pelos demais testes. Comparação programática contra o conteúdo anterior confirmou **asserções inalteradas nos cinco arquivos**.
+2. Playwright 1.62.1/WebKit 2336 executou os fluxos e deixou apenas offline em FAIL: **19/20 e 22/23**. Service worker ativo/controlando e cache existente foram confirmados; recarga com `context.setOffline(true)` ainda falhava.
+3. Defeito externo confirmado em fontes primárias: [Playwright #42775](https://github.com/microsoft/playwright/issues/42775), correção [#42894](https://github.com/microsoft/playwright/pull/42894), incorporada em 05/10/2026. Fixado **Playwright 1.64.0**, WebKit **27.2 / revisão 2370**, em `tests/package.json` e lockfile. Nenhuma mudança no algoritmo do app foi necessária nesta rodada.
+4. O teste offline original permaneceu com `context.setOffline(true)` e recarga obrigatória. Passou: PWA_SERVICE_WORKER_ACTIVE_PASS, PWA_SW_VERSIONED_CACHE_PASS, PWA_OFFLINE_ICON_CACHE_PASS, **PWA_OFFLINE_APP_SHELL_PASS**.
+5. Dependências Linux foram baixadas e extraídas no ambiente local de execução. Instalação padrão encontrou limitações de UID/cache; extração local e registro das bibliotecas resolveram sem desabilitar validação do Playwright. Nenhum serviço contratado.
+
+### Execução e provas
+| Bateria | Início UTC | Saída final | Evidência |
+| --- | --- | --- | --- |
+| 20 testes, sem alteração Scout | 2026-10-28T02:38:37.645Z | BATCH_RESULT 20/20 FAILED=0; exit 0 | [log](evidencias/qa-verde-20261027/baseline.log), [JSON bruto](evidencias/qa-verde-20261027/baseline.json) |
+| 23 testes, candidata Scout | 2026-10-28T02:39:05.790Z | BATCH_RESULT 23/23 FAILED=0; exit 0 | [log](evidencias/qa-verde-20261027/candidate.log), [JSON bruto](evidencias/qa-verde-20261027/candidate.json) |
+
+Horários correspondem à noite de 27/10 em Brasília. Node **v24.22.1**, Ubuntu 24.04, WebKit headless com perfis móveis definidos pelos testes. Fluxos aprovados incluem login, standalone, offline shell, sincronização entre dois contextos, conflito/reconciliação, retorno de perfil, cadastro público, administração, CPF, atomicidade/histórico e Scout.
+
+Preparação executada: `npm ci --prefix tests --ignore-scripts --no-audit --no-fund`; instalação do navegador por `node <ferramentas>/node_modules/playwright/cli.js install webkit`. Em máquina Linux normal, instalar também dependências do navegador com o comando oficial `node tests/node_modules/playwright/cli.js install-deps webkit`.
+
+Comando do lote: `NODE_PATH="$CODEX_PRIMARY_RUNTIME_NODE_MODULES" FORJA_QA_MODE=candidate node tests/run-qa-batch.mjs`. Na execução Linux desta sessão, `LD_LIBRARY_PATH` incluiu os diretórios de bibliotecas extraídas. A sequência exata usada para alternar baseline/candidata está em [execution-script.py](evidencias/qa-verde-20261027/execution-script.py). Ela restaura três arquivos da base importada para a primeira bateria e repõe a candidata em finally; as cinco correções de portabilidade ficam aplicadas nas duas. Não executá-la cegamente em outra árvore: o HEAD local de importação é específico desta sessão. Para repetir a candidata no clone GitHub, basta preparar dependências e executar o lote acima.
+
+**Escopo dos números:** mesmas 20 suítes do modo candidate original, mais as três regressões Scout no lote 23. `remote-base-parity.mjs` continua excluído explicitamente pelo modo candidate preexistente; não foi removido um teste para chegar a estes totais. Os oito testes antes falhos foram efetivamente executados e aprovados. Nenhum retry automático, skip novo ou captura de exceção para converter falha em PASS.
+
+Os JSONs brutos preservam o HEAD local `c513ac76c23c` e a branch do snapshot importado, com alterações, tal como informados pelo runner. **Não representam clone integral nem execução com árvore Git limpa.** O vínculo ao SHA remoto foi feito por leitura posterior dos quatro arquivos Scout/cache/runner/regressão e dos oito arquivos de portabilidade/dependências: conteúdo integral igual ao testado. [Proveniência e hashes](evidencias/qa-verde-20261027/provenance.json). Logs intermediários 19/20 e 22/23 foram preservados para demonstrar o efeito da atualização do navegador.
+
+QA automatizado local concluído. Safari/iPhone físico, aceite visual, reprodução/curadoria real de mídia, paridade integral do Worker e recuperação integrada continuam gates separados. O PR permanece draft e não autoriza promoção.
+
+
+---
+
 ## Continuidade operacional executada no Work — 27/10/2026, horário de Brasília
 
 **Correção isolada:** `fdab18f1bfa27e9b0f7b57bb0ab6f954b642cbcf`, branch `fix/rc3-scout-daily-evidence-20261027`. Base preservada: `dad628c57fbde798921174ea8491bd7f46d3050e` da branch de evolução vigente. Nenhum merge, deploy, migração, escrita D1/R2 ou criação de serviço.

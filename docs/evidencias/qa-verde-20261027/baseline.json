@@ -1,0 +1,164 @@
+{
+  "app": "FORJA RC3",
+  "kind": "local-nondestructive-qa",
+  "startedAt": "2026-10-28T02:38:37.645Z",
+  "finishedAt": "2026-10-28T02:39:05.709Z",
+  "commit": "c513ac76c23c57b866dd3e8d1e2cb84c40b85542",
+  "branch": "fix/rc3-scout-daily-evidence-20261027",
+  "mode": "candidate",
+  "skipped": [
+    "remote-base-parity.mjs"
+  ],
+  "liveOrigin": "https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev",
+  "total": 20,
+  "passed": 20,
+  "failed": 0,
+  "results": [
+    {
+      "name": "auth-login-safari-regression.mjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 0
+    },
+    {
+      "name": "auth-real-handler-synthetic.mjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 0
+    },
+    {
+      "name": "ios-pwa-assets-contract.mjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 0
+    },
+    {
+      "name": "ios-pwa-offline-shell.cjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 1
+    },
+    {
+      "name": "ios-standalone-homologation.cjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 2
+    },
+    {
+      "name": "qa-cross-device-sync-webkit.cjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 2
+    },
+    {
+      "name": "qa-profile-only-sync-guard.mjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 0
+    },
+    {
+      "name": "qa-webkit-login-local.cjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 2
+    },
+    {
+      "name": "rc3-profile-reload-webkit.cjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 1
+    },
+    {
+      "name": "remote-email-salt-smoke.mjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 14
+    },
+    {
+      "name": "sync-status-proof.mjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 0
+    },
+    {
+      "name": "sync-status-webkit-local.cjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 3
+    },
+    {
+      "name": "qa-authenticated-occ-handler.mjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 0
+    },
+    {
+      "name": "qa-atomic-snapshot-history.mjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 0
+    },
+    {
+      "name": "qa-member-public-signup-cpf.mjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 0
+    },
+    {
+      "name": "qa-cpf-migration.mjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 0
+    },
+    {
+      "name": "qa-guest-signup-webkit.cjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 2
+    },
+    {
+      "name": "qa-admin-people-status.mjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 0
+    },
+    {
+      "name": "qa-admin-people-webkit.cjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 1
+    },
+    {
+      "name": "qa-status-readonly.mjs",
+      "pass": true,
+      "exitCode": 0,
+      "errorCode": null,
+      "seconds": 0
+    }
+  ],
+  "limitations": [
+    "Não comprova conflito autenticado no D1 remoto",
+    "Não substitui teste físico iPhone",
+    "Nenhum deploy ou escrita remota realizada",
+    "Paridade de assets remotos não executada: versão candidata ainda não publicada"
+  ]
+}
