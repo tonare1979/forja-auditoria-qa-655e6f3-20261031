@@ -19,8 +19,28 @@ $failed=Join-Path $Backups ($BundleName+'.FAILED.'+$nonce)
 if(Test-Path -LiteralPath $temp){throw 'TEMP_BUNDLE_EXISTS'}
 if(-not (Test-Path -LiteralPath $current)){throw 'CURRENT_BACKUP_MISSING'}
 function Test-Bundle([string]$path){
-  & git -C $Repo bundle verify $path 2>&1 | Out-Null
-  if($LASTEXITCODE -ne 0){throw ('BUNDLE_VERIFY_FAILED '+$path)}
+  # Windows PowerShell 5.1 can turn successful native stderr into a
+  # terminating NativeCommandError. Read both streams outside that pipeline.
+  $start=New-Object System.Diagnostics.ProcessStartInfo
+  $start.FileName=(Get-Command git -CommandType Application -ErrorAction Stop | Select-Object -First 1).Source
+  $start.WorkingDirectory=$Repo
+  $quoted='"'+[regex]::Replace([regex]::Replace($path,'(\\*)"','$1$1\"'),'(\\+)$','$1$1')+'"'
+  $start.Arguments='bundle verify '+$quoted
+  $start.UseShellExecute=$false
+  $start.CreateNoWindow=$true
+  $start.RedirectStandardOutput=$true
+  $start.RedirectStandardError=$true
+  $process=New-Object System.Diagnostics.Process
+  $process.StartInfo=$start
+  try {
+    [void]$process.Start()
+    $stdout=$process.StandardOutput.ReadToEndAsync()
+    $stderr=$process.StandardError.ReadToEndAsync()
+    $process.WaitForExit()
+    [void]$stdout.GetAwaiter().GetResult()
+    $message=$stderr.GetAwaiter().GetResult()
+    if($process.ExitCode -ne 0){throw ('BUNDLE_VERIFY_FAILED '+$path+'; '+$message.Trim())}
+  } finally {$process.Dispose()}
 }
 # Never disturb the current backup until the candidate is independently verified.
 & git -C $Repo bundle create $temp --all
