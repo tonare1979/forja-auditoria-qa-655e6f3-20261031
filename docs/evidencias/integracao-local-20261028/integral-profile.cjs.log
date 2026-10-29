@@ -1,0 +1,51 @@
+FAIL arquivo integral carregado e listeners reais AssertionError [ERR_ASSERTION]: forjaWeightSummary
+    at fn (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:7:81)
+    at setup (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:15:65)
+    at /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:23:72
+    at async /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:23:1
+FAIL atleta A abrir editar salvar recarregar AssertionError [ERR_ASSERTION]: forjaWeightSummary
+    at fn (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:7:81)
+    at setup (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:15:65)
+    at /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:24:72
+    at async /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:24:1
+FAIL atleta B diferente e isolado AssertionError [ERR_ASSERTION]: forjaWeightSummary
+    at fn (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:7:81)
+    at setup (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:15:65)
+    at /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:25:61
+    at async /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:25:1
+FAIL perfil antigo e campos vazios sem 63/73 AssertionError [ERR_ASSERTION]: forjaWeightSummary
+    at fn (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:7:81)
+    at setup (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:15:65)
+    at /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:26:72
+    at async /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:26:1
+FAIL perfil antigo sem profile recupera pesos anteriores AssertionError [ERR_ASSERTION]: forjaWeightSummary
+    at fn (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:7:81)
+    at setup (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:15:65)
+    at /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:27:79
+    at async /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:27:1
+FAIL valor inválido não modifica estado AssertionError [ERR_ASSERTION]: forjaWeightSummary
+    at fn (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:7:81)
+    at setup (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:15:65)
+    at /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:28:67
+    at async /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:28:1
+FAIL meta 999 não substitui estado AssertionError [ERR_ASSERTION]: forjaWeightSummary
+    at fn (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:7:81)
+    at setup (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:15:65)
+    at /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:29:62
+    at async /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:29:1
+FAIL falha persistencia QuotaExceededError sem sucesso com retry AssertionError [ERR_ASSERTION]: forjaWeightSummary
+    at fn (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:7:81)
+    at setup (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:15:65)
+    at /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:30:140
+    at async /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:30:59
+FAIL falha persistencia SecurityError sem sucesso com retry AssertionError [ERR_ASSERTION]: forjaWeightSummary
+    at fn (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:7:81)
+    at setup (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:15:65)
+    at /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:30:140
+    at async /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:30:59
+FAIL painel usa resumo individual, não fixos AssertionError [ERR_ASSERTION]: forjaWeightSummary
+    at fn (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:7:81)
+    at setup (/workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:15:65)
+    at /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:31:67
+    at async /workspace/scratch/a6207f95c538/forja-integration/tests/integral-profile.cjs:31:1
+RESULT 0/10 EXIT 1

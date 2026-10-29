@@ -1,0 +1,34 @@
+FORJA QA LOTE | branch fix/rc3-integracao-local-20261028 | commit c9a48e753d49 | mode candidate | testes: 23 | ignorados declarados: remote-base-parity.mjs
+PASS scout-progress-daily.mjs (0s)
+PASS scout-progress-edge-cases.mjs (1s)
+PASS scout-progress-ui.mjs (0s)
+PASS auth-login-safari-regression.mjs (0s)
+PASS auth-real-handler-synthetic.mjs (0s)
+PASS ios-pwa-assets-contract.mjs (0s)
+FAIL ios-pwa-offline-shell.cjs (1s)
+MOTIVO: ║ <3 Playwright Team                                         ║ | ╚════════════════════════════════════════════════════════════╝ |     at /workspace/scratch/a6207f95c538/forja-integration/tests/ios-pwa-offline-shell.cjs:13:21 { |   log: [], |   name: 'Error' | }
+FAIL ios-standalone-homologation.cjs (0s)
+MOTIVO: ║ <3 Playwright Team                                         ║ | ╚════════════════════════════════════════════════════════════╝ |     at /workspace/scratch/a6207f95c538/forja-integration/tests/ios-standalone-homologation.cjs:27:18 { |   log: [], |   name: 'Error' | }
+FAIL qa-cross-device-sync-webkit.cjs (0s)
+MOTIVO: ║ <3 Playwright Team                                         ║ | ╚════════════════════════════════════════════════════════════╝ |     at /workspace/scratch/a6207f95c538/forja-integration/tests/qa-cross-device-sync-webkit.cjs:48:24 { |   log: [], |   name: 'Error' | }
+PASS qa-profile-only-sync-guard.mjs (0s)
+FAIL qa-webkit-login-local.cjs (0s)
+MOTIVO: ║ <3 Playwright Team                                         ║ | ╚════════════════════════════════════════════════════════════╝ |     at /workspace/scratch/a6207f95c538/forja-integration/tests/qa-webkit-login-local.cjs:40:24 { |   log: [], |   name: 'Error' | }
+FAIL rc3-profile-reload-webkit.cjs (0s)
+MOTIVO: ║ <3 Playwright Team                                         ║ | ╚════════════════════════════════════════════════════════════╝ |     at /workspace/scratch/a6207f95c538/forja-integration/tests/rc3-profile-reload-webkit.cjs:28:24 { |   log: [], |   name: 'Error' | }
+PASS remote-email-salt-smoke.mjs (18s)
+PASS sync-status-proof.mjs (0s)
+FAIL sync-status-webkit-local.cjs (1s)
+MOTIVO: ╚══════════════════════════════════════════════════════╝ |     at /workspace/scratch/a6207f95c538/forja-integration/tests/sync-status-webkit-local.cjs:24:33 |     at Object.<anonymous> (/workspace/scratch/a6207f95c538/forja-integration/tests/sync-status-webkit-local.cjs:42:29) { |   log: [], |   name: 'Error' | }
+PASS qa-authenticated-occ-handler.mjs (0s)
+PASS qa-atomic-snapshot-history.mjs (0s)
+PASS qa-member-public-signup-cpf.mjs (0s)
+PASS qa-cpf-migration.mjs (0s)
+FAIL qa-guest-signup-webkit.cjs (1s)
+MOTIVO: ║     libGLESv2.so.2                                   ║ | ╚══════════════════════════════════════════════════════╝ |     at /workspace/scratch/a6207f95c538/forja-integration/tests/qa-guest-signup-webkit.cjs:31:24 { |   log: [], |   name: 'Error' | }
+PASS qa-admin-people-status.mjs (0s)
+FAIL qa-admin-people-webkit.cjs (1s)
+MOTIVO: ║     libGLESv2.so.2                                   ║ | ╚══════════════════════════════════════════════════════╝ |     at /workspace/scratch/a6207f95c538/forja-integration/tests/qa-admin-people-webkit.cjs:31:24 { |   log: [], |   name: 'Error' | }
+PASS qa-status-readonly.mjs (0s)
+BATCH_RESULT 15/23 FAILED=8
+EVIDENCIA_LOCAL /root/FORJA_PLAYWRIGHT_QA/reports/forja-qa-batch-2026-10-29T00-49-04-024Z.json

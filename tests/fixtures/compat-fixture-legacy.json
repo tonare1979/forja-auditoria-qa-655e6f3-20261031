@@ -1,0 +1,73 @@
+{
+  "sessions": [
+    {
+      "id": "legacy-sat-01",
+      "code": "SAT",
+      "name": "S├üBADO ┬À ATIVIDADE OPCIONAL",
+      "date": "2026-10-17",
+      "status": "complete",
+      "exercises": [
+        { "name": "Eleva├º├úo lateral com halteres", "sets": [{ "kg": 10, "reps": 12 }] },
+        { "name": "Crucifixo inverso m├íquina", "sets": [{ "kg": 35, "reps": 12 }] },
+        { "name": "Tr├¡ceps corda", "sets": [{ "kg": 20, "reps": 12 }] },
+        { "name": "Rosca alternada com halteres", "sets": [{ "kg": 12, "reps": 10 }] },
+        { "name": "Panturrilha em p├®", "sets": [{ "kg": 50, "reps": 15 }] }
+      ]
+    },
+    {
+      "id": "weekday-a-01",
+      "code": "A",
+      "name": "SUPERIORES A",
+      "date": "2026-10-19",
+      "status": "complete",
+      "exercises": [
+        { "name": "Supino máquina", "sets": [{ "kg": 50, "reps": 10 }] },
+        { "name": "Tríceps corda", "sets": [{ "kg": 22, "reps": 10 }] }
+      ]
+    },
+    {
+      "id": "legacy-sun-01",
+      "code": "SUN",
+      "name": "DOMINGO ┬À RECUPERA├ç├âO ATIVA",
+      "date": "2026-10-18",
+      "status": "complete",
+      "exercises": [
+        { "name": "Face pull na polia", "sets": [{ "kg": 25, "reps": 15 }] },
+        { "name": "Rosca martelo", "sets": [{ "kg": 14, "reps": 12 }] },
+        { "name": "Tr├¡ceps franc├¬s leve", "sets": [{ "kg": 12, "reps": 15 }] }
+      ]
+    },
+    {
+      "id": "corrected-sat-02",
+      "code": "SAT",
+      "name": "SÁBADO · ATIVIDADE OPCIONAL",
+      "date": "2026-10-24",
+      "status": "complete",
+      "exercises": [
+        { "name": "Tríceps corda", "sets": [{ "kg": 25, "reps": 12 }] },
+        { "name": "Panturrilha em pé", "sets": [{ "kg": 55, "reps": 15 }] }
+      ]
+    }
+  ],
+  "weights": [
+    { "date": "2026-10-17", "weight": 63.5 },
+    { "date": "2026-10-24", "weight": 64.0 }
+  ],
+  "checks": {},
+  "drafts": {
+    "A": {
+      "started": "2026-10-27T10:00:00Z",
+      "entries": { "0-0": { "kg": "55", "reps": "8", "done": true } },
+      "alternativeEntries": {
+        "0": { "Supino reto com halteres": { "0-0": { "kg": "24", "reps": "10", "done": true } } }
+      }
+    }
+  },
+  "journal": [],
+  "skipRunAfterB": false,
+  "extraExercises": {},
+  "exerciseChoices": { "A": { "0": "Supino máquina" } },
+  "deezerPlaylist": "",
+  "profile": { "initialWeight": 63.0, "targetWeight": 73.0 },
+  "planOverrides": {}
+}

@@ -1,0 +1,27 @@
+PASS QuotaExceededError treino mantém bytes persistidos
+PASS QuotaExceededError treino mantém histórico e rascunho
+PASS QuotaExceededError treino não anuncia conclusão
+PASS QuotaExceededError retry treino grava
+PASS QuotaExceededError retry preserva parcial
+PASS QuotaExceededError peso mantém bytes persistidos
+PASS QuotaExceededError peso disponível para retry
+PASS QuotaExceededError peso não anuncia sucesso
+PASS QuotaExceededError retry peso grava uma única vez
+PASS QuotaExceededError restore mantém bytes persistidos
+PASS QuotaExceededError restore reverte estado
+PASS QuotaExceededError restore não anuncia sucesso
+PASS QuotaExceededError restore retry grava sem duplicação
+PASS SecurityError treino mantém bytes persistidos
+PASS SecurityError treino mantém histórico e rascunho
+PASS SecurityError treino não anuncia conclusão
+PASS SecurityError retry treino grava
+PASS SecurityError retry preserva parcial
+PASS SecurityError peso mantém bytes persistidos
+PASS SecurityError peso disponível para retry
+PASS SecurityError peso não anuncia sucesso
+PASS SecurityError retry peso grava uma única vez
+PASS SecurityError restore mantém bytes persistidos
+PASS SecurityError restore reverte estado
+PASS SecurityError restore não anuncia sucesso
+PASS SecurityError restore retry grava sem duplicação
+RESULTADO 26/26 PASS

@@ -1,5 +1,6 @@
 /* FORJA Scout: painel somente leitura. Nenhum envio de dados. */
 (function(){'use strict';
+const FORJA_COMPAT_ALIASES={"Eleva├º├úo lateral com halteres":"Elevação lateral com halteres","Crucifixo inverso m├íquina":"Crucifixo inverso máquina","Tr├¡ceps corda":"Tríceps corda","Panturrilha em p├®":"Panturrilha em pé","Tr├¡ceps franc├¬s leve":"Tríceps francês leve"};const forjaCompatName=n=>Object.hasOwn(FORJA_COMPAT_ALIASES,n)?FORJA_COMPAT_ALIASES[n]:n;
 const dayMs=86400000;
 function parseDay(value){if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return NaN;const t=Date.parse(value+'T00:00:00Z');return Number.isFinite(t)&&new Date(t).toISOString().slice(0,10)===value?t:NaN;}
 function scoutProgress(snapshot,now=new Date()){
@@ -10,7 +11,7 @@ function scoutProgress(snapshot,now=new Date()){
  let volume=0,validSets=0;
  const byExercise=new Map();
  for(const s of sessions)for(const e of (Array.isArray(s.exercises)?s.exercises:[])){
-  const id=typeof e.id==='string'?e.id:typeof e.name==='string'?e.name:'';
+  const id=typeof e.id==='string'?e.id:typeof e.name==='string'?forjaCompatName(e.name):'';
   let best=null;
   for(const v of (Array.isArray(e.sets)?e.sets:[])){
    if(v.kg===null||v.kg===undefined||v.kg===''||v.reps===null||v.reps===undefined||v.reps==='')continue;

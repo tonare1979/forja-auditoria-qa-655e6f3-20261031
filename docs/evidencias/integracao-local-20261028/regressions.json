@@ -1,0 +1,38 @@
+[
+  {
+    "command": "node tests/integral-profile.cjs",
+    "exit": 1
+  },
+  {
+    "command": "node tests/test-compat-cumulative.mjs",
+    "exit": 1
+  },
+  {
+    "command": "node tests/test-sat-sun-alternatives.cjs",
+    "exit": 1
+  },
+  {
+    "command": "node tests/profile-weight-real.mjs",
+    "exit": 1
+  },
+  {
+    "command": "node tests/qa-json.cjs",
+    "exit": 1
+  },
+  {
+    "command": "node tests/test-partial-real.cjs",
+    "exit": 0
+  },
+  {
+    "command": "node tests/save-real.cjs",
+    "exit": 0
+  },
+  {
+    "command": "node tests/alternatives-ptbr.mjs",
+    "exit": 0
+  },
+  {
+    "command": "node tests/alternative-switch-restore.mjs",
+    "exit": 0
+  }
+]

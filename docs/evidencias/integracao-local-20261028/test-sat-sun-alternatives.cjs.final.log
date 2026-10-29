@@ -1,0 +1,27 @@
+PASS SAT picker absent
+PASS SAT handler leaves state untouched
+PASS SUN picker absent
+PASS SUN handler leaves state untouched
+PASS A picker visible and includes alternative
+PASS A selection retained
+PASS A original entries restored
+PASS A alternative entries restored
+PASS B picker visible and includes alternative
+PASS B selection retained
+PASS B original entries restored
+PASS B alternative entries restored
+PASS C picker visible and includes alternative
+PASS C selection retained
+PASS C original entries restored
+PASS C alternative entries restored
+PASS D picker visible and includes alternative
+PASS D selection retained
+PASS D original entries restored
+PASS D alternative entries restored
+PASS SAT rendered UI selector state
+PASS SUN rendered UI selector state
+PASS A rendered UI selector state
+PASS B rendered UI selector state
+PASS C rendered UI selector state
+PASS D rendered UI selector state
+RESULT 26/26 PASS

@@ -1,0 +1,30 @@
+PASS restauracao comunica sucesso
+PASS restauracao preserva todas as colecoes, perfil e meta
+PASS restauracao persistiu bytes equivalentes ao objeto
+PASS sessao parcial preservada
+PASS backup legado aceito
+PASS perfil antigo compatibilizado
+PASS entrada invalida mantem estado e armazenamento
+PASS entrada invalida nao anuncia sucesso
+PASS entrada invalida mantem estado e armazenamento
+PASS entrada invalida nao anuncia sucesso
+PASS entrada invalida mantem estado e armazenamento
+PASS entrada invalida nao anuncia sucesso
+PASS meta de peso invalida rejeitada sem mudar dados
+PASS cancelamento preserva dados
+PASS cancelamento nao grava
+PASS falha simulada conserva armazenamento
+PASS falha reverte memoria
+PASS falha nao anuncia sucesso
+PASS exportacao chama download uma vez
+PASS exportacao inclui sessao parcial e todos os campos
+PASS importacao repetida substitui, nao duplica
+PASS mesma VM: segunda importacao preserva conteudo integral
+PASS mesma VM: armazenamento persistido identico nas duas importacoes
+PASS mesma VM: IDs e quantidade de sessoes sem duplicacao
+PASS mesma VM: pesos e suas quantidades intactos
+PASS mesma VM: rascunhos intactos
+PASS mesma VM: alternativas intactas
+PASS mesma VM: segunda restauracao completou sem mesclagem
+PROVA_MESMA_VM {"sessions":2,"sessionIds":["old","partial"],"weights":1,"drafts":1,"alternatives":1,"persistedBytes":626,"confirmCalls":"1 + segunda confirmacao"}
+RESULTADO 28/28 PASS
