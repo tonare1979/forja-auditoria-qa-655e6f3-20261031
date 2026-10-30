@@ -112,8 +112,10 @@ function renderSessionFeedback(snapshot,now,label='SESSÃO MAIS RECENTE'){
  return `<section class="panel" aria-label="Scout do treino"><div class="kicker">SCOUT | ${escapeHtml(label)}</div><h3>Resumo do treino</h3><p class="small">${f.date}: ${f.partial?'treino parcial reconhecido. Cada série registrada conta.':'treino registrado.'} ${f.validSets} ${f.validSets===1?'série registrada':'séries registradas'} com carga e repetições.${f.run?` Corrida registrada: ${f.run.distance} km em ${f.run.minutes} min.`:''}</p><h3>Comparações concretas</h3>${f.exercises.length?`<ul>${f.exercises.map(e=>`<li><b>${escapeHtml(e.name)}</b><p class="small">${escapeHtml(e.evidence)}</p><p class="small">${escapeHtml(e.interpretation)}</p>${e.sets.filter(v=>v.note.trim()).map(v=>`<p class="small muted">Observação registrada: ${escapeHtml(v.note)}</p>`).join('')}</li>`).join('')}</ul>`:'<p class="small muted">Sem séries de força válidas para comparar nesta sessão. Isso não apaga o treino registrado.</p>'}<h3>Foco no próximo treino</h3><p class="small">${focus}</p><details class="scout-method"><summary>Como esta análise funciona</summary><p class="muted small">Comparação descritiva das séries na ordem registrada, apenas do mesmo exercício. Técnica, esforço, amplitude e recuperação não são inferidos dos números. Observações são relatos seus, sem diagnóstico nem indicação automática de carga. Carga máxima isolada não mede evolução global.</p></details></section>`;
 }
 function workoutProgress(snapshot,sessionId,now=new Date()){
- const sessions=Array.isArray(snapshot?.sessions)?snapshot.sessions:[];
- const matches=typeof sessionId==='string'&&sessionId.trim()?sessions.filter(s=>s&&s.id===sessionId):[];
+ const end=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate());
+ // Match only historically valid sessions at the requested date, before checking ID ambiguity.
+ const sessions=(Array.isArray(snapshot?.sessions)?snapshot.sessions:[]).filter(s=>s&&Number.isFinite(parseDay(s.date))&&parseDay(s.date)<=end);
+ const matches=typeof sessionId==='string'&&sessionId.trim()?sessions.filter(s=>s.id===sessionId):[];
  const unavailable='<p class="small muted">Treino sem identificação única disponível: sem comparação. Seus registros permanecem preservados.</p>';
  if(matches.length!==1)return unavailable;
  const ordered=orderedSessions(snapshot,now),index=ordered.findIndex(row=>row.session===matches[0]);
