@@ -88,7 +88,28 @@ function workoutProgress(snapshot,sessionId,now=new Date()){
  if(index<0)return '<p class="small muted">Data do treino indisponível para análise: sem comparação. Seus registros permanecem preservados.</p>';
  return renderSessionFeedback({sessions:ordered.slice(0,index+1).map(row=>row.session)},now,'ESTE TREINO');
 }
-function render(snapshot,now){const m=scoutProgress(snapshot,now);const strength=m.improved+m.stable+m.reduced;const progression=strength?`Em ${strength} exercicio(s) com registros em dias diferentes: ${m.improved} com aumento de carga, ${m.stable} estavel(is) e ${m.reduced} com reducao. Compare tambem repeticoes, tecnica e esforco.`:'Ainda nao ha registros comparaveis suficientes para avaliar cargas.';return renderSessionFeedback(snapshot,now)+`<section class="panel" aria-label="Resumo Scout dos ultimos 28 dias"><div class="kicker" style="margin:0">SCOUT | ULTIMOS 28 DIAS</div><h3>Seu esforco conta</h3><p class="muted small">${m.sessions} treino(s) em ${m.days} dia(s) ativo(s). ${m.partial} treino(s) parcial(is) reconhecido(s).</p><p class="small">Volume registrado: <b>${Math.round(m.volume).toLocaleString('pt-BR')} kg x repeticoes</b>.</p><p class="muted small">${progression}</p><p class="muted small">Informacoes descritivas, sem julgamento ou indicacao automatica de carga.</p></section>`;}
-window.forjaScoutWorkoutProgress=workoutProgress;window.forjaScoutSessionFeedback=sessionFeedback;window.forjaScoutProgress=render;window.forjaScoutMetrics=scoutProgress;
+// Longitudinal counters are descriptive, never diagnoses or load recommendations.
+function scoutPeriodSummary(snapshot,now=new Date(),days=30){
+ if(![30,45,60].includes(days))throw RangeError('Período permitido: 30, 45 ou 60 dias');
+ const end=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()),start=end-(days-1)*dayMs;
+ const sessions=orderedSessions(snapshot,now).map(r=>r.session).filter(s=>parseDay(s.date)>=start);
+ const byDay=new Set(sessions.map(s=>s.date));
+ const weekends=sessions.filter(s=>{const d=new Date(parseDay(s.date)).getUTCDay();return d===0||d===6;}).length;
+ const distribution={};for(const s of sessions){const code=typeof s.code==='string'&&s.code.trim()?s.code.trim():'não informado';distribution[code]=(distribution[code]||0)+1;}
+ // Do not combine different athletes or infer from pictures. Caller must supply a single user's snapshot.
+ const weights=(Array.isArray(snapshot?.weights)?snapshot.weights:[]).filter(w=>w&&parseDay(w.date)>=start&&parseDay(w.date)<=end&&typeof w.weight!=='boolean'&&w.weight!==''&&Number.isFinite(Number(w.weight))&&Number(w.weight)>0).sort((a,b)=>a.date.localeCompare(b.date)).map(w=>({date:w.date,kg:Number(w.weight)}));
+ return {days,sessions:sessions.length,activeDays:byDay.size,partial:sessions.filter(s=>s.status==='partial').length,weekends,distribution,weights};
+}
+function renderPeriod(snapshot,now,days){
+ const m=scoutPeriodSummary(snapshot,now,days),weight=m.weights.length?` Peso registrado em ${escapeHtml(m.weights.at(-1).date)}: ${m.weights.at(-1).kg} kg (medida informada, sem inferência de composição corporal).`:'';
+ const dist=Object.entries(m.distribution).map(([code,n])=>`${escapeHtml(code)}: ${n}`).join('; ');
+ const routine=m.sessions&&m.weekends>m.sessions/2?'A maioria dos registros desse período ocorreu nos fins de semana; isso descreve o calendário, não a causa.':'';
+ return `<p class="small">${m.sessions} treino(s), ${m.activeDays} dia(s) registrado(s), ${m.partial} treino(s) parcial(is). Distribuição: ${dist||'sem sessões'}. ${routine}${weight}</p>`;
+}
+function render(snapshot,now=new Date()){
+ const f=sessionFeedback(snapshot,now),summary=f?`Registro mais recente: ${f.date}; ${f.validSets} série(s) válida(s) e ${f.exercises.length} exercício(s) de força com dados.${f.partial?' Treino parcial reconhecido.':''}`:'Ainda não há treinos para resumir.';
+ return `<section class="panel" aria-label="Resumo Scout"><div class="kicker">SCOUT | EVOLUÇÃO</div><h3>O que foi registrado</h3><p class="small">${summary}</p><details class="scout-method"><summary>Histórico e rotina: 30, 45 e 60 dias</summary><h4>Últimos 30 dias</h4>${renderPeriod(snapshot,now,30)}<h4>Últimos 45 dias</h4>${renderPeriod(snapshot,now,45)}<h4>Últimos 60 dias</h4>${renderPeriod(snapshot,now,60)}<p class="small muted">Dados ausentes não comprovam inatividade. Datas e medidas referem-se apenas aos registros fornecidos.</p></details></section>`+renderSessionFeedback(snapshot,now);
+}
+window.forjaScoutWorkoutProgress=workoutProgress;window.forjaScoutSessionFeedback=sessionFeedback;window.forjaScoutProgress=render;window.forjaScoutMetrics=scoutProgress;window.forjaScoutPeriodSummary=scoutPeriodSummary;
 })();
 
