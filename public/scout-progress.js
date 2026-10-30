@@ -138,10 +138,13 @@ function renderPeriod(snapshot,now,days){
  const routine=m.sessions&&m.weekends>m.sessions/2?'A maioria dos registros desse período ocorreu nos fins de semana; isso descreve o calendário, não a causa.':'';
  return `<p class="small">${m.sessions} ${m.sessions===1?'treino':'treinos'}, ${m.activeDays} ${m.activeDays===1?'dia registrado':'dias registrados'}, ${m.partial} ${m.partial===1?'treino parcial':'treinos parciais'}. Distribuição: ${dist||'sem sessões'}. ${routine}${conflicts}${weight}</p>`;
 }
+function formatEvidenceSets(sets){
+ return sets.map((set,i)=>`Série ${i+1}: ${set.kg} kg, ${set.reps} ${set.reps===1?'repetição':'repetições'}`).join('; ');
+}
 function renderLongitudinal(snapshot,now,days){
  const m=scoutLongitudinal(snapshot,now,days);
  if(!m.exercises.length)return '<p class="small muted">Sem exercícios com séries registradas neste período.</p>';
- return '<ul>'+m.exercises.map(e=>`<li><b>${escapeHtml(e.name)}</b><p class="small">${e.observations} registros; ${e.comparablePairs} comparações compatíveis; ${e.improvements} melhorias observadas; ${e.stable} estáveis; ${e.lower} reduções observadas; ${e.inconclusive} inconclusivas. Uma observação isolada não estabelece tendência.</p><details class="scout-method"><summary>Consultar evidências</summary>${e.evidence.length?e.evidence.map(v=>`<p class="small">${escapeHtml(v.comparison)}: ${escapeHtml(v.result)}. ${escapeHtml(v.equipmentPrevious||'Equipamento não informado')} → ${escapeHtml(v.equipmentCurrent||'equipamento não informado')}.</p>`).join(''):'<p class="small">Somente uma observação registrada.</p>'}</details></li>`).join('')+'</ul>';
+ return '<ul>'+m.exercises.map(e=>`<li><b>${escapeHtml(e.name)}</b><p class="small">${e.observations} registros; ${e.comparablePairs} comparações compatíveis; ${e.improvements} melhorias observadas; ${e.stable} estáveis; ${e.lower} reduções observadas; ${e.mixed} ${e.mixed===1?'mudança mista':'mudanças mistas'}; ${e.inconclusive} inconclusivas. Uma observação isolada não estabelece tendência.</p><details class="scout-method"><summary>Consultar evidências</summary>${e.evidence.length?e.evidence.map(v=>`<p class="small">${escapeHtml(v.comparison)}: ${escapeHtml(v.result)}. ${escapeHtml(v.equipmentPrevious||'Equipamento não informado')} → ${escapeHtml(v.equipmentCurrent||'equipamento não informado')}. ${v.previous?`Anterior: ${escapeHtml(formatEvidenceSets(v.previous))}.`:'Séries anteriores indisponíveis.'} ${v.current?`Atual: ${escapeHtml(formatEvidenceSets(v.current))}.`:'Séries atuais indisponíveis.'}</p>`).join(''):'<p class="small">Somente uma observação registrada.</p>'}</details></li>`).join('')+'</ul>';
 }
 function render(snapshot,now=new Date()){
  const f=sessionFeedback(snapshot,now),conflicts=uniqueSessions(snapshot).conflicts,summary=f?`Registro mais recente: ${f.date}; ${f.validSets} ${f.validSets===1?'série válida':'séries válidas'} e ${f.exercises.length} ${f.exercises.length===1?'exercício de força':'exercícios de força'} com dados.${f.partial?' Treino parcial reconhecido.':''}`:'Ainda não há treinos para resumir.';
@@ -169,7 +172,7 @@ function scoutLongitudinal(snapshot,now=new Date(),days=30){
  }
  const exercises=[];
  for(const rows of groups.values()){
-  let comparablePairs=0,improvements=0,stable=0,lower=0,inconclusive=0;
+  let comparablePairs=0,improvements=0,stable=0,lower=0,mixed=0,inconclusive=0;
   const evidence=[];
   for(let i=1;i<rows.length;i++){
    const prev=rows[i-1],curr=rows[i],a=prev.items[0],b=curr.items[0];
@@ -181,11 +184,11 @@ function scoutLongitudinal(snapshot,now=new Date(),days=30){
     if(!downLoad&&!downReps&&(upLoad||upReps)){result='melhora observada';improvements++;}
     else if(!upLoad&&!upReps&&!downLoad&&!downReps){result='estável';stable++;}
     else if(!upLoad&&!upReps&&(downLoad||downReps)){result='redução observada';lower++;}
-    else result='mudança mista';
+    else {result='mudança mista';mixed++;}
    }else inconclusive++;
    evidence.push({comparison:`${prev.date} → ${curr.date}`,result,previous:prev.items.length===1?a.sets:null,current:curr.items.length===1?b.sets:null,equipmentPrevious:a.equipment,equipmentCurrent:b.equipment});
   }
-  exercises.push({name:rows[0].items[0].name,observations:rows.length,comparablePairs,improvements,stable,lower,inconclusive,evidence});
+  exercises.push({name:rows[0].items[0].name,observations:rows.length,comparablePairs,improvements,stable,lower,mixed,inconclusive,evidence});
  }
  return {days,sessions:sessions.length,exercises,conflicts:uniqueSessions(snapshot).conflicts};
 }
