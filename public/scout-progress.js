@@ -10,8 +10,10 @@ function stableSessionContent(value){
  if(value&&typeof value==='object')return '{'+Object.keys(value).sort().map(k=>JSON.stringify(k)+':'+stableSessionContent(value[k])).join(',')+'}';
  return JSON.stringify(value);
 }
-function uniqueSessions(snapshot){
- const source=Array.isArray(snapshot?.sessions)?snapshot.sessions:[];
+function uniqueSessions(snapshot,now=new Date()){
+ const end=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate());
+ // Evaluate identity only among valid, already-existing sessions.
+ const source=(Array.isArray(snapshot?.sessions)?snapshot.sessions:[]).filter(s=>s&&Number.isFinite(parseDay(s.date))&&parseDay(s.date)<=end);
  const grouped=new Map();
  for(const session of source){
   if(!session||typeof session!=='object')continue;
@@ -32,7 +34,7 @@ function uniqueSessions(snapshot){
 }
 function scoutProgress(snapshot,now=new Date()){
  const end=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()),start=end-27*dayMs;
- const identity=uniqueSessions(snapshot);
+ const identity=uniqueSessions(snapshot,now);
  const sessions=identity.sessions.filter(s=>parseDay(s.date)>=start&&parseDay(s.date)<=end);
  const activeDays=new Set(sessions.map(s=>s.date)).size;
  const partial=sessions.filter(s=>s.status==='partial').length;
@@ -70,7 +72,7 @@ function validSessionSets(exercise){return (Array.isArray(exercise?.sets)?exerci
 function exerciseKey(exercise){const name=typeof exercise?.name==='string'?forjaCompatName(exercise.name).trim():'';return name?'name:'+name:typeof exercise?.id==='string'&&exercise.id.trim()?'id:'+exercise.id.trim():'';}
 function orderedSessions(snapshot,now=new Date()){
  const end=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate());
- return uniqueSessions(snapshot).sessions.map((session,index)=>({session,index})).filter(({session:s})=>s&&Number.isFinite(parseDay(s.date))&&parseDay(s.date)<=end).sort((a,b)=>a.session.date.localeCompare(b.session.date)||String(a.session.finished||'').localeCompare(String(b.session.finished||''))||a.index-b.index);
+ return uniqueSessions(snapshot,now).sessions.map((session,index)=>({session,index})).filter(({session:s})=>s&&Number.isFinite(parseDay(s.date))&&parseDay(s.date)<=end).sort((a,b)=>a.session.date.localeCompare(b.session.date)||String(a.session.finished||'').localeCompare(String(b.session.finished||''))||a.index-b.index);
 }
 function sessionFeedback(snapshot,now=new Date()){
  const ordered=orderedSessions(snapshot,now);
@@ -122,7 +124,7 @@ function workoutProgress(snapshot,sessionId,now=new Date()){
 function scoutPeriodSummary(snapshot,now=new Date(),days=30){
  if(![30,45,60].includes(days))throw RangeError('Período permitido: 30, 45 ou 60 dias');
  const end=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()),start=end-(days-1)*dayMs;
- const identity=uniqueSessions(snapshot);
+ const identity=uniqueSessions(snapshot,now);
  const sessions=orderedSessions(snapshot,now).map(r=>r.session).filter(s=>parseDay(s.date)>=start);
  const byDay=new Set(sessions.map(s=>s.date));
  const weekends=sessions.filter(s=>{const d=new Date(parseDay(s.date)).getUTCDay();return d===0||d===6;}).length;
@@ -147,7 +149,7 @@ function renderLongitudinal(snapshot,now,days){
  return '<ul>'+m.exercises.map(e=>`<li><b>${escapeHtml(e.name)}</b><p class="small">${e.observations} registros; ${e.comparablePairs} comparações compatíveis; ${e.improvements} melhorias observadas; ${e.stable} estáveis; ${e.lower} reduções observadas; ${e.mixed} ${e.mixed===1?'mudança mista':'mudanças mistas'}; ${e.inconclusive} inconclusivas. Uma observação isolada não estabelece tendência.</p><details class="scout-method"><summary>Consultar evidências</summary>${e.evidence.length?e.evidence.map(v=>`<p class="small">${escapeHtml(v.comparison)}: ${escapeHtml(v.result)}. ${escapeHtml(v.equipmentPrevious||'Equipamento não informado')} → ${escapeHtml(v.equipmentCurrent||'equipamento não informado')}. ${v.previous?`Anterior: ${escapeHtml(formatEvidenceSets(v.previous))}.`:'Séries anteriores indisponíveis.'} ${v.current?`Atual: ${escapeHtml(formatEvidenceSets(v.current))}.`:'Séries atuais indisponíveis.'}</p>`).join(''):'<p class="small">Somente uma observação registrada.</p>'}</details></li>`).join('')+'</ul>';
 }
 function render(snapshot,now=new Date()){
- const f=sessionFeedback(snapshot,now),conflicts=uniqueSessions(snapshot).conflicts,summary=f?`Registro mais recente: ${f.date}; ${f.validSets} ${f.validSets===1?'série válida':'séries válidas'} e ${f.exercises.length} ${f.exercises.length===1?'exercício de força':'exercícios de força'} com dados.${f.partial?' Treino parcial reconhecido.':''}`:'Ainda não há treinos para resumir.';
+ const f=sessionFeedback(snapshot,now),conflicts=uniqueSessions(snapshot,now).conflicts,summary=f?`Registro mais recente: ${f.date}; ${f.validSets} ${f.validSets===1?'série válida':'séries válidas'} e ${f.exercises.length} ${f.exercises.length===1?'exercício de força':'exercícios de força'} com dados.${f.partial?' Treino parcial reconhecido.':''}`:'Ainda não há treinos para resumir.';
  return `<section class="panel" aria-label="Resumo Scout"><div class="kicker">SCOUT | EVOLUÇÃO</div><h3>O que foi registrado</h3><p class="small">${summary}</p>${conflicts?`<p class="small muted">Há registros divergentes deste treino. ${conflicts===1?'Uma identificação precisa':'Algumas identificações precisam'} de conferência; esses registros não entram nos indicadores.</p>`:''}<details class="scout-method"><summary>Histórico e rotina: 30, 45 e 60 dias</summary><h4>Últimos 30 dias</h4>${renderPeriod(snapshot,now,30)}<h4>Últimos 45 dias</h4>${renderPeriod(snapshot,now,45)}<h4>Últimos 60 dias</h4>${renderPeriod(snapshot,now,60)}<details class="scout-method"><summary>Evolução dos exercícios: últimos 30 dias</summary>${renderLongitudinal(snapshot,now,30)}</details><details class="scout-method"><summary>Evolução dos exercícios: últimos 45 dias</summary>${renderLongitudinal(snapshot,now,45)}</details><details class="scout-method"><summary>Evolução dos exercícios: últimos 60 dias</summary>${renderLongitudinal(snapshot,now,60)}</details><p class="small muted">Dados ausentes não comprovam inatividade. Datas e medidas referem-se apenas aos registros fornecidos.</p></details></section>`+renderSessionFeedback(snapshot,now);
 }
 window.forjaScoutLongitudinal=scoutLongitudinal;// Longitudinal evidence: only adjacent recorded observations in a known compatible context.
@@ -190,7 +192,7 @@ function scoutLongitudinal(snapshot,now=new Date(),days=30){
   }
   exercises.push({name:rows[0].items[0].name,observations:rows.length,comparablePairs,improvements,stable,lower,mixed,inconclusive,evidence});
  }
- return {days,sessions:sessions.length,exercises,conflicts:uniqueSessions(snapshot).conflicts};
+ return {days,sessions:sessions.length,exercises,conflicts:uniqueSessions(snapshot,now).conflicts};
 }
 window.forjaScoutLongitudinal=scoutLongitudinal;window.forjaScoutWorkoutProgress=workoutProgress;window.forjaScoutSessionFeedback=sessionFeedback;window.forjaScoutProgress=render;window.forjaScoutMetrics=scoutProgress;window.forjaScoutPeriodSummary=scoutPeriodSummary;
 })();
