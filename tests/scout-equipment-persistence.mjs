@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const html=readFileSync(new URL('../public/index.html',import.meta.url),'utf8');
+assert.match(html,/data-equipment-exercise=/,'treino deve oferecer escolha explícita de equipamento');
+assert.match(html,/function updateEquipmentSelection\(/,'seleção deve ser persistida no rascunho');
+assert.match(html,/equipment:forjaSelectedEquipment\(d,ei,e\[0\]\)/,'registro final deve capturar equipamento escolhido');
+assert.match(html,/if\(e\.target\.dataset\.equipmentExercise!==undefined\)/,'mudança deve salvar rascunho');
+assert.match(html,/equipmentByExercise/,'alternativas precisam de contexto próprio');
+console.log('SCOUT_EQUIPMENT_PERSISTENCE_PASS');
+// Executa as funções reais de seleção com persistência simulada, recarga e alternativas.
+import vm from 'node:vm';
+const extract=(name,next)=>html.slice(html.indexOf('function '+name+'('),html.indexOf('function '+next+'('));
+const source=extract('forjaSelectedEquipment','treino');
+const storage=new Map();
+const draft={equipmentByExercise:{},entries:{}};
+const state={drafts:{A:draft}};
+const context={sel:'A',state,structuredClone,save:()=>{storage.set('forja73-v1',JSON.stringify(state));return true},initDraft:()=>draft,getEx:()=>[['Remada baixa',3],['Supino máquina',3]]};
+vm.createContext(context);vm.runInContext(source,context);
+context.updateEquipmentSelection({dataset:{equipmentExercise:'0'},value:'Máquina de remada 02'});
+assert.equal(JSON.parse(storage.get('forja73-v1')).drafts.A.equipmentByExercise['0:Remada baixa'],'Máquina de remada 02');
+assert.equal(context.forjaSelectedEquipment(JSON.parse(storage.get('forja73-v1')).drafts.A,0,'Remada baixa'),'máquina de remada 02');
+assert.equal(context.forjaSelectedEquipment(draft,0,'Remada articulada'),undefined,'alternativa não herda aparelho');
+assert.equal(context.forjaSelectedEquipment({entries:{}},0,'Remada baixa'),undefined,'histórico anterior permanece inconclusivo');
