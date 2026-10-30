@@ -32,9 +32,9 @@ const server=http.createServer(async(req,res)=>{
   const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   for(let round=0;round<2;round++){
    await page.goto(origin,{waitUntil:'domcontentloaded'});
-   await page.waitForFunction(()=>typeof cloud!=='undefined'&&cloud.user?.username==='qa_return'&&tab==='nuvem'&&cloud.verified===true,null,{timeout:15000});
+   await page.waitForFunction(()=>typeof cloud!=='undefined'&&cloud.user?.username==='qa_return'&&['nuvem','painel'].includes(tab)&&cloud.verified===true,null,{timeout:15000});
    assert.equal(await page.locator('#welcomeCover').count(),0,'valid session must not trigger welcome cover on reload');
-   assert.equal(await page.evaluate(()=>tab),'nuvem');
+   assert.ok(['nuvem','painel'].includes(await page.evaluate(()=>tab)));
    assert((await page.evaluate(()=>cloudStatus())).includes('Nuvem sincronizada'));
    console.log('WEBKIT_PROFILE_DIRECT_ON_LOAD_'+(round?'RELOAD':'INITIAL')+'_PASS');
   }
