@@ -3,9 +3,37 @@
 const FORJA_COMPAT_ALIASES={"Eleva├º├úo lateral com halteres":"Elevação lateral com halteres","Crucifixo inverso m├íquina":"Crucifixo inverso máquina","Tr├¡ceps corda":"Tríceps corda","Panturrilha em p├®":"Panturrilha em pé","Tr├¡ceps franc├¬s leve":"Tríceps francês leve"};const forjaCompatName=n=>Object.hasOwn(FORJA_COMPAT_ALIASES,n)?FORJA_COMPAT_ALIASES[n]:n;
 const dayMs=86400000;
 function parseDay(value){if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return NaN;const t=Date.parse(value+'T00:00:00Z');return Number.isFinite(t)&&new Date(t).toISOString().slice(0,10)===value?t:NaN;}
+// A repeated ID is one logical session only when all recorded fields agree.
+// Divergent copies are quarantined from indicators, not silently reconciled.
+function stableSessionContent(value){
+ if(Array.isArray(value))return '['+value.map(stableSessionContent).join(',')+']';
+ if(value&&typeof value==='object')return '{'+Object.keys(value).sort().map(k=>JSON.stringify(k)+':'+stableSessionContent(value[k])).join(',')+'}';
+ return JSON.stringify(value);
+}
+function uniqueSessions(snapshot){
+ const source=Array.isArray(snapshot?.sessions)?snapshot.sessions:[];
+ const grouped=new Map();
+ for(const session of source){
+  if(!session||typeof session!=='object')continue;
+  const id=typeof session.id==='string'?session.id.trim():'';
+  if(!id)continue;
+  if(!grouped.has(id))grouped.set(id,new Set());
+  grouped.get(id).add(stableSessionContent(session));
+ }
+ const conflictIds=new Set([...grouped].filter(([,values])=>values.size>1).map(([id])=>id));
+ const seen=new Set(),sessions=[];
+ for(const session of source){
+  if(!session||typeof session!=='object')continue;
+  const id=typeof session.id==='string'?session.id.trim():'';
+  if(id){if(conflictIds.has(id)||seen.has(id))continue;seen.add(id);}
+  sessions.push(session);
+ }
+ return {sessions,conflicts:conflictIds.size};
+}
 function scoutProgress(snapshot,now=new Date()){
  const end=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()),start=end-27*dayMs;
- const sessions=(Array.isArray(snapshot?.sessions)?snapshot.sessions:[]).filter(s=>s&&parseDay(s.date)>=start&&parseDay(s.date)<=end);
+ const identity=uniqueSessions(snapshot);
+ const sessions=identity.sessions.filter(s=>parseDay(s.date)>=start&&parseDay(s.date)<=end);
  const activeDays=new Set(sessions.map(s=>s.date)).size;
  const partial=sessions.filter(s=>s.status==='partial').length;
  let volume=0,validSets=0;
@@ -34,7 +62,7 @@ function scoutProgress(snapshot,now=new Date()){
   const first=records[0].kg,last=records.at(-1).kg;
   if(last>first)improved++;else if(last<first)reduced++;else stable++;
  }
- return {sessions:sessions.length,days:activeDays,partial,volume,validSets,improved,stable,reduced};
+ return {sessions:sessions.length,days:activeDays,partial,volume,validSets,improved,stable,reduced,conflicts:identity.conflicts};
 }
 // Session evidence is separate from the legacy 28-day maximum-load counters.
 const escapeHtml=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -42,7 +70,7 @@ function validSessionSets(exercise){return (Array.isArray(exercise?.sets)?exerci
 function exerciseKey(exercise){const name=typeof exercise?.name==='string'?forjaCompatName(exercise.name).trim():'';return name?'name:'+name:typeof exercise?.id==='string'&&exercise.id.trim()?'id:'+exercise.id.trim():'';}
 function orderedSessions(snapshot,now=new Date()){
  const end=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate());
- return (Array.isArray(snapshot?.sessions)?snapshot.sessions:[]).map((session,index)=>({session,index})).filter(({session:s})=>s&&Number.isFinite(parseDay(s.date))&&parseDay(s.date)<=end).sort((a,b)=>a.session.date.localeCompare(b.session.date)||String(a.session.finished||'').localeCompare(String(b.session.finished||''))||a.index-b.index);
+ return uniqueSessions(snapshot).sessions.map((session,index)=>({session,index})).filter(({session:s})=>s&&Number.isFinite(parseDay(s.date))&&parseDay(s.date)<=end).sort((a,b)=>a.session.date.localeCompare(b.session.date)||String(a.session.finished||'').localeCompare(String(b.session.finished||''))||a.index-b.index);
 }
 function sessionFeedback(snapshot,now=new Date()){
  const ordered=orderedSessions(snapshot,now);
@@ -57,7 +85,9 @@ function sessionFeedback(snapshot,now=new Date()){
   let trend='reference',interpretation='Primeiro registro comparável: referência para os próximos treinos.';
   if(ambiguous){trend='ambiguous';interpretation='Há registros repetidos deste exercício na sessão atual ou anterior; evidência preservada, sem comparação de tendência.';}
   else if(previous){
-   if(sets.length!==previousSets.length){trend='different_sets';interpretation='Quantidade de séries diferente; compare o contexto antes de concluir evolução.';}
+   const equipment=e=>typeof e?.equipment==='string'&&e.equipment.trim()?e.equipment.trim().toLocaleLowerCase('pt-BR'):null;
+   if(equipment(e)!==equipment(previous)){trend='different_equipment';interpretation='Equipamento diferente ou não identificado entre registros; comparação inconclusiva.';}
+   else if(sets.length!==previousSets.length){trend='different_sets';interpretation='Quantidade de séries diferente; compare o contexto antes de concluir evolução.';}
    else{
     const loadUp=sets.some((v,i)=>v.kg>previousSets[i].kg),loadDown=sets.some((v,i)=>v.kg<previousSets[i].kg),repsUp=sets.some((v,i)=>v.reps>previousSets[i].reps),repsDown=sets.some((v,i)=>v.reps<previousSets[i].reps);
     if(!loadUp&&!loadDown&&!repsUp&&!repsDown){trend='same';interpretation='Mesma carga e repetições nas séries registradas.';}
@@ -92,23 +122,25 @@ function workoutProgress(snapshot,sessionId,now=new Date()){
 function scoutPeriodSummary(snapshot,now=new Date(),days=30){
  if(![30,45,60].includes(days))throw RangeError('Período permitido: 30, 45 ou 60 dias');
  const end=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()),start=end-(days-1)*dayMs;
+ const identity=uniqueSessions(snapshot);
  const sessions=orderedSessions(snapshot,now).map(r=>r.session).filter(s=>parseDay(s.date)>=start);
  const byDay=new Set(sessions.map(s=>s.date));
  const weekends=sessions.filter(s=>{const d=new Date(parseDay(s.date)).getUTCDay();return d===0||d===6;}).length;
  const distribution={};for(const s of sessions){const code=typeof s.code==='string'&&s.code.trim()?s.code.trim():'não informado';distribution[code]=(distribution[code]||0)+1;}
  // Do not combine different athletes or infer from pictures. Caller must supply a single user's snapshot.
  const weights=(Array.isArray(snapshot?.weights)?snapshot.weights:[]).filter(w=>w&&parseDay(w.date)>=start&&parseDay(w.date)<=end&&typeof w.weight!=='boolean'&&w.weight!==''&&Number.isFinite(Number(w.weight))&&Number(w.weight)>0).sort((a,b)=>a.date.localeCompare(b.date)).map(w=>({date:w.date,kg:Number(w.weight)}));
- return {days,sessions:sessions.length,activeDays:byDay.size,partial:sessions.filter(s=>s.status==='partial').length,weekends,distribution,weights};
+ return {days,sessions:sessions.length,activeDays:byDay.size,partial:sessions.filter(s=>s.status==='partial').length,weekends,distribution,weights,conflicts:identity.conflicts};
 }
 function renderPeriod(snapshot,now,days){
  const m=scoutPeriodSummary(snapshot,now,days),weight=m.weights.length?` Peso registrado em ${escapeHtml(m.weights.at(-1).date)}: ${m.weights.at(-1).kg} kg (medida informada, sem inferência de composição corporal).`:'';
  const dist=Object.entries(m.distribution).map(([code,n])=>`${escapeHtml(code)}: ${n}`).join('; ');
+ const conflicts=m.conflicts?`${m.conflicts} ID(s) com conteúdo divergente: registros preservados e excluídos das contagens até conferência. `:'';
  const routine=m.sessions&&m.weekends>m.sessions/2?'A maioria dos registros desse período ocorreu nos fins de semana; isso descreve o calendário, não a causa.':'';
- return `<p class="small">${m.sessions} treino(s), ${m.activeDays} dia(s) registrado(s), ${m.partial} treino(s) parcial(is). Distribuição: ${dist||'sem sessões'}. ${routine}${weight}</p>`;
+ return `<p class="small">${m.sessions} treino(s), ${m.activeDays} dia(s) registrado(s), ${m.partial} treino(s) parcial(is). Distribuição: ${dist||'sem sessões'}. ${routine}${conflicts}${weight}</p>`;
 }
 function render(snapshot,now=new Date()){
- const f=sessionFeedback(snapshot,now),summary=f?`Registro mais recente: ${f.date}; ${f.validSets} série(s) válida(s) e ${f.exercises.length} exercício(s) de força com dados.${f.partial?' Treino parcial reconhecido.':''}`:'Ainda não há treinos para resumir.';
- return `<section class="panel" aria-label="Resumo Scout"><div class="kicker">SCOUT | EVOLUÇÃO</div><h3>O que foi registrado</h3><p class="small">${summary}</p><details class="scout-method"><summary>Histórico e rotina: 30, 45 e 60 dias</summary><h4>Últimos 30 dias</h4>${renderPeriod(snapshot,now,30)}<h4>Últimos 45 dias</h4>${renderPeriod(snapshot,now,45)}<h4>Últimos 60 dias</h4>${renderPeriod(snapshot,now,60)}<p class="small muted">Dados ausentes não comprovam inatividade. Datas e medidas referem-se apenas aos registros fornecidos.</p></details></section>`+renderSessionFeedback(snapshot,now);
+ const f=sessionFeedback(snapshot,now),conflicts=uniqueSessions(snapshot).conflicts,summary=f?`Registro mais recente: ${f.date}; ${f.validSets} série(s) válida(s) e ${f.exercises.length} exercício(s) de força com dados.${f.partial?' Treino parcial reconhecido.':''}`:'Ainda não há treinos para resumir.';
+ return `<section class="panel" aria-label="Resumo Scout"><div class="kicker">SCOUT | EVOLUÇÃO</div><h3>O que foi registrado</h3><p class="small">${summary}</p>${conflicts?`<p class="small muted">${conflicts} conflito(s) de ID: sessões divergentes não entram nos indicadores até conferência.</p>`:''}<details class="scout-method"><summary>Histórico e rotina: 30, 45 e 60 dias</summary><h4>Últimos 30 dias</h4>${renderPeriod(snapshot,now,30)}<h4>Últimos 45 dias</h4>${renderPeriod(snapshot,now,45)}<h4>Últimos 60 dias</h4>${renderPeriod(snapshot,now,60)}<p class="small muted">Dados ausentes não comprovam inatividade. Datas e medidas referem-se apenas aos registros fornecidos.</p></details></section>`+renderSessionFeedback(snapshot,now);
 }
 window.forjaScoutWorkoutProgress=workoutProgress;window.forjaScoutSessionFeedback=sessionFeedback;window.forjaScoutProgress=render;window.forjaScoutMetrics=scoutProgress;window.forjaScoutPeriodSummary=scoutPeriodSummary;
 })();
