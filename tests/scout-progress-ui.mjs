@@ -11,7 +11,7 @@ const metrics=ctx.window.forjaScoutMetrics(snapshot,new Date('2026-10-27T00:00:0
 assert.equal(metrics.sessions,2);assert.equal(metrics.partial,1);assert.equal(metrics.volume,520);
 assert.equal(JSON.stringify(snapshot),copy);
 const markup=ctx.window.forjaScoutProgress(snapshot,new Date('2026-10-27T00:00:00Z'));
-assert.ok(markup.includes('treino(s) parcial(is)'));assert.ok(markup.includes('SCOUT'));
+assert.ok(markup.includes('treino parcial'));assert.ok(markup.includes('SCOUT'));
 assert.ok(html.includes('<script src="./scout-progress.js"></script>'));
 assert.ok(html.includes('window.forjaScoutProgress(state)'));
 console.log('SCOUT_PROGRESS_UI_PASS');

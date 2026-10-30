@@ -6,7 +6,7 @@ vm.runInNewContext(readFileSync(new URL('../public/scout-progress.js',import.met
 const now=new Date('2026-10-29T12:00:00Z');
 const feedback=context.window.forjaScoutSessionFeedback;
 assert.equal(typeof feedback,'function','Scout precisa analisar a sessão mais recente, além de carga máxima');
-const exercise=(name,kg,reps,note='')=>({name,sets:[{kg,reps,note}]});
+const exercise=(name,kg,reps,note='')=>({name,equipment:'máquina',sets:[{kg,reps,note}]});
 const session=(date,exercises,more={})=>({date,status:'complete',exercises,...more});
 const snapshot={sessions:[
  session('2026-09-01',[exercise('Remada',20,10)]),
@@ -35,7 +35,7 @@ for(const [kg,reps,trend] of [[20,12,'more_reps'],[25,10,'more_load'],[20,10,'sa
  const r=feedback({sessions:[session('2026-10-27',[exercise('Agachar',20,10)]),session('2026-10-28',[exercise('Agachar',kg,reps)])]},now);
  assert.equal(r.exercises[0].trend,trend);
 }
-const mismatch=feedback({sessions:[session('2026-10-27',[exercise('A',20,10)]),session('2026-10-28',[{name:'A',sets:[{kg:20,reps:10},{kg:20,reps:10}]}])]},now);
+const mismatch=feedback({sessions:[session('2026-10-27',[exercise('A',20,10)]),session('2026-10-28',[{name:'A',equipment:'máquina',sets:[{kg:20,reps:10},{kg:20,reps:10}]}])]},now);
 assert.equal(mismatch.exercises[0].trend,'different_sets','quantidade de séries diferente impede inferência de evolução');
 const unsafe={sessions:[session('2026-10-28',[exercise('<img src=x onerror=alert(1)>',0,10,'<script>bad</script>')])]};
 const safe=context.window.forjaScoutProgress(unsafe,now);
@@ -53,8 +53,8 @@ const alternative=feedback({sessions:[session('2026-10-27',[{...exercise('Origin
 assert.equal(alternative.exercises[0].trend,'reference');
 // A higher maximum must not conceal a drop elsewhere in the session.
 const uneven=feedback({sessions:[
- session('2026-10-27',[{name:'Remada',sets:[{kg:20,reps:10},{kg:20,reps:10}]}]),
- session('2026-10-28',[{name:'Remada',sets:[{kg:25,reps:10},{kg:15,reps:10}]}])
+ session('2026-10-27',[{name:'Remada',equipment:'máquina',sets:[{kg:20,reps:10},{kg:20,reps:10}]}]),
+ session('2026-10-28',[{name:'Remada',equipment:'máquina',sets:[{kg:25,reps:10},{kg:15,reps:10}]}])
 ]},now);
 assert.equal(uneven.exercises[0].trend,'mixed');
 const reference=context.window.forjaScoutProgress({sessions:[session('2026-10-28',[exercise('Novo',10,8)],{status:'partial'})]},now);

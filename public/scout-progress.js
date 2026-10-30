@@ -86,7 +86,7 @@ function sessionFeedback(snapshot,now=new Date()){
   if(ambiguous){trend='ambiguous';interpretation='Há registros repetidos deste exercício na sessão atual ou anterior; evidência preservada, sem comparação de tendência.';}
   else if(previous){
    const equipment=e=>typeof e?.equipment==='string'&&e.equipment.trim()?e.equipment.trim().toLocaleLowerCase('pt-BR'):null;
-   if(equipment(e)!==equipment(previous)){trend='different_equipment';interpretation='Equipamento diferente ou não identificado entre registros; comparação inconclusiva.';}
+   if(!equipment(e)||!equipment(previous)||equipment(e)!==equipment(previous)){trend='different_equipment';interpretation='Equipamento diferente ou não informado entre registros; comparação inconclusiva.';}
    else if(sets.length!==previousSets.length){trend='different_sets';interpretation='Quantidade de séries diferente; compare o contexto antes de concluir evolução.';}
    else{
     const loadUp=sets.some((v,i)=>v.kg>previousSets[i].kg),loadDown=sets.some((v,i)=>v.kg<previousSets[i].kg),repsUp=sets.some((v,i)=>v.reps>previousSets[i].reps),repsDown=sets.some((v,i)=>v.reps<previousSets[i].reps);
@@ -134,13 +134,13 @@ function scoutPeriodSummary(snapshot,now=new Date(),days=30){
 function renderPeriod(snapshot,now,days){
  const m=scoutPeriodSummary(snapshot,now,days),weight=m.weights.length?` Peso registrado em ${escapeHtml(m.weights.at(-1).date)}: ${m.weights.at(-1).kg} kg (medida informada, sem inferência de composição corporal).`:'';
  const dist=Object.entries(m.distribution).map(([code,n])=>`${escapeHtml(code)}: ${n}`).join('; ');
- const conflicts=m.conflicts?`${m.conflicts} ID(s) com conteúdo divergente: registros preservados e excluídos das contagens até conferência. `:'';
+ const conflicts=''; // Display conflict notice once in Scout overview, not in each time window.
  const routine=m.sessions&&m.weekends>m.sessions/2?'A maioria dos registros desse período ocorreu nos fins de semana; isso descreve o calendário, não a causa.':'';
- return `<p class="small">${m.sessions} treino(s), ${m.activeDays} dia(s) registrado(s), ${m.partial} treino(s) parcial(is). Distribuição: ${dist||'sem sessões'}. ${routine}${conflicts}${weight}</p>`;
+ return `<p class="small">${m.sessions} ${m.sessions===1?'treino':'treinos'}, ${m.activeDays} ${m.activeDays===1?'dia registrado':'dias registrados'}, ${m.partial} ${m.partial===1?'treino parcial':'treinos parciais'}. Distribuição: ${dist||'sem sessões'}. ${routine}${conflicts}${weight}</p>`;
 }
 function render(snapshot,now=new Date()){
- const f=sessionFeedback(snapshot,now),conflicts=uniqueSessions(snapshot).conflicts,summary=f?`Registro mais recente: ${f.date}; ${f.validSets} série(s) válida(s) e ${f.exercises.length} exercício(s) de força com dados.${f.partial?' Treino parcial reconhecido.':''}`:'Ainda não há treinos para resumir.';
- return `<section class="panel" aria-label="Resumo Scout"><div class="kicker">SCOUT | EVOLUÇÃO</div><h3>O que foi registrado</h3><p class="small">${summary}</p>${conflicts?`<p class="small muted">${conflicts} conflito(s) de ID: sessões divergentes não entram nos indicadores até conferência.</p>`:''}<details class="scout-method"><summary>Histórico e rotina: 30, 45 e 60 dias</summary><h4>Últimos 30 dias</h4>${renderPeriod(snapshot,now,30)}<h4>Últimos 45 dias</h4>${renderPeriod(snapshot,now,45)}<h4>Últimos 60 dias</h4>${renderPeriod(snapshot,now,60)}<p class="small muted">Dados ausentes não comprovam inatividade. Datas e medidas referem-se apenas aos registros fornecidos.</p></details></section>`+renderSessionFeedback(snapshot,now);
+ const f=sessionFeedback(snapshot,now),conflicts=uniqueSessions(snapshot).conflicts,summary=f?`Registro mais recente: ${f.date}; ${f.validSets} ${f.validSets===1?'série válida':'séries válidas'} e ${f.exercises.length} ${f.exercises.length===1?'exercício de força':'exercícios de força'} com dados.${f.partial?' Treino parcial reconhecido.':''}`:'Ainda não há treinos para resumir.';
+ return `<section class="panel" aria-label="Resumo Scout"><div class="kicker">SCOUT | EVOLUÇÃO</div><h3>O que foi registrado</h3><p class="small">${summary}</p>${conflicts?`<p class="small muted">Há registros divergentes deste treino. ${conflicts===1?'Uma identificação precisa':'Algumas identificações precisam'} de conferência; esses registros não entram nos indicadores.</p>`:''}<details class="scout-method"><summary>Histórico e rotina: 30, 45 e 60 dias</summary><h4>Últimos 30 dias</h4>${renderPeriod(snapshot,now,30)}<h4>Últimos 45 dias</h4>${renderPeriod(snapshot,now,45)}<h4>Últimos 60 dias</h4>${renderPeriod(snapshot,now,60)}<p class="small muted">Dados ausentes não comprovam inatividade. Datas e medidas referem-se apenas aos registros fornecidos.</p></details></section>`+renderSessionFeedback(snapshot,now);
 }
 window.forjaScoutWorkoutProgress=workoutProgress;window.forjaScoutSessionFeedback=sessionFeedback;window.forjaScoutProgress=render;window.forjaScoutMetrics=scoutProgress;window.forjaScoutPeriodSummary=scoutPeriodSummary;
 })();
