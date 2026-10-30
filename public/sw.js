@@ -1,6 +1,6 @@
 // HOMOLOGAÇÃO — V11 CANDIDATA, cache exclusivo
-const CACHE='forja73-static-v11-rc3-offline-scout-integration-20261030';
-const FILES=['./','./features.js','./forja-post.js','./scout-progress.js','./forja-music-v1.js','./forja-cover-rio-casal-v2.png','./forja-brand-original.png','./forja-cover-rio-v10.webp','./index.html','./manifest.webmanifest','./forja-icon-rc3-180.png','./forja-icon-rc3-192.png','./forja-icon-rc3-512.png'];
+const CACHE='forja73-static-v11-rc3-offline-scout-integration-history-20261030';
+const FILES=['./','./features.js','./forja-post.js','./scout-progress.js','./forja-history-records.js','./forja-music-v1.js','./forja-cover-rio-casal-v2.png','./forja-brand-original.png','./forja-cover-rio-v10.webp','./index.html','./manifest.webmanifest','./forja-icon-rc3-180.png','./forja-icon-rc3-192.png','./forja-icon-rc3-512.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('forja73-static-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{const req=e.request,u=new URL(req.url);if(req.method!=='GET'||u.origin!==self.location.origin||u.pathname.startsWith('/api/'))return;
