@@ -1,0 +1,19 @@
+# Offline session correction (local candidate)
+
+Base: e358f130982ebf8124cbe616b876f1c9c6fe8fee. Branch: fix/rc3-offline-session-20261029.
+
+Root cause: every document boot initialized `cloud.user` to null. The boot sequence waited for health/bootstrap/auth requests; a transport failure left the user null, so render redirected to Perfil and boot completion displayed the cover. Cloud synchronization metadata persisted records/account binding but did not distinguish a continuing authenticated local session from explicit logout.
+
+The correction persists a separate local session-continuity marker following successful server authentication. This permits cached athlete access while offline; it is never a substitute for server authorization. Reconnection validates `/api/auth/me` and the existing account guard before sending pending records. Explicit logout closes local access immediately, retains data/account binding, and queues server logout. A single flight prevents a late logout from racing a subsequent login; a logout 401 confirms the server already has no session. Late auth/sync results after local logout cannot reopen or replace the local session. Authoritative `/me` 401/403 invalidates continuity; other endpoint 403 responses are not globally treated as logout.
+
+Automatic connection loss/retry is silent. Manual SINCRONIZAR AGORA uses a discreet connection message. Reconnection retains the active training tab. Successful authentication binds account metadata even before first synchronization, preserving account separation after explicit logout. Automatic photo/chat loads retain existing metadata and emit no transport notifications; manual uploads retain their existing error behavior. The service-worker cache version changes; API responses remain excluded from static caching.
+
+## Red / green evidence
+
+Before production edits, `node tests/qa-offline-session.mjs` failed at `network failure must retain authenticated offline athlete` (actual undefined, expected athlete). Additional tests exposed and then covered the late-logout marker race and logout-401 pending-state bug. The final script passes 16 scenarios including cached series/local dirty tracking/reconnect PUT, explicit offline logout/reload, authoritative 401, cross-account protection, missing marker, unlinked authenticated account, late `/me`, late logout, serialized login, logout 401, silent automatic retry and coded 503 without redraw, unlinked account binding after logout, and silent automatic feature loads preserving cached arrays, and an actual guest history click blocked while registration/recovery remain visible. Guest profile plan/history/backups and feature navigation remain behind the local session guard.
+
+`regressions.log` records 23 safe local test commands and exit statuses, all zero. No generic npm test script exists in tests/package.json; the repository batch runner includes remote checks and was deliberately not invoked. Browser acceptance is independently run against real local service-worker caching; a physical iPhone remains a separate acceptance step. Equipment thumbnails and videos are not all precached; this change covers the cached application and workout records, not guaranteed offline media.
+
+No production requests, deployment, push, database changes, or remote writes were performed by this implementation task.
+
+The guest guard first failed the real feature click-handler regression (cached history renderer called once). After routing unauthenticated feature navigation/actions to login and hiding guest plan/backups, the regression passes with registration/recovery still present. The existing integral-profile fixture used user:null while testing authenticated profile editing; its synthetic user was corrected, preserving all 10 assertions. Password-rotation success first failed offline-resume invalidation; invoking the same local session close now passes.
