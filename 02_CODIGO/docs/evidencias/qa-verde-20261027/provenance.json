@@ -1,0 +1,45 @@
+{
+  "testedRemoteCodeCommit": "5bb182b6db8c71529906971347f15a46f6d3af9b",
+  "localSnapshotHead": "c513ac76c23c",
+  "localSnapshotNotFullClone": true,
+  "workingTreeModified": true,
+  "playwright": "1.64.0",
+  "webkit": {
+    "version": "27.2",
+    "revision": "2370"
+  },
+  "node": "v24.22.1",
+  "os": "Ubuntu 24.04",
+  "candidateMode": true,
+  "preexistingExcluded": [
+    "remote-base-parity.mjs"
+  ],
+  "assertionsUnchangedInFivePortableTests": true,
+  "sha256": {
+    "public/scout-progress.js": "81e20df2b5e03a3a15b7b45ec84158d304a7a01025cc2b1ec9bfb3c2d1665037",
+    "public/sw.js": "ca6130627b0ae32ad3c77498d7c465d372f4ed5ea6095beeccd4c99650d23a17",
+    "tests/run-qa-batch.mjs": "855f4fe9dcc45808e084e7662ea9428f5d2655b3b0bb4f31d786f4734d202b9a",
+    "tests/scout-progress-daily.mjs": "09056f73f58d29012366044fdab57a9d40e14a02cedd45999e882119e28c81d0",
+    "tests/ios-pwa-offline-shell.cjs": "82e3ae5509c165f4603b6a8cec4c8387e2c6af380341c82fab72bf8f6efa993b",
+    "tests/ios-standalone-homologation.cjs": "31e5ec420d36221e81937826745d10eb820f3f1feef7084c19eb7fe86fe8ea16",
+    "tests/qa-cross-device-sync-webkit.cjs": "5adab6239c8166ead76a0e5d2d588fe819aae1c66975a7747788c239751eea17",
+    "tests/rc3-profile-reload-webkit.cjs": "55c953296cb55aa7d3f455b8c7b4b8aa5c911927f8af0a82e60aaabb05bcb73b",
+    "tests/sync-status-webkit-local.cjs": "da2f544bbd355a17a0a4f2b4ecffc1b1bc52974d24d7e00f2cb450e66acfc30a",
+    "tests/package.json": "b11b1f6a2ea7bd773c3c809b8e394c151e2d32d6743db7053eda216e7753f9fc",
+    "tests/package-lock.json": "046f33030163db2dca5ff828ac82a8162099b9a0eb829349419b2ccad93c4d45"
+  },
+  "upstreamIssue": "https://github.com/microsoft/playwright/issues/42775",
+  "upstreamFix": "https://github.com/microsoft/playwright/pull/42894",
+  "baseline": {
+    "passed": 20,
+    "total": 20,
+    "failed": 0,
+    "exitCode": 0
+  },
+  "candidate": {
+    "passed": 23,
+    "total": 23,
+    "failed": 0,
+    "exitCode": 0
+  }
+}

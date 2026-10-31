@@ -1,0 +1,274 @@
+[
+  {
+    "path": "tests/.gitignore",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/alternative-switch-restore.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/alternatives-ptbr.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/auth-login-safari-regression.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/auth-real-handler-synthetic.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/backup-git-powershell-synthetic.ps1",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/cache-update-local.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/cleanup-atomic.test.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/compat-fixture-legacy.json",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/demo-autoplay-exact.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/demo-availability-card.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/equipment-thumb-no-crop.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/fixtures/compat-fixture-legacy.json",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/forja-music-weekend-ui.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/integral-profile.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/ios-pwa-assets-contract.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/ios-pwa-offline-shell.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/ios-standalone-homologation.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/lab-local-webkit.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/package-lock.json",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/package.json",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/profile-weight-real.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/qa-admin-people-status.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/qa-admin-people-webkit.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/qa-atomic-snapshot-history.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/qa-authenticated-occ-handler.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/qa-cpf-migration.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/qa-cpf-recovery-drill.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/qa-cpf-schema-parity.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/qa-cross-device-sync-webkit.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/qa-guest-signup-webkit.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/qa-json.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/qa-member-public-signup-cpf.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/qa-offline-session.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/qa-profile-only-sync-guard.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/qa-status-readonly.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/qa-webkit-login-local.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/qa-weekend-cloud-sync.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/rc3-profile-reload-webkit.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/remote-base-parity.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/remote-email-salt-smoke.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/run-qa-batch.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/save-real.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/scout-analytics-v1.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/scout-equipment-persistence.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/scout-forja-adapter.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/scout-history-integrity.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/scout-history-origin.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/scout-history-retroactive.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/scout-identity-equipment.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/scout-longitudinal-accounting.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/scout-longitudinal-evidence.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/scout-professional-periods.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/scout-progress-daily.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/scout-progress-edge-cases.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/scout-progress-ui.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/scout-session-feedback.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/scout-temporal-isolation.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/scout-workout-temporal-isolation.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/screen-organization.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/series-rest-webkit.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/single-rest-webkit.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/sw-offline-redirect-regression.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/sync-status-proof.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/sync-status-webkit-local.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/test-compat-cumulative.mjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/test-partial-real.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  },
+  {
+    "path": "tests/test-sat-sun-alternatives.cjs",
+    "status": "INCLUIDO; consultar resultados para saber se executado"
+  }
+]

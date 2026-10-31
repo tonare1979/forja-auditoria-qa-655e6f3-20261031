@@ -1,0 +1,47 @@
+name: FORJA teste seletor iPhone RC3
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  safari:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps webkit
+      - name: Testar gesto do iPhone e catalogo
+        run: |
+          cat > /tmp/forja-mobile.cjs <<'JS'
+          const {webkit,devices}=require(process.cwd()+'/node_modules/playwright');
+          (async()=>{
+            const b=await webkit.launch({headless:true}),ctx=await b.newContext({...devices['iPhone 13']});
+            const p=await ctx.newPage();
+            const res=await p.goto('https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev/',{waitUntil:'domcontentloaded'});
+            if(!res.ok())throw Error('Preview HTTP '+res.status());
+            await p.waitForTimeout(750);
+            await p.evaluate(()=>{
+              const c=document.createElement('div');c.id='qa-filepicker';c.style='position:fixed;z-index:999999;top:80px;left:0;background:white;padding:24px;';
+              c.innerHTML='<input type="file" id="chatUpload" accept="image/jpeg,image/png,application/pdf,.pdf" style="opacity:0;position:absolute;width:1px;height:1px"><button type="button" data-chat-pick="1">ESCOLHER FOTO OU PDF</button><p id="chatFileName"></p>';
+              document.body.append(c);
+            });
+            const [chooser]=await Promise.all([p.waitForEvent('filechooser',{timeout:7000}),p.locator('#qa-filepicker button').click({force:true})]);
+            console.log('WEBKIT_FILE_PICKER_OK',chooser.isMultiple());
+            const json=await p.evaluate(async()=>{const r=await fetch('/videos/catalog.json');return {ok:r.ok,length:r.ok?(await r.json()).length:0}});
+            if(!json.ok||json.length<300)throw Error('Catalogo indisponivel '+JSON.stringify(json));
+            console.log('WEBKIT_CATALOG_OK',json.length);
+            const mappings=await p.evaluate(()=>Object.entries(forjaExactDemos));
+            if(mappings.length!==17)throw Error('Mapeamento inesperado '+mappings.length);
+            await p.route('**/*.mp4',route=>route.abort());
+            for(const [exercise,title] of mappings){
+              await p.evaluate(x=>forjaOpenDemo(x),exercise);
+              const result=await p.evaluate(()=>({url:document.querySelector('#forja-demo-box video')?.getAttribute('src'),count:document.querySelector('#forja-demo-box select')?.options.length}));
+              if(!result.url||result.count!==2)throw Error('Sem video direto '+exercise+' / '+JSON.stringify(result));
+            }
+            console.log('WEBKIT_DIRECT_VIDEO_MATCHES_OK',mappings.length);
+            await b.close();
+          })().catch(e=>{console.error(e);process.exit(1)})
+          JS
+          node /tmp/forja-mobile.cjs

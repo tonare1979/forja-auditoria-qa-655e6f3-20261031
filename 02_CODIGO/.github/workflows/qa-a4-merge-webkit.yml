@@ -1,0 +1,53 @@
+name: FORJA A4 mesclagem segura no WebKit
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps webkit
+      - name: Testar mesclagem 3-way sem perda de registros
+        run: |
+          cat >/tmp/merge.cjs <<'JS'
+          const {webkit,devices}=require(process.cwd()+'/node_modules/playwright');
+          (async()=>{
+            const browser=await webkit.launch();
+            const context=await browser.newContext({...devices['iPhone 13']});
+            const p=await context.newPage();
+            p.on('pageerror',e=>console.error('PAGEERROR',e.message));
+            await p.goto('file://'+process.cwd()+'/public/index.html',{waitUntil:'domcontentloaded'});
+            const results=await p.evaluate(()=>{
+              if(typeof cloudMerge3!=='function')throw Error('MERGE_MISSING');
+              const base=emptyState();
+              const a=JSON.parse(JSON.stringify(base)),b=JSON.parse(JSON.stringify(base));
+              const session=(id,reps)=>({id,code:'A',date:'2026-10-14',exercises:[{name:'Supino máquina',sets:[{kg:20,reps}]}]});
+              a.sessions.push(session('local',8));b.sessions.push(session('remote',10));
+              a.weights.push({date:'2026-10-14',weight:65});
+              b.weights.push({date:'2026-10-15',weight:66});
+              a.checks.alpha=true;b.checks.beta=true;
+              const merged=cloudMerge3(base,a,b);
+              if(merged.sessions.length!==2||merged.weights.length!==2||!merged.checks.alpha||!merged.checks.beta)throw Error('MISSING_INDEPENDENT_DATA '+JSON.stringify(merged));
+              const common=emptyState();common.sessions.push(session('same',8));
+              const local=JSON.parse(JSON.stringify(common)),remote=JSON.parse(JSON.stringify(common));
+              local.sessions[0].exercises[0].sets[0].reps=9;remote.sessions[0].exercises[0].sets[0].reps=11;
+              let rejected=false;try{cloudMerge3(common,local,remote)}catch(e){rejected=/Conflito/.test(e.message)}
+              if(!rejected)throw Error('SILENT_SAME_SESSION_OVERWRITE');
+              local.sessions=[];rejected=false;try{cloudMerge3(common,local,remote)}catch(e){rejected=true}
+              if(!rejected)throw Error('SILENT_DELETE_VS_EDIT');
+              cloud.user={username:'synthetic-qa'};cloud.revision=7;
+              if(!cloudBaselineSave(base,7)||!cloudEq(cloudBaselineRead(),base))throw Error('BASELINE_NOT_PERSISTED');
+              cloud.revision=8;if(cloudBaselineRead()!==null)throw Error('STALE_BASELINE_ACCEPTED');
+              if(document.documentElement.innerHTML.includes('ENVIAR ESTES DADOS'))throw Error('DESTRUCTIVE_OVERRIDE_STILL_PRESENT');
+              return {merged:merged.sessions.map(x=>x.id),weights:merged.weights.length,conflictBlocked:true,baselineVersioned:true};
+            });
+            console.log('A4_MERGE_SAFE_WEBKIT_OK',JSON.stringify(results));
+            await browser.close();
+          })().catch(e=>{console.error(e);process.exit(1)});
+          JS
+          node /tmp/merge.cjs

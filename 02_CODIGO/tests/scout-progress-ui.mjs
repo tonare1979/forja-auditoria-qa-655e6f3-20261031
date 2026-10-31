@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import vm from 'node:vm';
+const code=readFileSync(new URL('../public/scout-progress.js',import.meta.url),'utf8');
+const html=readFileSync(new URL('../public/index.html',import.meta.url),'utf8');
+const ctx={window:{},Date,Number,Set,Array};vm.runInNewContext(code,ctx);
+assert.equal(typeof ctx.window.forjaScoutProgress,'function');
+const snapshot={sessions:[{date:'2026-10-13',status:'partial',exercises:[{sets:[{kg:30,reps:8}]}]},{date:'2026-10-20',status:'complete',exercises:[{sets:[{kg:35,reps:8}]}]}],weights:[]};
+const copy=JSON.stringify(snapshot);
+const metrics=ctx.window.forjaScoutMetrics(snapshot,new Date('2026-10-27T00:00:00Z'));
+assert.equal(metrics.sessions,2);assert.equal(metrics.partial,1);assert.equal(metrics.volume,520);
+assert.equal(JSON.stringify(snapshot),copy);
+const markup=ctx.window.forjaScoutProgress(snapshot,new Date('2026-10-27T00:00:00Z'));
+assert.ok(markup.includes('treino parcial'));assert.ok(markup.includes('SCOUT'));
+assert.ok(html.includes('<script src="./scout-progress.js"></script>'));
+assert.ok(html.includes('window.forjaScoutProgress(state)'));
+console.log('SCOUT_PROGRESS_UI_PASS');

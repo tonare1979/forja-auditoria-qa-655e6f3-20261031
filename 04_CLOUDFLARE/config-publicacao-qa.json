@@ -1,0 +1,31 @@
+{
+  "compatibility_flags": [],
+  "preview_urls": true,
+  "compatibility_date": "2026-10-10",
+  "workers_dev": true,
+  "account_id": "275e26e84efd4876e790de718d824df2",
+  "r2_buckets": [
+    {
+      "bucket_name": "forja-rc3-9c27784-r2-qa",
+      "binding": "PHOTOS"
+    }
+  ],
+  "main": "src/index.js",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "forja-rc3-9c27784-d1-qa",
+      "database_id": "4e919dd4-cfcc-4827-ac27-05f1e385b4c2"
+    }
+  ],
+  "logpush": false,
+  "name": "forja-rc3-c7f15d5-offline-qa",
+  "keep_vars": true,
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api/*"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+name: FORJA QA matriz 19 videos
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  matrix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verificar cada vídeo mapeado com mídia real
+        run: |
+          python3 - <<'PY'
+          import json,re,urllib.request,urllib.error,time
+          from pathlib import Path
+          s=Path('public/index.html').read_text()
+          pairs=json.loads(re.search(r'const forjaExactDemos=(\{.*?\});',s).group(1))
+          catalog=json.loads(Path('public/videos/catalog.json').read_text())
+          byname={r['name']:r for r in catalog}
+          errors=[]
+          for name,target in pairs.items():
+            row=byname.get(target)
+            if not row:
+              errors.append((name,'MISSING'))
+              continue
+            uri=row['female']
+            try:
+              req=urllib.request.Request(uri,method='HEAD',headers={'User-Agent':'Mozilla/5.0'})
+              with urllib.request.urlopen(req,timeout=12) as response:
+                ctype=response.headers.get('Content-Type','')
+                if response.status!=200 or 'video/' not in ctype:errors.append((name,response.status,ctype))
+            except Exception as e:errors.append((name,str(e)))
+          print('VIDEO_MATRIX',len(pairs),'FAILS',len(errors),errors)
+          assert len(pairs)==19
+          assert not errors
+          PY

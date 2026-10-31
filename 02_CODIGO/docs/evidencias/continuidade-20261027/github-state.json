@@ -1,0 +1,394 @@
+{
+  "reference": [
+    {
+      "name": "docs/rc3-pepper-contingency-20261026",
+      "commit": {
+        "sha": "23e8ca7e3ddb758ed8623b4d941609348b057dcd",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/23e8ca7e3ddb758ed8623b4d941609348b057dcd"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/forja-music-curadoria-20261020",
+      "commit": {
+        "sha": "11a96d69587ace0d611d59849a2cbe5de889e819",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/11a96d69587ace0d611d59849a2cbe5de889e819"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/scout-analytics-local-20261027",
+      "commit": {
+        "sha": "c9cd1a2976db0d87c88469f970a0f1d468b412f9",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/c9cd1a2976db0d87c88469f970a0f1d468b412f9"
+      },
+      "protected": false
+    },
+    {
+      "name": "feat/ux-gymanalytica-four-tabs-20261020",
+      "commit": {
+        "sha": "b3c0c6f6713fd6ebf7cf98de68c0f26bb7b8bdee",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/b3c0c6f6713fd6ebf7cf98de68c0f26bb7b8bdee"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/p0-ui-storage-occ-20261019",
+      "commit": {
+        "sha": "5cb464dfd2903d852162b7217ae0aaf5fe49b997",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/5cb464dfd2903d852162b7217ae0aaf5fe49b997"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/qa-prod-d1-isolation-runbook-20261024",
+      "commit": {
+        "sha": "bffeba3a81714864540650453d85e9755e7e82c1",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/bffeba3a81714864540650453d85e9755e7e82c1"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/rc3-consolidada-r4-20261018",
+      "commit": {
+        "sha": "dd5fe84e3752e703fc53c7155aa9811fc8949e98",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/dd5fe84e3752e703fc53c7155aa9811fc8949e98"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/rc3-draft-history-20261026",
+      "commit": {
+        "sha": "0f8542c8bc1236a2a79a7ed9e080fbb4f616a46a",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/0f8542c8bc1236a2a79a7ed9e080fbb4f616a46a"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/rc3-equipment-thumb-contain-20261027",
+      "commit": {
+        "sha": "dad628c57fbde798921174ea8491bd7f46d3050e",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/dad628c57fbde798921174ea8491bd7f46d3050e"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/rc3-f2-portable-20261017",
+      "commit": {
+        "sha": "3355768cf2cb9c1527ddfaec3b5fa0e1180411fc",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/3355768cf2cb9c1527ddfaec3b5fa0e1180411fc"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/rc3-homologacao-20261014",
+      "commit": {
+        "sha": "c154df931b041ae52fae6ba00efd64c2f73192a4",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/c154df931b041ae52fae6ba00efd64c2f73192a4"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/rc3-iphone-resume-draft-20261027",
+      "commit": {
+        "sha": "0f8542c8bc1236a2a79a7ed9e080fbb4f616a46a",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/0f8542c8bc1236a2a79a7ed9e080fbb4f616a46a"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/rc3-login-form-401-20261025",
+      "commit": {
+        "sha": "dfe04db31c6efd2f1e0d1185c4a62c5097a92cdd",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/dfe04db31c6efd2f1e0d1185c4a62c5097a92cdd"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/rc3-login-sessao-20261025",
+      "commit": {
+        "sha": "b3897fb787952db796e8e63526dbee43595b007c",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/b3897fb787952db796e8e63526dbee43595b007c"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/rc3-preservar-alternativas-20261025",
+      "commit": {
+        "sha": "7121456fc0de8793ec231044b29b43c3de596d49",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/7121456fc0de8793ec231044b29b43c3de596d49"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/rc3-preservar-personalizacao-20261025",
+      "commit": {
+        "sha": "6ba169a33c53e27b6996ea599b6b2c89a9655041",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/6ba169a33c53e27b6996ea599b6b2c89a9655041"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/rc3-required-secrets-gate-20261026",
+      "commit": {
+        "sha": "b410d45bf54f8c81a401d22910747c7b4fcc63a4",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/b410d45bf54f8c81a401d22910747c7b4fcc63a4"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/rc3-retorno-perfil-20261025",
+      "commit": {
+        "sha": "510b885dfd43c75385a38f6470cb72ed004ee89a",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/510b885dfd43c75385a38f6470cb72ed004ee89a"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/rc3-safari-local-save-order-20261026",
+      "commit": {
+        "sha": "04cada1762e42d87bb3c751039ed054bbd14cc50",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/04cada1762e42d87bb3c751039ed054bbd14cc50"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/rc3-scout-duplicado-deezer-20261019",
+      "commit": {
+        "sha": "1f79beadfdfe4a2200ce373fe9145b732af6af3c",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/1f79beadfdfe4a2200ce373fe9145b732af6af3c"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/rc3-self-signup-cpf-20261026",
+      "commit": {
+        "sha": "5060272af858751682cb35631173ca63ed0365a0",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/5060272af858751682cb35631173ca63ed0365a0"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/rc3-sync-verificacao-20261025",
+      "commit": {
+        "sha": "1602054092a651386d30e8986b36071c6e3a93ba",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/1602054092a651386d30e8986b36071c6e3a93ba"
+      },
+      "protected": false
+    },
+    {
+      "name": "fix/rc3-validacao-d1-e-qa-webkit-20261025",
+      "commit": {
+        "sha": "9b67d133edf3a58bfcf62d6e8e27e85eeabda450",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/9b67d133edf3a58bfcf62d6e8e27e85eeabda450"
+      },
+      "protected": false
+    },
+    {
+      "name": "main",
+      "commit": {
+        "sha": "b18319c1e1a6cdb77f9822a6efb8029f5683e0b7",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/b18319c1e1a6cdb77f9822a6efb8029f5683e0b7"
+      },
+      "protected": false
+    },
+    {
+      "name": "qa/rc3-ios-standalone-20261025",
+      "commit": {
+        "sha": "10fd8455a9e1a324dcd95b10010c1115bf33afac",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/10fd8455a9e1a324dcd95b10010c1115bf33afac"
+      },
+      "protected": false
+    },
+    {
+      "name": "qa/rc3-two-device-sync-20261025",
+      "commit": {
+        "sha": "4a3b1fb1780d19683529e9ace254cd9059d3924d",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/4a3b1fb1780d19683529e9ace254cd9059d3924d"
+      },
+      "protected": false
+    },
+    {
+      "name": "security/block-shared-lab-remote-qa-main-20261023",
+      "commit": {
+        "sha": "3f6f5fd57ad938d5cd7bbaa675a54a098ffe6af2",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/3f6f5fd57ad938d5cd7bbaa675a54a098ffe6af2"
+      },
+      "protected": false
+    },
+    {
+      "name": "test/rc3-parity-auth-occ-20261026",
+      "commit": {
+        "sha": "149e87316a85bfc1a6d799c1f63266ac2c9e9bdf",
+        "url": "https://api.github.com/repos/tonare1979/forja-v11-homologaca/commits/149e87316a85bfc1a6d799c1f63266ac2c9e9bdf"
+      },
+      "protected": false
+    }
+  ],
+  "pullRequests": [
+    {
+      "number": 16,
+      "state": "open",
+      "draft": true,
+      "head": "fix/rc3-login-form-401-20261025",
+      "headSha": "dfe04db31c6efd2f1e0d1185c4a62c5097a92cdd",
+      "base": "fix/rc3-validacao-d1-e-qa-webkit-20261025",
+      "baseSha": "9b67d133edf3a58bfcf62d6e8e27e85eeabda450",
+      "mergedAt": null,
+      "url": "https://github.com/tonare1979/forja-v11-homologaca/pull/16"
+    },
+    {
+      "number": 15,
+      "state": "open",
+      "draft": true,
+      "head": "fix/rc3-validacao-d1-e-qa-webkit-20261025",
+      "headSha": "9b67d133edf3a58bfcf62d6e8e27e85eeabda450",
+      "base": "fix/rc3-preservar-personalizacao-20261025",
+      "baseSha": "6ba169a33c53e27b6996ea599b6b2c89a9655041",
+      "mergedAt": null,
+      "url": "https://github.com/tonare1979/forja-v11-homologaca/pull/15"
+    },
+    {
+      "number": 14,
+      "state": "open",
+      "draft": true,
+      "head": "fix/rc3-preservar-personalizacao-20261025",
+      "headSha": "6ba169a33c53e27b6996ea599b6b2c89a9655041",
+      "base": "fix/rc3-preservar-alternativas-20261025",
+      "baseSha": "7121456fc0de8793ec231044b29b43c3de596d49",
+      "mergedAt": null,
+      "url": "https://github.com/tonare1979/forja-v11-homologaca/pull/14"
+    },
+    {
+      "number": 13,
+      "state": "open",
+      "draft": true,
+      "head": "fix/rc3-preservar-alternativas-20261025",
+      "headSha": "7121456fc0de8793ec231044b29b43c3de596d49",
+      "base": "fix/qa-prod-d1-isolation-runbook-20261024",
+      "baseSha": "bffeba3a81714864540650453d85e9755e7e82c1",
+      "mergedAt": null,
+      "url": "https://github.com/tonare1979/forja-v11-homologaca/pull/13"
+    },
+    {
+      "number": 12,
+      "state": "closed",
+      "draft": false,
+      "head": "security/block-shared-lab-remote-qa-main-20261023",
+      "headSha": "3f6f5fd57ad938d5cd7bbaa675a54a098ffe6af2",
+      "base": "main",
+      "baseSha": "d2bd2d1bc0b28d9a0f71538aa47d761e5cfaa409",
+      "mergedAt": "2026-10-24T00:54:02Z",
+      "url": "https://github.com/tonare1979/forja-v11-homologaca/pull/12"
+    },
+    {
+      "number": 6,
+      "state": "open",
+      "draft": true,
+      "head": "feat/forja-music-curadoria-20261020",
+      "headSha": "11a96d69587ace0d611d59849a2cbe5de889e819",
+      "base": "feat/ux-gymanalytica-four-tabs-20261020",
+      "baseSha": "b43d66367beba355c503cb3d4e07017925c50495",
+      "mergedAt": null,
+      "url": "https://github.com/tonare1979/forja-v11-homologaca/pull/6"
+    },
+    {
+      "number": 5,
+      "state": "open",
+      "draft": true,
+      "head": "feat/ux-gymanalytica-four-tabs-20261020",
+      "headSha": "b3c0c6f6713fd6ebf7cf98de68c0f26bb7b8bdee",
+      "base": "fix/p0-ui-storage-occ-20261019",
+      "baseSha": "5cb464dfd2903d852162b7217ae0aaf5fe49b997",
+      "mergedAt": null,
+      "url": "https://github.com/tonare1979/forja-v11-homologaca/pull/5"
+    },
+    {
+      "number": 4,
+      "state": "open",
+      "draft": true,
+      "head": "fix/p0-ui-storage-occ-20261019",
+      "headSha": "5cb464dfd2903d852162b7217ae0aaf5fe49b997",
+      "base": "fix/rc3-scout-duplicado-deezer-20261019",
+      "baseSha": "1f79beadfdfe4a2200ce373fe9145b732af6af3c",
+      "mergedAt": null,
+      "url": "https://github.com/tonare1979/forja-v11-homologaca/pull/4"
+    },
+    {
+      "number": 2,
+      "state": "open",
+      "draft": true,
+      "head": "fix/rc3-f2-portable-20261017",
+      "headSha": "3355768cf2cb9c1527ddfaec3b5fa0e1180411fc",
+      "base": "main",
+      "baseSha": "d2bd2d1bc0b28d9a0f71538aa47d761e5cfaa409",
+      "mergedAt": null,
+      "url": "https://github.com/tonare1979/forja-v11-homologaca/pull/2"
+    },
+    {
+      "number": 1,
+      "state": "open",
+      "draft": true,
+      "head": "fix/rc3-homologacao-20261014",
+      "headSha": "c154df931b041ae52fae6ba00efd64c2f73192a4",
+      "base": "main",
+      "baseSha": "d2bd2d1bc0b28d9a0f71538aa47d761e5cfaa409",
+      "mergedAt": null,
+      "url": "https://github.com/tonare1979/forja-v11-homologaca/pull/1"
+    }
+  ],
+  "codeCommit": "fdab18f1bfa27e9b0f7b57bb0ab6f954b642cbcf",
+  "cloudflareReadOnly": {
+    "deployments": {
+      "status": 200,
+      "success": true,
+      "result": {
+        "deployments": [
+          {
+            "id": "c40f73f7-0d4f-458f-971b-b8eda6f574cb",
+            "source": "wrangler",
+            "strategy": "percentage",
+            "author_email": "renatodesouza79@gmail.com",
+            "annotations": {
+              "workers/triggered_by": "deployment"
+            },
+            "versions": [
+              {
+                "version_id": "b181c14c-8c8a-43a5-88e0-6395722b1f74",
+                "percentage": 100
+              }
+            ],
+            "created_on": "2026-10-27T20:59:54.395459Z"
+          }
+        ]
+      }
+    },
+    "settings": {
+      "status": 200,
+      "success": true,
+      "bindings": [
+        {
+          "name": "ASSETS",
+          "type": "assets"
+        },
+        {
+          "database_id": "402315ff-3833-4060-91b6-8c6bd3884642",
+          "id": "402315ff-3833-4060-91b6-8c6bd3884642",
+          "name": "DB",
+          "type": "d1"
+        },
+        {
+          "bucket_name": "forja-v11-rc3-fotos-lab",
+          "name": "PHOTOS",
+          "type": "r2_bucket"
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "Snapshot local importado via API, não clone integral",
+    "Sem deploy, merge ou escrita D1/R2",
+    "Sem aceite físico ou visual",
+    "Código publicado indicado pelo registro anterior, não paridade integral reconfirmada"
+  ]
+}

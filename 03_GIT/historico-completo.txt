@@ -1,0 +1,195 @@
+655e6f3cd80954b144339968afff231d3d38f0c4 c7f15d592d35ba16abe1cf2e052100583f42dec1 2026-10-31T01:51:15Z fix(pwa): normalize offline navigation HTML without redirects
+c7f15d592d35ba16abe1cf2e052100583f42dec1 102f8885deba3c7bb1f6db60e08641e4a9215dda 2026-10-30T22:52:15Z fix(scout): retain historical metadata by exercise and set origin
+102f8885deba3c7bb1f6db60e08641e4a9215dda fe4d8937284e48e4642d1c0efae272283c7c7d43 2026-10-30T22:48:07Z fix(scout): preserve historical notes and fields, partial status, local dates, offline cache
+fe4d8937284e48e4642d1c0efae272283c7c7d43 1ac26422920a806811b5067f19f629dfb862ce11 2026-10-30T22:38:48Z feat(scout): local retroactive sessions and history editing with contextual save messages
+1ac26422920a806811b5067f19f629dfb862ce11 58a90d5bde10d538502933efbaa54dd0fae7c476 2026-10-30T21:57:07Z fix(scout): exclude future and invalid dates from individual workout identity
+58a90d5bde10d538502933efbaa54dd0fae7c476 62eb7194846101994024fa4195a7250142d0a9b5 2026-10-30T21:51:41Z fix(scout): isolate identity resolution from future and invalid sessions
+62eb7194846101994024fa4195a7250142d0a9b5 3892fbf8549e21a4fa2750c21cdb9b9e6f9670f6 2026-10-30T19:45:01Z fix(scout): account for mixed trends and expose set-level evidence
+3892fbf8549e21a4fa2750c21cdb9b9e6f9670f6 d62a79f2aff354c77d50462e3ecc62855dabf8fb 2026-10-30T19:41:48Z feat(scout): add conservative longitudinal evidence by equipment and sets
+d62a79f2aff354c77d50462e3ecc62855dabf8fb ad79af57e75beed85ba01ec17d844b94e9a908b4 2026-10-30T19:02:37Z fix(scout): persist explicitly entered equipment per selected exercise
+ad79af57e75beed85ba01ec17d844b94e9a908b4 cf75ee73c3e5fb09afb4f79d92bfc136d7e780c1 2026-10-30T18:50:32Z fix(scout): treat unknown equipment as inconclusive; simplify feedback
+cf75ee73c3e5fb09afb4f79d92bfc136d7e780c1 f20252529d05ca06099c46d85394f7bdd1f2255a 2026-10-30T18:14:25Z fix(scout): deduplicate identical session IDs and quarantine conflicts; flag equipment change
+f20252529d05ca06099c46d85394f7bdd1f2255a 9c27784ed7d0ddd6160b31469d9b755c3c28f95c 2026-10-30T17:46:05Z feat(scout): summarize 30 45 60 day routine and latest session with descriptive limits
+9c27784ed7d0ddd6160b31469d9b755c3c28f95c f99d17b5917f090208be8f1e013cf35bed9f1e4e 2026-10-30T00:27:31-03:00 test: align WebKit profile reload with integrated navigation
+f99d17b5917f090208be8f1e013cf35bed9f1e4e 0cdd316eeda872c4214231f1561fec6bab6071d8 d3a350c6b9c64429b0a9204408f366635c8233a2 2026-10-30T02:34:17Z Integrate offline session and Scout UI in isolated candidate
+0cdd316eeda872c4214231f1561fec6bab6071d8 e358f130982ebf8124cbe616b876f1c9c6fe8fee 2026-10-29T21:58:38-04:00 fix(auth): preserve offline athlete session and explicit logout
+e358f130982ebf8124cbe616b876f1c9c6fe8fee bdac1a3d2657d9680459e37d91933cd0717e274b 2026-10-30T01:39:14Z test(d1): version isolated atomic cleanup guard compatible with D1
+d3a350c6b9c64429b0a9204408f366635c8233a2 bdac1a3d2657d9680459e37d91933cd0717e274b 2026-10-29T16:11:53-05:00 Organiza telas e acrescenta Scout por treino com evidencias
+bdac1a3d2657d9680459e37d91933cd0717e274b 02adcc7527ab53fb798337078eb2b36f46b4a160 2026-10-29T13:16:55-05:00 fix(sync): accept weekend sessions already supported by the client
+02adcc7527ab53fb798337078eb2b36f46b4a160 97334dad26f9322ace0dff2b1d39821f8a9231d4 2026-10-29T11:59:58Z fix(backup): verify bundles safely in Windows PowerShell 5.1
+97334dad26f9322ace0dff2b1d39821f8a9231d4 d3493c18dbeeebe7604ab958436ad4f6e6f92828 2026-10-29T02:00:54Z fix(ops): retain verified git bundle through promotion failures
+d3493c18dbeeebe7604ab958436ad4f6e6f92828 fe6df8f51f8a2ef2e841462d00535764d20ff2c4 2026-10-28T22:33:49-03:00 fix(rc3): use one compact fixed rest countdown
+fe6df8f51f8a2ef2e841462d00535764d20ff2c4 f00b3c62a87328ce0997869ef57b891f2d88629f 2026-10-28T22:28:38-03:00 fix(rc3): complete valid sets on commit and keep rest timer visible
+f00b3c62a87328ce0997869ef57b891f2d88629f 23e875edece5cec90d84a8dd9fd016cf779984a6 2026-10-28T22:14:18-03:00 test(rc3): add isolated authenticated local Worker and SQLite lab
+23e875edece5cec90d84a8dd9fd016cf779984a6 c9a48e753d495a0fab2f38773ae4cc42d30062e4 2026-10-28T21:55:10-03:00 fix(rc3): integrate validated compatibility, profile and persistence changes
+c9a48e753d495a0fab2f38773ae4cc42d30062e4 5bb182b6db8c71529906971347f15a46f6d3af9b 2026-10-27T23:41:18-03:00 docs(qa): persist executed 20/20 and 23/23 results with source provenance
+5bb182b6db8c71529906971347f15a46f6d3af9b f0df1d08326dbdfcb607b3ff053bb0c7ea9e8f4d 2026-10-27T23:39:57-03:00 fix(qa): remove Windows-only imports and pin offline-capable Playwright 1.64
+f0df1d08326dbdfcb607b3ff053bb0c7ea9e8f4d fdab18f1bfa27e9b0f7b57bb0ab6f954b642cbcf 2026-10-27T23:30:22-03:00 docs(rc3): reconcile handoff and persist executed baseline/candidate evidence
+fdab18f1bfa27e9b0f7b57bb0ab6f954b642cbcf dad628c57fbde798921174ea8491bd7f46d3050e 2026-10-27T23:28:30-03:00 fix(scout): compare daily best loads independently of session order
+dad628c57fbde798921174ea8491bd7f46d3050e 4ddee15c166290621bab43b92bd5711379b812e2 2026-10-27T22:47:47-03:00 audit: register 21 isolated local Codex tests as reported evidence
+4ddee15c166290621bab43b92bd5711379b812e2 fe57b7ccb25b107b9c8db9874f4a329459851dd8 2026-10-27T22:08:41-03:00 audit: identify Actions E2E execution risks without remote deployment
+fe57b7ccb25b107b9c8db9874f4a329459851dd8 b4d29605ddeef2f7c2c821f52ab6bf2315086d7d 2026-10-27T21:00:44-03:00 audit: verify WebKit synthetic CPF signup without remote writes
+b4d29605ddeef2f7c2c821f52ab6bf2315086d7d acdb39ded8012591c4563d423b50a2be638dfe7b 2026-10-27T20:54:50-03:00 audit: log music layout checks and live Music asset availability
+acdb39ded8012591c4563d423b50a2be638dfe7b 2ba888baddbef8f57260691068b8c7fa9c13c1dd 2026-10-27T20:53:17-03:00 audit: document passing synthetic login CPF OCC and WebKit sync tests
+2ba888baddbef8f57260691068b8c7fa9c13c1dd f1727321162c9d52777a5dbc5070c184052adf2f 2026-10-27T20:46:52-03:00 audit: record verified read-only RC3 remote parity and auth smoke
+f1727321162c9d52777a5dbc5070c184052adf2f c9ec68e1eb5353d74b55f6a999314a061c00b09b 2026-10-27T20:35:01-03:00 audit: reopen evidence-gated RC3 review with verified live Worker deployment
+c9ec68e1eb5353d74b55f6a999314a061c00b09b 1da30bba659d063bad6af500e390420653fc5281 2026-10-27T20:15:05-03:00 docs: classify historical branches without unsafe merge
+1da30bba659d063bad6af500e390420653fc5281 cda2b3b3093b0f160756467e0dd952e10df4b52c 2026-10-27T20:13:03-03:00 docs: pin exact original FORJA design references and SHA256
+cda2b3b3093b0f160756467e0dd952e10df4b52c 815324c363b0ac754b38d21b8782fbce276c7a15 2026-10-27T20:10:52-03:00 docs: verify independent active Git checkout and post-migration QA
+815324c363b0ac754b38d21b8782fbce276c7a15 2e1afdc7eb867a3f35f07036d3c8ef1f66da2e47 2026-10-27T19:49:33-03:00 docs: record verified housekeeping closure, cloud deployment and remaining gates
+2e1afdc7eb867a3f35f07036d3c8ef1f66da2e47 c7314e4ecba471ff0d30a04f7081ed88786e9ff7 2026-10-27T19:48:09-03:00 fix-git-bundle-verify-powershell-success-stderr
+c7314e4ecba471ff0d30a04f7081ed88786e9ff7 b28b5cbf6dba4484179172a6b8cd1217953afa51 2026-10-27T19:47:03-03:00 chore-add-verified-backup-refresh-and-rollback
+b28b5cbf6dba4484179172a6b8cd1217953afa51 afe9af9c154a4b658e7d2503caf7787836f989bc 2026-10-27T19:45:43-03:00 docs: consolidate verified housekeeping results as current single-source status
+afe9af9c154a4b658e7d2503caf7787836f989bc ee0442daca550d5e43a7bbca63e0adb736f8548e 2026-10-27T19:44:52-03:00 docs: replace stale README with single-source FORJA V11 entrypoint
+ee0442daca550d5e43a7bbca63e0adb736f8548e d761ef0dd6555137bb319ff0067abb5a39417075 2026-10-27T19:43:58-03:00 chore-verify-all-27-retired-worktrees-and-legacy-artifacts
+d761ef0dd6555137bb319ff0067abb5a39417075 5b4c94b66a0c6f1ab076976198894f94566f81ff 2026-10-27T19:36:33-03:00 chore-archive-legacy-worktrees-and-transfer-with-integrity
+5b4c94b66a0c6f1ab076976198894f94566f81ff a893db203de31597637b13cceffa9dc3cb791cf7 2026-10-27T19:28:58-03:00 chore-archive-11-clean-linked-worktrees
+a893db203de31597637b13cceffa9dc3cb791cf7 3c8e00d3a71e53aa79976cfe98956435b4a5e3ca 2026-10-27T19:25:32-03:00 chore-align-scheduled-qa-and-record-worktrees
+3c8e00d3a71e53aa79976cfe98956435b4a5e3ca 02af24693964e3f272e38850087065d8aa31a68b 2026-10-27T19:23:45-03:00 docs: register six archived build proofs and outstanding safe-closure gates
+02af24693964e3f272e38850087065d8aa31a68b 62ab7be5b996f217f42a25864c55fb2d20b442e6 2026-10-27T19:22:37-03:00 chore-archive-build-proofs-with-sha256
+62ab7be5b996f217f42a25864c55fb2d20b442e6 4a11379c835223a9f907ff784ea70d089961a8cc 2026-10-27T19:20:40-03:00 fix: make QA status deployment-neutral and avoid false unpublished claim
+4a11379c835223a9f907ff784ea70d089961a8cc 61a6271ba8eb14a42b057408e1529e032ab958b2 2026-10-27T19:20:17-03:00 docs: identify approved Work originals and binary transfer gap
+61a6271ba8eb14a42b057408e1529e032ab958b2 feb2789515318ab0c82e84812012e23c90e14577 2026-10-27T19:19:18-03:00 docs: record verified inventory worktrees and git backup recovery gate
+feb2789515318ab0c82e84812012e23c90e14577 09f85f1d045ee592c23c113dd1c6af8f80ecd128 2026-10-27T19:18:24-03:00 chore-inventory-forja-legacy-folders
+09f85f1d045ee592c23c113dd1c6af8f80ecd128 2ce88df12c5de272752d775ab6808a9b117ffba5 2026-10-27T19:16:06-03:00 docs: record verified Notion alignment and cleanup gate
+2ce88df12c5de272752d775ab6808a9b117ffba5 ef4c4ec78e64f0526a2a9d1c31f1c591950a3f16 2026-10-27T19:13:37-03:00 docs: index canonical imported quality audit original
+ef4c4ec78e64f0526a2a9d1c31f1c591950a3f16 3f8864c3dd14ff0129ac4f27be6c13aee8978b73 2026-10-27T19:13:21-03:00 docs: import original 35-criteria quality prompt from project Library
+3f8864c3dd14ff0129ac4f27be6c13aee8978b73 ecba7ad3721a0b9b286b80320957b559688eeebd 2026-10-27T19:09:08-03:00 docs: freeze audits pending single-source housekeeping gate
+ecba7ad3721a0b9b286b80320957b559688eeebd 3aa508c54e399e462509f2d67a5c2205510475f3 2026-10-27T18:56:17-03:00 docs-single-source-backup-policy
+3aa508c54e399e462509f2d67a5c2205510475f3 a6138597ad9ff639b34c2abfa21d222241a2ee37 2026-10-27T18:50:34-03:00 docs-audit-protocol-integrated-v1
+a6138597ad9ff639b34c2abfa21d222241a2ee37 3d2db9a8bfc3c8244a4bfea27c2f986c144d4ddc 2026-10-27T18:47:46-03:00 docs-forja-master-inventory-governance
+3d2db9a8bfc3c8244a4bfea27c2f986c144d4ddc e3500fc00ed1c6c0be7324515a4586bc88e72131 2026-10-27T18:26:30-03:00 docs-forja-operational-control
+e3500fc00ed1c6c0be7324515a4586bc88e72131 93faf8d715dfdc473005f422225d86805ba53228 2026-10-27T18:24:38-03:00 fix-daily-qa-current-candidate
+93faf8d715dfdc473005f422225d86805ba53228 8036191c6351892c590f39c8b133e69b3c0b2539 2026-10-27T17:49:08-03:00 test-alternative-switch-data-rollback
+8036191c6351892c590f39c8b133e69b3c0b2539 11eedfd65f5247285beb2714bf0b52c682411588 2026-10-27T17:39:10-03:00 fix-alternative-card-title-ptbr
+11eedfd65f5247285beb2714bf0b52c682411588 b9e864e5db510020e5970978c3d50acd9e40815d 2026-10-27T17:34:55-03:00 fix-alternative-names-ptbr
+b9e864e5db510020e5970978c3d50acd9e40815d 2157ac3161ce2e0af33ec83750c7b127d4221b8a 2026-10-27T17:26:33-03:00 fix-demo-autoplay-iphone
+2157ac3161ce2e0af33ec83750c7b127d4221b8a 3eeda760bdd2818a17d0c1f795c5602dc42ff5bb 2026-10-27T17:23:18-03:00 fix-demo-availability-feedback
+3eeda760bdd2818a17d0c1f795c5602dc42ff5bb c9cd1a2976db0d87c88469f970a0f1d468b412f9 2026-10-27T17:19:15-03:00 fix-equipment-thumbnail-crop
+c9cd1a2976db0d87c88469f970a0f1d468b412f9 da87f0f935bbd891f910ae53d721d0f70f5ace74 2026-10-27T14:43:27-03:00 docs(rc3): canonical cross-chat operational handoff
+da87f0f935bbd891f910ae53d721d0f70f5ace74 5537bbd1d512f72824bef5075e98ee4214233c2b 2026-10-27T14:29:22-03:00 fix(rc3): use approved Work leg press thumbnail in compact card
+5537bbd1d512f72824bef5075e98ee4214233c2b c1069fd4b48a5e270674b54c9a05d676b7e2db53 2026-10-27T14:18:44-03:00 fix(rc3): compact equipment cards matching approved Work reference
+c1069fd4b48a5e270674b54c9a05d676b7e2db53 8c538389efd647d16f8146499225c1c7c5fb19b4 2026-10-27T14:05:07-03:00 fix(rc3): add licensed leg press equipment photo
+8c538389efd647d16f8146499225c1c7c5fb19b4 e45ca496f49768919434204fa713c3de14df89c6 2026-10-27T13:59:34-03:00 fix(rc3): iPhone layout, equipment references, safe demos and music icons
+e45ca496f49768919434204fa713c3de14df89c6 60605ea03d7e227b953b3430bdf2d83971c57f4d 2026-10-27T12:34:20-03:00 test(qa): preserve failed-run precedence in status regression
+60605ea03d7e227b953b3430bdf2d83971c57f4d bd2a11a65466b23e01e83c0b8354f635c5e2e119 2026-10-27T12:31:00-03:00 feat(ui): integrate approved FORJA Music layout direction
+bd2a11a65466b23e01e83c0b8354f635c5e2e119 624ac31bb9181e7691e9a672fd913ad62fab666b 2026-10-27T12:01:21-03:00 test(pwa): derive expected cache from current service worker
+624ac31bb9181e7691e9a672fd913ad62fab666b 7096c912afdaa230a9720f29dd0e6332bda1ff69 2026-10-27T11:48:40-03:00 fix(workouts): restore approved SAT SUN workout plans in selector
+7096c912afdaa230a9720f29dd0e6332bda1ff69 caae67a82f9911db20ed9a4572c4ec97e1677527 2026-10-27T11:37:03-03:00 feat(music): link three approved Deezer playlists
+caae67a82f9911db20ed9a4572c4ec97e1677527 b48fc14d778c71974f951913b3ceed70aa0ebbec 2026-10-27T08:51:25-03:00 fix(ui): show weekend workout records directly beside A B CR C D
+b48fc14d778c71974f951913b3ceed70aa0ebbec 2f50a985bd707c25795facd6cc19964397dd2be2 2026-10-27T08:48:20-03:00 fix(ui): restore music lanes and chronological weekend workouts
+2f50a985bd707c25795facd6cc19964397dd2be2 a111d59bb3acc98e9b2f56301407a642480adeea 2026-10-27T08:24:33-03:00 fix(pwa): cache Scout panel asset for offline use
+a111d59bb3acc98e9b2f56301407a642480adeea 43728771af14ada22c79f3d6f934fd535169bb99 2026-10-27T08:22:42-03:00 feat(scout): add cautious load trend and edge case validation
+43728771af14ada22c79f3d6f934fd535169bb99 317bb3b64944bf251281af01ed0bd398733ba7df 2026-10-27T03:10:51-03:00 feat(scout): show read-only 28-day effort panel in progress
+317bb3b64944bf251281af01ed0bd398733ba7df d5d71ac3d734bf03dd84c2a46ca03e7b1a6b4c48 2026-10-27T03:09:20-03:00 feat(scout): map FORJA snapshot sessions and weights read only
+d5d71ac3d734bf03dd84c2a46ca03e7b1a6b4c48 5002179ad8cad0d08168d05d6b00fb2b907546db 2026-10-27T03:07:57-03:00 feat(scout): add local metrics engine and QA telemetry contract
+5002179ad8cad0d08168d05d6b00fb2b907546db e048c210f2b3b7157712bde5cc5bfb46941230c0 2026-10-27T02:25:58-03:00 ci: align disposable E2E D1 name and persistence
+e048c210f2b3b7157712bde5cc5bfb46941230c0 45e6fbca7a319e1c3e7d2e38a9e2c494bc95664d 2026-10-27T02:22:04-03:00 fix: align RC3 D1 display name with actual database
+45e6fbca7a319e1c3e7d2e38a9e2c494bc95664d da00fccd3b58b4b1f7cd2da5d693bbfa3ff66a77 2026-10-27T02:15:32-03:00 fix: reconcile RC3 deployed workout drafts HTML
+da00fccd3b58b4b1f7cd2da5d693bbfa3ff66a77 42e1a3621d49467c7093584aa9571f4e03b8a739 2026-10-27T01:57:04-03:00 docs: freeze CPF release safety gate and rollback
+42e1a3621d49467c7093584aa9571f4e03b8a739 a6fad2277d1145e4c615024f799c601f4d4d3490 2026-10-27T01:53:26-03:00 test: prove local CPF backup restore integrity
+a6fad2277d1145e4c615024f799c601f4d4d3490 e763c4b1de67d7c1f769ea0fa9a32e70e59fb56e 2026-10-27T01:51:29-03:00 ops: generate review-only CPF migration SQL by schema
+e763c4b1de67d7c1f769ea0fa9a32e70e59fb56e 5060272af858751682cb35631173ca63ed0365a0 2026-10-27T01:17:57-03:00 test: plan safe CPF schema parity for both D1 layouts
+5060272af858751682cb35631173ca63ed0365a0 0d3ca60170077fe14f82ac208d49876b227a57c9 2026-10-26T17:53:15-03:00 fix(rc3): commit workout snapshot and recovery history atomically
+0d3ca60170077fe14f82ac208d49876b227a57c9 d22a03299527ea76762d36dd9ecec8dc7422ea02 2026-10-26T17:29:12-03:00 fix(rc3): show appropriate admin actions by athlete status
+d22a03299527ea76762d36dd9ecec8dc7422ea02 be7f7bd5a47eadc65e9913386117a4752631c0f1 2026-10-26T16:37:43-03:00 ops(rc3): follow authoritative CPF candidate for scheduled QA
+be7f7bd5a47eadc65e9913386117a4752631c0f1 fb6c9e9aa27a5674dba4d1a59e1c7764f1e123a3 2026-10-26T15:49:01-03:00 test(rc3): prove guest CPF pending signup in mobile WebKit
+fb6c9e9aa27a5674dba4d1a59e1c7764f1e123a3 48825b9144e8dcdf8e81a6052177a2ae70b7e7ca 2026-10-26T13:54:37-03:00 docs(rc3): record verified D1 backup migration and deployment block
+48825b9144e8dcdf8e81a6052177a2ae70b7e7ca e75e50a0711c4dd1fdcbd3d2c60d4f3a874f661e 2026-10-26T13:52:40-03:00 fix(rc3): align CPF migration with D1 history and refresh PWA cache
+e75e50a0711c4dd1fdcbd3d2c60d4f3a874f661e 9c218a7c0ea9927ebb1df95437df1f2193408582 2026-10-26T13:37:53-03:00 fix(rc3): unblock public athlete enrollment with mandatory CPF and admin approval
+9c218a7c0ea9927ebb1df95437df1f2193408582 507bca87f0449fc26e23e623cd9ae5ea99065b03 2026-10-26T13:23:24-03:00 docs(rc3): record prioritized QA gates and next execution batches
+507bca87f0449fc26e23e623cd9ae5ea99065b03 0345856e8afc68c9813ffab4f2db5db46e104249 2026-10-26T13:18:38-03:00 feat(qa): instant status from saved evidence without rerunning tests
+0345856e8afc68c9813ffab4f2db5db46e104249 ecd34a63e24d946197992fa89dc1d6c273528da6 2026-10-26T13:10:10-03:00 ops(rc3): run zero-cost QA every two hours during the day
+ecd34a63e24d946197992fa89dc1d6c273528da6 4920d691a34e09da05bf2eb8709ca93981387dc0 2026-10-26T13:01:10-03:00 ops(rc3): schedule free safe daily QA on personal notebook
+4920d691a34e09da05bf2eb8709ca93981387dc0 911e6476b002863ed9e21dc9750d16277ae3a5ff 2026-10-26T12:45:20-03:00 test(rc3): consolidate safe QA regression batch with local JSON evidence
+911e6476b002863ed9e21dc9750d16277ae3a5ff 4a3b1fb1780d19683529e9ace254cd9059d3924d 2026-10-26T12:21:13-03:00 test(rc3): correct deployed parity check and cover two authenticated sessions
+4a3b1fb1780d19683529e9ace254cd9059d3924d 10fd8455a9e1a324dcd95b10010c1115bf33afac 2026-10-25T23:44:25-03:00 fix(rc3): proteger perfil local na reconciliacao entre aparelhos
+10fd8455a9e1a324dcd95b10010c1115bf33afac 510b885dfd43c75385a38f6470cb72ed004ee89a 2026-10-25T23:02:53-03:00 test(rc3): homologar PWA iOS e corrigir cache de icones
+510b885dfd43c75385a38f6470cb72ed004ee89a 1602054092a651386d30e8986b36071c6e3a93ba 2026-10-25T22:18:25-03:00 fix(rc3): restaurar perfil sem mostrar capa ao recarregar
+1602054092a651386d30e8986b36071c6e3a93ba b3897fb787952db796e8e63526dbee43595b007c 2026-10-25T21:48:27-03:00 fix(rc3): validar nuvem antes de exibir indicador verde
+b3897fb787952db796e8e63526dbee43595b007c b18319c1e1a6cdb77f9822a6efb8029f5683e0b7 2026-10-25T21:14:56-03:00 fix(rc3): login por email e UX de sessao restaurada
+b18319c1e1a6cdb77f9822a6efb8029f5683e0b7 d2bd2d1bc0b28d9a0f71538aa47d761e5cfaa409 2026-10-23T21:54:02-03:00 security: desativar escrita remota no laboratório RC3 compartilhado
+d2bd2d1bc0b28d9a0f71538aa47d761e5cfaa409 be5890d87280e54dee7a4d432ba98a1bae17149f 2026-10-14T02:10:27-03:00 test: comprimento correto do cookie sintético
+be5890d87280e54dee7a4d432ba98a1bae17149f 64b2d8a4dd8d68e1a96f3095cb8767cd2c1e4fcc 2026-10-14T02:10:09-03:00 test: E2E D1/R2 remoto com sessões sintéticas temporárias e isolamento
+64b2d8a4dd8d68e1a96f3095cb8767cd2c1e4fcc 40e357804e58cc8e6c4869740949c40b00499320 2026-10-14T02:08:10-03:00 test(accounts): rejeitar cadastro público e garantir limite de 11 atletas no D1 local
+40e357804e58cc8e6c4869740949c40b00499320 21dacc8263d3c330acc05eea0430b98ee3dbec8e 2026-10-14T02:07:29-03:00 fix: exigir ADM para solicitações de cadastro na família
+21dacc8263d3c330acc05eea0430b98ee3dbec8e b830c78b27afc5cb069c19ea6098ca7586b1a744 2026-10-14T02:07:27-03:00 fix: cadastro sempre autenticado; recuperar senha mantém rota pública
+b830c78b27afc5cb069c19ea6098ca7586b1a744 d2c95be12304b8d6cfa7519340f6599203cd71e8 2026-10-14T01:56:32-03:00 fix(sync): preservar duas cópias de recuperação e vedar descarte de alterações não sincronizadas
+d2c95be12304b8d6cfa7519340f6599203cd71e8 73d0413c7dae925fe158978e8c124da36b9c595d 2026-10-14T01:55:29-03:00 fix(pwa): SW network-first JS/manifest e versão de cache atualizada para evitar clientes mistos
+73d0413c7dae925fe158978e8c124da36b9c595d ce4758dc748133385408d3aed11b5df152b208f5 2026-10-14T01:53:38-03:00 fix(media): compensar upload órfão e preservar dados se exclusão R2 falhar
+ce4758dc748133385408d3aed11b5df152b208f5 5811e35ef76d35a61f8eb22a375826acc477d9c3 2026-10-14T01:52:44-03:00 test: three-way merge WebKit non-overlapping data and strict conflict gate
+5811e35ef76d35a61f8eb22a375826acc477d9c3 5f9e3f67f8b43c149caaa0a0cb717d3b0fb12ea3 2026-10-14T01:51:32-03:00 fix(sync): merge 3-way de registros, trava de edições conflitantes e cópia prévia de segurança
+5f9e3f67f8b43c149caaa0a0cb717d3b0fb12ea3 1620115eadc3e67d2c0fc121eeed0962fcd92602 2026-10-14T01:27:32-03:00 fix(accounts): admin pode cadastrar até 11 atletas efetivos mesmo com pedidos pendentes
+1620115eadc3e67d2c0fc121eeed0962fcd92602 31ff5b309b2041516ce7c0338d372f4d0c9a6f3a 2026-10-14T01:27:21-03:00 fix(accounts): separar solicitações pendentes das 11 vagas e limitar aprovação atomicamente
+31ff5b309b2041516ce7c0338d372f4d0c9a6f3a 71c92a4fd18c4683fcfc3f4019981fb5f6e51730 2026-10-14T00:35:16-03:00 test(accounts): criar/rejeitar pendência no D1 isolado sem afetar contas ativas
+71c92a4fd18c4683fcfc3f4019981fb5f6e51730 9c1d685f8f64712b642a7e5e77e1065ae52c2aad 2026-10-14T00:34:36-03:00 fix(admin-ui): opção rejeitar solicitações pendentes e liberar vaga
+9c1d685f8f64712b642a7e5e77e1065ae52c2aad 8e40156ef0b6daf74c4e3c0a293fef21d1d395c9 2026-10-14T00:34:11-03:00 fix(accounts): permitir ADM rejeitar pedido pendente sem consumir vaga
+8e40156ef0b6daf74c4e3c0a293fef21d1d395c9 87ce41eef99648f0d9b44ec3cebe247ab93f3366 2026-10-14T00:33:31-03:00 test(media): excluir anexo real no R2 local e negar leitura posterior
+87ce41eef99648f0d9b44ec3cebe247ab93f3366 66ee157ed4acf80fd723564f195aa68691d8f8eb 2026-10-14T00:32:39-03:00 fix(media): remover objeto R2 na exclusão autenticada; falhar fechado em erro
+66ee157ed4acf80fd723564f195aa68691d8f8eb e8b47a4028c436c729fc1ed332759aaab32f7a80 2026-10-14T00:29:23-03:00 test(admin): validar rota de recuperação no laboratório local
+e8b47a4028c436c729fc1ed332759aaab32f7a80 62cf1f9e97ddf66a17f546646351581f426715ca 2026-10-14T00:29:09-03:00 fix(admin): ativar recuperação mediante aprovação manual no D1 isolado
+62cf1f9e97ddf66a17f546646351581f426715ca 374bea29ba59666cfb3b87536108222269fa4a90 2026-10-14T00:27:37-03:00 test(sync): comprovar retry idempotente e preservar 409 real no D1 local
+374bea29ba59666cfb3b87536108222269fa4a90 986991d12749548eee00f4284e00099d8f8cdbbc 2026-10-14T00:26:44-03:00 fix(sync): tratar reenvio idempotente após resposta perdida sem falso 409
+986991d12749548eee00f4284e00099d8f8cdbbc 7db96384c955731804b62d7b79334863bc213bd1 2026-10-13T23:46:08-03:00 test: E2E real de anexos e D1 em laboratório local descartável
+7db96384c955731804b62d7b79334863bc213bd1 f86c0d0281c8d27a86df1aefa4c67b8506fa844d 2026-10-13T23:42:10-03:00 test: checar os 19 vídeos reais do FORJA
+f86c0d0281c8d27a86df1aefa4c67b8506fa844d 76e1020229a16de87710a94ced333cbe2c0715ee 2026-10-13T23:37:26-03:00 docs: auditoria RC3 consolidada, evidências e gates sem custos
+76e1020229a16de87710a94ced333cbe2c0715ee f35b42e420c57e061e29d13dc1107401593a23b2 2026-10-13T23:29:41-03:00 test: usar estado lexical do aplicativo no WebKit
+f35b42e420c57e061e29d13dc1107401593a23b2 af0d3b8324b7249472fb714cb551a4787a0070c9 2026-10-13T23:28:11-03:00 test: validar evolução offline no WebKit
+af0d3b8324b7249472fb714cb551a4787a0070c9 c5067dc37bf373d8c074ce223984e0ca78fe7f51 2026-10-13T23:26:28-03:00 fix: evolução offline com aviso visível e carregamento parcial seguro
+c5067dc37bf373d8c074ce223984e0ca78fe7f51 04686dde59c1778614ac20098c94265e28ad498c 2026-10-13T23:23:33-03:00 fix: impedir sincronização repetida sem internet, retomar ao reconectar
+04686dde59c1778614ac20098c94265e28ad498c 389472bc4b8e8b136eb94d148d9a135ccac3bc35 2026-10-13T23:21:09-03:00 test: sincronização offline WebKit com API isolada
+389472bc4b8e8b136eb94d148d9a135ccac3bc35 56eadf1cdbe1bff6d141b8d5a478b33c18c46010 2026-10-13T23:09:08-03:00 fix: impedir sugestão de vídeos aleatórios sem correspondência
+56eadf1cdbe1bff6d141b8d5a478b33c18c46010 98a2d010b7b0093735345ad0d08a2e555c72e7ec 2026-10-13T23:08:31-03:00 test: persistencia de peso offline no WebKit
+98a2d010b7b0093735345ad0d08a2e555c72e7ec 5d98c17d044dbabef18f6805472ae2c45e51f6c5 2026-10-13T23:06:21-03:00 feat: vincular remada articulada e rosca maquina a demonstracoes verificadas
+5d98c17d044dbabef18f6805472ae2c45e51f6c5 f4c16b35cb1e1b992f59aef8d907428eeadbb62e 2026-10-13T22:57:31-03:00 test: corrigir URL absoluta em requisição isolada
+f4c16b35cb1e1b992f59aef8d907428eeadbb62e 0f587df4152961773f7c34b5f107ff32860b35aa 2026-10-13T22:48:00-03:00 Teste WebKit de anexos sem acesso a dados familiares
+0f587df4152961773f7c34b5f107ff32860b35aa c101973b145b6a70f7d77951b7d812ad876cda54 2026-10-13T22:31:03-03:00 fix: aceitar fotos iPhone HEIC na selecao de anexos
+c101973b145b6a70f7d77951b7d812ad876cda54 e735684d414c92d795b958460e8bbdfee628b424 2026-10-13T22:28:25-03:00 test: validar os 17 videos femininos no WebKit
+e735684d414c92d795b958460e8bbdfee628b424 aebe9f87376f1166171ecb48d92d31cda78cb414 2026-10-13T22:27:23-03:00 feat: relacionar 17 exercicios FORJA a demonstracoes femininas precisas
+aebe9f87376f1166171ecb48d92d31cda78cb414 3c1ee57c9fe7acdab0924f83a724354032e76107 2026-10-14T01:24:40Z fix: feedback offline e recuperação de conexão
+3c1ee57c9fe7acdab0924f83a724354032e76107 b48fba03c12ad318536f35e1420d9a951f0454a9 2026-10-13T22:24:19-03:00 Preparar tratamento de conexão e integração de vídeo
+b48fba03c12ad318536f35e1420d9a951f0454a9 e11ca5491da18c48e154152c2f94a37e0f954c16 2026-10-13T22:22:09-03:00 Automatizar teste WebKit do seletor no iPhone
+e11ca5491da18c48e154152c2f94a37e0f954c16 21486298564a2b3f286dad5e03a5ccb7953510a0 2026-10-14T01:21:11Z fix: seletor de arquivos explicito no iPhone e envio sem texto
+21486298564a2b3f286dad5e03a5ccb7953510a0 41534dc19d49faa20bb6035d48155556943b9cc9 2026-10-13T22:20:55-03:00 Preparar botão de anexos acessível no iPhone
+41534dc19d49faa20bb6035d48155556943b9cc9 2a5ee0005626c4bc38b3ca2a22ade3302a6cdc10 2026-10-13T22:19:23-03:00 Examinar fluxos críticos sem dados pessoais
+2a5ee0005626c4bc38b3ca2a22ade3302a6cdc10 fd8da3bb5cc8ad9891b89bd98fb3414428382e1d 2026-10-13T22:17:55-03:00 Diagnosticar tratamento offline e anexos em conjunto
+fd8da3bb5cc8ad9891b89bd98fb3414428382e1d 55165c39f6d299dbdb64570c1136b950e94a70bb 2026-10-13T22:16:53-03:00 Validar catálogo e player com cliente Safari
+55165c39f6d299dbdb64570c1136b950e94a70bb 91bb7ad385e859b220724d8eb11a53a4b17ce7c3 2026-10-13T22:15:12-03:00 Diagnosticar resposta Cloudflare para catálogo de vídeos
+91bb7ad385e859b220724d8eb11a53a4b17ce7c3 6cc2e6122e9fba247cc47bdfa899615c5c9d453b 2026-10-13T22:14:17-03:00 Auditar roteamento de assets para biblioteca de vídeos
+6cc2e6122e9fba247cc47bdfa899615c5c9d453b e80c727377f89e1da8c8b83501475851965af9ca 2026-10-13T22:13:15-03:00 Validar biblioteca feminina publicada na RC3
+e80c727377f89e1da8c8b83501475851965af9ca baecbaf6d769ba0609ef976648626455a511c237 2026-10-14T01:11:48Z feat: biblioteca feminina com player FORJA
+baecbaf6d769ba0609ef976648626455a511c237 05c490d32eff03d9e14bcd67f372c47fd5204587 2026-10-13T22:11:30-03:00 Usar catálogo de exercícios verificado
+05c490d32eff03d9e14bcd67f372c47fd5204587 0c950efb2bf1321fe7d0bacc532687ce0d915e1b 2026-10-13T22:10:04-03:00 Corrigir fonte do catálogo de vídeos
+0c950efb2bf1321fe7d0bacc532687ce0d915e1b 9341cb263c36736c2955faef825dd6387f45adac 2026-10-13T22:08:55-03:00 Retry safe rebase for catalog source
+9341cb263c36736c2955faef825dd6387f45adac 2ae094e211ccb93325efe4bcafa5497bb0cd261d 2026-10-13T22:07:55-03:00 Corrigir URL do catálogo de exercícios
+2ae094e211ccb93325efe4bcafa5497bb0cd261d 7a54c5379f2389dfa93d9a773e3450693235060f 2026-10-13T22:06:51-03:00 Integrar biblioteca feminina no player do FORJA
+7a54c5379f2389dfa93d9a773e3450693235060f 57e8507949afd218c3a1b0aa9dfd72932ef15a1f 2026-10-13T22:05:34-03:00 Inspecionar referências dos links de vídeo
+57e8507949afd218c3a1b0aa9dfd72932ef15a1f 5bfd1fff252ec0f7c98b62bcdc72f525a2ff7616 2026-10-13T22:04:28-03:00 Preparar resolvedor de vídeos diretos sem busca genérica
+5bfd1fff252ec0f7c98b62bcdc72f525a2ff7616 cae873a25b26669cc29c46a62aa32b77644e6ebd 2026-10-14T00:59:19Z fix: preservar PDF no envio de anexos
+cae873a25b26669cc29c46a62aa32b77644e6ebd b9b5145586756fc8953378d69befb4cce70eaac1 2026-10-13T21:59:04-03:00 Preparar correção do envio de PDF no acompanhamento
+b9b5145586756fc8953378d69befb4cce70eaac1 8136d5135c4dfd54ca05e69b146aa8d4c2d700ed 2026-10-13T21:48:26-03:00 Adicionar homologação WebKit móvel automatizada
+8136d5135c4dfd54ca05e69b146aa8d4c2d700ed f7f0162174e46c86c6bc4ce8fe46dd4b8de6106f 2026-10-13T21:32:13-03:00 Inspecionar fluxos efetivos para correção em lote
+f7f0162174e46c86c6bc4ce8fe46dd4b8de6106f f910dac95c57aaafb9c1fd9a8963f20e23675d32 2026-10-13T21:25:13-03:00 Adicionar verificação integrada da RC3 publicada
+f910dac95c57aaafb9c1fd9a8963f20e23675d32 9ea3104dc1268c7a9edaf40663fe6b82fc7620e6 2026-10-13T23:38:15Z fix: desacoplar chat e upload de falhas parciais da nuvem
+9ea3104dc1268c7a9edaf40663fe6b82fc7620e6 5382cda0b03c902543ab0d60728f17a7c2adebd3 2026-10-13T20:38:00-03:00 Adicionar teste de resiliência para anexos
+5382cda0b03c902543ab0d60728f17a7c2adebd3 b003fdf43fad9f81b23b55555bbf88efdf176adb 2026-10-13T23:31:25Z fix: feedback offline claro e transparência sobre links de vídeo
+b003fdf43fad9f81b23b55555bbf88efdf176adb a1d2ae7f73c3d5d9a98eb6cda279430624d879c7 2026-10-13T20:31:09-03:00 Preparar correção segura de feedback offline e mídia
+a1d2ae7f73c3d5d9a98eb6cda279430624d879c7 b7351554905d453f7a2aeaba47a0c519d830a74f 2026-10-13T23:21:26Z fix: exibir seletor de anexos antes do carregamento do chat
+b7351554905d453f7a2aeaba47a0c519d830a74f 7c1b33d683f7f9b0f0f9cb898ff50ec984f99fe2 2026-10-13T20:18:52-03:00 Preparar correção independente do seletor de arquivos
+7c1b33d683f7f9b0f0f9cb898ff50ec984f99fe2 b1bc2cad9bb022f0053c05e632041b87b30e9150 2026-10-13T22:54:57Z fix: permitir fotos e PDF no acompanhamento
+b1bc2cad9bb022f0053c05e632041b87b30e9150 def461395b7d272f522d8cfa75da4b92b4e84b8d 2026-10-13T19:54:41-03:00 Validar PDF como exame no upload do chat
+def461395b7d272f522d8cfa75da4b92b4e84b8d 4decea746a732ad2489f52a826889d69076a7f13 2026-10-13T19:54:04-03:00 Preparar correção isolada de anexos do acompanhamento
+4decea746a732ad2489f52a826889d69076a7f13 170d3961d9ba395c583d03412967c0b73d82611d 2026-10-13T22:21:38Z fix: manter capa até toque no botão Entrar
+170d3961d9ba395c583d03412967c0b73d82611d 5b00eed7aff87bd7e889948e82a95a2ad09b6ac8 2026-10-13T19:21:20-03:00 Preparar ajuste da capa fixa da RC3
+5b00eed7aff87bd7e889948e82a95a2ad09b6ac8 58d79d0629ab8312128351ae977b8c42ca898f45 2026-10-13T22:14:28Z feat: marca mais forte na capa e ícones RC3
+58d79d0629ab8312128351ae977b8c42ca898f45 dbc7357326da7a6dfd51efcb46dd78e21330482c 2026-10-13T19:14:08-03:00 Preparar atualização visual RC3 mantendo guarda de privacidade
+dbc7357326da7a6dfd51efcb46dd78e21330482c 08dca2f72f0a45bc66a3a775b15ee978aec6b5cb 2026-10-13T21:53:29Z fix: impedir acesso a séries antes do login
+08dca2f72f0a45bc66a3a775b15ee978aec6b5cb e5c1de99b2a79b1648b596955a144bf2479cbbec 2026-10-13T18:53:14-03:00 Corrigir validação de guarda pré-login
+e5c1de99b2a79b1648b596955a144bf2479cbbec b9fb81022e0c031ceb6fd0c77ebf2a8b956f2451 2026-10-13T18:52:09-03:00 Ajustar rotina segura de privacidade antes de executar
+b9fb81022e0c031ceb6fd0c77ebf2a8b956f2451 c3f1d835fe13ccc4185821db5fac653c91226bbb 2026-10-13T18:51:45-03:00 Preparar correção de acesso antes do login
+c3f1d835fe13ccc4185821db5fac653c91226bbb adfe53f953cf42bc130cd69f182783bdce4ef909 2026-10-13T21:46:52Z fix: retirar F sobreposto da capa de abertura
+adfe53f953cf42bc130cd69f182783bdce4ef909 85570ff684d0231f9ffe254f8a6dfcb892ca1d0c 2026-10-13T18:46:38-03:00 Adicionar correção cirúrgica da sobreposição da capa
+85570ff684d0231f9ffe254f8a6dfcb892ca1d0c 6a6483fd0c2e029139c0aea2075fee65756443e3 2026-10-13T20:57:14Z Importar FORJA RC3 com diretórios preservados (sem deploy)
+6a6483fd0c2e029139c0aea2075fee65756443e3 e6933824c39e09c4a5b2d0cd93071195eab674ed 2026-10-13T17:51:01-03:00 Add files via upload
+e6933824c39e09c4a5b2d0cd93071195eab674ed 054a4d5836faeac0fc5545dfbeaa8b4e89a96e1f 2026-10-13T17:48:40-03:00 Preparar importação manual da RC3 sem deploy
+054a4d5836faeac0fc5545dfbeaa8b4e89a96e1f  2026-10-12T23:28:51-03:00 Initial commit

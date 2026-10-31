@@ -1,0 +1,1250 @@
+[
+  {
+    "file": "public/forja-music-v1.js",
+    "url": "https://link.deezer.com/s/34NenCHxy9ndO5xJf5Wir"
+  },
+  {
+    "file": "public/forja-music-v1.js",
+    "url": "https://link.deezer.com/s/34Neo59PYL4m09E2LGUB6"
+  },
+  {
+    "file": "public/forja-music-v1.js",
+    "url": "https://link.deezer.com/s/34NeorNQ1AHLL0PqHP5br"
+  },
+  {
+    "file": "public/forja-music-v1.js",
+    "url": "http://www.w3.org/2000/svg"
+  },
+  {
+    "file": "public/forja-music-v1.js",
+    "url": "https://open.spotify.com/"
+  },
+  {
+    "file": "public/forja-music-v1.js",
+    "url": "https://music.apple.com/"
+  },
+  {
+    "file": "public/forja-music-v1.js",
+    "url": "https://music.youtube.com/"
+  },
+  {
+    "file": "public/index.html",
+    "url": "https://www.youtube.com/results?search_query="
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/45-degree-hyperextension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/45-degree-bycicle-twisting-crunch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-all-fours-squad-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-assisted-pull-up.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-bent-over-rear-lateral-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-hip-abduction.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-hip-adduction.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-kneeling-one-arm-pulldown.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-one-arm-forward-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-one-leg-kickback-bent-position.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-overhead-triceps-extension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-leg-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-pull-through.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-decline-sit-ups.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-seated-leg-extension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-seated-row.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-band-warm-up-shoulder-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-side-bend.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-standing-calf-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-standing-crunch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-standing-leg-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-standing-lift.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-straight-back-seated-row.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-triceps-pushdown.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/classic-barbell-squat.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/barbell-bench-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/barbell-clean-and-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/barbell-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/barbell-decline-bench-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/barbell-drag-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/barbell-front-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/barbell-front-chest-squat.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/barbell-incline-bench-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/barbell-lunge.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/barbell-rear-delt-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/barbell-reverse-wrist-curl-over-grip.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/barbell-seated-behind-head-military-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/barbell-shrug.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/barbell-standing-back-wrist-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/barbell-straight-leg-deadlift.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/barbell-underhand-bent-over-row.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/barbell-upright-row-wide-grip.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/battling-ropes.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/crunch-on-bench.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/bench-dips.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/bench-pull-ups.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/bent-knee-lying-twist-on-stability-ball.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-bridge-pose-setu-bandhasana.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/burpee.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-butterfly-yoga-pose.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-close-grip-front-lat-pulldown.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-crossover-reverse-fly.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-kneeling-crunch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-lateral-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-lying-triceps-extension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-one-arm-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-one-arm-forward-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-one-arm-lateral-pulldown.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-one-arm-lateral-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-one-arm-twisting-seated-row.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-pulldown.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-rear-delt-row-with-rope.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-rope-high-pulley-overhead-triceps-extension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-pushdown-rope-attachment.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-seated-high-row-v-bar.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-standing-crunch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-standing-fly-crossover-fly.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-standing-inner-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-standing-lift.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-standing-one-arm-triceps-extension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-straight-arm-pulldown.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-triceps-pushdown.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-twist-up-down.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-calf-stretch-with-rope.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-calf-stretch-with-strap.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cambered-bar-lying-row.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cardio-exercises.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cardio-exercises-machine.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/chest-dips.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/chest-lift-with-rotation.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-chin-to-chest-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/chin-ups-narrow-parallel-grip.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/close-feet-leg-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/close-grip-chin-up.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/close-grip-push-ups.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/commando-pull-up.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-crossover-kneeling-hip-flexor-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/decline-dumbbell-bench-press-45-degree.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/deep-push-ups.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/donkey-calf-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-alternate-shoulder-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-arnold-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-behind-back-wrist-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-bent-over-row.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-biceps-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-close-grip-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-concentration-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-cross-body-hammer-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-deadlift.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-fly.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-fly-on-exercise-ball.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-front-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-goblet-squat.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-hammer-grip-incline-bench-row.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-incline-bench-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-incline-biceps-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-incline-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-incline-fly.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-incline-fly-on-exercise-ball.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-incline-hammer-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-incline-hammer-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-incline-row.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-incline-shrug.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-incline-triceps-extension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-iron-cross.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-kickback.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-lateral-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-lunge.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-lying-alternate-extension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-lying-hammer-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-lying-femoral.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-lying-rear-delt-row.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-lying-triceps-extension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-one-arm-lateral-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-one-arm-zottman-preacher-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-one-arm-triceps-extension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-over-bench-wrist-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-palm-rotational-bent-over-row.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-preacher-curl-over-exercise-ball.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-pronate-grip-triceps-extension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-prone-incline-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-rear-delt-row.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-seated-calf-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-seated-front-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-seated-kickback.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-seated-lateral-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-seated-neutral-wrist-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-seated-preacher-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-seated-triceps-extension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-shrug.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-side-bend.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-single-leg-calf-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-single-leg-squat.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-squat.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-standing-calf-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-stiff-leg-deadlift.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-bar-grip-sumo-squat.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-dynamic-chest-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/elliptical.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/sit-up-on-exercise-ball.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-spinal-stretch-on-exercise-ball.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/ez-barbell-biceps-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/ez-barbell-lying-triceps-extension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/ez-barbell-anti-gravity-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-feet-and-ankles-rotation-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-feet-and-ankles-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-lying-fly-flat-bench-cable-fly.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-flexion-leg-sit-up.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/crunch-floor-female.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/front-plank-female.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-front-toe-touch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/hip-raise-bridge.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/hanging-leg-hip-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/hanging-straight-leg-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-hip-circles-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-hip-extension-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-hip-flexor-and-quad-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/incline-leg-hip-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/incline-push-ups.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/inverted-row-between-chairs.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/inverted-row-with-straps.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-iron-cross-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/jackknife-pilates.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/jack-knife-floor.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/jack-split-crunches.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/jump-rope.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/jump-step-up.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/jumping-jack.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/kettlebell-deadlift.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-kneeling-back-rotation-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-kneeling-lat-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-kneeling-triceps-extension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/landmine-180.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/crunch-leg-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/leg-raise-hip-lift.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-back-extension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-high-row.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-horizontal-leg-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-incline-hammer-chest-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-kneeling-leg-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-lateral-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-leg-extension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-lying-chest-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-lying-leg-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-preacher-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-reverse-hyperextension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-reverse-t-bar-row.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-seated-calf-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-seated-dips.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-seated-hip-abduction.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-seated-hip-adduction.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-seated-leg-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-seated-reverse-fly.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-shrug.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-standing-calf-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-standing-hip-extension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-standing-rear-kick.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-t-bar-row.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-triceps-extension.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lying-hip-lift-on-stability-ball.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lying-floor-leg-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-quadriceps-lying-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lying-scissor-kick-female.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lying-straight-leg-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/medicine-ball-sit-up-wall.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/military-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-neck-side-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/old-school-reverse-extensions.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/otis-ups.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-above-head-chest-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-pec-deck-fly.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-peroneals-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/corkscrew-pilates.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/hundred-pilates.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-plyo-side-lunge-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/pull-up-wide-front-grip.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/chin-ups-pull-ups.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/push-ups.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/rear-decline-bridge.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-rear-deltoid-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-hip-flexor-stretch-rear-foot-elevated.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/band-high-fly.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/reverse-crunch-female.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-reverse-dip.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/reverse-grip-machine-lat-pulldown.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/reverse-grip-pull-up.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-bar-lateral-pulldown-reverse-grip.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/ring-high-row.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/rotate-push-up-female.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-runners-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/running.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/russian-twist-on-stability-ball-arms-straight.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/scapula-dips.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-alternate-seated-biceps-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-sitting-bent-over-back-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-boat-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-straight-back-seated-row-v-grip.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-seated-row-wide-grip.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-seated-calf-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-bench-seated-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-seated-lower-back-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-seated-shoulder-flexor-depresor-retractor.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/seated-twist-straight-arm.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/seated-twist-on-stability-ball.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-seated-twist-straight-arm.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-seated-wide-angle-pose-sequence.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/pull-up-shoulder-grip.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/side-bend-on-stability-ball.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-slopes-towards-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/side-bridge-side-plank.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-side-wrist-pull-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/single-dumbbell-stiff-leg-deadlift.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-single-leg-stretch-bent-knee.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-single-straight-leg-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/sit-ups.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/sit-up.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/sled-45-degree-calf-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/sled-45-degree-leg-wide-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/sled-hack-squat.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/smith-chair-squat.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/smith-calf-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/smith-leg-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/smith-seated-shoulder-press.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/spell-caster.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-spine-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/squat.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/leg-curl-on-stability-ball.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/crunch-legs-on-stability-ball.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-stairs-calf-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-adductor-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-standing-back-rotation-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-standing-bench-calf-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-hamstring-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-ceiling-look-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-knee-raise.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-quadriceps-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-standing-reach-up-back-rotation-stretch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-standing-side-bend-bent-arm.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-standing-wheel-rollout.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stationary-bike.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/crunch-straight-leg-up.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lying-supine-dumbbell-curl.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/treadmill-running.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/triceps-dips.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/twisting-crunch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/v-up.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/vertical-leg-raise-on-parallel-bars.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/walk-wave-machine.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/weighted-leg-extension-crunch.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/weighted-lying-twist.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/weighted-sissy-squat.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/cable-bar-lateral-pulldown-wide-shoulder-grip.mp4"
+  },
+  {
+    "file": "public/videos/catalog.json",
+    "url": "https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-wrist-circles.mp4"
+  },
+  {
+    "file": "src/password-reset.js",
+    "url": "https://api.resend.com/emails"
+  }
+]

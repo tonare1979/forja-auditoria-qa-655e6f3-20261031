@@ -1,0 +1,49 @@
+name: Importar FORJA RC3 (manual)
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Descompactar e validar estrutura
+        run: |
+          python3 - <<'PY'
+          import zipfile, pathlib, hashlib, json
+          p=pathlib.Path("FORJA_RC3_REPOSITORIO_PRIVADO_PREPARADO.zip")
+          if not p.is_file(): raise SystemExit("ZIP não encontrado na raiz do repositório")
+          root=pathlib.Path.cwd().resolve()
+          with zipfile.ZipFile(p) as z:
+              names=z.namelist()
+              if len(names)!=29: raise SystemExit(f"Quantidade inesperada: {len(names)}")
+              for name in names:
+                  target=(root/name).resolve()
+                  if not target.is_relative_to(root) or name.startswith("/") or name.startswith(".github/"):
+                      raise SystemExit("Caminho proibido no ZIP: "+name)
+                  if target.exists() and name not in ("README.md",):
+                      raise SystemExit("Arquivo existente não será substituído: "+name)
+              required={"src/index.js","public/index.html","wrangler.jsonc","migrations/0007_login_ip_throttle.sql"}
+              if not required.issubset(set(names)): raise SystemExit("Estrutura incompleta")
+              for info in z.infolist():
+                  path=root/info.filename
+                  path.parent.mkdir(parents=True,exist_ok=True)
+                  path.write_bytes(z.read(info))
+          cfg=json.loads(pathlib.Path("wrangler.jsonc").read_text())
+          assert cfg["name"]=="forja-v11-rc3-preview-isolada"
+          assert cfg["d1_databases"][0]["database_id"]=="402315ff-3833-4060-91b6-8c6bd3884642"
+          assert cfg["r2_buckets"][0]["bucket_name"]=="forja-v11-rc3-fotos-lab"
+          print("29 arquivos extraídos; bindings isolados conferidos. Nenhum deploy executado.")
+          PY
+      - name: Salvar arquivos preservando pastas
+        run: |
+          git config user.name "FORJA RC3 import"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public src migrations wrangler.jsonc README.md MANIFEST_SHA256.json
+          git rm -f FORJA_RC3_REPOSITORIO_PRIVADO_PREPARADO.zip
+          git commit -m "Importar FORJA RC3 com diretórios preservados (sem deploy)"
+          git push

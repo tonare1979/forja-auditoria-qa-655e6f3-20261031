@@ -1,0 +1,19 @@
+[
+  "_cf_KV",
+  "admin_recovery_requests",
+  "body_records",
+  "bootstrap_requests",
+  "d1_migrations",
+  "login_ip_throttle",
+  "login_throttle",
+  "media",
+  "messages",
+  "password_reset_requests",
+  "qa_recovery_probe",
+  "registration_limits",
+  "reviews",
+  "sessions",
+  "snapshot_history",
+  "snapshots",
+  "users"
+]

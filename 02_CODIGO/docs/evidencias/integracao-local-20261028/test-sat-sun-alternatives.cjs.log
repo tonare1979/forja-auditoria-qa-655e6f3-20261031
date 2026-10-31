@@ -1,0 +1,44 @@
+PASS SAT picker absent
+PASS SAT handler leaves state untouched
+PASS SUN picker absent
+PASS SUN handler leaves state untouched
+PASS A picker visible and includes alternative
+PASS A selection retained
+PASS A original entries restored
+PASS A alternative entries restored
+PASS B picker visible and includes alternative
+PASS B selection retained
+PASS B original entries restored
+PASS B alternative entries restored
+PASS C picker visible and includes alternative
+PASS C selection retained
+PASS C original entries restored
+PASS C alternative entries restored
+PASS D picker visible and includes alternative
+PASS D selection retained
+PASS D original entries restored
+PASS D alternative entries restored
+PASS SAT rendered UI selector state
+node:internal/assert/utils:77
+    throw err;
+    ^
+
+AssertionError [ERR_ASSERTION]: SUN rendered UI selector state
+    at check (/workspace/scratch/a6207f95c538/forja-integration/tests/test-sat-sun-alternatives.cjs:30:26)
+    at Object.<anonymous> (/workspace/scratch/a6207f95c538/forja-integration/tests/test-sat-sun-alternatives.cjs:60:2)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

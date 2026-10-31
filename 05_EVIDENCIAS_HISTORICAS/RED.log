@@ -1,0 +1,5 @@
+AssertionError [ERR_ASSERTION]: offline response must have no redirect chain at /
+
+true !== false
+
+    at /mnt/data/forja_sw_work/code/tests/sw-offline-redirect-regression.cjs:17:50

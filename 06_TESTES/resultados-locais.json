@@ -1,0 +1,336 @@
+{
+  "startedAt": "2026-10-31T12:19:49.095Z",
+  "finishedAt": "2026-10-31T12:19:58.063Z",
+  "node": "v24.20.0",
+  "platform": "win32",
+  "total": 36,
+  "passed": 33,
+  "failed": 3,
+  "scope": "local synthetic; no live credentials, no deployment or remote writes",
+  "results": [
+    {
+      "name": "sw-offline-redirect-regression.cjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 280,
+      "stdout": "OFFLINE_REOPEN_NO_REDIRECT_PASS /\nOFFLINE_REOPEN_NO_REDIRECT_PASS /index.html\nOFFLINE_START_URL_MANIFEST_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "ios-pwa-assets-contract.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 240,
+      "stdout": "PWA_STANDALONE_SCOPE_PASS\nPWA_APPLE_STANDALONE_META_PASS\nPWA_MANIFEST_ICON_FILES_EXIST_PASS\nPWA_ICON_192_192_PNG_PASS\nPWA_ICON_512_512_PNG_PASS\nPWA_APPLE_ICON_EXISTS_PASS\nPWA_SERVICE_WORKER_REGISTERED_PASS\nPWA_OFFLINE_CACHE_RC3_ICONS_PASS\nPWA_SW_FETCH_AUTH_NOT_CACHED_PASS\nPWA_ASSETS_CONTRACT_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "qa-offline-session.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 273,
+      "stdout": "OFFLINE_BOOT_LOCAL_SAVE_RECONNECT_PASS\nEXPLICIT_OFFLINE_LOGOUT_PASS\nAUTHORITATIVE_401_PASS\nRECONNECT_ACCOUNT_ISOLATION_PASS\nNO_SESSION_MARKER_STAYS_LOGGED_OUT_PASS\nUNLINKED_AUTHENTICATED_OFFLINE_PASS\nLATE_ME_AFTER_LOGOUT_PASS\nLATE_LOGOUT_AFTER_LOGIN_PASS\nLOGIN_SERIALIZES_PENDING_LOGOUT_PASS\nLOGOUT_401_ALREADY_SIGNED_OUT_PASS\nAUTOMATIC_OFFLINE_SILENT_MANUAL_MESSAGE_PASS\nAUTOMATIC_503_NO_MESSAGE_OR_REDRAW_PASS\nUNLINKED_LOGOUT_ACCOUNT_ISOLATION_PASS\nAUTOMATIC_FEATURE_LOADS_SILENT_PRESERVE_CACHE_PASS\nGUEST_FEATURE_HISTORY_BLOCKED_REGISTRATION_PRESERVED_PASS\nPASSWORD_ROTATION_INVALIDATES_OFFLINE_SESSION_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "auth-login-safari-regression.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 172,
+      "stdout": "LOGIN_EMAIL_OR_USERNAME_SQL_PASS\nLOGIN_EMAIL_CAN_PASS_VALIDATION_PASS\nLOGIN_CANONICAL_GUARD_PASS\nSPLASH_BUTTON_NOT_FAKE_LOGIN_PASS\nMANUAL_LOGIN_SEPARATE_PASS\nAUTH_LOGIN_SAFARI_REGRESSION_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "auth-real-handler-synthetic.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 544,
+      "stdout": "BAD_PASSWORD_REJECTED_PASS\nSALT_BY_USERNAME_PASS\nLOGIN_BY_USERNAME_PASS\nCOOKIE_SESSION_BY_USERNAME_PASS\nSALT_BY_EMAIL_PASS\nLOGIN_BY_EMAIL_PASS\nCOOKIE_SESSION_BY_EMAIL_PASS\nREAL_AUTH_HANDLER_SYNTHETIC_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "qa-authenticated-occ-handler.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 425,
+      "stdout": "PASS TWO_AUTHENTICATED_SESSIONS\nPASS UNAUTHENTICATED_CLOUD_READ_REJECTED\nPASS INDEPENDENT_SESSIONS_START_SAME_BASE\nPASS FIRST_SESSION_WRITE_SUCCEEDED\nPASS STALE_SECOND_SESSION_FIRST_UPLOAD_BLOCKED\nPASS CLOUD_DATA_PRESERVED_AFTER_409\nPASS IDEMPOTENT_REPLAY_ACCEPTED\nPASS CONCURRENT_APPENDS_RETURN_SUCCESS_AND_CONFLICT\nPASS SAFE_MANUAL_MERGE_RETAINS_BOTH_SESSIONS\nPASS SAME_RECORD_STALE_EDIT_REJECTED_NO_OVERWRITE\nPASS SNAPSHOT_HISTORY_RETAINED\nAUTHENTICATED_OCC_REAL_WORKER_HANDLER_DISPOSABLE_D1_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "qa-atomic-snapshot-history.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 535,
+      "stdout": "ATOMIC_HISTORY_COLLISION_ROLLBACK_PASS\nATOMIC_HISTORY_SUCCESS_AND_STALE_409_PASS\nATOMIC_HISTORY_RETENTION_15_AND_INTEGRITY_PASS\n",
+      "stderr": "FORJA API /api/state Error: UNIQUE constraint failed: snapshot_history.user_id, snapshot_history.revision\n"
+    },
+    {
+      "name": "qa-weekend-cloud-sync.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 281,
+      "stdout": "PASS CLEAN_ACCOUNT_SAVES_EMPTY_HISTORY\nPASS CLEAN_ACCOUNT_HAS_NO_INVENTED_RESULTS\nPASS SAT_CLOUD_SAVE\nPASS SAT_RELOAD_PRESERVES_RECORDS\nPASS SUN_CLOUD_SAVE\nPASS SUN_RELOAD_PRESERVES_RECORDS\nPASS A_CLOUD_SAVE\nPASS A_RELOAD_PRESERVES_RECORDS\nPASS B_CLOUD_SAVE\nPASS B_RELOAD_PRESERVES_RECORDS\nPASS CR_CLOUD_SAVE\nPASS CR_RELOAD_PRESERVES_RECORDS\nPASS C_CLOUD_SAVE\nPASS C_RELOAD_PRESERVES_RECORDS\nPASS D_CLOUD_SAVE\nPASS D_RELOAD_PRESERVES_RECORDS\nPASS UNKNOWN_CODE_REJECTED\nPASS STALE_REVISION_REJECTED\nPASS UNAUTHENTICATED_WRITE_REJECTED\nPASS REJECTED_WRITES_PRESERVE_ALL_RECORDS\nPASS HISTORY_BACKUPS_RETAINED\nPASS SQLITE_INTEGRITY\nWEEKEND_CLOUD_SYNC_ALL_PASS checks=22\n",
+      "stderr": ""
+    },
+    {
+      "name": "qa-member-public-signup-cpf.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 252,
+      "stdout": "RC3_GUEST_REGISTRATION_PENDING_CPF_SECURITY_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "qa-cpf-migration.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 180,
+      "stdout": "ADDITIVE_CPF_MIGRATION_LEGACY_UNIQUE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "qa-cpf-schema-parity.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 184,
+      "stdout": "CPF_MISSING_SCHEMA_ADD_PASS\nCPF_EXISTING_SCHEMA_REAPPLY_PASS\nCPF_SCHEMA_UNEXPECTED_FAIL_CLOSED_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "qa-profile-only-sync-guard.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 161,
+      "stdout": "PROFILE_ONLY_CROSS_ACCOUNT_GUARD_PASS\nPROFILE_ONLY_UNBASELINED_REMOTE_ADVANCE_BLOCK_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "qa-admin-people-status.mjs",
+      "exitCode": 1,
+      "signal": null,
+      "error": null,
+      "ms": 351,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: fxLoadUsers not found\r\n    at file:///C:/Users/renat/AppData/Local/Temp/FORJA_AUDITORIA_655e6f3_20261031/02_CODIGO/tests/qa-admin-people-status.mjs:7:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)\r\n    at async node:internal/modules/esm/loader:647:26\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: undefined,\r\n  expected: true,\r\n  operator: '==',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v24.20.0\r\n"
+    },
+    {
+      "name": "alternative-switch-restore.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 178,
+      "stdout": "FORJA_ALTERNATIVE_SWITCH_RESTORE_ISOLATION_AND_ROLLBACK_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "alternatives-ptbr.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 190,
+      "stdout": "FORJA_ALTERNATIVES_PTBR_AND_SAVED_VALUES_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "equipment-thumb-no-crop.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 224,
+      "stdout": "FORJA_EQUIPMENT_THUMB_NO_CROP_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "profile-weight-real.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 206,
+      "stdout": "PROFILE_REAL_PROGRESS_PASS checks=42 reloads=2 profiles=2 legacy=2\n",
+      "stderr": ""
+    },
+    {
+      "name": "save-real.cjs",
+      "exitCode": 1,
+      "signal": null,
+      "error": null,
+      "ms": 251,
+      "stdout": "",
+      "stderr": "evalmachine.<anonymous>:2\r\nfunction finish(){let code=sel,d=initDraft(code);const mainTotal=getEx(code).reduce((num,exItem)=>num+exItem[1],0);const mainDone=Object.values(d.entries).filter(entry=>entry.done).length;const hasBonusDone=Object.values(d.bonus||{}).some(bonusItem=>bonusItem.done);const leftMins=bonusRemaining(d);if(code!=='CR'&&mainDone===mainTotal&&leftMins>=5&&!hasBonusDone){if(confirm(`Completou o treino principal e ainda restam ${leftMins} minutos na sua janela de 60 min!\\n\\nDeseja realizar o exercício BÔNUS antes de salvar?`)){const bZone=$('bonusZone');if(bZone){bZone.classList.add('bonus-highlight');bZone.scrollIntoView({behavior:'smooth',block:'center'});}return}}if(code==='CR'){if(!(Number.isFinite(Number(d.distance))&&Number.isFinite(Number(d.minutes))&&Number(d.distance)>0&&Number(d.minutes)>0)){alert('Registre distância e tempo antes de finalizar.');return}}else if(!Object.values(d.entries).some(e=>e.done)){alert('Marque pelo menos uma série concluída.');return}if(Object.values(d.entries).some(e=>e.done&&(!(Number(e.reps)>0)||e.kg===''||e.kg===undefined||Number(e.kg)<0||!Number.isFinite(Number(e.kg))||!Number.isFinite(Number(e.reps))))){alert('Preencha carga (0 para peso corporal) e repetições de cada série concluída.');return}let id=d.id;if(state.sessions.some(x=>x.id===id)){alert('Esta sessão já foi salva.');return}let ex=getEx(code).map((e,ei)=>({name:e[0],equipment:forjaSelectedEquipment(d,ei,e[0]),sets:Array.from({length:e[1]},(_,si)=>d.entries[`${ei}-${si}`]||{}).filter(s=>s.done).map(s=>({kg:Number(s.kg||0),reps:Number(s.reps||0),note:String(s.note||'')}))}));let bonusExercises=BONUS_CATALOG[code]?BONUS_CATALOG[code].flatMap(([name,kind],i)=>{let v=d.bonus?.[i];return v?.done?[{name,kind,kg:kind==='carga'?Number(v.kg):null,reps:kind==='carga'?Number(v.reps):null,seconds:kind==='tempo'?Number(v.seconds):null}]:[]}):[];let record={status:code==='CR'?'complete':mainDone<mainTotal?'partial':'complete',bonusExercises,id,code,name:wk[code].name,date:today(),started:d.started,finished:new Date().toISOString(),exercises:ex,minutes:Number(d.minutes||0),distance:Number(d.distance||0),effort:Number(d.effort||0)};state.sessions.push(record);delete state.drafts[code];if(!save()){state.sessions.pop();state.drafts[code]=d;return}sel=null;tab='painel';painel();showWorkoutSummary(record)}\r\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            \r\n\r\nReferenceError: forjaSelectedEquipment is not defined\r\n    at evalmachine.<anonymous>:2:1390\r\n    at Array.map (<anonymous>)\r\n    at Object.finish (evalmachine.<anonymous>:2:1356)\r\n    at Object.<anonymous> (C:\\Users\\renat\\AppData\\Local\\Temp\\FORJA_AUDITORIA_655e6f3_20261031\\02_CODIGO\\tests\\save-real.cjs:13:53)\r\n    at Module._compile (node:internal/modules/cjs/loader:1929:14)\r\n    at Object..js (node:internal/modules/cjs/loader:2060:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1651:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1443:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)\r\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\r\n\r\nNode.js v24.20.0\r\n"
+    },
+    {
+      "name": "qa-json.cjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 210,
+      "stdout": "PASS restauracao comunica sucesso\nPASS restauracao preserva todas as colecoes, perfil e meta\nPASS restauracao persistiu bytes equivalentes ao objeto\nPASS sessao parcial preservada\nPASS backup legado aceito\nPASS perfil antigo compatibilizado\nPASS entrada invalida mantem estado e armazenamento\nPASS entrada invalida nao anuncia sucesso\nPASS entrada invalida mantem estado e armazenamento\nPASS entrada invalida nao anuncia sucesso\nPASS entrada invalida mantem estado e armazenamento\nPASS entrada invalida nao anuncia sucesso\nPASS meta de peso invalida rejeitada sem mudar dados\nPASS cancelamento preserva dados\nPASS cancelamento nao grava\nPASS falha simulada conserva armazenamento\nPASS falha reverte memoria\nPASS falha nao anuncia sucesso\nPASS exportacao chama download uma vez\nPASS exportacao inclui sessao parcial e todos os campos\nPASS importacao repetida substitui, nao duplica\nPASS mesma VM: segunda importacao preserva conteudo integral\nPASS mesma VM: armazenamento persistido identico nas duas importacoes\nPASS mesma VM: IDs e quantidade de sessoes sem duplicacao\nPASS mesma VM: pesos e suas quantidades intactos\nPASS mesma VM: rascunhos intactos\nPASS mesma VM: alternativas intactas\nPASS mesma VM: segunda restauracao completou sem mesclagem\nPROVA_MESMA_VM {\"sessions\":2,\"sessionIds\":[\"old\",\"partial\"],\"weights\":1,\"drafts\":1,\"alternatives\":1,\"persistedBytes\":626,\"confirmCalls\":\"1 + segunda confirmacao\"}\nRESULTADO 28/28 PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "sync-status-proof.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 247,
+      "stdout": "FRESH_VERIFIED_TIMESTAMP_PASS\nREVISION_EQUAL_DIVERGENCE_BLOCK_PASS\nNETWORK_FAILURE_NOT_GREEN_PASS\nUNVERIFIED_REMOTE_AHEAD_PRESERVES_LOCAL_PASS\nREMOTE_REVISION_ROLLBACK_BLOCK_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "scout-analytics-v1.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 592,
+      "stdout": "SCOUT_ANALYTICS_V1_PASS {\"period\":{\"start\":\"2026-10-07\",\"end\":\"2026-10-27\"},\"sessions\":3,\"activeDays\":2,\"partialSessions\":1,\"effortRecognized\":true,\"volumeKgReps\":792,\"validStrengthSets\":3,\"exerciseProgression\":[{\"id\":\"supino\",\"firstKg\":30,\"lastKg\":37,\"deltaKg\":7,\"trend\":\"evolucao\"}],\"runCount\":2,\"averageRunKm\":3.5,\"latestWeightKg\":65,\"interpretation\":\"dados_insuficientes_para_conclusoes_clinicas\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "scout-equipment-persistence.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 180,
+      "stdout": "SCOUT_EQUIPMENT_PERSISTENCE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "scout-forja-adapter.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 238,
+      "stdout": "SCOUT_FORJA_SNAPSHOT_ADAPTER_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "scout-history-integrity.mjs",
+      "exitCode": 1,
+      "signal": null,
+      "error": null,
+      "ms": 196,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: The input did not match the regular expression /CACHE='[^']+history/. Input:\r\n\r\n'// HOMOLOGAÇÃO — V11 CANDIDATA, cache exclusivo\\n' +\r\n  \"const CACHE='forja73-static-v11-rc3-offline-navigation-no-redirect-20261031';\\n\" +\r\n  \"const FILES=['./features.js','./forja-post.js','./scout-progress.js','./forja-history-records.js','./forja-music-v1.js','./forja-cover-rio-casal-v2.png','./forja-brand-original.png','./forja-cover-rio-v10.webp','./manifest.webmanifest','./forja-icon-rc3-180.png','./forja-icon-rc3-192.png','./forja-icon-rc3-512.png'];\\n\" +\r\n  '// A navigation fallback must be a direct HTML response, never a cached redirect.\\n' +\r\n  'const directHtml=r=>new Response(r.body,{status:200,headers:r.headers});\\n' +\r\n  \"self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(async c=>{\\n\" +\r\n  ' await c.addAll(FILES);\\n' +\r\n  \" const r=await fetch('./index.html');\\n\" +\r\n  \" if(!r.ok)throw Error('FORJA offline shell unavailable');\\n\" +\r\n  \" await c.put('./index.html',directHtml(r));\\n\" +\r\n  '}).then(()=>self.skipWaiting())));\\n' +\r\n  \"self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('forja73-static-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));\\n\" +\r\n  \"self.addEventListener('fetch',e=>{const req=e.request,u=new URL(req.url);if(req.method!=='GET'||u.origin!==self.location.origin||u.pathname.startsWith('/api/'))return;\\n\" +\r\n  \"if(req.mode==='navigate'){e.respondWith(fetch(req).then(res=>{if(res.ok){const clean=directHtml(res);e.waitUntil(caches.open(CACHE).then(c=>c.put('./index.html',clean.clone())));return clean}return res}).catch(async()=>{const cached=await caches.match('./index.html');return cached?directHtml(cached):Response.error()}));return}\\n\" +\r\n  'if(/\\\\/(?:features|forja-post)\\\\.js$/.test(u.pathname)||/\\\\/(?:catalog\\\\.json|manifest\\\\.webmanifest)$/.test(u.pathname)){\\n' +\r\n  \" e.respondWith(fetch(req,{cache:'no-store'}).then(res=>{if(res.ok){const clone=res.clone();e.waitUntil(caches.open(CACHE).then(c=>c.put(req,clone)))}return res}).catch(()=>caches.match(req)));return;\\n\" +\r\n  '}\\n' +\r\n  'e.respondWith(caches.match(req).then(c=>c||fetch(req)))});\\n' +\r\n  '\\n'\r\n\r\n    at file:///C:/Users/renat/AppData/Local/Temp/FORJA_AUDITORIA_655e6f3_20261031/02_CODIGO/tests/scout-history-integrity.mjs:10:133\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)\r\n    at async node:internal/modules/esm/loader:647:26\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  generatedMessage: true,\r\n  code: 'ERR_ASSERTION',\r\n  actual: '// HOMOLOGAÇÃO — V11 CANDIDATA, cache exclusivo\\n' +\r\n    \"const CACHE='forja73-static-v11-rc3-offline-navigation-no-redirect-20261031';\\n\" +\r\n    \"const FILES=['./features.js','./forja-post.js','./scout-progress.js','./forja-history-records.js','./forja-music-v1.js','./forja-cover-rio-casal-v2.png','./forja-brand-original.png','./forja-cover-rio-v10.webp','./manifest.webmanifest','./forja-icon-rc3-180.png','./forja-icon-rc3-192.png','./forja-icon-rc3-512.png'];\\n\" +\r\n    '// A navigation fallback must be a direct HTML response, never a cached redirect.\\n' +\r\n    'const directHtml=r=>new Response(r.body,{status:200,headers:r.headers});\\n' +\r\n    \"self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(async c=>{\\n\" +\r\n    ' await c.addAll(FILES);\\n' +\r\n    \" const r=await fetch('./index.html');\\n\" +\r\n    \" if(!r.ok)throw Error('FORJA offline shell unavailable');\\n\" +\r\n    \" await c.put('./index.html',directHtml(r));\\n\" +\r\n    '}).then(()=>self.skipWaiting())));\\n' +\r\n    \"self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('forja73-static-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));\\n\" +\r\n    \"self.addEventListener('fetch',e=>{const req=e.request,u=new URL(req.url);if(req.method!=='GET'||u.origin!==self.location.origin||u.pathname.startsWith('/api/'))return;\\n\" +\r\n    \"if(req.mode==='navigate'){e.respondWith(fetch(req).then(res=>{if(res.ok){const clean=directHtml(res);e.waitUntil(caches.open(CACHE).then(c=>c.put('./index.html',clean.clone())));return clean}return res}).catch(async()=>{const cached=await caches.match('./index.html');return cached?directHtml(cached):Response.error()}));return}\\n\" +\r\n    'if(/\\\\/(?:features|forja-post)\\\\.js$/.test(u.pathname)||/\\\\/(?:catalog\\\\.json|manifest\\\\.webmanifest)$/.test(u.pathname)){\\n' +\r\n    \" e.respondWith(fetch(req,{cache:'no-store'}).then(res=>{if(res.ok){const clone=res.clone();e.waitUntil(caches.open(CACHE).then(c=>c.put(req,clone)))}return res}).catch(()=>caches.match(req)));return;\\n\" +\r\n    '}\\n' +\r\n    'e.respondWith(caches.match(req).then(c=>c||fetch(req)))});\\n' +\r\n    '\\n',\r\n  expected: /CACHE='[^']+history/,\r\n  operator: 'match',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v24.20.0\r\n"
+    },
+    {
+      "name": "scout-history-origin.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 163,
+      "stdout": "HISTORY_ORIGIN_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "scout-history-retroactive.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 166,
+      "stdout": "HISTORY_RETROACTIVE_PASS 12 assertions groups; exit 0\n",
+      "stderr": ""
+    },
+    {
+      "name": "scout-identity-equipment.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 207,
+      "stdout": "SCOUT_IDENTITY_EQUIPMENT_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "scout-longitudinal-accounting.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 206,
+      "stdout": "SCOUT_LONGITUDINAL_ACCOUNTING_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "scout-longitudinal-evidence.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 196,
+      "stdout": "SCOUT_LONGITUDINAL_EVIDENCE_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "scout-professional-periods.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 201,
+      "stdout": "SCOUT_PROFESSIONAL_PERIODS_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "scout-progress-daily.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 252,
+      "stdout": "SCOUT_DAILY_ORDER_INDEPENDENCE_READONLY_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "scout-progress-edge-cases.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 187,
+      "stdout": "SCOUT_PROGRESS_EDGE_CASES_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "scout-progress-ui.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 211,
+      "stdout": "SCOUT_PROGRESS_UI_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "scout-session-feedback.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 202,
+      "stdout": "SCOUT_SESSION_FEEDBACK_PASS\n",
+      "stderr": ""
+    },
+    {
+      "name": "scout-temporal-isolation.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 190,
+      "stdout": "PASS: future/invalid ignored before identity; valid conflict quarantined; distinct same-day sessions retained\n",
+      "stderr": ""
+    },
+    {
+      "name": "scout-workout-temporal-isolation.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "ms": 191,
+      "stdout": "WORKOUT_TEMPORAL_PASS\n",
+      "stderr": ""
+    }
+  ]
+}

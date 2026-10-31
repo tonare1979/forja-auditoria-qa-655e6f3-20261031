@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const client=readFileSync('public/index.html','utf8');
+const server=readFileSync('src/index.js','utf8');
+const check=(name,condition)=>{assert(condition,name);console.log(name+'_PASS')};
+check('LOGIN_EMAIL_OR_USERNAME_SQL',server.includes('SELECT * FROM users WHERE username=? OR email=?')&&server.includes('SELECT password_salt FROM users WHERE username=? OR email=?'));
+check('LOGIN_EMAIL_CAN_PASS_VALIDATION',server.includes('okLoginIdentity(name)')&&server.includes('okLoginIdentity('));
+check('LOGIN_CANONICAL_GUARD',client.includes("if(username.includes('@')){const bound=cmRead();if(bound?.username&&cloudCompareLocal())throw Error(")&&client.includes('else cloudAccountGuard(username)')&&client.includes('cloudLoginOK(r.user)'));
+check('SPLASH_BUTTON_NOT_FAKE_LOGIN',client.includes('data-action="welcomeLogin">CONTINUAR</button>')&&client.includes("cloud.user?'painel':'nuvem'"));
+check('MANUAL_LOGIN_SEPARATE',client.includes("api('/api/auth/login','POST'")&&client.includes("button('ENTRAR NA NUVEM','cloudLogin')"));
+console.log('AUTH_LOGIN_SAFARI_REGRESSION_PASS');

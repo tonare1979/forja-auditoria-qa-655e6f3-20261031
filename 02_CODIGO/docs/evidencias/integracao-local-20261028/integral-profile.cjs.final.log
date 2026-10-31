@@ -1,0 +1,11 @@
+PASS arquivo integral carregado e listeners reais
+PASS atleta A abrir editar salvar recarregar
+PASS atleta B diferente e isolado
+PASS perfil antigo e campos vazios sem 63/73
+PASS perfil antigo sem profile recupera pesos anteriores
+PASS valor inválido não modifica estado
+PASS meta 999 não substitui estado
+PASS falha persistencia QuotaExceededError sem sucesso com retry
+PASS falha persistencia SecurityError sem sucesso com retry
+PASS painel usa resumo individual, não fixos
+RESULT 10/10 EXIT 0

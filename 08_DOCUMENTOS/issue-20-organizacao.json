@@ -1,0 +1,39 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Action completed."
+    }
+  ],
+  "structuredContent": {
+    "issue": {
+      "url": "https://github.com/tonare1979/forja-v11-homologaca/issues/20",
+      "title": "ORGANIZAÇÃO V11 | Consolidar repositório único e encerrar pendências de migração",
+      "issue_number": 20,
+      "body": "## Regra\nNenhuma nova auditoria externa antes do fechamento comprovado da organização. Produção V9.4.2 intocada, custo zero, nada essencial no h1988-cc.\n\n## Pendências de organização\n- [ ] Classificar alterações exclusivas das 27 worktrees arquivadas, aproveitando somente mudanças necessárias à V11 atual. Não integrar código antigo automaticamente.\n- [x] Converter a pasta operacional `C:\\Users\\renat\\FORJA_RC3_E2E_WORKFLOW_20261027` em checkout Git autossuficiente: `git rev-parse --git-common-dir` passou a `.git`, SHA `815324c363b0ac754b38d21b8782fbce276c7a15` conferido, checkout antigo arquivado em `FORJA_BACKUPS/OUTRAS_VERSOES/WORKTREES/FORJA_RC3_E2E_WORKFLOW_PRE_INDEPENDENT_20261027`; QA pós-troca 20/20 exit 0. Arquivo histórico ainda existe para reversão.\n- [x] Preservar modificações locais e arquivos QA não rastreados na migração para clone independente, hashes de arquivos copiados conferidos; a pasta antiga foi arquivada para reversão. Material de recuperação permaneceu protegido, sem publicação de segredos.\n- [x] Validar Agendador Windows (`FORJA_RC3_QA_Gratuito`) e QA pós-migração: tarefa apontando para a pasta ativa; `BATCH_RESULT 20/20 FAILED=0`, exit 0; backup Git `FORJA_V11_RC3_GIT_20261027.bundle` verificado, HEAD no bundle `2e1afdc` no momento da prova. **Restauração integrada D1/R2/chaves é pendência separada abaixo.**\n- [ ] Centralizar binários originais aprovados Work no repositório oficial, preservando origem, hashes e critérios visuais.\n- [ ] Demonstrar plano de restauração integrado Worker + D1 + R2 + chaves e confirmar condições gratuitas; não executar operação destrutiva em dados reais.\n- [ ] Confirmar separação real da V11 em uso e V11 em evolução, somente com autorização para eventuais mudanças de Cloudflare.\n- [x] Revisar índice Notion, README e registro mestre: Notion aponta para registro mestre GitHub; README aponta para o mesmo registro. Histórico Notion conservado e rotulado.\n\n## Evidência de base\nRegistro mestre: `docs/FORJA-REGISTRO-MESTRE-ORGANIZACAO-20261027.md` na branch `fix/rc3-equipment-thumb-contain-20261027`.\n27 worktrees históricas arquivadas e 20/20 QA local pós-organização, sem prova física Safari.\n\n**Status inicial:** ABERTO. Não marcar como concluído antes de cada contraprova.\n\n## Evidência atualizada 27/10\n- Troca realizada sem alterar app remoto/produção; QA após a troca `BATCH_RESULT 20/20 FAILED=0` em `FORJA_PLAYWRIGHT_QA/reports/forja-qa-batch-2026-10-27T23-09-37-114Z.json`.\n- `git common-dir`: `.git` (checkout independente). A âncora histórica não é mais dependência operacional. Demais controles de backup integrado e imagens originais continuam pendentes.\n\n## Arte original, confirmação de integridade (27/10/2026)\n- `Trilha de Evolução FORJA.png`: SHA-256 `4816968120ff08b5c0862f13acc090b1dd06e0ce0d83fe2822cc80251690d93e`, 1.433.786 bytes, Biblioteca `file_000000000d14820ea336a790892e7ec9`.\n- `Tela de Treinos FORJA com Playlists.png`: SHA-256 `02a7194f2b04338697b75f42ca751a9a68ea195e1787dfa077a66e230298a284`, 1.530.206 bytes, Biblioteca/conversa `file_00000000f3e8820e833c233c5656f1ed`.\n- Originais recuperados e arquivos binários intactos conferidos; **a transferência ao repositório ainda pendente**, não marcar como concluída.\n",
+      "state": "open",
+      "user": {
+        "login": "tonare1979",
+        "name": "tonare1979",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/340876924?v=4",
+        "id": 340876924
+      },
+      "assignees": null,
+      "labels": null,
+      "milestone": null,
+      "state_reason": null,
+      "comments": 0,
+      "created_at": "2026-10-27T23:03:23Z",
+      "updated_at": "2026-10-27T23:12:43Z",
+      "closed_at": null,
+      "display_url": "https://github.com/tonare1979/forja-v11-homologaca/issues/20",
+      "display_title": "ORGANIZAÇÃO V11 | Consolidar repositório único e encerrar pendências de migração"
+    },
+    "url": "https://github.com/tonare1979/forja-v11-homologaca/issues/20",
+    "title": "ORGANIZAÇÃO V11 | Consolidar repositório único e encerrar pendências de migração",
+    "display_url": "https://github.com/tonare1979/forja-v11-homologaca/issues/20",
+    "display_title": "ORGANIZAÇÃO V11 | Consolidar repositório único e encerrar pendências de migração"
+  },
+  "isError": false
+}

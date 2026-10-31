@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Action completed."
+    }
+  ],
+  "structuredContent": {
+    "id": "1vKRlBLO1yMFQEk7b-2dyBOlo2Rg7TlAj",
+    "title": "FORJA_C7_OFFLINE_REOPEN_FIX_EVIDENCIAS.zip",
+    "mime_type": "application/zip",
+    "size": "6972271",
+    "url": "https://drive.google.com/file/d/1vKRlBLO1yMFQEk7b-2dyBOlo2Rg7TlAj/view?usp=drivesdk",
+    "display_url": "https://drive.google.com/file/d/1vKRlBLO1yMFQEk7b-2dyBOlo2Rg7TlAj/view?usp=drivesdk",
+    "file_or_folder": "file",
+    "created_time": null,
+    "modified_time": null,
+    "parent_ids": [
+      "14aXAFg-wy3IFpQBImNVht2LfBZS5vcz0"
+    ],
+    "drive_id": null,
+    "current_user_can_share": null,
+    "has_augmented_permissions": null,
+    "shared": null,
+    "permissions": null,
+    "source_visibility_status": "access_not_verified"
+  },
+  "isError": false
+}

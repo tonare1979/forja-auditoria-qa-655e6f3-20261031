@@ -1,0 +1,25 @@
+PASS finalizacao aciona persistencia uma vez
+PASS historico legado preservado e novo treino adicionado
+PASS sessao classificada parcial
+PASS apenas uma serie realizada
+PASS exercicio nao realizado permanece sem series
+PASS carga e repeticoes realmente declaradas
+PASS rascunho retirado apos persistencia
+PASS estado persistido
+PASS resumo gerado somente apos sucesso
+PASS repeticao nao duplica sessao
+PASS duplicacao detectada pelo ID
+PASS recarregamento preserva sessao antiga
+PASS recarregamento preserva peso e alternativa
+PASS recarregamento preserva status parcial
+PASS Scout reconhece treino parcial
+PASS Scout considera treino parcial entre sessoes
+PASS Scout computa apenas series reais
+PASS Scout nao cria volume de series vazias
+PASS texto Scout informa parcial
+PASS finalizacao aciona persistencia uma vez
+PASS falha nao cria sessao definitiva
+PASS falha restaura mesmo rascunho
+PASS falha nao exibe sucesso
+PASS falha preserva historico, pesos, alternativas
+RESULTADO 24/24 PASS

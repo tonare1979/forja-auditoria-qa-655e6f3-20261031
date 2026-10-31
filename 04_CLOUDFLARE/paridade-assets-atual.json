@@ -1,0 +1,398 @@
+{
+  "captured_at": "2026-10-31T12:20:34.294Z",
+  "tested": 43,
+  "matched": 43,
+  "health": {
+    "status": 200,
+    "body": "{\"ok\":true,\"app\":\"FORJA\",\"api\":1}"
+  },
+  "results": [
+    {
+      "path": "exercise-thumbs/agachamento-hack.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/agachamento-hack.jpg",
+      "redirected": false,
+      "bytes": 8599,
+      "matches": true,
+      "sha256": "59640183bc2b365bdd86057bc44eeac6522c638b005ea1d27b8da18a73598ab9"
+    },
+    {
+      "path": "exercise-thumbs/cadeira-abdutora.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/cadeira-abdutora.jpg",
+      "redirected": false,
+      "bytes": 7072,
+      "matches": true,
+      "sha256": "9707491c6fa005fbb3876d127dfd7f2703c53e39572dee18f3f5448f887c2c0c"
+    },
+    {
+      "path": "exercise-thumbs/cadeira-extensora.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/cadeira-extensora.jpg",
+      "redirected": false,
+      "bytes": 6707,
+      "matches": true,
+      "sha256": "75c49df75a0b763163f2c94d12f24f6122daa4c1dedb154e4ff222256ad68f7d"
+    },
+    {
+      "path": "exercise-thumbs/cadeira-flexora.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/cadeira-flexora.jpg",
+      "redirected": false,
+      "bytes": 7627,
+      "matches": true,
+      "sha256": "dbe48174c6fb67b54d694c4f5dfa016cb9a6292264df1b6fe44647d8d14ecc80"
+    },
+    {
+      "path": "exercise-thumbs/CREDITOS.md",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/CREDITOS.md",
+      "redirected": false,
+      "bytes": 287,
+      "matches": true,
+      "sha256": "2c42dbff10f5e92f77d2233ed1f20a29a53d6d7523bbd9e4fc23d36924ee97cc"
+    },
+    {
+      "path": "exercise-thumbs/crucifixo-inverso-maquina.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/crucifixo-inverso-maquina.jpg",
+      "redirected": false,
+      "bytes": 7158,
+      "matches": true,
+      "sha256": "cbaadc7fff0d13ccfcaf1ef7626822477ac473b3b1b1cf1b28cd9a4318132560"
+    },
+    {
+      "path": "exercise-thumbs/elevacao-lateral-maquina.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/elevacao-lateral-maquina.jpg",
+      "redirected": false,
+      "bytes": 5703,
+      "matches": true,
+      "sha256": "f1999b86f77084ab6e7bafd02e8077eb0d242c365c2554ab90cc144556ae44d6"
+    },
+    {
+      "path": "exercise-thumbs/leg-press-45.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/leg-press-45.jpg",
+      "redirected": false,
+      "bytes": 197982,
+      "matches": true,
+      "sha256": "c2be869589ef0aa55b4e49bb977e92edccb63b5ed4fb070079fcb2f884bc932c"
+    },
+    {
+      "path": "exercise-thumbs/leg-press-work-thumb.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/leg-press-work-thumb.jpg",
+      "redirected": false,
+      "bytes": 1969,
+      "matches": true,
+      "sha256": "8fae108f9694ebe3d46d1160a7b62e65eab38e23bb0dc9b1d5abb331ddddec38"
+    },
+    {
+      "path": "exercise-thumbs/manifest.json",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/manifest.json",
+      "redirected": false,
+      "bytes": 1265,
+      "matches": true,
+      "sha256": "a4fd4945d4b683f72de5769bb8475223ba378d80f73c8dbdf2851047ae6ec9cc"
+    },
+    {
+      "path": "exercise-thumbs/mesa-flexora.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/mesa-flexora.jpg",
+      "redirected": false,
+      "bytes": 7357,
+      "matches": true,
+      "sha256": "61bb87628bdad9d8ab72095af9538b3cf3c92dea879373de559ff48b05ab73b4"
+    },
+    {
+      "path": "exercise-thumbs/panturrilha-em-pe.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/panturrilha-em-pe.jpg",
+      "redirected": false,
+      "bytes": 6036,
+      "matches": true,
+      "sha256": "233b64c301ced5a14adc262dfd3cfdb19fe29b1710e8f58062658707a62c4a95"
+    },
+    {
+      "path": "exercise-thumbs/panturrilha-sentada.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/panturrilha-sentada.jpg",
+      "redirected": false,
+      "bytes": 5719,
+      "matches": true,
+      "sha256": "8cb6c752e85eba24a231bb694a1053d6933c414b9d1a05fbaa88cd9f03569c25"
+    },
+    {
+      "path": "exercise-thumbs/prancha.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/prancha.jpg",
+      "redirected": false,
+      "bytes": 5842,
+      "matches": true,
+      "sha256": "7f5cd04778de71e85135089e085729f168db037e446e125cbe9b4eb9768fdb74"
+    },
+    {
+      "path": "exercise-thumbs/puxada-frontal.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/puxada-frontal.jpg",
+      "redirected": false,
+      "bytes": 5578,
+      "matches": true,
+      "sha256": "df2e18894b531b61ec30e9d28568976da0f716f9707f57daed6ab81817efd741"
+    },
+    {
+      "path": "exercise-thumbs/puxada-pegada-neutra.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/puxada-pegada-neutra.jpg",
+      "redirected": false,
+      "bytes": 5982,
+      "matches": true,
+      "sha256": "9f2b212fdb81672d334ff7edf20eb2b47bb470540d25b9942a66551f80fdbb6e"
+    },
+    {
+      "path": "exercise-thumbs/remada-articulada.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/remada-articulada.jpg",
+      "redirected": false,
+      "bytes": 7429,
+      "matches": true,
+      "sha256": "db17e6be612e6b6cf5b2cb49e18dc575e2eb46fbca6297b0cae3aec6bd4cf70f"
+    },
+    {
+      "path": "exercise-thumbs/remada-baixa.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/remada-baixa.jpg",
+      "redirected": false,
+      "bytes": 6518,
+      "matches": true,
+      "sha256": "15d50d215602b6c69b149e3a640afe718ae00632fc28f126df0d9d3a491fa496"
+    },
+    {
+      "path": "exercise-thumbs/rosca-biceps-maquina.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/rosca-biceps-maquina.jpg",
+      "redirected": false,
+      "bytes": 6570,
+      "matches": true,
+      "sha256": "325c23f021545c0c430955476e369f0cb69d0961a15870951c9f90505844b21a"
+    },
+    {
+      "path": "exercise-thumbs/rosca-martelo.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/rosca-martelo.jpg",
+      "redirected": false,
+      "bytes": 4431,
+      "matches": true,
+      "sha256": "0e8a04e1a415dcc650838a88e26459531cd3552b7fd1797bb12fd5d15f570f64"
+    },
+    {
+      "path": "exercise-thumbs/supino-inclinado-maquina.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/supino-inclinado-maquina.jpg",
+      "redirected": false,
+      "bytes": 6482,
+      "matches": true,
+      "sha256": "098cd288be33a381088ef0e774afb0883f09f6006ee9e9a06388197bfa4d8fb2"
+    },
+    {
+      "path": "exercise-thumbs/supino-maquina.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/supino-maquina.jpg",
+      "redirected": false,
+      "bytes": 8206,
+      "matches": true,
+      "sha256": "8881bd782188950498f64851ef91d0513303fde62f85d19934267e0a0990e838"
+    },
+    {
+      "path": "exercise-thumbs/triceps-corda.jpg",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/exercise-thumbs/triceps-corda.jpg",
+      "redirected": false,
+      "bytes": 5440,
+      "matches": true,
+      "sha256": "238d9c3ddf539addaa33ad9b4c2a3b5954a19a3e1e81e85ca32d86399c3881e9"
+    },
+    {
+      "path": "features.js",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/features.js",
+      "redirected": false,
+      "bytes": 31141,
+      "matches": true,
+      "sha256": "4139e743df4c2572a804d7066c9a39964e590a4354072bce43e9d6cf9534cdf2"
+    },
+    {
+      "path": "forja-brand-original.png",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/forja-brand-original.png",
+      "redirected": false,
+      "bytes": 1136492,
+      "matches": true,
+      "sha256": "130da00d80a2f44ac9dd45802560dea504d6c6fac91ca96ea959a5a63fbc71a2"
+    },
+    {
+      "path": "forja-cover-rio-casal-v2.png",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/forja-cover-rio-casal-v2.png",
+      "redirected": false,
+      "bytes": 1976656,
+      "matches": true,
+      "sha256": "dab24e40f6d71bea2bb8a2865d61aa97d49dc18667c801c3d28eac6b94c30ff0"
+    },
+    {
+      "path": "forja-cover-rio-v10.webp",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/forja-cover-rio-v10.webp",
+      "redirected": false,
+      "bytes": 158126,
+      "matches": true,
+      "sha256": "c9ae3749c5cb70022ef573af687a14a8635a617fca6516282f1d35ef5c887f11"
+    },
+    {
+      "path": "forja-history-records.js",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/forja-history-records.js",
+      "redirected": false,
+      "bytes": 8724,
+      "matches": true,
+      "sha256": "d9bb67641e1b769a414345c5b71558a8f641654ae545af28f1d37ed50d1ae7bd"
+    },
+    {
+      "path": "forja-icon-180-v942.png",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/forja-icon-180-v942.png",
+      "redirected": false,
+      "bytes": 19638,
+      "matches": true,
+      "sha256": "22a4e142569e712b7c71793e8b4d646877725a6b5aeca444267171fe67c6b198"
+    },
+    {
+      "path": "forja-icon-192-v942.png",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/forja-icon-192-v942.png",
+      "redirected": false,
+      "bytes": 22615,
+      "matches": true,
+      "sha256": "a099ebf3855e19f9018a8cc6f34e8538a1a204c1cc1db5a869f0bbd195e92b84"
+    },
+    {
+      "path": "forja-icon-512-v942.png",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/forja-icon-512-v942.png",
+      "redirected": false,
+      "bytes": 172925,
+      "matches": true,
+      "sha256": "ad77a9c72120b3d5a18dcaacaef856f8272b11a261ffbc711c727563dcb0e31c"
+    },
+    {
+      "path": "forja-icon-rc3-180.png",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/forja-icon-rc3-180.png",
+      "redirected": false,
+      "bytes": 6658,
+      "matches": true,
+      "sha256": "ff6c68dc816285ab920a6e61f2874ccf4ed0a201278ea671e2cb120736c6e344"
+    },
+    {
+      "path": "forja-icon-rc3-192.png",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/forja-icon-rc3-192.png",
+      "redirected": false,
+      "bytes": 7110,
+      "matches": true,
+      "sha256": "a75f705a880c85dde1d7f13b0a628de39b20d7a80dfd6bd44bca5a3e7290a703"
+    },
+    {
+      "path": "forja-icon-rc3-512.png",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/forja-icon-rc3-512.png",
+      "redirected": false,
+      "bytes": 20045,
+      "matches": true,
+      "sha256": "be218132544def616db74262e5c7d9f9b24039459ea653d0ec443f52e8357fc6"
+    },
+    {
+      "path": "forja-music-v1.js",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/forja-music-v1.js",
+      "redirected": false,
+      "bytes": 4807,
+      "matches": true,
+      "sha256": "4f7414bf793f5f3b20a399c1bc4ad9d1cc5c9f328c0f5414a457aa2415deab89"
+    },
+    {
+      "path": "forja-post.js",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/forja-post.js",
+      "redirected": false,
+      "bytes": 2756,
+      "matches": true,
+      "sha256": "8773ffdc182f61dd630334354b3796ee33808177fc6c3c3ca5d746af2ff928c1"
+    },
+    {
+      "path": "icon-192.png",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/icon-192.png",
+      "redirected": false,
+      "bytes": 22615,
+      "matches": true,
+      "sha256": "a099ebf3855e19f9018a8cc6f34e8538a1a204c1cc1db5a869f0bbd195e92b84"
+    },
+    {
+      "path": "icon-512.png",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/icon-512.png",
+      "redirected": false,
+      "bytes": 172925,
+      "matches": true,
+      "sha256": "ad77a9c72120b3d5a18dcaacaef856f8272b11a261ffbc711c727563dcb0e31c"
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/",
+      "redirected": true,
+      "bytes": 119660,
+      "matches": true,
+      "sha256": "4190cb18f68bb115511f7068f1a06d6b203d07c98900689310eb852124032ea7"
+    },
+    {
+      "path": "manifest.webmanifest",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/manifest.webmanifest",
+      "redirected": false,
+      "bytes": 485,
+      "matches": true,
+      "sha256": "73c63d72cc9ec171057ef4fe979a62ec7bd12f4fa41ef7cc8a9a51713e584634"
+    },
+    {
+      "path": "scout-progress.js",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/scout-progress.js",
+      "redirected": false,
+      "bytes": 20534,
+      "matches": true,
+      "sha256": "4802bdcfb21a9b392d5bc8536923614e12300d25d9a84cdebc9a25cf226966a7"
+    },
+    {
+      "path": "sw.js",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/sw.js",
+      "redirected": false,
+      "bytes": 1967,
+      "matches": true,
+      "sha256": "0734eea330e4e89c566b6b10fcf9aa94593d3a28f24dd54d7ef2a90a89e78d1b"
+    },
+    {
+      "path": "videos/catalog.json",
+      "status": 200,
+      "finalUrl": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/videos/catalog.json",
+      "redirected": false,
+      "bytes": 226226,
+      "matches": true,
+      "sha256": "d9ee01506753cdb7322ebd63dd5572902ec1678571710b8dc9610fd10e2c7046"
+    }
+  ]
+}

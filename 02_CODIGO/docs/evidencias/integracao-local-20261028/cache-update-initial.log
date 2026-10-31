@@ -1,0 +1,5 @@
+page.evaluate: TypeError: undefined is not an object (evaluating '(await c.match('/features.js')).text')
+    at cached (/workspace/scratch/a6207f95c538/forja-integration/tests/cache-update-local.cjs:47:28)
+    at /workspace/scratch/a6207f95c538/forja-integration/tests/cache-update-local.cjs:53:28 {
+  log: []
+}

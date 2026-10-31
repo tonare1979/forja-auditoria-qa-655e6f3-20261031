@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';import{readFileSync}from'node:fs';import vm from'node:vm';
+const ctx={window:{}};vm.runInNewContext(readFileSync(new URL('../public/scout-progress.js',import.meta.url),'utf8'),ctx);
+const date=new Date('2026-10-30T12:00:00Z');const s=(id,day,kg,status='partial',equip='máquina')=>({id,date:day,code:'A',status,exercises:[{name:'Remada',equipment:equip,sets:[{kg,reps:10}]}]});
+const one=s('unique','2026-10-29',20),two=s('other','2026-10-29',25,'complete');const cloned=JSON.parse(JSON.stringify(one));
+let p=ctx.window.forjaScoutPeriodSummary({sessions:[one,cloned,two]},date,30);assert.equal(p.sessions,2);assert.equal(p.partial,1);assert.equal(p.distribution.A,2);assert.equal(p.activeDays,1);
+const clash=s('unique','2026-10-29',99);p=ctx.window.forjaScoutPeriodSummary({sessions:[one,clash,two]},date,30);assert.equal(p.sessions,1);assert.equal(p.conflicts,1);assert.equal(p.partial,0);assert.match(ctx.window.forjaScoutProgress({sessions:[one,clash,two]},date),/Há registros divergentes deste treino/);
+const newone=s('new','2026-10-30',30,'complete','halteres');const f=ctx.window.forjaScoutSessionFeedback({sessions:[one,newone]},date);assert.equal(f.exercises[0].trend,'different_equipment');
+const changed=ctx.window.forjaScoutSessionFeedback({sessions:[one,s('new','2026-10-30',30,'complete','máquina')]},date);assert.equal(changed.exercises[0].trend,'more_load');
+const missing=s('missing','2026-10-30',30,'complete',undefined);delete missing.exercises[0].equipment;
+const oldMissing=s('oldmissing','2026-10-29',20,'complete',undefined);delete oldMissing.exercises[0].equipment;
+const unknown=ctx.window.forjaScoutSessionFeedback({sessions:[oldMissing,missing]},date);
+assert.equal(unknown.exercises[0].trend,'different_equipment','equipamento não informado não é compatibilidade');
+const screen=ctx.window.forjaScoutProgress({sessions:[one,clash,two]},date);
+assert.match(screen,/Há registros divergentes deste treino/);
+assert.doesNotMatch(screen,/conflito\(s\) de ID|série\(s\)|treino\(s\)|exercício\(s\)/);
+assert.equal(ctx.window.forjaScoutSessionFeedback({sessions:[one,clash]},date),null);
+console.log('SCOUT_IDENTITY_EQUIPMENT_PASS');

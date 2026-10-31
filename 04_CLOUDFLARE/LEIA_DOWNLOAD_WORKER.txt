@@ -1,0 +1,4 @@
+download-worker-resposta.json tem a resposta textual TRUNCADA do conector e nao e backup completo.
+backend-publicado/index.js e identico ao modulo remoto pelo hash SHA-256 calculado sobre a resposta integral na API.
+backend-publicado/index.js.map foi reconstituido em 6 partes e seu hash foi confirmado contra a resposta integral remota.
+backend-hashes-remotos.json registra os hashes remotos e tamanhos dos dois modulos.

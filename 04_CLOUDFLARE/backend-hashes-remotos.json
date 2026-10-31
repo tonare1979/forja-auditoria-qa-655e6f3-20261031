@@ -1,0 +1,10 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"status\": 200,\n  \"rawLength\": 129660,\n  \"parts\": [\n    {\n      \"header\": \"\\r\\nContent-Disposition: form-data; name=\\\"index.js\\\"\",\n      \"bytes\": 50474,\n      \"sha256\": \"d609da7d763910f93c21e4e80f5c6c8d7c8b7b8c62b1985fd56e63dfcf61ed5b\"\n    },\n    {\n      \"header\": \"\\r\\nContent-Disposition: form-data; name=\\\"index.js.map\\\"; filename=\\\"index.js.map\\\"\\r\\nContent-Type: application/source-map\",\n      \"bytes\": 79071,\n      \"sha256\": \"fdb4a7085cecf3deab8ccc157746f5082b05020cc3b72dd2a978ce50703a6ee7\"\n    }\n  ]\n}"
+    }
+  ],
+  "structuredContent": null,
+  "isError": false
+}

@@ -1,0 +1,82 @@
+{
+  "app": "FORJA",
+  "version": 1,
+  "data": {
+    "sessions": [
+      {
+        "id": "old",
+        "code": "A",
+        "date": "2026-10-23",
+        "exercises": [
+          {
+            "name": "Supino",
+            "sets": [
+              {
+                "kg": 20,
+                "reps": 8
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "partial",
+        "code": "B",
+        "status": "partial",
+        "date": "2026-10-28",
+        "exercises": [
+          {
+            "name": "Leg press",
+            "sets": [
+              {
+                "kg": 40,
+                "reps": 10
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "weights": [
+      {
+        "date": "2026-10-23",
+        "weight": 66
+      }
+    ],
+    "profile": {
+      "initialWeight": 65,
+      "targetWeight": 72
+    },
+    "drafts": {
+      "A": {
+        "id": "draft1",
+        "entries": {}
+      }
+    },
+    "exerciseChoices": {
+      "A": {
+        "0": "Supino reto com halteres"
+      }
+    },
+    "planOverrides": {
+      "A": {
+        "0": {
+          "sets": 3,
+          "reps": "8"
+        }
+      }
+    },
+    "journal": [
+      {
+        "date": "2026-10-23",
+        "sleep": "7"
+      }
+    ],
+    "checks": {
+      "A": true
+    },
+    "extraExercises": {},
+    "deezerPlaylist": "abc",
+    "skipRunAfterB": false
+  }
+}

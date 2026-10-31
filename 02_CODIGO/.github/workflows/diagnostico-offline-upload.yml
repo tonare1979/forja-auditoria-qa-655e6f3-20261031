@@ -1,0 +1,20 @@
+name: FORJA diagnostico offline e anexos
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path('public/features.js').read_text()
+          keys=['async function fxLoadEvolution','function fxLoadEvolution','async function uploadMedia','async function fxLoadChat','async function fxAction','let fx=','const fx=','outbox','data-fx','sendChat','saveBody']
+          for key in keys:
+            i=s.find(key)
+            if i>=0:print('\nKEY',key,'\nCODE',repr(s[max(0,i-250):i+2200]))
+            else:print('MISSING',key)
+          PY

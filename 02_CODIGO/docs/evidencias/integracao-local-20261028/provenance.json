@@ -1,0 +1,11 @@
+{
+  "base": "c9a48e753d495a0fab2f38773ae4cc42d30062e4",
+  "branch": "fix/rc3-integracao-local-20261028",
+  "nativeTestsChanged": [],
+  "production": {
+    "public/index.html": "13e739b26840dbdadca70531f7b21e08ec3231fa7fc1df481c948197d3b3c9b1",
+    "public/features.js": "83d593074485940cb8ed29785f2a2b9e30c111f35e9ac230e7519984a070812d",
+    "public/scout-progress.js": "fda5ef249ac2a426d13fe16095d4f1fdd9d44017e3ccb527cbcdcb1f5b67feb7",
+    "public/sw.js": "6d5e0d1bedb47df34cba2df938d2e48505378a24b9f8e5e7917d3edb5ebac5df"
+  }
+}

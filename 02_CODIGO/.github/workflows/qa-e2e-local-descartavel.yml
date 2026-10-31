@@ -1,0 +1,89 @@
+name: FORJA E2E real local descartavel
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Criar D1 local e rodar Worker sem produção
+        run: |
+          npm install --no-save wrangler@4
+          npx wrangler d1 migrations apply forja-v11-rc3-laboratorio --local --persist-to /tmp/forja-rc3-e2e-only
+          npx wrangler dev --local --persist-to /tmp/forja-rc3-e2e-only --port 8799 --ip 127.0.0.1 --var FORJA_AUTH_PEPPER:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa --var FORJA_SETUP_KEY:local-test-only-setup-1234567890 >/tmp/forja-worker.log 2>&1 &
+          echo $! >/tmp/forja.pid
+          for i in $(seq 1 45); do if curl -fsS http://127.0.0.1:8799/api/health >/dev/null; then break; fi; sleep 2; done
+          curl -fsS http://127.0.0.1:8799/api/health
+      - name: Testar conta isolada upload de PDF e estado D1
+        run: |
+          cat >/tmp/e2e.mjs <<'JS'
+          import {randomBytes} from 'node:crypto';
+          const base='http://127.0.0.1:8799';
+          const proof=randomBytes(32).toString('hex'),salt=randomBytes(16).toString('hex');
+          async function call(path,opts={}){
+            const r=await fetch(base+path,opts);
+            let data;try{data=await r.json()}catch{data=null}
+            return {status:r.status,headers:r.headers,data};
+          }
+          const a=await call('/api/auth/setup',{method:'POST',headers:{'content-type':'application/json','origin':base},body:JSON.stringify({username:'qaonly',displayName:'QA isolado',proof,salt,setupKey:'local-test-only-setup-1234567890'})});
+          if(a.status!==201)throw Error('BOOTSTRAP '+JSON.stringify(a));
+          const cookie=a.headers.get('set-cookie').split(';')[0];
+          const adminRecoveryRoute=await call('/api/admin-recovery/request',{method:'POST',headers:{origin:base,'content-type':'application/json'},body:JSON.stringify({})});
+          if(adminRecoveryRoute.status!==400)throw Error('ADMIN_RECOVERY_ROUTE '+JSON.stringify(adminRecoveryRoute));
+          const denied=await call('/api/accounts/register',{method:'POST',headers:{origin:base,'content-type':'application/json'},body:JSON.stringify({username:'stranger',displayName:'Não autorizado',email:'stranger@example.invalid',proof,salt})});
+          if(denied.status!==401)throw Error('PUBLIC_SIGNUP_NOT_BLOCKED '+JSON.stringify(denied));
+          const member=await call('/api/accounts/register',{method:'POST',headers:{origin:base,cookie,'content-type':'application/json'},body:JSON.stringify({username:'pendingqa',displayName:'QA pendente',email:'qa-pending@example.invalid',proof,salt})});
+          if(member.status!==201)throw Error('ADMIN_PENDING_REGISTRATION '+JSON.stringify(member));
+          const listUsers=await call('/api/admin/users',{headers:{cookie}});
+          const pending=listUsers.data.users.find(x=>x.username==='pendingqa'&&x.status==='pending');
+          if(!pending)throw Error('PENDING_NOT_LISTED '+JSON.stringify(listUsers));
+          const rejected=await call('/api/admin/users',{method:'DELETE',headers:{cookie,origin:base,'content-type':'application/json'},body:JSON.stringify({id:pending.id})});
+          if(rejected.status!==200||!rejected.data.rejected)throw Error('REJECT_PENDING '+JSON.stringify(rejected));
+          const deny=await call('/api/admin/users',{method:'DELETE',headers:{cookie,origin:base,'content-type':'application/json'},body:JSON.stringify({id:pending.id})});
+          if(deny.status!==409)throw Error('REJECT_IDEMPOTENCY_GUARD '+JSON.stringify(deny));
+          console.log('A1_REJECT_PENDING_OK');
+          for(let i=0;i<11;i++){
+            const created=await call('/api/users',{method:'POST',headers:{origin:base,cookie,'content-type':'application/json'},body:JSON.stringify({username:'athlete'+i,displayName:'Atleta QA '+i,email:'athlete'+i+'@example.invalid',proof,salt})});
+            if(created.status!==201)throw Error('UNDER_11_REJECTED '+i+' '+JSON.stringify(created));
+          }
+          const thirteenth=await call('/api/users',{method:'POST',headers:{origin:base,cookie,'content-type':'application/json'},body:JSON.stringify({username:'athlete12',displayName:'Atleta QA extra',email:'athlete12@example.invalid',proof,salt})});
+          if(thirteenth.status!==409)throw Error('13TH_USER_ALLOWED '+JSON.stringify(thirteenth));
+          console.log('A1_PRIVATE_SIGNUP_11_LIMIT_OK');
+
+          const anon=await call('/api/media');
+          if(anon.status!==401)throw Error('MEDIA_UNPROTECTED '+anon.status);
+          const pdf=new File([new TextEncoder().encode('%PDF-1.4\n%FORJA-LOCAL-QA\n')],'qa.pdf',{type:'application/pdf'});
+          const form=new FormData();form.set('file',pdf);form.set('kind','exam');form.set('view','exam');form.set('date','2026-10-13');form.set('note','E2E sintético');
+          const sent=await call('/api/media',{method:'POST',headers:{origin:base,cookie},body:form});
+          if(sent.status!==201||!sent.data.id)throw Error('UPLOAD '+JSON.stringify(sent));
+          const id=sent.data.id;
+          const list=await call('/api/media',{headers:{cookie}});
+          if(list.status!==200||!list.data.media.some(x=>x.id===id))throw Error('MEDIA_LIST '+JSON.stringify(list));
+          const download=await fetch(base+'/api/media/'+id,{headers:{cookie}});
+          if(download.status!==200||!String(download.headers.get('content-type')).includes('pdf'))throw Error('MEDIA_DOWNLOAD '+download.status);
+          const removed=await call('/api/media/'+id,{method:'DELETE',headers:{cookie,origin:base}});
+          if(removed.status!==200)throw Error('MEDIA_DELETE '+JSON.stringify(removed));
+          const absent=await call('/api/media/'+id,{headers:{cookie}});
+          if(absent.status!==404)throw Error('DELETED_STILL_READABLE '+JSON.stringify(absent));
+          console.log('MEDIA_DELETE_M1_PASS');
+          const state=await call('/api/state',{headers:{cookie}});
+          if(state.status!==200)throw Error('STATE '+JSON.stringify(state));
+          const payload={sessions:[],weights:[{date:'2026-10-14',weight:65}]};
+          const opts={method:'PUT',headers:{origin:base,cookie,'content-type':'application/json'},body:JSON.stringify({baseRevision:0,data:payload})};
+          const first=await call('/api/state',opts);
+          if(first.status!==200||first.data.revision!==1)throw Error('INITIAL_PUT '+JSON.stringify(first));
+          const replay=await call('/api/state',opts);
+          if(replay.status!==200||replay.data.revision!==1||!replay.data.replayed)throw Error('IDEMPOTENT_REPLAY '+JSON.stringify(replay));
+          const changed=await call('/api/state',{...opts,body:JSON.stringify({baseRevision:0,data:{sessions:[],weights:[{date:'2026-10-14',weight:70}]}})});
+          if(changed.status!==409)throw Error('CONFLICT_MUST_STAY_409 '+JSON.stringify(changed));
+          console.log('IDEMPOTENCY_A3_PASS');
+          console.log('E2E_LOCAL_D1_R2_PDF_AUTH_OK',JSON.stringify({upload:sent.status,list:list.status,download:download.status,state:state.status}));
+          JS
+          node /tmp/e2e.mjs
+      - name: Relatar falha sem dados pessoais
+        if: failure()
+        run: |
+          tail -70 /tmp/forja-worker.log || true

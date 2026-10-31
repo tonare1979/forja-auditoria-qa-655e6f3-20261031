@@ -1,0 +1,35 @@
+name: Corrigir anexos do chat RC3
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Corrigir seletor e upload privado
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('public/features.js');s=p.read_text()
+          a='<label class="field-label">Anexar foto ou exame<select multiple id="selectedAttachments" class="forminput">'
+          b='<label class="field-label">Escolher foto ou exame do iPhone<input type="file" id="chatUpload" class="forminput" accept="image/jpeg,image/png,application/pdf,.pdf"></label><label class="field-label">Ou vincular arquivo já salvo<select multiple id="selectedAttachments" class="forminput">'
+          assert s.count(a)==1,'chat selector changed'
+          s=s.replace(a,b)
+          a="const text=$('chatText').value,attachments=[...($('selectedAttachments')?.selectedOptions||[])].map(o=>o.value),useAI=$('useAI')?.checked===true;const r=await api('/api/chat','POST',{text,attachments,useAI});"
+          b="const text=$('chatText').value,attachments=[...($('selectedAttachments')?.selectedOptions||[])].map(o=>o.value),useAI=$('useAI')?.checked===true;const incoming=$('chatUpload')?.files?.[0];if(incoming){if(!navigator.onLine)throw Error('Conecte-se para enviar anexos privados.');const isPdf=incoming.type==='application/pdf'||/\\.pdf$/i.test(incoming.name);if(!isPdf&&!['image/jpeg','image/png'].includes(incoming.type))throw Error('Escolha JPG, PNG ou PDF.');if(incoming.size>1000000&&!(!isPdf&&incoming.type.startsWith('image/')))throw Error('Escolha arquivo até 1 MB.');const added=await uploadMedia(incoming,isPdf?'exam':'photo',isPdf?'exam':'front',today(),'Anexo do acompanhamento');if(!added.id)throw Error('Arquivo enviado, mas sem confirmação. Confira a galeria antes de repetir.');attachments.push(added.id)}const r=await api('/api/chat','POST',{text,attachments,useAI});"
+          assert s.count(a)==1,'sendChat changed'
+          s=s.replace(a,b)
+          p.write_text(s)
+          print('Selector/upload patched')
+          PY
+          node --check public/features.js
+      - name: Commit
+        run: |
+          git config user.name "FORJA RC3"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/features.js
+          git commit -m "fix: permitir fotos e PDF no acompanhamento"
+          git push

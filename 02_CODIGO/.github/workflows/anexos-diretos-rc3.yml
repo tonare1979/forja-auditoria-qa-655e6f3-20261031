@@ -1,0 +1,39 @@
+name: FORJA anexos acesso direto RC3
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ativar botão Arquivos Fotos e envio sem texto
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('public/features.js');s=p.read_text()
+          old='<label class="field-label">Selecionar foto ou PDF do iPhone<input type="file" id="chatUpload" class="forminput" accept="image/jpeg,image/png,application/pdf,.pdf"></label>'
+          new='<label class="field-label">Anexar foto ou exame</label><input type="file" id="chatUpload" accept="image/jpeg,image/png,application/pdf,.pdf" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none"><button type="button" class="btn" data-chat-pick="1">ESCOLHER FOTO OU PDF</button><p class="small muted" id="chatFileName" aria-live="polite">Nenhum arquivo selecionado.</p>'
+          assert s.count(old)==1,'Campo mudou; abortado'
+          s=s.replace(old,new)
+          listener="""document.addEventListener('click',function(e){const b=e.target.closest?.('[data-chat-pick]');if(!b)return;e.preventDefault();const f=document.getElementById('chatUpload');if(f)f.click()});
+          document.addEventListener('change',function(e){if(e.target?.id!=='chatUpload')return;const l=document.getElementById('chatFileName');if(l)l.textContent=e.target.files?.[0]?.name||'Nenhum arquivo selecionado.'});
+          """
+          s+='\n'+listener
+          old="const r=await api('/api/chat','POST',{text,attachments,useAI});"
+          new="const finalText=text.trim()||(incoming?'Arquivo anexado ao acompanhamento.':'');const r=await api('/api/chat','POST',{text:finalText,attachments,useAI});"
+          assert s.count(old)==1,'Envio de chat mudou'
+          s=s.replace(old,new)
+          p.write_text(s)
+          print('BOTAO_ESCOLHA_OK','ENVIO_SEM_TEXTO_OK')
+          PY
+          node --check public/features.js
+      - name: Commit
+        run: |
+          git config user.name "FORJA RC3"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/features.js
+          git commit -m "fix: seletor de arquivos explicito no iPhone e envio sem texto"
+          git pull --rebase origin main
+          git push

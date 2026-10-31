@@ -1,0 +1,23 @@
+
+ ⛅️ wrangler 4.156.0
+────────────────────
+🌀 Building list of assets...
+✨ Read 46 files from the assets directory C:\Users\renat\AppData\Local\Temp\forja-655e6f3-code\public
+🌀 Starting asset upload...
+🌀 Found 1 new or modified static asset to upload. Proceeding with upload...
++ /sw.js
+Uploaded 1 of 1 asset
+✨ Success! Uploaded 1 file (42 already uploaded) (1.70 sec)
+
+Total Upload: 49.29 KiB / gzip: 12.73 KiB
+Worker Startup Time: 4 ms
+Your Worker has access to the following bindings:
+Binding                                   Resource         
+env.DB (forja-rc3-9c27784-d1-qa)          D1 Database      
+env.PHOTOS (forja-rc3-9c27784-r2-qa)      R2 Bucket        
+env.ASSETS                                Assets           
+
+Uploaded forja-rc3-c7f15d5-offline-qa (11.19 sec)
+Deployed forja-rc3-c7f15d5-offline-qa triggers (2.16 sec)
+  https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev
+Current Version ID: 7418ecfd-1a02-47b5-875b-cb4fd1abf42d

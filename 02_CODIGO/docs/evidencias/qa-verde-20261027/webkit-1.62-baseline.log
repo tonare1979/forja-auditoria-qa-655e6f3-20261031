@@ -1,0 +1,24 @@
+FORJA QA LOTE | branch fix/rc3-scout-daily-evidence-20261027 | commit c513ac76c23c | mode candidate | testes: 20 | ignorados declarados: remote-base-parity.mjs
+PASS auth-login-safari-regression.mjs (0s)
+PASS auth-real-handler-synthetic.mjs (0s)
+PASS ios-pwa-assets-contract.mjs (0s)
+FAIL ios-pwa-offline-shell.cjs (1s)
+MOTIVO: Call log: | [2m  - waiting for navigation until "domcontentloaded"[22m |     at /workspace/scratch/6d12d3cc29ee/forja/tests/ios-pwa-offline-shell.cjs:25:13 { |   log: [ '  - waiting for navigation until "domcontentloaded"' ], |   name: 'Error' | }
+PASS ios-standalone-homologation.cjs (3s)
+PASS qa-cross-device-sync-webkit.cjs (2s)
+PASS qa-profile-only-sync-guard.mjs (0s)
+PASS qa-webkit-login-local.cjs (2s)
+PASS rc3-profile-reload-webkit.cjs (2s)
+PASS remote-email-salt-smoke.mjs (14s)
+PASS sync-status-proof.mjs (0s)
+PASS sync-status-webkit-local.cjs (3s)
+PASS qa-authenticated-occ-handler.mjs (0s)
+PASS qa-atomic-snapshot-history.mjs (0s)
+PASS qa-member-public-signup-cpf.mjs (0s)
+PASS qa-cpf-migration.mjs (0s)
+PASS qa-guest-signup-webkit.cjs (2s)
+PASS qa-admin-people-status.mjs (0s)
+PASS qa-admin-people-webkit.cjs (1s)
+PASS qa-status-readonly.mjs (0s)
+BATCH_RESULT 19/20 FAILED=1
+EVIDENCIA_LOCAL /root/FORJA_PLAYWRIGHT_QA/reports/forja-qa-batch-2026-10-28T02-35-38-873Z.json

@@ -1,0 +1,32 @@
+name: FORJA video smoke RC3
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verificar vídeos femininos no preview
+        run: |
+          python3 - <<'PY'
+          import urllib.request,json
+          from pathlib import Path
+          base='https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev'
+          with urllib.request.urlopen(base+'/videos/catalog.json',timeout=25) as r: items=json.load(r)
+          assert len(items)>=300,len(items)
+          assert all(x.get('female','').startswith('https://') for x in items)
+          print('CATALOGO_PREVIEW_OK',len(items))
+          with urllib.request.urlopen(base,timeout=20) as r:h=r.read().decode('utf-8')
+          assert 'data-forja-demo' in h
+          assert 'forjaOpenDemo' in h
+          print('PLAYER_PREVIEW_OK')
+          for v in items[:2]:
+            request=urllib.request.Request(v['female'],method='HEAD',headers={'User-Agent':'Mozilla/5.0'})
+            try:
+              with urllib.request.urlopen(request,timeout=15) as r:print('MEDIA_HEAD',r.status,v['name'])
+            except Exception as e:
+              print('MEDIA_HEAD_UNVERIFIED',v['name'],str(e))
+          PY

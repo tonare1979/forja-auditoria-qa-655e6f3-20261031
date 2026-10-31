@@ -1,0 +1,31 @@
+name: Corrigir capa FORJA RC3
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  corrigir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remover sobreposição duplicada da capa
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('public/index.html')
+          s=p.read_text()
+          target='<img class="welcome-brand" src="./forja-brand-original.png" alt="FORJA">'
+          if s.count(target)!=1:
+              raise SystemExit(f'Esperada uma sobreposição, encontradas {s.count(target)}. Nada alterado.')
+          p.write_text(s.replace(target,''),encoding='utf-8')
+          assert 'forja-cover-rio-casal-v2.png' in p.read_text()
+          print('Imagem duplicada removida. Capa principal preservada.')
+          PY
+      - name: Commit da correção
+        run: |
+          git config user.name "FORJA RC3"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/index.html
+          git commit -m "fix: retirar F sobreposto da capa de abertura"
+          git push

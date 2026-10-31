@@ -1,0 +1,28 @@
+name: FORJA reparar fonte do catálogo
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('.github/workflows/biblioteca-feminina-rc3.yml')
+          s=p.read_text()
+          old='https://exercise-database.zenithfits.com/api/v1/exercises?limit=400'
+          new='https://raw.githubusercontent.com/amiinwani/free-exercise-db-with-videos/main/data/exercises.json'
+          assert s.count(old)==1
+          s=s.replace(old,new)
+          s=s.replace("rows=raw.get('data',[])","rows=raw if isinstance(raw,list) else raw.get('data',[])")
+          p.write_text(s)
+          PY
+          git config user.name "FORJA RC3"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/workflows/biblioteca-feminina-rc3.yml
+          git commit -m "fix: obter catálogo de dados direto do repositório"
+          git pull --rebase origin main
+          git push

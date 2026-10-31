@@ -1,0 +1,37 @@
+name: FORJA RC3 offline persistencia WebKit
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps webkit
+      - name: Validar armazenamento offline no iPhone
+        run: |
+          cat >/tmp/offline.cjs <<'JS'
+          const {webkit,devices}=require(process.cwd()+'/node_modules/playwright');
+          (async()=>{
+            const browser=await webkit.launch();
+            const ctx=await browser.newContext({...devices['iPhone 13']});
+            const page=await ctx.newPage();
+            await page.goto('https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev/',{waitUntil:'domcontentloaded'});
+            await page.evaluate(()=>{window.__forjaLoadError=null;state.weights.push({date:'2026-10-13',weight:65.2});if(!save())throw Error('LOCAL_SAVE_FAILED')});
+            await ctx.setOffline(true);
+            const stored=await page.evaluate(()=>{const x=JSON.parse(localStorage.getItem('forja73-v1'));return x.weights.some(w=>w.weight===65.2)});
+            if(!stored)throw Error('OFFLINE_STORAGE_MISSING');
+            const saved=await page.evaluate(()=>save());if(!saved)throw Error('OFFLINE_WRITE_FAILED');
+            await ctx.setOffline(false);
+            await page.reload({waitUntil:'domcontentloaded'});
+            const persisted=await page.evaluate(()=>state.weights.some(w=>w.weight===65.2));
+            if(!persisted)throw Error('RELOAD_LOST_WEIGHT');
+            console.log('WEBKIT_OFFLINE_SAVE_RELOAD_OK');
+            await browser.close();
+          })().catch(e=>{console.error(e);process.exit(1)});
+          JS
+          node /tmp/offline.cjs

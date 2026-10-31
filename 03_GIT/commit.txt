@@ -1,0 +1,7 @@
+commit 655e6f3cd80954b144339968afff231d3d38f0c4
+Author:     FORJA QA <qa@localhost.invalid>
+AuthorDate: Sat Oct 31 01:51:15 2026 +0000
+Commit:     FORJA QA <qa@localhost.invalid>
+CommitDate: Sat Oct 31 01:51:15 2026 +0000
+
+    fix(pwa): normalize offline navigation HTML without redirects

@@ -1,0 +1,115 @@
+worktree C:/Users/renat/forja-v11-homologaca
+HEAD 5619035a2156255cd41bc57764f6f2e0ead643e1
+branch refs/heads/fix/rc3-homologacao-20261014
+
+worktree C:/Users/renat/develop/FORJA_RC3_D1_DISPOSABLE_20261025
+HEAD 9b67d133edf3a58bfcf62d6e8e27e85eeabda450
+branch refs/heads/fix/rc3-validacao-d1-e-qa-webkit-20261025
+
+worktree C:/Users/renat/develop/FORJA_RC3_EXTRAS_SAFE
+HEAD 02821fa7f83beb67b16427b7889be50a3b641f23
+branch refs/heads/fix/rc3-preservar-personalizacao-20261025
+
+worktree C:/Users/renat/develop/FORJA_RC3_IOS_PWA_QA_20261025
+HEAD 82d062ec373a5b6e74b23ebf2975d0797c648f45
+branch refs/heads/qa/rc3-ios-standalone-20261025
+
+worktree C:/Users/renat/develop/FORJA_RC3_IOS_PWA_REMOTE_VERIFY
+HEAD 10fd8455a9e1a324dcd95b10010c1115bf33afac
+detached
+
+worktree C:/Users/renat/develop/FORJA_RC3_LOGIN_FIX_20261025
+HEAD dc000d1163720f7c15368250fd4b5ba0e2b2ad59
+branch refs/heads/fix/rc3-login-sessao-20261025
+
+worktree C:/Users/renat/develop/FORJA_RC3_LOGIN_REMOTE_VERIFY
+HEAD b3897fb787952db796e8e63526dbee43595b007c
+detached
+
+worktree C:/Users/renat/develop/FORJA_RC3_RETURN_PROFILE_20261025
+HEAD 86b0b8a73d7a059232a43c829067092cef8f499a
+branch refs/heads/fix/rc3-retorno-perfil-20261025
+
+worktree C:/Users/renat/develop/FORJA_RC3_RETURN_PROFILE_REMOTE_VERIFY
+HEAD 510b885dfd43c75385a38f6470cb72ed004ee89a
+detached
+
+worktree C:/Users/renat/develop/FORJA_RC3_SAFE_20261025
+HEAD 7121456fc0de8793ec231044b29b43c3de596d49
+branch refs/heads/fix/rc3-preservar-alternativas-20261025
+
+worktree C:/Users/renat/develop/FORJA_RC3_SYNC_REMOTE_VERIFY
+HEAD 1602054092a651386d30e8986b36071c6e3a93ba
+detached
+
+worktree C:/Users/renat/develop/FORJA_RC3_SYNC_VERIFY_20261025
+HEAD 8b779678254d7a96545d6d2b74d23f53639f75b1
+branch refs/heads/fix/rc3-sync-verificacao-20261025
+
+worktree C:/Users/renat/develop/FORJA_RC3_TWO_DEVICE_QA_20261025
+HEAD 4c12418e825dc77811664294446c7627a114bebf
+branch refs/heads/qa/rc3-two-device-sync-20261025
+
+worktree C:/Users/renat/develop/FORJA_RC3_TWO_DEVICE_REMOTE_VERIFY
+HEAD 4a3b1fb1780d19683529e9ace254cd9059d3924d
+detached
+
+worktree C:/Users/renat/FORJA_QA_LOTE_20261026
+HEAD 149e87316a85bfc1a6d799c1f63266ac2c9e9bdf
+branch refs/heads/test/rc3-parity-auth-occ-20261026
+
+worktree C:/Users/renat/FORJA_RC3_ATUAL_20261017
+HEAD de7cf2aa27c47a50ffef64c765f01b84ef8e2c93
+branch refs/heads/fix/rc3-f2-portable-20261017
+
+worktree C:/Users/renat/FORJA_RC3_CONSOLIDADA_R4
+HEAD dd5fe84e3752e703fc53c7155aa9811fc8949e98
+branch refs/heads/fix/rc3-consolidada-r4-20261018
+
+worktree C:/Users/renat/FORJA_RC3_CPF_SCHEMA_SAFE_20261027
+HEAD da00fccd3b58b4b1f7cd2da5d693bbfa3ff66a77
+branch refs/heads/fix/rc3-cpf-schema-safe-20261027
+
+worktree C:/Users/renat/FORJA_RC3_DRAFT_HISTORY_20261026
+HEAD 0f8542c8bc1236a2a79a7ed9e080fbb4f616a46a
+branch refs/heads/fix/rc3-draft-history-20261026
+
+worktree C:/Users/renat/FORJA_RC3_E2E_WORKFLOW_20261027
+HEAD 02af24693964e3f272e38850087065d8aa31a68b
+branch refs/heads/fix/rc3-equipment-thumb-contain-20261027
+
+worktree C:/Users/renat/FORJA_RC3_FIX_CADASTRO_20261026
+HEAD 5060272af858751682cb35631173ca63ed0365a0
+branch refs/heads/fix/rc3-self-signup-cpf-20261026
+
+worktree C:/Users/renat/FORJA_RC3_HTML_RECONCILE_20261027
+HEAD e048c210f2b3b7157712bde5cc5bfb46941230c0
+branch refs/heads/fix/rc3-html-parity-reconcile-20261027
+
+worktree C:/Users/renat/FORJA_RC3_P0_IMPL
+HEAD b43d66367beba355c503cb3d4e07017925c50495
+branch refs/heads/feat/ux-gymanalytica-four-tabs-20261020
+
+worktree C:/Users/renat/FORJA_RC3_PEPPER_CONTINGENCY_20261026
+HEAD 23e8ca7e3ddb758ed8623b4d941609348b057dcd
+branch refs/heads/docs/rc3-pepper-contingency-20261026
+
+worktree C:/Users/renat/FORJA_RC3_PEPPER_GUARD_20261026
+HEAD b410d45bf54f8c81a401d22910747c7b4fcc63a4
+branch refs/heads/fix/rc3-required-secrets-gate-20261026
+
+worktree C:/Users/renat/FORJA_RC3_QA_20261019
+HEAD 1f79beadfdfe4a2200ce373fe9145b732af6af3c
+detached
+
+worktree C:/Users/renat/FORJA_RC3_R4
+HEAD e67cf928d2d4fe3f98a942955f87a7fef26014ae
+branch refs/heads/fix/rc3-r4-20261018
+
+worktree C:/Users/renat/FORJA_RC3_SAFARI_SAVE_20261026
+HEAD 04cada1762e42d87bb3c751039ed054bbd14cc50
+branch refs/heads/fix/rc3-safari-local-save-order-20261026
+
+worktree C:/Users/renat/FORJA_RC3_UX_DEPLOY_SAFE
+HEAD 290b70d64875ffcc2e5482feb5feaebb32f92c08
+branch refs/heads/feat/forja-music-curadoria-20261020

@@ -1,0 +1,40 @@
+[
+  {
+    "path": "/sw.js",
+    "status": 200,
+    "url": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/sw.js",
+    "redirected": false,
+    "contentType": "text/javascript",
+    "cacheControl": "no-store",
+    "sha256": "0734eea330e4e89c566b6b10fcf9aa94593d3a28f24dd54d7ef2a90a89e78d1b",
+    "matchesAuthorized": true
+  },
+  {
+    "path": "/",
+    "status": 200,
+    "url": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/",
+    "redirected": false,
+    "contentType": "text/html",
+    "cacheControl": "public, max-age=0, must-revalidate",
+    "sha256": "4190cb18f68bb115511f7068f1a06d6b203d07c98900689310eb852124032ea7"
+  },
+  {
+    "path": "/manifest.webmanifest",
+    "status": 200,
+    "url": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/manifest.webmanifest",
+    "redirected": false,
+    "contentType": "application/manifest+json",
+    "cacheControl": "public, max-age=0, must-revalidate",
+    "sha256": "73c63d72cc9ec171057ef4fe979a62ec7bd12f4fa41ef7cc8a9a51713e584634"
+  },
+  {
+    "path": "/api/health",
+    "status": 200,
+    "url": "https://forja-rc3-c7f15d5-offline-qa.renatodesouza79.workers.dev/api/health",
+    "redirected": false,
+    "contentType": "application/json; charset=utf-8",
+    "cacheControl": "no-store",
+    "sha256": "4bb2cc19851902333108933e1a46f41e144f3160ecb08d4b16c9382f4f0ca442",
+    "body": "{\"ok\":true,\"app\":\"FORJA\",\"api\":1}"
+  }
+]

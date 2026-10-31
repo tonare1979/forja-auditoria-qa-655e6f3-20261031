@@ -1,0 +1,5 @@
+Busca limitada no snapshot e no historico: padroes de private key, gh[pousr]_ com 30+ caracteres, sk- com 24+ caracteres e AKIA seguido de 16 caracteres.
+Ocorrencia identificada: ops/lab-local-tls/localhost.key, commit f00b3c62a87328ce0997869ef57b891f2d88629f.
+Origem sintetica documentada em docs/FORJA-LABORATORIO-LOCAL-20261028.md. Credenciais locais qa_local igualmente sinteticas.
+Nao e uma varredura completa de segredos nem garantia de ausencia de dados sensiveis.
+Valores de segredos Cloudflare, cookies e dados pessoais remotos nao foram extraidos para este pacote.

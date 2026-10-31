@@ -1,0 +1,18 @@
+name: FORJA fluxos de arquivos e offline
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path('public/features.js').read_text()
+          for key in ['async function fxLoadEvolution','async function uploadMedia','async function fxLoadChat','outbox','else if(action===\'sendChat\')','else if(action===\'saveBody\')']:
+            i=s.find(key)
+            print('SECTION',key,'EXISTS',i>=0,'SNIPPET',repr(s[max(0,i):i+600]) if i>=0 else '')
+          PY

@@ -1,0 +1,14 @@
+import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:assert/strict';
+const c={window:{}};vm.runInNewContext(fs.readFileSync(new URL('../public/scout-progress.js',import.meta.url),'utf8'),c);
+const w=c.window, day=d=>new Date(d+'T12:00:00Z');
+const session=(id,date,kg)=>({id,date,code:'A',status:'complete',exercises:[{id:'x',name:'Remada',equipment:'machine-1',sets:[{kg,reps:10}]}]});
+const past=session('shared','2026-10-01',20),future=session('shared','2026-10-10',99),bad=session('shared','2026-02-30',88);
+const now=day('2026-10-05');
+const metrics=x=>w.forjaScoutMetrics(x,now),period=x=>w.forjaScoutPeriodSummary(x,now,30),long=x=>w.forjaScoutLongitudinal(x,now,30);
+const pure={sessions:[past]},full={sessions:[past,future,bad]};
+for(const f of [metrics,period,long])assert.deepEqual(JSON.parse(JSON.stringify(f(full))),JSON.parse(JSON.stringify(f(pure))),'future and invalid date cannot contaminate past');
+assert.equal(period(full).sessions,1);
+assert.equal(metrics(full).conflicts,0);
+const sameDay={sessions:[past,session('other','2026-10-01',30)]};assert.equal(period(sameDay).sessions,2);
+const actualConflict={sessions:[past,session('shared','2026-10-01',70)]};assert.equal(period(actualConflict).sessions,0);assert.equal(metrics(actualConflict).conflicts,1);
+console.log('PASS: future/invalid ignored before identity; valid conflict quarantined; distinct same-day sessions retained');

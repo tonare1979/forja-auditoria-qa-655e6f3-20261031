@@ -1,0 +1,24 @@
+name: FORJA diagnostico assets
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('src/index.js')
+          s=p.read_text()
+          print('SRC_BYTES',len(s))
+          for key in ['ASSETS','asset','/api/','pathname','fetch(request)','fetch(req)','Forbidden','403','unauthorized']:
+            start=0
+            for _ in range(min(s.count(key),4)):
+              i=s.find(key,start)
+              if i<0:break
+              print('KEY',key,'AROUND',repr(s[max(0,i-160):i+220]))
+              start=i+len(key)
+          PY

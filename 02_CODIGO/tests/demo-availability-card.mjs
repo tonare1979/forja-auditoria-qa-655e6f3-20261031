@@ -1,0 +1,1 @@
+import {readFileSync} from 'node:fs';import assert from 'node:assert/strict';const html=readFileSync(new URL('../public/index.html',import.meta.url),'utf8');assert.match(html,/function forjaDemoAction\(name\)/);assert.match(html,/forjaDemoAction\(e\[0\]\)/);assert.match(html,/Demonstração indisponível/);console.log('FORJA_DEMO_MISSING_EXPLICIT_PASS');

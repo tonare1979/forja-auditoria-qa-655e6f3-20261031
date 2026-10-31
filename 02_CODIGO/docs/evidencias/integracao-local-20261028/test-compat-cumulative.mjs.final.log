@@ -1,0 +1,11 @@
+PASS Scout: 4 sessões, 2 aumentos, zero reduções
+PASS treino real: Elevação lateral com halteres
+PASS treino real: Crucifixo inverso máquina
+PASS treino real: Tríceps corda
+PASS treino real: Panturrilha em pé
+PASS treino real: Tríceps francês leve
+PASS treino real: legado sem sessão corrigida
+PASS progresso real: linhas consolidadas e cargas máximas
+PASS identidade estrita: nomes distintos e IDs estáveis
+PASS snapshot efetivamente lido permanece idêntico
+COMPAT_READ_REGRESSIONS_PASS

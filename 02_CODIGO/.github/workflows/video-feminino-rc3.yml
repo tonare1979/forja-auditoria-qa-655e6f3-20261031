@@ -1,0 +1,58 @@
+name: FORJA RC3 video demonstracao feminina
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inserir video direto com fallback e validação
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('public/index.html');s=p.read_text()
+          old="function video(name){return 'https://www.youtube.com/results?search_query='+encodeURIComponent(name+' execução correta musculação máquina')}"
+          assert s.count(old)==1, 'Função video mudou; abortando'
+          # Executa vídeo direto no popup via API; se indisponível, mostra mensagem sem redirecionar para publicidade.
+          new="""function video(name){return 'https://exercise-database.zenithfits.com/api/v1/search?q='+encodeURIComponent(name)}
+          async function forjaVideo(name){
+            const query=name.toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');
+            try{
+              const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),6500);
+              let result;try{const r=await fetch(video(name),{signal:controller.signal});if(!r.ok)throw Error('catalogo indisponivel');result=await r.json()}finally{clearTimeout(timeout)}
+              const candidates=Array.isArray(result.data)?result.data:result.data?.exercises||[];
+              const found=candidates.find(x=>x.videos?.female&&(x.name||'').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'')===query);
+              if(!found)throw Error('Sem demonstracao feminina verificada para este exercicio');
+              const src=String(found.videos.female);
+              if(!/^https:\\/\\//.test(src))throw Error('Endereço invalido');
+              const w=window.open('','_blank');
+              if(!w)throw Error('Toque novamente: navegador bloqueou a abertura');
+              const vid=w.document.createElement('video');vid.controls=true;vid.autoplay=true;vid.playsInline=true;vid.style='width:100%;height:auto;max-height:90vh';vid.src=src;
+              w.document.body.style='margin:0;background:#101014;color:white;font:16px system-ui';w.document.title='FORJA · '+name;
+              w.document.body.appendChild(vid);w.document.body.appendChild(w.document.createTextNode(name));
+            }catch(e){alert('Demonstração direta ainda não disponível: '+name+'. Nenhum vídeo aleatório será aberto.')}
+          }"""
+          s=s.replace(old,new)
+          # Do not silently change call sites: inspect for existing video() href or click usages.
+          if "video(" not in s:raise SystemExit('Video calls missing')
+          p.write_text(s)
+          print('Video direct resolver installed; callsites still require wiring after inspection.')
+          PY
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('public/index.html').read_text()
+          for m in list(re.finditer(r'video\\(',s))[:15]:print(repr(s[max(0,m.start()-160):m.start()+220]))
+          Path('/tmp/check.js').write_text('\n'.join(re.findall(r'<script(?: [^>]*)?>(.*?)</script>',s,re.S)))
+          PY
+          node --check /tmp/check.js
+      - name: Commit
+        run: |
+          git config user.name "FORJA RC3"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/index.html
+          git commit -m "feat: adicionar resolvedor de videos femininos diretos"
+          git push

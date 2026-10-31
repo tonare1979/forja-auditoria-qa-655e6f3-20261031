@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import vm from 'node:vm';
+const ctx={window:{}};
+vm.runInNewContext(readFileSync('public/scout-progress.js','utf8'),ctx);
+const now=new Date('2026-10-30T12:00:00Z');
+const make=(id,date,kg,reps)=>({id,date,code:'A',status:'complete',exercises:[{name:'Remada',equipment:'máquina A',sets:[{kg,reps},{kg,reps}]}]});
+const data={sessions:[make('a','2026-10-02',20,10),make('b','2026-10-09',25,8),make('c','2026-10-16',25,8)]};
+const metric=ctx.window.forjaScoutLongitudinal(data,now,30).exercises[0];
+assert.equal(metric.mixed,1,'mixed comparisons must be counted');
+assert.equal(metric.improvements+metric.stable+metric.lower+metric.mixed+metric.inconclusive,metric.evidence.length);
+const html=ctx.window.forjaScoutProgress(data,now);
+assert.match(html,/1 mudanças mistas|1 mudança mista/);
+assert.match(html,/Anterior:.*20 kg.*10 repetições/s);
+assert.match(html,/Atual:.*25 kg.*8 repetições/s);
+assert.match(html,/Consultar evidências/);
+console.log('SCOUT_LONGITUDINAL_ACCOUNTING_PASS');

@@ -1,0 +1,82 @@
+name: FORJA biblioteca feminina RC3
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Baixar catálogo gratuito e criar player interno
+        run: |
+          python3 - <<'PY'
+          import urllib.request,json
+          from pathlib import Path
+          url='https://raw.githubusercontent.com/buzops9/exercisedb/main/data/exercises.json'
+          req=urllib.request.Request(url,headers={'User-Agent':'FORJA-Family-App/1.0'})
+          raw=json.load(urllib.request.urlopen(req,timeout=25))
+          rows=raw if isinstance(raw,list) else raw.get('data',[])
+          if not isinstance(rows,list) or len(rows)<150:raise SystemExit('Catálogo insuficiente: não alterar aplicativo')
+          clean=[{'name':r.get('name',''),'aliases':r.get('aliases',[]),'female':r.get('videos',{}).get('female',''),'steps':r.get('steps',[]),'cues':r.get('formCues',[])} for r in rows if r.get('videos',{}).get('female')]
+          if len(clean)<140:raise SystemExit('Vídeos femininos insuficientes')
+          p=Path('public/videos');p.mkdir(exist_ok=True)
+          (p/'catalog.json').write_text(json.dumps(clean,ensure_ascii=False,separators=(',',':')))
+          print('VIDEOS_FEMININOS',len(clean))
+          PY
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('public/index.html');s=p.read_text()
+          old='<a class="small" target="_blank" rel="noopener" href="${video(e[0])}">▶ BUSCAR DEMONSTRAÇÃO (YOUTUBE)</a>'
+          assert s.count(old)==1,'Ponto de vídeo mudou; abortado'
+          new='<button type="button" class="small" data-forja-demo="${esc(e[0])}">▶ VER DEMONSTRAÇÃO</button>'
+          s=s.replace(old,new)
+          marker='function nav(){'
+          assert s.count(marker)==1
+          script=r"""
+          let forjaDemoCatalog;
+          function forjaNorm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').replace(/[^a-z0-9 ]/g,' ').replace(/\\s+/g,' ').trim()}
+          const forjaWords={'supino':'bench press','agachamento':'squat','remada':'row','puxada':'pulldown','rosca':'curl','triceps':'triceps','elevacao lateral':'lateral raise','desenvolvimento':'shoulder press','leg press':'leg press','cadeira extensora':'leg extension','mesa flexora':'leg curl','panturrilha':'calf raise','crucifixo':'fly','abdominal':'crunch','flexao':'push up','levantamento terra':'deadlift','pullover':'pullover'};
+          async function forjaOpenDemo(name){
+            let old=document.getElementById('forja-demo-box');if(old)old.remove();
+            const cover=document.createElement('div');cover.id='forja-demo-box';cover.style='position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.93);padding:20px;overflow:auto;color:white';
+            const panel=document.createElement('div');panel.style='max-width:600px;margin:auto';
+            const close=document.createElement('button');close.textContent='✕ FECHAR';close.onclick=()=>cover.remove();panel.append(close);
+            const title=document.createElement('h3');title.textContent='Demonstração: '+name;panel.append(title);
+            const status=document.createElement('p');status.textContent='Procurando demonstração feminina…';panel.append(status);
+            const video=document.createElement('video');video.controls=true;video.playsInline=true;video.preload='metadata';video.style='width:100%;max-height:60vh';panel.append(video);
+            const chooser=document.createElement('select');chooser.setAttribute('aria-label','Escolher demonstração');chooser.style='width:100%;padding:12px;margin-top:12px';panel.append(chooser);
+            cover.append(panel);document.body.append(cover);
+            try{
+              if(!forjaDemoCatalog){const r=await fetch('/videos/catalog.json');if(!r.ok)throw Error('catálogo indisponível');forjaDemoCatalog=await r.json()}
+              const q=forjaNorm(name);const en=Object.keys(forjaWords).find(k=>q.includes(forjaNorm(k)));const term=en?forjaWords[en]:q;
+              const matched=forjaDemoCatalog.filter(x=>forjaNorm(x.name).includes(term)||forjaNorm((x.aliases||[]).join(' ')).includes(term));
+              const opts=matched.length?matched:forjaDemoCatalog;
+              chooser.replaceChildren();
+              const prompt=document.createElement('option');prompt.textContent='Escolha uma demonstração';prompt.value='';chooser.append(prompt);
+              for(const item of opts){const o=document.createElement('option');o.textContent=item.name;o.value=item.female;chooser.append(o)}
+              chooser.onchange=()=>{if(chooser.value){video.src=chooser.value;video.play().catch(()=>{});status.textContent='Confira se o movimento corresponde ao seu exercício.'}};
+              status.textContent=matched.length?'Escolha o exercício correspondente:':'Sem correspondência automática. Escolha uma demonstração na lista, sem vídeos aleatórios.';
+              if(matched.length===1){chooser.selectedIndex=1;chooser.onchange()}
+            }catch(e){status.textContent='Biblioteca indisponível. Nenhum vídeo aleatório foi aberto.'}
+          }
+          document.addEventListener('click',e=>{const el=e.target.closest('[data-forja-demo]');if(el){e.preventDefault();forjaOpenDemo(el.getAttribute('data-forja-demo'))}});
+          """
+          s=s.replace(marker,script+'\n'+marker)
+          p.write_text(s)
+          PY
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('public/index.html').read_text()
+          Path('/tmp/forja-code.js').write_text('\n'.join(re.findall(r'<script(?: [^>]*)?>(.*?)</script>',s,re.S)))
+          PY
+          node --check /tmp/forja-code.js
+      - name: Commit
+        run: |
+          git config user.name "FORJA RC3"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/index.html public/videos/catalog.json
+          git commit -m "feat: biblioteca feminina com player FORJA"
+          git push

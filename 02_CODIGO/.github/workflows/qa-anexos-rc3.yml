@@ -1,0 +1,47 @@
+name: FORJA validação anexos sem credenciais
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  attachments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps webkit
+      - name: Testes iPhone anexos e isolamento
+        run: |
+          cat > /tmp/forja-attachments.cjs <<'JS'
+          const {webkit,devices}=require(process.cwd()+'/node_modules/playwright');
+          (async()=>{
+            const browser=await webkit.launch({headless:true});
+            const ctx=await browser.newContext({...devices['iPhone 13']});
+            const p=await ctx.newPage();await p.goto('https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev/',{waitUntil:'domcontentloaded'});
+            const result=await p.evaluate(async()=>{
+              const calls=[];
+              const original=window.fetch;
+              window.fetch=async(input,options)=>{if(String(input)==='/api/media'&&options?.method==='POST'){
+                const form=options.body,c=form.get('file');
+                calls.push({type:c.type,size:c.size,kind:form.get('kind'),date:form.get('date'),name:c.name});
+                return new Response(JSON.stringify({ok:true,id:'qa-mocked-media'}),{status:201,headers:{'content-type':'application/json'}});
+              }return original(input,options)};
+              const pdf=new File([new TextEncoder().encode('%PDF-1.4\n')],'test.pdf',{type:'application/pdf'});
+              const a=await uploadMedia(pdf,'exam','exam','2026-10-13','teste');
+              const png=new File([new Uint8Array([137,80,78,71,13,10,26,10])],'sample.png',{type:'image/png'});
+              let image='';
+              try{await uploadMedia(png,'photo','front','2026-10-13','teste')}catch(e){image=String(e.message)}
+              window.fetch=original;
+              return {id:a.id,calls,image};
+            });
+            if(result.id!=='qa-mocked-media'||result.calls[0]?.type!=='application/pdf')throw Error('PDF flow failed '+JSON.stringify(result));
+            console.log('PDF_UPLOAD_BROWSER_MOCK_OK',JSON.stringify(result.calls[0]));
+            const api=await p.request.get('https://forja-v11-rc3-preview-isolada.renatodesouza79.workers.dev/api/media');
+            if(api.status()!==401)throw Error('Private media endpoint returned '+api.status());
+            console.log('PRIVATE_MEDIA_REQUIRES_LOGIN_OK');
+            await browser.close();
+          })().catch(e=>{console.error(e);process.exit(1)});
+          JS
+          node /tmp/forja-attachments.cjs

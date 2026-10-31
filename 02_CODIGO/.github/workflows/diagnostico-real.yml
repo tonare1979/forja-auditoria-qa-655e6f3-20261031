@@ -1,0 +1,26 @@
+name: FORJA RC3 diagnóstico executável
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Localizar funções reais
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          for f in ['public/index.html','public/features.js','public/sw.js','src/index.js']:
+            p=Path(f)
+            if not p.exists():continue
+            s=p.read_text()
+            for key in ['youtube.com/results','youtube.com/embed','function video','exerciseVideo','chatUpload','fxLoadChat','sendChat','uploadMedia','Load failed','navigator.onLine','syncCloud']:
+              at=0
+              for n in range(min(3,s.count(key))):
+                i=s.find(key,at)
+                if i<0:break
+                print('FILE',f,'KEY',key,'CONTEXT',repr(s[max(0,i-140):i+230]))
+                at=i+len(key)
+          PY

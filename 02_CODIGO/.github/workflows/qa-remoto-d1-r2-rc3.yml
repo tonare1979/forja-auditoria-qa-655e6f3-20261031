@@ -1,0 +1,14 @@
+name: FORJA RC3 remote QA BLOQUEADO - laboratorio compartilhado
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  remote-qa:
+    # Bloqueio P0: main anteriormente permitia PUT D1 e upload/DELETE R2 no RC3 compartilhado.
+    # Somente liberar mediante nova aprovacao, ambiente descartavel independente e faturamento confirmado.
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Nao executar testes remotos de escrita
+        run: echo 'Bloqueado: laboratorio RC3 compartilha D1/R2 com previews; ver branch candidata para suite preservada.'
